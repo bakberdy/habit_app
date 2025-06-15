@@ -1,7 +1,7 @@
-import 'package:chat_app/core/shared/widgets/app_bar_bottom_with_search_field.dart';
-import 'package:chat_app/core/shared/widgets/custom_app_bar.dart';
-import 'package:chat_app/core/theme/app_colors.dart';
-import 'package:chat_app/core/theme/app_text_theme.dart';
+import 'package:habit_app/core/shared/widgets/app_bar_bottom_with_search_field.dart';
+import 'package:habit_app/core/shared/widgets/custom_app_bar.dart';
+import 'package:habit_app/core/theme/app_colors.dart';
+import 'package:habit_app/core/theme/app_text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

@@ -1,4 +1,4 @@
-import 'package:chat_app/features/settings/presentation/widgets/buttons_list.dart';
+import 'package:habit_app/features/settings/presentation/widgets/buttons_list.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

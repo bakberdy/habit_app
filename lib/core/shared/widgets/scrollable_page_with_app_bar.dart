@@ -1,4 +1,4 @@
-import 'package:chat_app/core/shared/widgets/custom_search_bar.dart';
+import 'package:habit_app/core/shared/widgets/custom_search_bar.dart';
 import 'package:flutter/material.dart';
 
 class ScrollablePageWithAppBar extends StatelessWidget {

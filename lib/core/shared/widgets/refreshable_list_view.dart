@@ -1,4 +1,4 @@
-import 'package:chat_app/core/shared/widgets/info_widget.dart';
+import 'package:habit_app/core/shared/widgets/info_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 

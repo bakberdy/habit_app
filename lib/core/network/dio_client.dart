@@ -1,4 +1,4 @@
-import 'package:chat_app/core/core.dart';
+import 'package:habit_app/core/core.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:talker_dio_logger/talker_dio_logger_interceptor.dart';

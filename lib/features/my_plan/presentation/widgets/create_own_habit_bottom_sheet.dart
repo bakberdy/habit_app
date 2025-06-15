@@ -1,9 +1,9 @@
 import 'dart:math';
 
-import 'package:chat_app/core/shared/widgets/custom_filled_button.dart';
-import 'package:chat_app/core/shared/widgets/labeled_text_form_field.dart';
-import 'package:chat_app/core/theme/app_colors.dart';
-import 'package:chat_app/core/theme/app_text_theme.dart';
+import 'package:habit_app/core/shared/widgets/custom_filled_button.dart';
+import 'package:habit_app/core/shared/widgets/labeled_text_form_field.dart';
+import 'package:habit_app/core/theme/app_colors.dart';
+import 'package:habit_app/core/theme/app_text_theme.dart';
 import 'package:flutter/material.dart';
 
 class CreateOwnHabitBottomSheet extends StatefulWidget {

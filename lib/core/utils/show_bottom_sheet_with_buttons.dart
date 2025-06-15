@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:chat_app/core/core.dart';
+import 'package:habit_app/core/core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

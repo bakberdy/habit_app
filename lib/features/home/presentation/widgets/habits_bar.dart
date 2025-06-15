@@ -1,5 +1,5 @@
-import 'package:chat_app/core/theme/app_colors.dart';
-import 'package:chat_app/core/theme/app_text_theme.dart';
+import 'package:habit_app/core/theme/app_colors.dart';
+import 'package:habit_app/core/theme/app_text_theme.dart';
 import 'package:flutter/material.dart';
 
 class HabitsBar extends StatelessWidget {

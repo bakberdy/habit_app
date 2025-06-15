@@ -1,22 +1,25 @@
 import 'dart:io';
 
-import 'package:chat_app/core/core.dart';
+import 'package:habit_app/core/core.dart';
 import 'package:dio/dio.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'dio_failure.freezed.dart';
 
-@freezed 
-class DioFailure extends Failure with _$DioFailure{
+@freezed
+class DioFailure extends Failure with _$DioFailure {
   const DioFailure._();
   const factory DioFailure.unauthorized(String message) = UnauthorizedFailure;
   const factory DioFailure.forbidden(String message) = ForbiddenFailure;
   const factory DioFailure.notFound(String message) = NotFoundFailure;
-  const factory DioFailure.internalServerError(String message) = InternalServerErrorFailure;
-  const factory DioFailure.serviceUnavailable(String message) = ServiceUnavailableFailure; 
+  const factory DioFailure.internalServerError(String message) =
+      InternalServerErrorFailure;
+  const factory DioFailure.serviceUnavailable(String message) =
+      ServiceUnavailableFailure;
   const factory DioFailure.timeout(String message) = TimeoutFailure;
   const factory DioFailure.unknown(String message) = UnknownServerErrorFailure;
-  const factory DioFailure.noInternetConnection(String message) = NoInternetConnectionFailure;
+  const factory DioFailure.noInternetConnection(String message) =
+      NoInternetConnectionFailure;
   const factory DioFailure.badRequest(String message) = BadRequestFailure;
 
   factory DioFailure.fromDioException(DioException error) {
@@ -27,7 +30,9 @@ class DioFailure extends Failure with _$DioFailure{
         return DioFailure.timeout(error.message ?? "Connection timed out");
       case DioExceptionType.badResponse:
         final statusCode = error.response?.statusCode;
-        final detail = error.response?.data['detail'] ?? error.message ?? "Bad response from server";
+        final detail = error.response?.data['detail'] ??
+            error.message ??
+            "Bad response from server";
         if (statusCode == 400) return DioFailure.badRequest(detail);
         if (statusCode == 401) return DioFailure.unauthorized(detail);
         if (statusCode == 403) return DioFailure.forbidden(detail);

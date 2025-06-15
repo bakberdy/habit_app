@@ -1,4 +1,4 @@
-import 'package:chat_app/core/error/error.dart';
+import 'package:habit_app/core/error/error.dart';
 import 'package:dartz/dartz.dart';
 
 typedef ResultFuture<T> = Future<Either<Failure, T>>;

@@ -1,8 +1,8 @@
-import 'package:chat_app/core/core.dart';
-import 'package:chat_app/core/shared/widgets/daily_habit_card.dart';
-import 'package:chat_app/core/theme/app_colors.dart';
-import 'package:chat_app/core/theme/app_text_theme.dart';
-import 'package:chat_app/features/my_plan/presentation/widgets/my_plan_floating_action_button.dart';
+import 'package:habit_app/core/core.dart';
+import 'package:habit_app/core/shared/widgets/daily_habit_card.dart';
+import 'package:habit_app/core/theme/app_colors.dart';
+import 'package:habit_app/core/theme/app_text_theme.dart';
+import 'package:habit_app/features/my_plan/presentation/widgets/my_plan_floating_action_button.dart';
 import 'package:easy_date_timeline/easy_date_timeline.dart';
 import 'package:flutter/material.dart';
 

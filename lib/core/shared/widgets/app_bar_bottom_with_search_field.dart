@@ -1,6 +1,6 @@
-import 'package:chat_app/core/shared/widgets/custom_search_bar.dart';
-import 'package:chat_app/core/core.dart';
-import 'package:chat_app/core/theme/app_text_theme.dart';
+import 'package:habit_app/core/shared/widgets/custom_search_bar.dart';
+import 'package:habit_app/core/core.dart';
+import 'package:habit_app/core/theme/app_text_theme.dart';
 import 'package:flutter/material.dart';
 
 class AppBarBottomWithSearchField extends StatelessWidget

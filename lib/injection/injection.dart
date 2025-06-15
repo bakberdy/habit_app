@@ -1,4 +1,4 @@
-import "package:chat_app/core/core.dart";
+import "package:habit_app/core/core.dart";
 import "package:dio/dio.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:flutter_secure_storage/flutter_secure_storage.dart";

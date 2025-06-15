@@ -1,4 +1,4 @@
-import 'package:chat_app/core/extensions/context_extension.dart';
+import 'package:habit_app/core/extensions/context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:toastification/toastification.dart';
 
