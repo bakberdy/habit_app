@@ -1,7 +1,6 @@
 import "package:habit_app/core/core.dart";
 import "package:dio/dio.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
-import "package:flutter_secure_storage/flutter_secure_storage.dart";
 import "package:get_it/get_it.dart";
 import "package:google_sign_in/google_sign_in.dart";
 import "package:injectable/injectable.dart";
@@ -52,9 +51,6 @@ abstract class AppModule {
           printRequestData: true,
           printResponseTime: true,
           printRequestExtra: true));
-
-  @singleton
-  FlutterSecureStorage get secureStorage => FlutterSecureStorage();
 
   @singleton
   AppRouter get appRouter => AppRouter(talker: talker);

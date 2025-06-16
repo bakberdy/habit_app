@@ -61,7 +61,6 @@ dependencies:
   uuid: ^4.5.1
   dio: ^5.8.0+1
   talker_dio_logger: ^4.8.3
-  flutter_secure_storage: ^4.2.1
   dots_indicator: ^4.0.1
   page_view_dot_indicator: ^2.3.0
   easy_date_timeline: ^2.0.9

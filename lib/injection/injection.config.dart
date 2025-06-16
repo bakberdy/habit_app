@@ -11,7 +11,6 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:dio/dio.dart' as _i361;
 import 'package:flutter_bloc/flutter_bloc.dart' as _i331;
-import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i558;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:google_sign_in/google_sign_in.dart' as _i116;
 import 'package:injectable/injectable.dart' as _i526;
@@ -40,7 +39,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i207.TalkerRouteObserver>(() => appModule.routeObserver);
     gh.singleton<_i361.Dio>(() => appModule.dio);
     gh.singleton<_i162.TalkerDioLogger>(() => appModule.talkerDioLogger);
-    gh.singleton<_i558.FlutterSecureStorage>(() => appModule.secureStorage);
     gh.singleton<_i156.AppRouter>(() => appModule.appRouter);
     gh.singleton<_i393.DioClient>(() => _i393.DioClient(
           gh<_i361.Dio>(),
