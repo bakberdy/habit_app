@@ -7,9 +7,7 @@ import 'package:habit_app/features/home/presentation/widgets/habits_bar.dart';
 import 'package:habit_app/core/shared/widgets/app_bar_bottom_with_search_field.dart';
 import 'package:habit_app/features/home/presentation/widgets/quote_card.dart';
 import 'package:habit_app/features/home/presentation/widgets/recomendation_bar.dart';
-import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:page_view_dot_indicator/page_view_dot_indicator.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

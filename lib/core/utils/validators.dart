@@ -32,6 +32,7 @@ String? validateUsername(String? input) {
       return 'Username can only contain lowercase letters, numbers, and underscores';
     }
   }
+  return null;
 }
 
 String? validateDate(String? input) {

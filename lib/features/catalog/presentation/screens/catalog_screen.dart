@@ -1,9 +1,6 @@
-import 'dart:ui';
-
 import 'package:habit_app/core/core.dart';
 import 'package:habit_app/core/shared/widgets/app_bar_bottom_with_search_field.dart';
 import 'package:habit_app/core/shared/widgets/widgets.dart';
-import 'package:habit_app/core/theme/app_text_theme.dart';
 import 'package:habit_app/features/catalog/presentation/widgets/habit_category_widget.dart';
 import 'package:flutter/material.dart';
 

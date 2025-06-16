@@ -1,8 +1,5 @@
 import 'package:habit_app/features/settings/presentation/widgets/buttons_list.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-
-import '../../../../core/core.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
