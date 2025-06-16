@@ -1,4 +1,4 @@
-package com.bakberdi.chat_app
+package com.bakberdi.habit_app
 
 import io.flutter.embedding.android.FlutterActivity
 
