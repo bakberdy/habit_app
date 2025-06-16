@@ -1,5 +1,5 @@
 import 'package:habit_app/core/core.dart';
-import 'package:habit_app/core/shared/widgets/custom_app_bar.dart';
+import 'package:habit_app/core/shared/widgets/custom_sliver_app_bar.dart';
 import 'package:habit_app/core/theme/app_colors.dart';
 import 'package:habit_app/core/theme/app_text_theme.dart';
 import 'package:habit_app/core/shared/widgets/daily_habit_card.dart';

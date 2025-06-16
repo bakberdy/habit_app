@@ -1,4 +1,4 @@
-import 'package:habit_app/core/shared/pages/habit_screen.dart';
+import 'package:habit_app/features/catalog/presentation/screens/habit_screen.dart';
 import 'package:habit_app/features/catalog/presentation/screens/catalog_screen.dart';
 import 'package:habit_app/features/catalog/presentation/screens/category_screen.dart';
 import 'package:habit_app/features/home/presentation/screens/home_screen.dart';
