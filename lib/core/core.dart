@@ -7,4 +7,3 @@ export 'theme/theme.dart';
 export 'usecase/usecase.dart';
 export 'utils/utils.dart';
 export 'network/network.dart';
-export 'services/services.dart';
