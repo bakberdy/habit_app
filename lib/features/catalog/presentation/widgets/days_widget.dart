@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:habit_app/core/shared/enums/weekday.dart';
 import 'package:habit_app/core/theme/app_colors.dart';
 import 'package:habit_app/core/theme/app_text_theme.dart';
 
 class DaysWidget extends StatelessWidget {
   const DaysWidget({
     super.key,
-    required List<String> suggestedDays,
-  }) : _suggestedDays = suggestedDays;
+    required List<Weekday> days,
+  }) : _days = days;
 
-  final List<String> _suggestedDays;
+  final List<Weekday> _days;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class DaysWidget extends StatelessWidget {
       spacing: 10,
       runSpacing: 10,
       alignment: WrapAlignment.start,
-      children: _suggestedDays.map((e) {
+      children: _days.map((e) {
         return Container(
           padding: EdgeInsets.all(10),
           decoration: BoxDecoration(
@@ -25,7 +26,7 @@ class DaysWidget extends StatelessWidget {
                 Colors.blue.shade400,
                 AppColors.primary,
               ])),
-          child: Text(e,
+          child: Text(e.value,
               style: AppTextTheme.bodySmall.copyWith(color: Colors.white)),
         );
       }).toList(),

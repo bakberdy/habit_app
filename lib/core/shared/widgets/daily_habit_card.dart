@@ -1,13 +1,22 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:habit_app/core/theme/app_colors.dart';
 import 'package:habit_app/core/theme/app_text_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:habit_app/features/my_plan/domain/entities/habit_info.dart';
+import 'package:habit_app/features/my_plan/presentation/bloc/my_plan_bloc.dart';
 
-class DailyHabitCard extends StatelessWidget {
-  const DailyHabitCard({
+class HabitSubsriptionCard extends StatelessWidget {
+  const HabitSubsriptionCard({
     super.key,
-    required this.index,
+    required this.habitInfo,
+    required this.isLast,
+    required this.isFirst,
+    required this.dayStatus,
   });
-  final int index;
+  final HabitInfo habitInfo;
+  final bool isLast;
+  final bool isFirst;
+  final DayStatus dayStatus;
 
   @override
   Widget build(BuildContext context) {
@@ -17,55 +26,64 @@ class DailyHabitCard extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 10),
       decoration: BoxDecoration(
         color: AppColors.primary.withAlpha(50),
-        borderRadius: index == 0
-            ? BorderRadius.vertical(top: Radius.circular(12))
-            : index == 2
-                ? BorderRadius.vertical(bottom: Radius.circular(12))
-                : BorderRadius.zero,
+        borderRadius: (isFirst && isLast)
+            ? BorderRadius.circular(12)
+            : isFirst
+                ? BorderRadius.vertical(top: Radius.circular(12))
+                : isLast
+                    ? BorderRadius.vertical(bottom: Radius.circular(12))
+                    : BorderRadius.zero,
       ),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         children: [
           SizedBox(width: 5),
-          SizedBox(
-            height: 50,
-            width: 50,
-            child: Image.network(
-              "https://cdn-icons-png.flaticon.com/512/728/728093.png",
-              fit: BoxFit.cover,
-            ),
-          ),
-          SizedBox(width: 5),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8),
+              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Drink water after wake up',
+                  Text(habitInfo.habit.title,
                       style: AppTextTheme.bodySmall
                           .copyWith(fontWeight: FontWeight.w600)),
+                  SizedBox(height: 3),
+                  Text(habitInfo.habit.description,
+                      style: AppTextTheme.bodySmall),
+                  SizedBox(height: 3),
                   Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Icon(
                         Icons.timer_outlined,
                         size: 15,
+                        weight: 600,
                       ),
                       SizedBox(width: 3),
-                      Text('10 min', style: AppTextTheme.bodySmall)
+                      Text('${habitInfo.habit.takesTime} minutes',
+                          style: AppTextTheme.bodySmall)
                     ],
                   )
                 ],
               ),
             ),
           ),
-          Checkbox(
-            value: index % 2 == 0,
-            onChanged: (value) {},
-            side: BorderSide.none,
-            fillColor: WidgetStatePropertyAll(AppColors.primary),
-          ),
+          dayStatus.isPast() || dayStatus.isToday()
+              ? Checkbox(
+                  value: habitInfo.isDone,
+                  onChanged: dayStatus.isToday()
+                      ? (value) {
+                          context.read<MyPlanBloc>().add(
+                              MyPlanEvent.toggleHabitDoneStatus(
+                                  date: DateTime.now(),
+                                  habitId: habitInfo.habit.id,
+                                  isDone: !(habitInfo.isDone ?? false)));
+                        }
+                      : null,
+                  side: BorderSide.none,
+                  fillColor: WidgetStatePropertyAll(AppColors.primary),
+                )
+              : SizedBox(),
           SizedBox(width: 5)
         ],
       ),

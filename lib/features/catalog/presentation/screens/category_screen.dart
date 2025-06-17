@@ -1,9 +1,10 @@
 import 'package:habit_app/core/shared/widgets/app_bar_bottom_with_search_field.dart';
 import 'package:habit_app/core/shared/widgets/custom_sliver_app_bar.dart';
+import 'package:habit_app/features/catalog/presentation/widgets/habit_card.dart';
 import 'package:habit_app/core/theme/app_colors.dart';
 import 'package:habit_app/core/theme/app_text_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:habit_app/features/catalog/domain/entities/habit_entity.dart';
 
 class CategoryScreen extends StatefulWidget {
   const CategoryScreen({super.key, required this.categoryId});
@@ -68,44 +69,17 @@ class _CategoryScreenState extends State<CategoryScreen> {
                         AppTextTheme.h5.copyWith(fontWeight: FontWeight.w600))),
           ),
           SliverPadding(
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            sliver: SliverList.builder(
-              itemBuilder: (context, index) => HabitCard(),
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+            sliver: SliverList.separated(
+              itemBuilder: (context, index) => HabitCard(
+                habit: HabitEntity.sample(),
+              ),
+              separatorBuilder: (BuildContext context, int index) =>
+                  SizedBox(height: 10),
             ),
           ),
         ],
       )),
-    );
-  }
-}
-
-class HabitCard extends StatelessWidget {
-  const HabitCard({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      onTap: () {
-        context.pushNamed('habit', pathParameters: {
-          "habit_id": "0",
-        });
-      },
-      contentPadding: EdgeInsets.zero,
-      leading: Container(
-          height: 50,
-          width: 50,
-          clipBehavior: Clip.hardEdge,
-          decoration: BoxDecoration(
-              shape: BoxShape.rectangle,
-              borderRadius: BorderRadius.circular(10)),
-          child: Image.asset('lib/assets/illustrations/education.png',
-              fit: BoxFit.cover)),
-      title: Text('Title'),
-      subtitle: Text('This is a description of the habit.'),
-      trailing: IconButton(
-          onPressed: () {}, icon: Icon(Icons.add_circle_outline_rounded)),
     );
   }
 }

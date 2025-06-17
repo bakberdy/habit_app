@@ -3,11 +3,13 @@ import 'package:habit_app/core/shared/widgets/custom_sliver_app_bar.dart';
 import 'package:habit_app/core/theme/app_colors.dart';
 import 'package:habit_app/core/theme/app_text_theme.dart';
 import 'package:habit_app/core/shared/widgets/daily_habit_card.dart';
+import 'package:habit_app/features/catalog/domain/entities/habit_entity.dart';
 import 'package:habit_app/features/home/presentation/widgets/habits_bar.dart';
 import 'package:habit_app/core/shared/widgets/app_bar_bottom_with_search_field.dart';
 import 'package:habit_app/features/home/presentation/widgets/quote_card.dart';
 import 'package:habit_app/features/home/presentation/widgets/recomendation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:habit_app/features/my_plan/domain/entities/habit_subscription.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -45,21 +47,26 @@ class _HomeScreenState extends State<HomeScreen> {
                     ]),
               ),
             ),
-            SliverList.separated(
-              separatorBuilder: (context, index) => Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Divider(
-                  height: 1,
-                  color: AppColors.white,
-                ),
-              ),
-              itemCount: 3,
-              itemBuilder: (context, index) {
-                return DailyHabitCard(
-                  index: index,
-                );
-              },
-            ),
+            // SliverList.separated(
+            //   separatorBuilder: (context, index) => Padding(
+            //     padding: const EdgeInsets.symmetric(horizontal: 20),
+            //     child: Divider(
+            //       height: 1,
+            //       color: AppColors.white,
+            //     ),
+            //   ),
+            //   itemCount: 3,
+            //   itemBuilder: (context, index) {
+            //     return HabitSubsriptionCard(
+            //       habitInfo: HabitSubscription(
+            //           id: 0,
+            //           habit: HabitEntity.sample(),
+            //           subscriptionDate: DateTime.now()),
+            //       isLast: true,
+            //       isFirst: true,
+            //     );
+            //   },
+            // ),
             SliverToBoxAdapter(child: HabitsBar(title: 'Education')),
             SliverToBoxAdapter(child: HabitsBar(title: 'Life')),
             SliverToBoxAdapter(child: HabitsBar(title: 'Sport')),
