@@ -12,7 +12,6 @@
 import 'package:dio/dio.dart' as _i361;
 import 'package:flutter_bloc/flutter_bloc.dart' as _i331;
 import 'package:get_it/get_it.dart' as _i174;
-import 'package:google_sign_in/google_sign_in.dart' as _i116;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:talker_dio_logger/talker_dio_logger_interceptor.dart' as _i162;
 import 'package:talker_flutter/talker_flutter.dart' as _i207;
@@ -39,7 +38,6 @@ extension GetItInjectableX on _i174.GetIt {
       environmentFilter,
     );
     final appModule = _$AppModule();
-    gh.singleton<_i116.GoogleSignIn>(() => appModule.googleSignIn);
     gh.singleton<_i207.Talker>(() => appModule.talker);
     gh.singleton<_i331.BlocObserver>(() => appModule.talkerBlocLogger);
     gh.singleton<_i207.TalkerRouteObserver>(() => appModule.routeObserver);

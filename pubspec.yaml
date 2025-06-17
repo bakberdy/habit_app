@@ -37,12 +37,6 @@ dependencies:
   freezed_annotation: ^3.0.0
   equatable: ^2.0.7
 
-  # Backend and authentication
-  supabase_flutter: ^2.8.4
-  sign_in_with_apple: ^7.0.1
-  google_sign_in: ^6.3.0
-  crypto: ^3.0.6
-  # flutter_dotenv: ^5.2.1
 
   # Utils
   dartz: ^0.10.1
@@ -54,6 +48,8 @@ dependencies:
   # Logging
   talker_flutter: ^4.8.0
   talker_bloc_logger: ^4.8.0
+
+#some
   mime: ^2.0.0
   path: ^1.9.1
   image_cropper: ^9.1.0
