@@ -21,6 +21,7 @@ import '../core/network/dio_client.dart' as _i393;
 import '../features/my_plan/data/datasource/local_data_source.dart' as _i969;
 import '../features/my_plan/data/repository/my_plan_repo_impl.dart' as _i672;
 import '../features/my_plan/domain/repository/my_plan_repo.dart' as _i959;
+import '../features/my_plan/domain/usecases/add_new_habit.dart' as _i663;
 import '../features/my_plan/domain/usecases/get_habits_of_day.dart' as _i239;
 import '../features/my_plan/domain/usecases/toggle_habit_status.dart' as _i110;
 import '../features/my_plan/presentation/bloc/my_plan_bloc.dart' as _i928;
@@ -51,13 +52,16 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i361.Dio>(),
           gh<_i162.TalkerDioLogger>(),
         ));
-    gh.lazySingleton<_i239.GetHabitsOfDay>(
-        () => _i239.GetHabitsOfDay(gh<_i959.MyPlanRepo>()));
     gh.lazySingleton<_i110.ToggleHabitStatus>(
         () => _i110.ToggleHabitStatus(gh<_i959.MyPlanRepo>()));
+    gh.lazySingleton<_i663.AddNewHabit>(
+        () => _i663.AddNewHabit(gh<_i959.MyPlanRepo>()));
+    gh.lazySingleton<_i239.GetHabitsOfDay>(
+        () => _i239.GetHabitsOfDay(gh<_i959.MyPlanRepo>()));
     gh.factory<_i928.MyPlanBloc>(() => _i928.MyPlanBloc(
           gh<_i239.GetHabitsOfDay>(),
           gh<_i110.ToggleHabitStatus>(),
+          gh<_i663.AddNewHabit>(),
         ));
     return this;
   }

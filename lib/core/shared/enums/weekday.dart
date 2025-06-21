@@ -29,4 +29,11 @@ enum Weekday {
         throw ArgumentError('Invalid weekday');
     }
   }
+
+  factory Weekday.fromJson(String json) {
+    return Weekday.values.firstWhere(
+      (e) => e.value.toLowerCase() == json.toLowerCase(),
+      orElse: () => throw ArgumentError('Invalid weekday json: $json'),
+    );
+  }
 }

@@ -1,15 +1,11 @@
 import 'package:habit_app/core/core.dart';
 import 'package:habit_app/core/shared/widgets/custom_sliver_app_bar.dart';
-import 'package:habit_app/core/theme/app_colors.dart';
 import 'package:habit_app/core/theme/app_text_theme.dart';
-import 'package:habit_app/core/shared/widgets/daily_habit_card.dart';
-import 'package:habit_app/features/catalog/domain/entities/habit_entity.dart';
 import 'package:habit_app/features/home/presentation/widgets/habits_bar.dart';
 import 'package:habit_app/core/shared/widgets/app_bar_bottom_with_search_field.dart';
 import 'package:habit_app/features/home/presentation/widgets/quote_card.dart';
 import 'package:habit_app/features/home/presentation/widgets/recomendation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:habit_app/features/my_plan/domain/entities/habit_subscription.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

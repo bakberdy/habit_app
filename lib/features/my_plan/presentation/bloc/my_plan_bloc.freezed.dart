@@ -15,62 +15,24 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$MyPlanEvent {
-  DateTime get date;
-
-  /// Create a copy of MyPlanEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $MyPlanEventCopyWith<MyPlanEvent> get copyWith =>
-      _$MyPlanEventCopyWithImpl<MyPlanEvent>(this as MyPlanEvent, _$identity);
-
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is MyPlanEvent &&
-            (identical(other.date, date) || other.date == date));
+        (other.runtimeType == runtimeType && other is MyPlanEvent);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, date);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   String toString() {
-    return 'MyPlanEvent(date: $date)';
+    return 'MyPlanEvent()';
   }
 }
 
 /// @nodoc
-abstract mixin class $MyPlanEventCopyWith<$Res> {
-  factory $MyPlanEventCopyWith(
-          MyPlanEvent value, $Res Function(MyPlanEvent) _then) =
-      _$MyPlanEventCopyWithImpl;
-  @useResult
-  $Res call({DateTime date});
-}
-
-/// @nodoc
-class _$MyPlanEventCopyWithImpl<$Res> implements $MyPlanEventCopyWith<$Res> {
-  _$MyPlanEventCopyWithImpl(this._self, this._then);
-
-  final MyPlanEvent _self;
-  final $Res Function(MyPlanEvent) _then;
-
-  /// Create a copy of MyPlanEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? date = null,
-  }) {
-    return _then(_self.copyWith(
-      date: null == date
-          ? _self.date
-          : date // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-    ));
-  }
+class $MyPlanEventCopyWith<$Res> {
+  $MyPlanEventCopyWith(MyPlanEvent _, $Res Function(MyPlanEvent) __);
 }
 
 /// @nodoc
@@ -78,12 +40,10 @@ class _$MyPlanEventCopyWithImpl<$Res> implements $MyPlanEventCopyWith<$Res> {
 class _GetSubscriptions implements MyPlanEvent {
   _GetSubscriptions({required this.date});
 
-  @override
   final DateTime date;
 
   /// Create a copy of MyPlanEvent
   /// with the given fields replaced by the non-null parameter values.
-  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   _$GetSubscriptionsCopyWith<_GetSubscriptions> get copyWith =>
@@ -112,7 +72,6 @@ abstract mixin class _$GetSubscriptionsCopyWith<$Res>
   factory _$GetSubscriptionsCopyWith(
           _GetSubscriptions value, $Res Function(_GetSubscriptions) _then) =
       __$GetSubscriptionsCopyWithImpl;
-  @override
   @useResult
   $Res call({DateTime date});
 }
@@ -127,7 +86,6 @@ class __$GetSubscriptionsCopyWithImpl<$Res>
 
   /// Create a copy of MyPlanEvent
   /// with the given fields replaced by the non-null parameter values.
-  @override
   @pragma('vm:prefer-inline')
   $Res call({
     Object? date = null,
@@ -143,18 +101,150 @@ class __$GetSubscriptionsCopyWithImpl<$Res>
 
 /// @nodoc
 
+class _AddNewHabit implements MyPlanEvent {
+  _AddNewHabit(
+      {required this.title,
+      required this.description,
+      required this.takeMinutes,
+      required final List<Weekday> days,
+      this.why,
+      final List<TipEntity>? tips})
+      : _days = days,
+        _tips = tips;
+
+  final String title;
+  final String description;
+  final int? takeMinutes;
+  final List<Weekday> _days;
+  List<Weekday> get days {
+    if (_days is EqualUnmodifiableListView) return _days;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_days);
+  }
+
+  final String? why;
+  final List<TipEntity>? _tips;
+  List<TipEntity>? get tips {
+    final value = _tips;
+    if (value == null) return null;
+    if (_tips is EqualUnmodifiableListView) return _tips;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  /// Create a copy of MyPlanEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$AddNewHabitCopyWith<_AddNewHabit> get copyWith =>
+      __$AddNewHabitCopyWithImpl<_AddNewHabit>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _AddNewHabit &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.takeMinutes, takeMinutes) ||
+                other.takeMinutes == takeMinutes) &&
+            const DeepCollectionEquality().equals(other._days, _days) &&
+            (identical(other.why, why) || other.why == why) &&
+            const DeepCollectionEquality().equals(other._tips, _tips));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      title,
+      description,
+      takeMinutes,
+      const DeepCollectionEquality().hash(_days),
+      why,
+      const DeepCollectionEquality().hash(_tips));
+
+  @override
+  String toString() {
+    return 'MyPlanEvent.addNewHabit(title: $title, description: $description, takeMinutes: $takeMinutes, days: $days, why: $why, tips: $tips)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$AddNewHabitCopyWith<$Res>
+    implements $MyPlanEventCopyWith<$Res> {
+  factory _$AddNewHabitCopyWith(
+          _AddNewHabit value, $Res Function(_AddNewHabit) _then) =
+      __$AddNewHabitCopyWithImpl;
+  @useResult
+  $Res call(
+      {String title,
+      String description,
+      int? takeMinutes,
+      List<Weekday> days,
+      String? why,
+      List<TipEntity>? tips});
+}
+
+/// @nodoc
+class __$AddNewHabitCopyWithImpl<$Res> implements _$AddNewHabitCopyWith<$Res> {
+  __$AddNewHabitCopyWithImpl(this._self, this._then);
+
+  final _AddNewHabit _self;
+  final $Res Function(_AddNewHabit) _then;
+
+  /// Create a copy of MyPlanEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? title = null,
+    Object? description = null,
+    Object? takeMinutes = freezed,
+    Object? days = null,
+    Object? why = freezed,
+    Object? tips = freezed,
+  }) {
+    return _then(_AddNewHabit(
+      title: null == title
+          ? _self.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _self.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      takeMinutes: freezed == takeMinutes
+          ? _self.takeMinutes
+          : takeMinutes // ignore: cast_nullable_to_non_nullable
+              as int?,
+      days: null == days
+          ? _self._days
+          : days // ignore: cast_nullable_to_non_nullable
+              as List<Weekday>,
+      why: freezed == why
+          ? _self.why
+          : why // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tips: freezed == tips
+          ? _self._tips
+          : tips // ignore: cast_nullable_to_non_nullable
+              as List<TipEntity>?,
+    ));
+  }
+}
+
+/// @nodoc
+
 class _ToggleHabitDoneStatus implements MyPlanEvent {
   _ToggleHabitDoneStatus(
       {required this.date, required this.habitId, required this.isDone});
 
-  @override
   final DateTime date;
   final int habitId;
   final bool isDone;
 
   /// Create a copy of MyPlanEvent
   /// with the given fields replaced by the non-null parameter values.
-  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   _$ToggleHabitDoneStatusCopyWith<_ToggleHabitDoneStatus> get copyWith =>
@@ -186,7 +276,6 @@ abstract mixin class _$ToggleHabitDoneStatusCopyWith<$Res>
   factory _$ToggleHabitDoneStatusCopyWith(_ToggleHabitDoneStatus value,
           $Res Function(_ToggleHabitDoneStatus) _then) =
       __$ToggleHabitDoneStatusCopyWithImpl;
-  @override
   @useResult
   $Res call({DateTime date, int habitId, bool isDone});
 }
@@ -201,7 +290,6 @@ class __$ToggleHabitDoneStatusCopyWithImpl<$Res>
 
   /// Create a copy of MyPlanEvent
   /// with the given fields replaced by the non-null parameter values.
-  @override
   @pragma('vm:prefer-inline')
   $Res call({
     Object? date = null,
@@ -264,6 +352,69 @@ class MyPlanInitial implements MyPlanState {
   @override
   String toString() {
     return 'MyPlanState.initial()';
+  }
+}
+
+/// @nodoc
+
+class MyPlanError implements MyPlanState {
+  const MyPlanError({required this.message});
+
+  final String message;
+
+  /// Create a copy of MyPlanState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $MyPlanErrorCopyWith<MyPlanError> get copyWith =>
+      _$MyPlanErrorCopyWithImpl<MyPlanError>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is MyPlanError &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @override
+  String toString() {
+    return 'MyPlanState.errorState(message: $message)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $MyPlanErrorCopyWith<$Res>
+    implements $MyPlanStateCopyWith<$Res> {
+  factory $MyPlanErrorCopyWith(
+          MyPlanError value, $Res Function(MyPlanError) _then) =
+      _$MyPlanErrorCopyWithImpl;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class _$MyPlanErrorCopyWithImpl<$Res> implements $MyPlanErrorCopyWith<$Res> {
+  _$MyPlanErrorCopyWithImpl(this._self, this._then);
+
+  final MyPlanError _self;
+  final $Res Function(MyPlanError) _then;
+
+  /// Create a copy of MyPlanState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(MyPlanError(
+      message: null == message
+          ? _self.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 

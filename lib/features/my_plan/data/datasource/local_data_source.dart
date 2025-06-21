@@ -1,4 +1,5 @@
 import 'package:habit_app/core/shared/enums/weekday.dart';
+import 'package:habit_app/features/catalog/data/models/tip_model.dart';
 import 'package:habit_app/features/catalog/domain/entities/habit_entity.dart';
 import 'package:habit_app/features/my_plan/data/models/habit_completion_model.dart';
 import 'package:habit_app/features/my_plan/data/models/habit_subscription_model.dart';
@@ -8,6 +9,13 @@ abstract interface class LocalDataSource {
   Future<List<HabitSubscriptionModel>> getHabitSubscriptionsOfDay(
       DateTime date);
   Future<List<HabitCompletionModel>> getHabitCompletions(DateTime date);
+  Future<void> addNewHabit(
+      {required String title,
+      required String description,
+      required int takeMinutes,
+      required List<Weekday> days,
+      String? why,
+      List<TipModel>? tips});
   Future<void> toggleHabitStatus(
       {required int habitId, required bool isDone, required DateTime date});
 }
@@ -41,6 +49,26 @@ class LocalDataSourceImpl implements LocalDataSource {
       required DateTime date}) async {
     _habitCompletes.add(
         HabitCompletionModel(habitId: habitId, isDone: isDone, date: date));
+  }
+
+  @override
+  Future<void> addNewHabit(
+      {required String title,
+      required String description,
+      required int takeMinutes,
+      required List<Weekday> days,
+      String? why,
+      List<TipModel>? tips}) async {
+    final habit = HabitEntity(
+        id: 12,
+        takesTime: 21,
+        title: title,
+        description: description,
+        why: why,
+        tips: tips,
+        days: days);
+    _list.add(HabitSubscriptionModel(
+        id: 23, habit: habit, subscriptionDate: DateTime.now()));
   }
 }
 

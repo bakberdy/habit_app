@@ -3,6 +3,7 @@ part of 'my_plan_bloc.dart';
 @freezed
 sealed class MyPlanState with _$MyPlanState {
   const factory MyPlanState.initial() = MyPlanInitial;
+  const factory MyPlanState.errorState({required String message}) = MyPlanError;
   const factory MyPlanState.loaded(
       {required DateTime date,
       required DayStatus dayStatus,

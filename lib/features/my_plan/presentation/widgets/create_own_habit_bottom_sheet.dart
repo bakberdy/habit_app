@@ -1,13 +1,18 @@
 import 'dart:math';
 
+import 'package:habit_app/core/shared/enums/weekday.dart';
 import 'package:habit_app/core/shared/widgets/custom_filled_button.dart';
 import 'package:habit_app/core/shared/widgets/labeled_text_form_field.dart';
 import 'package:habit_app/core/theme/app_colors.dart';
 import 'package:habit_app/core/theme/app_text_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:habit_app/features/my_plan/presentation/bloc/my_plan_bloc.dart';
+import 'package:provider/provider.dart';
 
 class CreateOwnHabitBottomSheet extends StatefulWidget {
-  const CreateOwnHabitBottomSheet({super.key});
+  const CreateOwnHabitBottomSheet({super.key, required myPlanBloc})
+      : _myPlanBloc = myPlanBloc;
+  final MyPlanBloc _myPlanBloc;
 
   @override
   State<CreateOwnHabitBottomSheet> createState() =>
@@ -51,14 +56,33 @@ class _CreateOwnHabitBottomSheetState extends State<CreateOwnHabitBottomSheet>
     setState(() {});
   }
 
-  final List<String> _weekdays = [
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
-    'Sunday',
+  void _onCreateTapped(BuildContext context) {
+    final title = _titleController.text;
+    final description = _descriptionController.text;
+    final takesTime = _estimatedTimeController.text;
+    final why = _whyController.text;
+    final selectedDays = [
+      for (int i = 0; i < _selectedDays.length; i++)
+        if (_selectedDays[i]) _weekdays[i]
+    ];
+    widget._myPlanBloc.add(
+      MyPlanEvent.addNewHabit(
+          why: why,
+          title: title,
+          description: description,
+          takeMinutes: int.tryParse(takesTime),
+          days: selectedDays),
+    );
+  }
+
+  final List<Weekday> _weekdays = [
+    Weekday.monday,
+    Weekday.tuesday,
+    Weekday.wednesday,
+    Weekday.thursday,
+    Weekday.friday,
+    Weekday.saturday,
+    Weekday.sunday,
   ];
   @override
   Widget build(BuildContext context) {
@@ -79,8 +103,10 @@ class _CreateOwnHabitBottomSheetState extends State<CreateOwnHabitBottomSheet>
                 label: 'Description', controller: _descriptionController),
             Divider(height: 1, color: AppColors.grey.withAlpha(50)),
             LabeledTextFormField(
-                label: 'Estimated time(minute)',
-                controller: _estimatedTimeController),
+              label: 'Estimated time(minute)',
+              controller: _estimatedTimeController,
+              keyboardType: TextInputType.number,
+            ),
             Divider(height: 1, color: AppColors.grey.withAlpha(50)),
             SizedBox(height: 10),
             Text('Days that you want to do'),
@@ -107,7 +133,7 @@ class _CreateOwnHabitBottomSheetState extends State<CreateOwnHabitBottomSheet>
                           ? bgColor
                           : bgColor.withAlpha(50),
                     ),
-                    child: Text(_weekdays[index],
+                    child: Text(_weekdays[index].value,
                         style: AppTextTheme.bodySmall.copyWith(
                             color: _selectedDays[index]
                                 ? Colors.white
@@ -206,7 +232,7 @@ class _CreateOwnHabitBottomSheetState extends State<CreateOwnHabitBottomSheet>
                 child: CustomFilledButton(
                   title: 'Create',
                   titleColor: AppColors.primary,
-                  onPressed: () {},
+                  onPressed: () => _onCreateTapped(context),
                   backgroundColor: AppColors.primary.withAlpha(10),
                   borderColor: AppColors.primary,
                 ))

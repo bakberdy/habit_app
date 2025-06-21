@@ -33,9 +33,19 @@ class _MyPlanScreenContentState extends State<MyPlanScreenContent> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: GoalsFloationgActionButton(),
+      floatingActionButton: MyPlanFloationgActionButton(
+        myPlanBloc: context.read<MyPlanBloc>(),
+      ),
       body: SafeArea(
-        child: BlocBuilder<MyPlanBloc, MyPlanState>(
+        child: BlocConsumer<MyPlanBloc, MyPlanState>(
+          listener: (context, state) {
+            if (state is MyPlanError) {
+              showErrorToast(context, message: state.message);
+              context
+                  .read<MyPlanBloc>()
+                  .add(MyPlanEvent.getSubscriptionsOn(date: DateTime.now()));
+            }
+          },
           builder: (context, state) {
             if (state is MyPlanLoaded) {
               return CustomScrollView(

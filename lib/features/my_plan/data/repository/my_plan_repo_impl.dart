@@ -1,9 +1,10 @@
 import 'package:dartz/dartz.dart';
+import 'package:habit_app/core/shared/enums/weekday.dart';
 import 'package:habit_app/core/utils/typedef.dart';
+import 'package:habit_app/features/catalog/domain/entities/tip_entity.dart';
 import 'package:habit_app/features/my_plan/data/datasource/local_data_source.dart';
 import 'package:habit_app/features/my_plan/domain/entities/habit_completion.dart';
 import 'package:habit_app/features/my_plan/domain/entities/habit_info.dart';
-import 'package:habit_app/features/my_plan/domain/entities/habit_subscription.dart';
 import 'package:habit_app/features/my_plan/domain/repository/my_plan_repo.dart';
 import 'package:injectable/injectable.dart';
 
@@ -42,6 +43,22 @@ class MyPlanRepoImpl implements MyPlanRepo {
     await _localDataSource.toggleHabitStatus(
         habitId: habitId, isDone: isDone, date: date);
 
+    return Right(null);
+  }
+
+  @override
+  ResultVoid addNewHabit(
+      {required String title,
+      required String description,
+      required int takeMinutes,
+      required List<Weekday> days,
+      String? why,
+      List<TipEntity>? tips}) async {
+    await _localDataSource.addNewHabit(
+        title: title,
+        description: description,
+        takeMinutes: takeMinutes,
+        days: days);
     return Right(null);
   }
 }

@@ -1,20 +1,23 @@
 import 'package:habit_app/core/theme/app_colors.dart';
 import 'package:habit_app/core/utils/show_bottom_sheet_with_buttons.dart';
+import 'package:habit_app/features/my_plan/presentation/bloc/my_plan_bloc.dart';
 import 'package:habit_app/features/my_plan/presentation/widgets/create_own_habit_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 
-class GoalsFloationgActionButton extends StatefulWidget {
-  const GoalsFloationgActionButton({
+class MyPlanFloationgActionButton extends StatefulWidget {
+  const MyPlanFloationgActionButton({
     super.key,
-  });
+    required myPlanBloc,
+  }) : _myPlanBloc = myPlanBloc;
+  final MyPlanBloc _myPlanBloc;
 
   @override
-  State<GoalsFloationgActionButton> createState() =>
-      _GoalsFloationgActionButtonState();
+  State<MyPlanFloationgActionButton> createState() =>
+      _MyPlanFloationgActionButtonState();
 }
 
-class _GoalsFloationgActionButtonState
-    extends State<GoalsFloationgActionButton> {
+class _MyPlanFloationgActionButtonState
+    extends State<MyPlanFloationgActionButton> {
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
@@ -29,7 +32,7 @@ class _GoalsFloationgActionButtonState
                   text: 'Browse rountines',
                   icon: Icons.open_in_browser_rounded),
               BottomSheetActionItem(
-                  onTap: () => _onCreateOwnTap(context),
+                  onTap: () async => await _onCreateOwnTap(context),
                   text: 'Create Own',
                   icon: Icons.add_circle_outline),
             ]);
@@ -44,14 +47,14 @@ class _GoalsFloationgActionButtonState
 
   void _onBrowseRountinesTap() {}
 
-  void _onCreateOwnTap(BuildContext context) {
-    showModalBottomSheet(
+  Future<void> _onCreateOwnTap(BuildContext context) async {
+    await showModalBottomSheet(
         isScrollControlled: true,
         backgroundColor: AppColors.white,
         useRootNavigator: true,
         context: context,
         builder: (context) {
-          return CreateOwnHabitBottomSheet();
+          return CreateOwnHabitBottomSheet(myPlanBloc: widget._myPlanBloc);
         });
   }
 }
