@@ -29,7 +29,26 @@ enum Weekday {
         throw ArgumentError('Invalid weekday');
     }
   }
-
+  factory Weekday.fromInt(int weekday) {
+    switch (weekday) {
+      case DateTime.monday:
+        return Weekday.monday;
+      case DateTime.tuesday:
+        return Weekday.tuesday;
+      case DateTime.wednesday:
+        return Weekday.wednesday;
+      case DateTime.thursday:
+        return Weekday.thursday;
+      case DateTime.friday:
+        return Weekday.friday;
+      case DateTime.saturday:
+        return Weekday.saturday;
+      case DateTime.sunday:
+        return Weekday.sunday;
+      default:
+        throw ArgumentError('Invalid weekday int: $weekday');
+    }
+  }
   factory Weekday.fromJson(String json) {
     return Weekday.values.firstWhere(
       (e) => e.value.toLowerCase() == json.toLowerCase(),

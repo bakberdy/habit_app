@@ -11,8 +11,6 @@ class BottomNavigationBarPage extends StatefulWidget {
 }
 
 class _BottomNavigationBarPageState extends State<BottomNavigationBarPage> {
-  int _currentPage = 0;
-
   @override
   void initState() {
     super.initState();
@@ -44,14 +42,13 @@ class _BottomNavigationBarPageState extends State<BottomNavigationBarPage> {
             child: BottomNavigationBar(
                 elevation: 0,
                 onTap: (value) {
-                  _currentPage = value;
                   _goBranch(value);
                   // setState(() {});
                 },
                 type: BottomNavigationBarType.fixed,
                 showSelectedLabels: true,
                 showUnselectedLabels: true,
-                currentIndex: _currentPage,
+                currentIndex: widget.navigationShell.currentIndex,
                 selectedItemColor: themeData.primaryColor,
                 unselectedItemColor: themeData.canvasColor,
                 backgroundColor: Colors.white,
@@ -60,13 +57,13 @@ class _BottomNavigationBarPageState extends State<BottomNavigationBarPage> {
                 unselectedLabelStyle:
                     themeData.textTheme.bodySmall?.copyWith(fontSize: 12),
                 items: [
-                  _navigationBarItem(_currentPage, themeData, 'Home',
-                      'lib/assets/icons/home.png', 0),
-                  _navigationBarItem(_currentPage, themeData, 'Catalog',
-                      'lib/assets/icons/search.png', 1),
-                  _navigationBarItem(_currentPage, themeData, 'My plan',
-                      'lib/assets/icons/goals.png', 2),
-                  _navigationBarItem(_currentPage, themeData, 'Settings',
+                  _navigationBarItem(
+                      themeData, 'Home', 'lib/assets/icons/home.png', 0),
+                  _navigationBarItem(
+                      themeData, 'Catalog', 'lib/assets/icons/search.png', 1),
+                  _navigationBarItem(
+                      themeData, 'My plan', 'lib/assets/icons/goals.png', 2),
+                  _navigationBarItem(themeData, 'Settings',
                       'lib/assets/icons/settings.png', 3),
                 ]),
           ),
@@ -75,8 +72,9 @@ class _BottomNavigationBarPageState extends State<BottomNavigationBarPage> {
     );
   }
 
-  BottomNavigationBarItem _navigationBarItem(int currentIndex,
+  BottomNavigationBarItem _navigationBarItem(
       ThemeData themeData, String label, String svgIconPath, int index) {
+    final isSelected = widget.navigationShell.currentIndex == index;
     return BottomNavigationBarItem(
         backgroundColor: Colors.white,
         icon: SizedBox(
@@ -84,9 +82,7 @@ class _BottomNavigationBarPageState extends State<BottomNavigationBarPage> {
           width: 20,
           child: Image.asset(
             svgIconPath,
-            color: currentIndex == index
-                ? themeData.primaryColor
-                : themeData.canvasColor,
+            color: isSelected ? themeData.primaryColor : themeData.canvasColor,
           ),
         ),
         label: label);
