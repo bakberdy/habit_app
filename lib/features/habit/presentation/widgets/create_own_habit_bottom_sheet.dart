@@ -96,155 +96,163 @@ class _CreateOwnHabitBottomSheetState extends State<CreateOwnHabitBottomSheet>
       child: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              SizedBox(height: 20),
-              Center(
-                  child: Text('Create your own habit', style: AppTextTheme.h4)),
-              SizedBox(height: 15),
-              LabeledTextFormField(
-                  label: 'Title', controller: _titleController),
-              Divider(height: 1, color: AppColors.grey.withAlpha(50)),
-              LabeledTextFormField(
-                  label: 'Description', controller: _descriptionController),
-              Divider(height: 1, color: AppColors.grey.withAlpha(50)),
-              LabeledTextFormField(
-                label: 'Estimated time(minute)',
-                controller: _estimatedTimeController,
-                keyboardType: TextInputType.number,
-              ),
-              Divider(height: 1, color: AppColors.grey.withAlpha(50)),
-              SizedBox(height: 10),
-              Text('Days that you want to do'),
-              SizedBox(height: 5),
-              Wrap(
-                spacing: 10,
-                runSpacing: 10,
-                alignment: WrapAlignment.start,
-                children: List.generate(7, (index) {
-                  final bgColor = index == 6 || index == 5
-                      ? Colors.redAccent
-                      : AppColors.primary;
-                  return InkWell(
-                    borderRadius: BorderRadius.circular(12),
-                    onTap: () {
-                      _selectedDays[index] = !_selectedDays[index];
-                      setState(() {});
-                    },
-                    child: Container(
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        color: _selectedDays[index]
-                            ? bgColor
-                            : bgColor.withAlpha(50),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SizedBox(height: 20),
+                Center(
+                    child:
+                        Text('Create your own habit', style: AppTextTheme.h4)),
+                SizedBox(height: 15),
+                LabeledTextFormField(
+                    label: 'Title', controller: _titleController),
+                Divider(height: 1, color: AppColors.grey.withAlpha(50)),
+                LabeledTextFormField(
+                    label: 'Description', controller: _descriptionController),
+                Divider(height: 1, color: AppColors.grey.withAlpha(50)),
+                LabeledTextFormField(
+                  label: 'Estimated time(minute)',
+                  controller: _estimatedTimeController,
+                  keyboardType: TextInputType.number,
+                ),
+                Divider(height: 1, color: AppColors.grey.withAlpha(50)),
+                SizedBox(height: 10),
+                Text('Days that you want to do'),
+                SizedBox(height: 5),
+                Wrap(
+                  spacing: 10,
+                  runSpacing: 10,
+                  alignment: WrapAlignment.start,
+                  children: List.generate(7, (index) {
+                    final bgColor = index == 6 || index == 5
+                        ? Colors.redAccent
+                        : AppColors.primary;
+                    return InkWell(
+                      borderRadius: BorderRadius.circular(12),
+                      onTap: () {
+                        _selectedDays[index] = !_selectedDays[index];
+                        setState(() {});
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          color: _selectedDays[index]
+                              ? bgColor
+                              : bgColor.withAlpha(50),
+                        ),
+                        child: Text(_weekdays[index].value,
+                            style: AppTextTheme.bodySmall.copyWith(
+                                color: _selectedDays[index]
+                                    ? Colors.white
+                                    : AppColors.textPrimary)),
                       ),
-                      child: Text(_weekdays[index].value,
-                          style: AppTextTheme.bodySmall.copyWith(
-                              color: _selectedDays[index]
-                                  ? Colors.white
-                                  : AppColors.textPrimary)),
+                    );
+                  }),
+                ),
+                SizedBox(height: 10),
+                Divider(height: 1, color: AppColors.grey.withAlpha(50)),
+                InkWell(
+                  onTap: _toggleRotation,
+                  child: SizedBox(
+                    height: 40,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Add more details to clarify your habit',
+                          style: AppTextTheme.bodySmall,
+                        ),
+                        AnimatedBuilder(
+                          animation: _rotationAnimationController,
+                          builder: (BuildContext context, Widget? child) =>
+                              Transform.rotate(
+                            angle: _rotateAnimation.value,
+                            child: Icon(
+                              Icons.keyboard_arrow_right_outlined,
+                              size: 30,
+                            ),
+                          ),
+                        )
+                      ],
                     ),
-                  );
-                }),
-              ),
-              SizedBox(height: 10),
-              Divider(height: 1, color: AppColors.grey.withAlpha(50)),
-              InkWell(
-                onTap: _toggleRotation,
-                child: SizedBox(
-                  height: 40,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Add more details to clarify your habit',
-                        style: AppTextTheme.bodySmall,
-                      ),
-                      AnimatedBuilder(
-                        animation: _rotationAnimationController,
-                        builder: (BuildContext context, Widget? child) =>
-                            Transform.rotate(
-                          angle: _rotateAnimation.value,
-                          child: Icon(
-                            Icons.keyboard_arrow_right_outlined,
-                            size: 30,
+                  ),
+                ),
+                RepaintBoundary(
+                  child: AnimatedSize(
+                    alignment: Alignment.topCenter,
+                    duration: Duration(milliseconds: 200),
+                    child: Column(
+                      children: [
+                        Visibility(
+                            visible: _isOpenedTheDetailsForm,
+                            child: Divider(
+                                height: 1,
+                                color: AppColors.grey.withAlpha(50))),
+                        Visibility(
+                          visible: _isOpenedTheDetailsForm,
+                          child: LabeledTextFormField(
+                              label: 'Tip to habit',
+                              controller: _tipController),
+                        ),
+                        Visibility(
+                            visible: _isOpenedTheDetailsForm,
+                            child: Divider(
+                                height: 1,
+                                color: AppColors.grey.withAlpha(50))),
+                        Visibility(
+                          visible: _isOpenedTheDetailsForm,
+                          child: LabeledTextFormField(
+                              label: 'Why', controller: _whyController),
+                        ),
+                        Visibility(
+                            visible: _isOpenedTheDetailsForm,
+                            child: Divider(
+                                height: 1,
+                                color: AppColors.grey.withAlpha(50))),
+                        Visibility(
+                          visible: _isOpenedTheDetailsForm,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text('Set a picture to habit',
+                                  style: AppTextTheme.bodySmall),
+                              SizedBox(
+                                height: 30,
+                                child: VerticalDivider(
+                                  color: AppColors.grey.withAlpha(50),
+                                ),
+                              ),
+                              TextButton(
+                                  onPressed: () {},
+                                  child: Text(
+                                    'Pick from gallery',
+                                    style: AppTextTheme.bodySmall
+                                        .copyWith(color: AppColors.primary),
+                                  ))
+                            ],
                           ),
                         ),
-                      )
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              RepaintBoundary(
-                child: AnimatedSize(
-                  alignment: Alignment.topCenter,
-                  duration: Duration(milliseconds: 200),
-                  child: Column(
-                    children: [
-                      Visibility(
-                          visible: _isOpenedTheDetailsForm,
-                          child: Divider(
-                              height: 1, color: AppColors.grey.withAlpha(50))),
-                      Visibility(
-                        visible: _isOpenedTheDetailsForm,
-                        child: LabeledTextFormField(
-                            label: 'Tip to habit', controller: _tipController),
-                      ),
-                      Visibility(
-                          visible: _isOpenedTheDetailsForm,
-                          child: Divider(
-                              height: 1, color: AppColors.grey.withAlpha(50))),
-                      Visibility(
-                        visible: _isOpenedTheDetailsForm,
-                        child: LabeledTextFormField(
-                            label: 'Why', controller: _whyController),
-                      ),
-                      Visibility(
-                          visible: _isOpenedTheDetailsForm,
-                          child: Divider(
-                              height: 1, color: AppColors.grey.withAlpha(50))),
-                      Visibility(
-                        visible: _isOpenedTheDetailsForm,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text('Set a picture to habit',
-                                style: AppTextTheme.bodySmall),
-                            SizedBox(
-                              height: 30,
-                              child: VerticalDivider(
-                                color: AppColors.grey.withAlpha(50),
-                              ),
-                            ),
-                            TextButton(
-                                onPressed: () {},
-                                child: Text(
-                                  'Pick from gallery',
-                                  style: AppTextTheme.bodySmall
-                                      .copyWith(color: AppColors.primary),
-                                ))
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Divider(height: 1, color: AppColors.grey.withAlpha(50)),
-              SizedBox(height: 10),
-              SizedBox(
-                  height: 40,
-                  child: CustomFilledButton(
-                    title: 'Create',
-                    titleColor: AppColors.primary,
-                    onPressed: () => _onCreateTapped(context),
-                    backgroundColor: AppColors.primary.withAlpha(10),
-                    borderColor: AppColors.primary,
-                  ))
-            ],
+                Divider(height: 1, color: AppColors.grey.withAlpha(50)),
+                SizedBox(height: 10),
+                SizedBox(
+                    height: 40,
+                    child: CustomFilledButton(
+                      title: 'Create',
+                      titleColor: AppColors.primary,
+                      onPressed: () => _onCreateTapped(context),
+                      backgroundColor: AppColors.primary.withAlpha(10),
+                      borderColor: AppColors.primary,
+                    )),
+                SizedBox(height: 10)
+              ],
+            ),
           ),
         ),
       ),

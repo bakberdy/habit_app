@@ -20,14 +20,14 @@ import '../core/core.dart' as _i156;
 import '../core/database/app_database.dart' as _i935;
 import '../core/network/dio_client.dart' as _i393;
 import '../features/habit/data/datasource/my_plan_local_data_source.dart'
-    as _i310;
-import '../features/habit/data/repository/my_plan_repo_impl.dart' as _i276;
-import '../features/habit/domain/repository/habit_repo.dart' as _i166;
-import '../features/habit/domain/usecases/add_new_habit.dart' as _i65;
-import '../features/habit/domain/usecases/get_habits_of_day.dart' as _i825;
+    as _i462;
+import '../features/habit/data/repository/my_plan_repo_impl.dart' as _i672;
+import '../features/habit/domain/repository/habit_repo.dart' as _i959;
+import '../features/habit/domain/usecases/add_new_habit.dart' as _i663;
+import '../features/habit/domain/usecases/get_habits_of_day.dart' as _i239;
 import '../features/habit/domain/usecases/set_habit_completions_status.dart'
-    as _i56;
-import '../features/habit/presentation/bloc/habit_bloc.dart' as _i1004;
+    as _i332;
+import '../features/habit/presentation/bloc/habit_bloc.dart' as _i928;
 import 'injection.dart' as _i464;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -49,8 +49,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i162.TalkerDioLogger>(() => appModule.talkerDioLogger);
     gh.singleton<_i156.AppRouter>(() => appModule.appRouter);
     gh.lazySingleton<_i935.AppDatabase>(() => _i935.AppDatabase());
-    gh.lazySingleton<_i310.MyPlanLocalDataSource>(
-        () => _i310.MyPlanLocalDataSourceImpl(
+    gh.lazySingleton<_i462.MyPlanLocalDataSource>(
+        () => _i462.MyPlanLocalDataSourceImpl(
               gh<_i935.AppDatabase>(),
               gh<_i207.Talker>(),
             ));
@@ -58,18 +58,18 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i361.Dio>(),
           gh<_i162.TalkerDioLogger>(),
         ));
-    gh.lazySingleton<_i166.HabitRepo>(
-        () => _i276.MyPlanRepoImpl(gh<_i310.MyPlanLocalDataSource>()));
-    gh.lazySingleton<_i65.AddNewHabit>(
-        () => _i65.AddNewHabit(gh<_i166.HabitRepo>()));
-    gh.lazySingleton<_i825.GetHabitsOfDay>(
-        () => _i825.GetHabitsOfDay(gh<_i166.HabitRepo>()));
-    gh.lazySingleton<_i56.SetHabitCompletionStatus>(
-        () => _i56.SetHabitCompletionStatus(gh<_i166.HabitRepo>()));
-    gh.factory<_i1004.MyPlanBloc>(() => _i1004.MyPlanBloc(
-          gh<_i825.GetHabitsOfDay>(),
-          gh<_i56.SetHabitCompletionStatus>(),
-          gh<_i65.AddNewHabit>(),
+    gh.lazySingleton<_i959.HabitRepo>(
+        () => _i672.MyPlanRepoImpl(gh<_i462.MyPlanLocalDataSource>()));
+    gh.lazySingleton<_i663.AddNewHabit>(
+        () => _i663.AddNewHabit(gh<_i959.HabitRepo>()));
+    gh.lazySingleton<_i239.GetHabitsOfDay>(
+        () => _i239.GetHabitsOfDay(gh<_i959.HabitRepo>()));
+    gh.lazySingleton<_i332.SetHabitCompletionStatus>(
+        () => _i332.SetHabitCompletionStatus(gh<_i959.HabitRepo>()));
+    gh.factory<_i928.MyPlanBloc>(() => _i928.MyPlanBloc(
+          gh<_i239.GetHabitsOfDay>(),
+          gh<_i332.SetHabitCompletionStatus>(),
+          gh<_i663.AddNewHabit>(),
         ));
     return this;
   }

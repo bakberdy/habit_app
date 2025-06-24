@@ -53,12 +53,17 @@ class _MyPlanFloationgActionButtonState
 
   Future<void> _onCreateOwnTap(BuildContext context) async {
     await showModalBottomSheet(
-        isScrollControlled: true,
         backgroundColor: AppColors.white,
+        isScrollControlled: true,
         useRootNavigator: true,
         context: context,
         builder: (context) {
-          return CreateOwnHabitBottomSheet(myPlanBloc: widget._myPlanBloc);
+          return Padding(
+            padding: EdgeInsetsGeometry.only(
+              bottom: MediaQuery.of(context).viewInsets.bottom,
+            ),
+            child: CreateOwnHabitBottomSheet(myPlanBloc: widget._myPlanBloc),
+          );
         });
     if (context.mounted) {
       context.pop();
