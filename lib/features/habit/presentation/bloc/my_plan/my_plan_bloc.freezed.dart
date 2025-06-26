@@ -4,7 +4,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'habit_bloc.dart';
+part of 'my_plan_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,11 +14,11 @@ part of 'habit_bloc.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$HabitEvent {
+mixin _$MyPlanEvent {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is HabitEvent);
+        (other.runtimeType == runtimeType && other is MyPlanEvent);
   }
 
   @override
@@ -26,23 +26,23 @@ mixin _$HabitEvent {
 
   @override
   String toString() {
-    return 'HabitEvent()';
+    return 'MyPlanEvent()';
   }
 }
 
 /// @nodoc
-class $HabitEventCopyWith<$Res> {
-  $HabitEventCopyWith(HabitEvent _, $Res Function(HabitEvent) __);
+class $MyPlanEventCopyWith<$Res> {
+  $MyPlanEventCopyWith(MyPlanEvent _, $Res Function(MyPlanEvent) __);
 }
 
 /// @nodoc
 
-class _GetSubscriptions implements HabitEvent {
+class _GetSubscriptions implements MyPlanEvent {
   _GetSubscriptions({required this.date});
 
   final DateTime date;
 
-  /// Create a copy of HabitEvent
+  /// Create a copy of MyPlanEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
@@ -62,13 +62,13 @@ class _GetSubscriptions implements HabitEvent {
 
   @override
   String toString() {
-    return 'HabitEvent.getSubscriptionsOn(date: $date)';
+    return 'MyPlanEvent.getSubscriptionsOn(date: $date)';
   }
 }
 
 /// @nodoc
 abstract mixin class _$GetSubscriptionsCopyWith<$Res>
-    implements $HabitEventCopyWith<$Res> {
+    implements $MyPlanEventCopyWith<$Res> {
   factory _$GetSubscriptionsCopyWith(
           _GetSubscriptions value, $Res Function(_GetSubscriptions) _then) =
       __$GetSubscriptionsCopyWithImpl;
@@ -84,7 +84,7 @@ class __$GetSubscriptionsCopyWithImpl<$Res>
   final _GetSubscriptions _self;
   final $Res Function(_GetSubscriptions) _then;
 
-  /// Create a copy of HabitEvent
+  /// Create a copy of MyPlanEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   $Res call({
@@ -101,7 +101,7 @@ class __$GetSubscriptionsCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _AddNewHabit implements HabitEvent {
+class _AddNewHabit implements MyPlanEvent {
   _AddNewHabit(
       {required this.title,
       required this.description,
@@ -132,7 +132,7 @@ class _AddNewHabit implements HabitEvent {
     return EqualUnmodifiableListView(value);
   }
 
-  /// Create a copy of HabitEvent
+  /// Create a copy of MyPlanEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
@@ -166,13 +166,13 @@ class _AddNewHabit implements HabitEvent {
 
   @override
   String toString() {
-    return 'HabitEvent.addNewHabit(title: $title, description: $description, takeMinutes: $takeMinutes, days: $days, why: $why, tips: $tips)';
+    return 'MyPlanEvent.addNewHabit(title: $title, description: $description, takeMinutes: $takeMinutes, days: $days, why: $why, tips: $tips)';
   }
 }
 
 /// @nodoc
 abstract mixin class _$AddNewHabitCopyWith<$Res>
-    implements $HabitEventCopyWith<$Res> {
+    implements $MyPlanEventCopyWith<$Res> {
   factory _$AddNewHabitCopyWith(
           _AddNewHabit value, $Res Function(_AddNewHabit) _then) =
       __$AddNewHabitCopyWithImpl;
@@ -193,7 +193,7 @@ class __$AddNewHabitCopyWithImpl<$Res> implements _$AddNewHabitCopyWith<$Res> {
   final _AddNewHabit _self;
   final $Res Function(_AddNewHabit) _then;
 
-  /// Create a copy of HabitEvent
+  /// Create a copy of MyPlanEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   $Res call({
@@ -235,7 +235,7 @@ class __$AddNewHabitCopyWithImpl<$Res> implements _$AddNewHabitCopyWith<$Res> {
 
 /// @nodoc
 
-class _ToggleHabitDoneStatus implements HabitEvent {
+class _ToggleHabitDoneStatus implements MyPlanEvent {
   _ToggleHabitDoneStatus(
       {required this.date, required this.habitId, required this.isDone});
 
@@ -243,7 +243,7 @@ class _ToggleHabitDoneStatus implements HabitEvent {
   final int habitId;
   final bool isDone;
 
-  /// Create a copy of HabitEvent
+  /// Create a copy of MyPlanEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
@@ -266,13 +266,13 @@ class _ToggleHabitDoneStatus implements HabitEvent {
 
   @override
   String toString() {
-    return 'HabitEvent.toggleHabitDoneStatus(date: $date, habitId: $habitId, isDone: $isDone)';
+    return 'MyPlanEvent.toggleHabitDoneStatus(date: $date, habitId: $habitId, isDone: $isDone)';
   }
 }
 
 /// @nodoc
 abstract mixin class _$ToggleHabitDoneStatusCopyWith<$Res>
-    implements $HabitEventCopyWith<$Res> {
+    implements $MyPlanEventCopyWith<$Res> {
   factory _$ToggleHabitDoneStatusCopyWith(_ToggleHabitDoneStatus value,
           $Res Function(_ToggleHabitDoneStatus) _then) =
       __$ToggleHabitDoneStatusCopyWithImpl;
@@ -288,7 +288,7 @@ class __$ToggleHabitDoneStatusCopyWithImpl<$Res>
   final _ToggleHabitDoneStatus _self;
   final $Res Function(_ToggleHabitDoneStatus) _then;
 
-  /// Create a copy of HabitEvent
+  /// Create a copy of MyPlanEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   $Res call({
@@ -314,11 +314,11 @@ class __$ToggleHabitDoneStatusCopyWithImpl<$Res>
 }
 
 /// @nodoc
-mixin _$HabitState {
+mixin _$MyPlanState {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is HabitState);
+        (other.runtimeType == runtimeType && other is MyPlanState);
   }
 
   @override
@@ -326,24 +326,24 @@ mixin _$HabitState {
 
   @override
   String toString() {
-    return 'HabitState()';
+    return 'MyPlanState()';
   }
 }
 
 /// @nodoc
-class $HabitStateCopyWith<$Res> {
-  $HabitStateCopyWith(HabitState _, $Res Function(HabitState) __);
+class $MyPlanStateCopyWith<$Res> {
+  $MyPlanStateCopyWith(MyPlanState _, $Res Function(MyPlanState) __);
 }
 
 /// @nodoc
 
-class HabitInitial implements HabitState {
-  const HabitInitial();
+class MyPlanStateInitial implements MyPlanState {
+  const MyPlanStateInitial();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is HabitInitial);
+        (other.runtimeType == runtimeType && other is MyPlanStateInitial);
   }
 
   @override
@@ -351,19 +351,19 @@ class HabitInitial implements HabitState {
 
   @override
   String toString() {
-    return 'HabitState.initial()';
+    return 'MyPlanState.initial()';
   }
 }
 
 /// @nodoc
 
-class HabitCreated implements HabitState {
-  const HabitCreated();
+class MyPlanStateCreated implements MyPlanState {
+  const MyPlanStateCreated();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is HabitCreated);
+        (other.runtimeType == runtimeType && other is MyPlanStateCreated);
   }
 
   @override
@@ -371,29 +371,29 @@ class HabitCreated implements HabitState {
 
   @override
   String toString() {
-    return 'HabitState.created()';
+    return 'MyPlanState.created()';
   }
 }
 
 /// @nodoc
 
-class HabitError implements HabitState {
-  const HabitError({required this.message});
+class MyPlanStateError implements MyPlanState {
+  const MyPlanStateError({required this.message});
 
   final String message;
 
-  /// Create a copy of HabitState
+  /// Create a copy of MyPlanState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $HabitErrorCopyWith<HabitError> get copyWith =>
-      _$HabitErrorCopyWithImpl<HabitError>(this, _$identity);
+  $MyPlanStateErrorCopyWith<MyPlanStateError> get copyWith =>
+      _$MyPlanStateErrorCopyWithImpl<MyPlanStateError>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is HabitError &&
+            other is MyPlanStateError &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -402,34 +402,35 @@ class HabitError implements HabitState {
 
   @override
   String toString() {
-    return 'HabitState.errorState(message: $message)';
+    return 'MyPlanState.errorState(message: $message)';
   }
 }
 
 /// @nodoc
-abstract mixin class $HabitErrorCopyWith<$Res>
-    implements $HabitStateCopyWith<$Res> {
-  factory $HabitErrorCopyWith(
-          HabitError value, $Res Function(HabitError) _then) =
-      _$HabitErrorCopyWithImpl;
+abstract mixin class $MyPlanStateErrorCopyWith<$Res>
+    implements $MyPlanStateCopyWith<$Res> {
+  factory $MyPlanStateErrorCopyWith(
+          MyPlanStateError value, $Res Function(MyPlanStateError) _then) =
+      _$MyPlanStateErrorCopyWithImpl;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class _$HabitErrorCopyWithImpl<$Res> implements $HabitErrorCopyWith<$Res> {
-  _$HabitErrorCopyWithImpl(this._self, this._then);
+class _$MyPlanStateErrorCopyWithImpl<$Res>
+    implements $MyPlanStateErrorCopyWith<$Res> {
+  _$MyPlanStateErrorCopyWithImpl(this._self, this._then);
 
-  final HabitError _self;
-  final $Res Function(HabitError) _then;
+  final MyPlanStateError _self;
+  final $Res Function(MyPlanStateError) _then;
 
-  /// Create a copy of HabitState
+  /// Create a copy of MyPlanState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   $Res call({
     Object? message = null,
   }) {
-    return _then(HabitError(
+    return _then(MyPlanStateError(
       message: null == message
           ? _self.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -440,8 +441,8 @@ class _$HabitErrorCopyWithImpl<$Res> implements $HabitErrorCopyWith<$Res> {
 
 /// @nodoc
 
-class HabitLoaded implements HabitState {
-  const HabitLoaded(
+class MyPlanStateLoaded implements MyPlanState {
+  const MyPlanStateLoaded(
       {required this.date,
       required this.dayStatus,
       required this.numberOfDoneHabits,
@@ -460,18 +461,18 @@ class HabitLoaded implements HabitState {
     return EqualUnmodifiableListView(_habitInfo);
   }
 
-  /// Create a copy of HabitState
+  /// Create a copy of MyPlanState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $HabitLoadedCopyWith<HabitLoaded> get copyWith =>
-      _$HabitLoadedCopyWithImpl<HabitLoaded>(this, _$identity);
+  $MyPlanStateLoadedCopyWith<MyPlanStateLoaded> get copyWith =>
+      _$MyPlanStateLoadedCopyWithImpl<MyPlanStateLoaded>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is HabitLoaded &&
+            other is MyPlanStateLoaded &&
             (identical(other.date, date) || other.date == date) &&
             (identical(other.dayStatus, dayStatus) ||
                 other.dayStatus == dayStatus) &&
@@ -494,16 +495,16 @@ class HabitLoaded implements HabitState {
 
   @override
   String toString() {
-    return 'HabitState.loaded(date: $date, dayStatus: $dayStatus, numberOfDoneHabits: $numberOfDoneHabits, textOfDay: $textOfDay, habitInfo: $habitInfo)';
+    return 'MyPlanState.loaded(date: $date, dayStatus: $dayStatus, numberOfDoneHabits: $numberOfDoneHabits, textOfDay: $textOfDay, habitInfo: $habitInfo)';
   }
 }
 
 /// @nodoc
-abstract mixin class $HabitLoadedCopyWith<$Res>
-    implements $HabitStateCopyWith<$Res> {
-  factory $HabitLoadedCopyWith(
-          HabitLoaded value, $Res Function(HabitLoaded) _then) =
-      _$HabitLoadedCopyWithImpl;
+abstract mixin class $MyPlanStateLoadedCopyWith<$Res>
+    implements $MyPlanStateCopyWith<$Res> {
+  factory $MyPlanStateLoadedCopyWith(
+          MyPlanStateLoaded value, $Res Function(MyPlanStateLoaded) _then) =
+      _$MyPlanStateLoadedCopyWithImpl;
   @useResult
   $Res call(
       {DateTime date,
@@ -514,13 +515,14 @@ abstract mixin class $HabitLoadedCopyWith<$Res>
 }
 
 /// @nodoc
-class _$HabitLoadedCopyWithImpl<$Res> implements $HabitLoadedCopyWith<$Res> {
-  _$HabitLoadedCopyWithImpl(this._self, this._then);
+class _$MyPlanStateLoadedCopyWithImpl<$Res>
+    implements $MyPlanStateLoadedCopyWith<$Res> {
+  _$MyPlanStateLoadedCopyWithImpl(this._self, this._then);
 
-  final HabitLoaded _self;
-  final $Res Function(HabitLoaded) _then;
+  final MyPlanStateLoaded _self;
+  final $Res Function(MyPlanStateLoaded) _then;
 
-  /// Create a copy of HabitState
+  /// Create a copy of MyPlanState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   $Res call({
@@ -530,7 +532,7 @@ class _$HabitLoadedCopyWithImpl<$Res> implements $HabitLoadedCopyWith<$Res> {
     Object? textOfDay = null,
     Object? habitInfo = null,
   }) {
-    return _then(HabitLoaded(
+    return _then(MyPlanStateLoaded(
       date: null == date
           ? _self.date
           : date // ignore: cast_nullable_to_non_nullable

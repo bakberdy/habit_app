@@ -11,12 +11,12 @@ import 'package:habit_app/features/habit/domain/usecases/get_habits_of_day.dart'
 import 'package:habit_app/features/habit/domain/usecases/set_habit_completions_status.dart';
 import 'package:injectable/injectable.dart';
 
-part 'habit_event.dart';
-part 'habit_state.dart';
-part 'habit_bloc.freezed.dart';
+part 'my_plan_event.dart';
+part 'my_plan_state.dart';
+part 'my_plan_bloc.freezed.dart';
 
 @injectable
-class MyPlanBloc extends Bloc<HabitEvent, HabitState> {
+class MyPlanBloc extends Bloc<MyPlanEvent, MyPlanState> {
   final GetHabitsOfDay _getHabitsOfDay;
   final SetHabitCompletionStatus _setHabitCompletionStatus;
   final AddNewHabit _addNewHabit;
@@ -24,18 +24,18 @@ class MyPlanBloc extends Bloc<HabitEvent, HabitState> {
     this._getHabitsOfDay,
     this._setHabitCompletionStatus,
     this._addNewHabit,
-  ) : super(HabitState.initial()) {
+  ) : super(MyPlanState.initial()) {
     on<_GetSubscriptions>(_onGetSubscriptions);
     on<_ToggleHabitDoneStatus>(_onToggleHabitDoneStatus);
     on<_AddNewHabit>(_onAddNewHabit);
   }
 
   FutureOr<void> _onGetSubscriptions(
-      _GetSubscriptions event, Emitter<HabitState> emit) async {
+      _GetSubscriptions event, Emitter<MyPlanState> emit) async {
     final res = await _getHabitsOfDay(event.date);
 
     res.fold((failure) {
-      emit(HabitState.errorState(message: failure.message));
+      emit(MyPlanState.errorState(message: failure.message));
     }, (habits) {
       int numberOfDoneHabits = 0;
       for (int i = 0; i < habits.length; i++) {
@@ -43,7 +43,7 @@ class MyPlanBloc extends Bloc<HabitEvent, HabitState> {
           numberOfDoneHabits++;
         }
       }
-      emit(HabitState.loaded(
+      emit(MyPlanState.loaded(
         numberOfDoneHabits: numberOfDoneHabits,
         date: event.date,
         textOfDay: _textOfTheDay(event.date),
@@ -54,36 +54,36 @@ class MyPlanBloc extends Bloc<HabitEvent, HabitState> {
   }
 
   Future<void> _onToggleHabitDoneStatus(
-      _ToggleHabitDoneStatus event, Emitter<HabitState> emit) async {
+      _ToggleHabitDoneStatus event, Emitter<MyPlanState> emit) async {
     final res = await _setHabitCompletionStatus(HabitCompletion(
         habitId: event.habitId, isDone: event.isDone, date: event.date));
     res.fold((failure) {
-      emit(HabitState.errorState(message: failure.message));
+      emit(MyPlanState.errorState(message: failure.message));
     }, (_) {
-      add(HabitEvent.getSubscriptionsOn(date: event.date));
+      add(MyPlanEvent.getSubscriptionsOn(date: event.date));
     });
   }
 
   Future<void> _onAddNewHabit(
-      _AddNewHabit event, Emitter<HabitState> emit) async {
+      _AddNewHabit event, Emitter<MyPlanState> emit) async {
     if (event.title.isEmpty) {
-      emit(HabitState.errorState(message: 'Title cannot be empty'));
+      emit(MyPlanState.errorState(message: 'Title cannot be empty'));
       return;
     }
     if (event.description.isEmpty) {
-      emit(HabitState.errorState(message: 'Description cannot be empty'));
+      emit(MyPlanState.errorState(message: 'Description cannot be empty'));
       return;
     }
     if (event.takeMinutes == null) {
-      emit(HabitState.errorState(message: 'Duration must exist'));
+      emit(MyPlanState.errorState(message: 'Duration must exist'));
       return;
     }
     if (event.takeMinutes! <= 0) {
-      emit(HabitState.errorState(message: 'Duration must be greater than 0'));
+      emit(MyPlanState.errorState(message: 'Duration must be greater than 0'));
       return;
     }
     if (event.days.isEmpty) {
-      emit(HabitState.errorState(message: 'Select at least one day'));
+      emit(MyPlanState.errorState(message: 'Select at least one day'));
       return;
     }
     final failureOrSucccess = await _addNewHabit(AddNewHabitParams(
@@ -95,11 +95,11 @@ class MyPlanBloc extends Bloc<HabitEvent, HabitState> {
       tips: event.tips,
     ));
     failureOrSucccess.fold((failure) {
-      emit(HabitState.errorState(message: failure.message));
+      emit(MyPlanState.errorState(message: failure.message));
     }, (success) {
       final now = DateTime.now();
-      emit(HabitState.created());
-      add(HabitEvent.getSubscriptionsOn(
+      emit(MyPlanState.created());
+      add(MyPlanEvent.getSubscriptionsOn(
           date: DateTime(now.year, now.month, now.day)));
     });
   }

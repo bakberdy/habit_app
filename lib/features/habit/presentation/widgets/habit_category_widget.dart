@@ -4,11 +4,15 @@ import 'package:habit_app/core/core.dart';
 import 'package:habit_app/core/theme/app_text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:habit_app/features/habit/domain/entities/category_entity.dart';
 
 class HabitCategoryWidget extends StatelessWidget {
   const HabitCategoryWidget({
     super.key,
+    required this.category,
   });
+
+  final CategoryEntity category;
 
   @override
   Widget build(BuildContext context) {
@@ -17,16 +21,17 @@ class HabitCategoryWidget extends StatelessWidget {
       child: Stack(
         children: [
           // Изображение на фоне
-          Container(
-            height: 200,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('lib/assets/illustrations/education.png'),
-                fit: BoxFit.cover,
+          if (category.imagePath != null)
+            Container(
+              height: 200,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(category.imagePath!),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
-          ),
           // Только часть заблюренная — верхний левый угол
           Positioned(
             left: 0,
@@ -49,12 +54,12 @@ class HabitCategoryWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Daily habits',
+                  category.title,
                   style: AppTextTheme.bodyMedium.copyWith(
                       fontWeight: FontWeight.w600, color: Colors.white),
                 ),
                 Text(
-                  'Make yourself organized',
+                  category.description,
                   style: AppTextTheme.bodySmall.copyWith(color: Colors.white),
                 ),
               ],
@@ -68,7 +73,8 @@ class HabitCategoryWidget extends StatelessWidget {
                 width: 100,
                 child: CustomFilledButton(
                   onPressed: () {
-                    context.push('${AppPaths.catalog}${AppPaths.category}/0');
+                    context.pushNamed('category',
+                        pathParameters: {"category_id": "${category.id}"});
                   },
                   title: 'Browse',
                   backgroundColor: Colors.white,

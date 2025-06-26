@@ -1,7 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:habit_app/core/theme/app_colors.dart';
 import 'package:habit_app/core/utils/show_bottom_sheet_with_buttons.dart';
-import 'package:habit_app/features/habit/presentation/bloc/habit_bloc.dart';
+import 'package:habit_app/features/habit/presentation/bloc/my_plan/my_plan_bloc.dart';
 import 'package:habit_app/features/habit/presentation/widgets/create_own_habit_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 

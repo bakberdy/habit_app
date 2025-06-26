@@ -56,9 +56,6 @@ dependencies:
 #some
   mime: ^2.0.0
   path: ^1.9.1
-  image_cropper: ^9.1.0
-  image_picker: ^1.1.2
-  uuid: ^4.5.1
   dio: ^5.8.0+1
   talker_dio_logger: ^4.8.3
   dots_indicator: ^4.0.1

@@ -6,6 +6,7 @@ class Habits extends Table {
   TextColumn get description => text()();
   TextColumn get why => text().nullable()();
   IntColumn get takesTime => integer()();
+  IntColumn get categoryId => integer().references(Categories, #id)();
 }
 
 class HabitSubscriptions extends Table {
@@ -41,4 +42,14 @@ class HabitWeekdays extends Table {
   IntColumn get weekday =>
       // ignore: recursive_getters
       integer().check(weekday.isBetween(Constant(1), Constant(7)))();
+}
+
+class Categories extends Table {
+  IntColumn get id => integer()();
+  TextColumn get title => text()();
+  TextColumn get description => text()();
+  TextColumn get imagePath => text().nullable()();
+
+  @override
+  Set<Column<Object>>? get primaryKey => {id};
 }

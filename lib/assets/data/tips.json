@@ -1,0 +1,302 @@
+[
+    {
+        "habitId": 1,
+        "title": "Set a consistent bedtime",
+        "content": "Go to sleep at the same time each night to help wake up earlier."
+    },
+    {
+        "habitId": 1,
+        "title": "Avoid screens before bed",
+        "content": "Reduce blue light exposure to fall asleep faster."
+    },
+    {
+        "habitId": 1,
+        "title": "Place your alarm across the room",
+        "content": "Forces you to physically get out of bed."
+    },
+    {
+        "habitId": 2,
+        "title": "Start with one corner",
+        "content": "Make the bed step by step starting from one side."
+    },
+    {
+        "habitId": 2,
+        "title": "Keep bedding simple",
+        "content": "Fewer pillows or layers make it easier to tidy up."
+    },
+    {
+        "habitId": 2,
+        "title": "Pair it with brushing teeth",
+        "content": "Do it right after brushing to form a routine."
+    },
+    {
+        "habitId": 3,
+        "title": "Prepare a short routine",
+        "content": "Stretch or do jumping jacks for just 5–10 minutes."
+    },
+    {
+        "habitId": 3,
+        "title": "Lay out workout clothes",
+        "content": "Make it easier to start by prepping in advance."
+    },
+    {
+        "habitId": 3,
+        "title": "Use music or timer",
+        "content": "Keep momentum with a playlist or countdown timer."
+    },
+    {
+        "habitId": 4,
+        "title": "Keep water by your bed",
+        "content": "Have a glass ready to drink as soon as you wake."
+    },
+    {
+        "habitId": 4,
+        "title": "Add lemon",
+        "content": "Lemon adds taste and aids digestion."
+    },
+    {
+        "habitId": 4,
+        "title": "Use a favorite cup",
+        "content": "Make the habit pleasant by using something you like."
+    },
+    {
+        "habitId": 5,
+        "title": "Use a guided meditation app",
+        "content": "Helps keep you focused, especially if you're new."
+    },
+    {
+        "habitId": 5,
+        "title": "Sit comfortably",
+        "content": "Find a quiet place with good posture."
+    },
+    {
+        "habitId": 5,
+        "title": "Start small",
+        "content": "Begin with just 2–5 minutes to build the habit."
+    },
+    {
+        "habitId": 6,
+        "title": "Choose books you enjoy",
+        "content": "Start with topics that truly interest you."
+    },
+    {
+        "habitId": 6,
+        "title": "Read before bed",
+        "content": "A quiet moment before sleep helps with focus."
+    },
+    {
+        "habitId": 6,
+        "title": "Use a reading tracker",
+        "content": "Keep momentum by tracking your progress."
+    },
+    {
+        "habitId": 7,
+        "title": "Use a daily planner",
+        "content": "Write tasks down to free mental space."
+    },
+    {
+        "habitId": 7,
+        "title": "Prioritize top 3 tasks",
+        "content": "Stay focused by choosing what's most important."
+    },
+    {
+        "habitId": 7,
+        "title": "Do it after breakfast",
+        "content": "Link it with a habit that already exists."
+    },
+    {
+        "habitId": 8,
+        "title": "Go right after meals",
+        "content": "Take a walk after eating to aid digestion."
+    },
+    {
+        "habitId": 8,
+        "title": "Take calls while walking",
+        "content": "Turn walking into a multitasking opportunity."
+    },
+    {
+        "habitId": 8,
+        "title": "Explore new routes",
+        "content": "Keep it interesting by changing scenery."
+    },
+    {
+        "habitId": 9,
+        "title": "Write without judgment",
+        "content": "Let your thoughts flow without editing."
+    },
+    {
+        "habitId": 9,
+        "title": "Use prompts",
+        "content": "Start with questions like 'What made me smile today?'"
+    },
+    {
+        "habitId": 9,
+        "title": "Set a 10-minute timer",
+        "content": "Write for a fixed time to stay consistent."
+    },
+    {
+        "habitId": 10,
+        "title": "Charge phone outside bedroom",
+        "content": "Keep devices away to reduce temptation."
+    },
+    {
+        "habitId": 10,
+        "title": "Use a physical book",
+        "content": "Replace screen time with reading."
+    },
+    {
+        "habitId": 10,
+        "title": "Create a wind-down ritual",
+        "content": "Do relaxing activities like stretching or tea."
+    },
+    {
+        "habitId": 11,
+        "title": "Use flashcards",
+        "content": "Review new words regularly using a spaced method."
+    },
+    {
+        "habitId": 11,
+        "title": "Apply words in sentences",
+        "content": "Use new words in writing or speech."
+    },
+    {
+        "habitId": 11,
+        "title": "Review before bed",
+        "content": "Learning before sleep helps with memory."
+    },
+    {
+        "habitId": 12,
+        "title": "Summarize key points",
+        "content": "Write 3–5 bullet points after review."
+    },
+    {
+        "habitId": 12,
+        "title": "Use different colors",
+        "content": "Highlighting helps visual memory."
+    },
+    {
+        "habitId": 12,
+        "title": "Teach someone else",
+        "content": "Explaining reinforces your own understanding."
+    },
+    {
+        "habitId": 13,
+        "title": "Schedule course time",
+        "content": "Block 30 min on your calendar daily."
+    },
+    {
+        "habitId": 13,
+        "title": "Take notes",
+        "content": "Jot down highlights to remember better."
+    },
+    {
+        "habitId": 13,
+        "title": "Pause and reflect",
+        "content": "Stop the video occasionally and summarize out loud."
+    },
+    {
+        "habitId": 14,
+        "title": "Use a timer",
+        "content": "Limit yourself to just 3 focused problems."
+    },
+    {
+        "habitId": 14,
+        "title": "Solve on paper",
+        "content": "Avoid mental shortcuts — write it out."
+    },
+    {
+        "habitId": 14,
+        "title": "Review errors",
+        "content": "Spend time understanding mistakes."
+    },
+    {
+        "habitId": 15,
+        "title": "Use a Pomodoro app",
+        "content": "Set structured work and break intervals."
+    },
+    {
+        "habitId": 15,
+        "title": "Prepare tasks in advance",
+        "content": "Know exactly what you'll work on."
+    },
+    {
+        "habitId": 15,
+        "title": "Take real breaks",
+        "content": "Avoid screens — walk, stretch, or breathe."
+    },
+    {
+        "habitId": 16,
+        "title": "Use short sentences",
+        "content": "Keep notes clear and focused."
+    },
+    {
+        "habitId": 16,
+        "title": "Organize by topic",
+        "content": "Group ideas under headings or themes."
+    },
+    {
+        "habitId": 16,
+        "title": "Review notes weekly",
+        "content": "Go over your notes to refresh memory."
+    },
+    {
+        "habitId": 17,
+        "title": "Use keywords",
+        "content": "Include essential words only in the map."
+    },
+    {
+        "habitId": 17,
+        "title": "Start from the center",
+        "content": "Place main idea in the middle and expand outward."
+    },
+    {
+        "habitId": 17,
+        "title": "Use images and colors",
+        "content": "Visual cues help memory and engagement."
+    },
+    {
+        "habitId": 18,
+        "title": "Take turns explaining",
+        "content": "Each person teaches one topic."
+    },
+    {
+        "habitId": 18,
+        "title": "Ask each other questions",
+        "content": "Quizzing improves engagement."
+    },
+    {
+        "habitId": 18,
+        "title": "Keep it short and regular",
+        "content": "Even 15-minute sessions help a lot."
+    },
+    {
+        "habitId": 19,
+        "title": "Write questions during study",
+        "content": "Create practice questions as you learn."
+    },
+    {
+        "habitId": 19,
+        "title": "Use spaced repetition",
+        "content": "Re-test yourself after 1 day, 3 days, etc."
+    },
+    {
+        "habitId": 19,
+        "title": "Answer aloud",
+        "content": "Saying answers aloud helps retention."
+    },
+    {
+        "habitId": 20,
+        "title": "Take notes while watching",
+        "content": "Write down key ideas and quotes."
+    },
+    {
+        "habitId": 20,
+        "title": "Reflect after watching",
+        "content": "Summarize what you learned in your own words."
+    },
+    {
+        "habitId": 20,
+        "title": "Share insights",
+        "content": "Discuss with friends to reinforce understanding."
+    }
+]

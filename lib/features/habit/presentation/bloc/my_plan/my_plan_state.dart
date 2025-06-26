@@ -1,16 +1,17 @@
-part of 'habit_bloc.dart';
+part of 'my_plan_bloc.dart';
 
 @freezed
-sealed class HabitState with _$HabitState {
-  const factory HabitState.initial() = HabitInitial;
-  const factory HabitState.created() = HabitCreated;
-  const factory HabitState.errorState({required String message}) = HabitError;
-  const factory HabitState.loaded(
+sealed class MyPlanState with _$MyPlanState {
+  const factory MyPlanState.initial() = MyPlanStateInitial;
+  const factory MyPlanState.created() = MyPlanStateCreated;
+  const factory MyPlanState.errorState({required String message}) =
+      MyPlanStateError;
+  const factory MyPlanState.loaded(
       {required DateTime date,
       required DayStatus dayStatus,
       required int numberOfDoneHabits,
       required String textOfDay,
-      required List<HabitInfo> habitInfo}) = HabitLoaded;
+      required List<HabitInfo> habitInfo}) = MyPlanStateLoaded;
 }
 
 enum DayStatus {

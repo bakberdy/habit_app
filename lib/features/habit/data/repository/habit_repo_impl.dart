@@ -1,17 +1,20 @@
 import 'package:dartz/dartz.dart';
 import 'package:habit_app/core/shared/enums/weekday.dart';
 import 'package:habit_app/core/utils/typedef.dart';
+import 'package:habit_app/features/habit/domain/entities/category_entity.dart';
+import 'package:habit_app/features/habit/domain/entities/category_info_entity.dart';
+import 'package:habit_app/features/habit/domain/entities/habit_entity.dart';
 import 'package:habit_app/features/habit/domain/entities/tip_entity.dart';
-import 'package:habit_app/features/habit/data/datasource/my_plan_local_data_source.dart';
+import 'package:habit_app/features/habit/data/datasource/habit_local_data_source.dart';
 import 'package:habit_app/features/habit/domain/entities/habit_info.dart';
 import 'package:habit_app/features/habit/domain/repository/habit_repo.dart';
 import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: HabitRepo)
-class MyPlanRepoImpl implements HabitRepo {
-  final MyPlanLocalDataSource _localDataSource;
+class HabitRepoImpl implements HabitRepo {
+  final HabitLocalDataSource _localDataSource;
 
-  MyPlanRepoImpl(this._localDataSource);
+  HabitRepoImpl(this._localDataSource);
 
   @override
   ResultFuture<List<HabitInfo>> getHabitSubscriptionsOfDay(
@@ -54,5 +57,23 @@ class MyPlanRepoImpl implements HabitRepo {
         takeMinutes: takeMinutes,
         days: days);
     return Right(null);
+  }
+
+  @override
+  ResultFuture<List<CategoryEntity>> getCategories() async {
+    return Right(await _localDataSource.getCategories());
+  }
+
+  @override
+  ResultFuture<CategoryInfoEntity> getCategory(int categoryId) async {
+    final category = await _localDataSource.getCategory(categoryId: categoryId);
+    final habits =
+        await _localDataSource.getHabitsOfCategpry(categoryId: categoryId);
+    return Right(CategoryInfoEntity(category: category, habits: habits));
+  }
+
+  @override
+  ResultFuture<HabitEntity> getHabitById(int habitId) async {
+    return Right(await _localDataSource.getHabitById(habitId: habitId));
   }
 }

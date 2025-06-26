@@ -1,0 +1,142 @@
+[
+    {
+        "title": "Wake up at 7 AM",
+        "description": "Get up without an alarm",
+        "why": "Improves sleep cycle and productivity",
+        "takesTime": 5,
+        "categoryId": 0
+    },
+    {
+        "title": "Make the bed",
+        "description": "Tidy up the bed after waking up",
+        "why": "Creates order and a sense of completion",
+        "takesTime": 2,
+        "categoryId": 0
+    },
+    {
+        "title": "Morning exercise",
+        "description": "Light stretching after waking up",
+        "why": "Boosts energy for the day",
+        "takesTime": 10,
+        "categoryId": 0
+    },
+    {
+        "title": "Drink water after waking",
+        "description": "Drink a glass of water in the morning",
+        "why": "Hydration and metabolism boost",
+        "takesTime": 1,
+        "categoryId": 0
+    },
+    {
+        "title": "Meditation",
+        "description": "5 minutes of quiet breathing",
+        "why": "Reduces stress and anxiety",
+        "takesTime": 5,
+        "categoryId": 0
+    },
+    {
+        "title": "Read 10 pages",
+        "description": "Read at least 10 pages per day",
+        "why": "Expands knowledge and perspective",
+        "takesTime": 20,
+        "categoryId": 0
+    },
+    {
+        "title": "Daily planning",
+        "description": "Make a short plan in the morning",
+        "why": "Helps manage time effectively",
+        "takesTime": 10,
+        "categoryId": 0
+    },
+    {
+        "title": "Walk outside",
+        "description": "Go outside for at least 15 minutes",
+        "why": "Improves mood and energy",
+        "takesTime": 15,
+        "categoryId": 0
+    },
+    {
+        "title": "Journal writing",
+        "description": "Write down thoughts and emotions at night",
+        "why": "Reflection and awareness",
+        "takesTime": 10,
+        "categoryId": 0
+    },
+    {
+        "title": "No phone 1 hour before bed",
+        "description": "Avoid smartphone use before sleep",
+        "why": "Improves sleep quality",
+        "takesTime": 60,
+        "categoryId": 0
+    },
+    {
+        "title": "Learn 5 new English words",
+        "description": "Write and memorize 5 words daily",
+        "why": "Expands vocabulary",
+        "takesTime": 15,
+        "categoryId": 1
+    },
+    {
+        "title": "Review old material",
+        "description": "Re-read notes from the previous day",
+        "why": "Strengthens memory and understanding",
+        "takesTime": 20,
+        "categoryId": 1
+    },
+    {
+        "title": "Take a 30-minute online course",
+        "description": "Watch a lecture or online lesson",
+        "why": "Learn new topics",
+        "takesTime": 30,
+        "categoryId": 1
+    },
+    {
+        "title": "Solve 3 math problems",
+        "description": "Practice logic and memory",
+        "why": "Enhances critical thinking",
+        "takesTime": 25,
+        "categoryId": 1
+    },
+    {
+        "title": "Study using Pomodoro",
+        "description": "Study 25 min, rest 5 min",
+        "why": "Improves focus and endurance",
+        "takesTime": 30,
+        "categoryId": 1
+    },
+    {
+        "title": "Take study notes",
+        "description": "Write short notes while learning",
+        "why": "Improves retention",
+        "takesTime": 20,
+        "categoryId": 1
+    },
+    {
+        "title": "Create a mind map",
+        "description": "Visualize concepts using mind maps",
+        "why": "Links ideas clearly",
+        "takesTime": 15,
+        "categoryId": 1
+    },
+    {
+        "title": "Study with a friend",
+        "description": "Explain topics to each other",
+        "why": "Deepens understanding through teaching",
+        "takesTime": 30,
+        "categoryId": 1
+    },
+    {
+        "title": "Self-testing",
+        "description": "Write 5 questions and answer them",
+        "why": "Increases awareness and recall",
+        "takesTime": 20,
+        "categoryId": 1
+    },
+    {
+        "title": "Watch TED/science video",
+        "description": "Watch inspiring educational content",
+        "why": "Motivates and broadens thinking",
+        "takesTime": 15,
+        "categoryId": 1
+    }
+]

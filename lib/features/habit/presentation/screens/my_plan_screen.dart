@@ -3,7 +3,7 @@ import 'package:habit_app/core/core.dart';
 import 'package:habit_app/core/shared/widgets/daily_habit_card.dart';
 import 'package:habit_app/core/theme/app_colors.dart';
 import 'package:habit_app/core/theme/app_text_theme.dart';
-import 'package:habit_app/features/habit/presentation/bloc/habit_bloc.dart';
+import 'package:habit_app/features/habit/presentation/bloc/my_plan/my_plan_bloc.dart';
 import 'package:habit_app/features/habit/presentation/widgets/my_plan_floating_action_button.dart';
 import 'package:easy_date_timeline/easy_date_timeline.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +16,7 @@ class MyPlanScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<MyPlanBloc>(
       create: (_) => sl<MyPlanBloc>()
-        ..add(HabitEvent.getSubscriptionsOn(date: DateTime.now())),
+        ..add(MyPlanEvent.getSubscriptionsOn(date: DateTime.now())),
       child: MyPlanScreenContent(),
     );
   }
@@ -37,17 +37,17 @@ class _MyPlanScreenContentState extends State<MyPlanScreenContent> {
         myPlanBloc: context.read<MyPlanBloc>(),
       ),
       body: SafeArea(
-        child: BlocConsumer<MyPlanBloc, HabitState>(
+        child: BlocConsumer<MyPlanBloc, MyPlanState>(
           listener: (context, state) {
-            if (state is HabitError) {
+            if (state is MyPlanStateError) {
               showErrorToast(context, message: state.message);
               context
                   .read<MyPlanBloc>()
-                  .add(HabitEvent.getSubscriptionsOn(date: DateTime.now()));
+                  .add(MyPlanEvent.getSubscriptionsOn(date: DateTime.now()));
             }
           },
           builder: (context, state) {
-            if (state is HabitLoaded) {
+            if (state is MyPlanStateLoaded) {
               return CustomScrollView(
                 slivers: [
                   CustomSliverAppBar(title: 'My plan'),
@@ -64,7 +64,7 @@ class _MyPlanScreenContentState extends State<MyPlanScreenContent> {
                         onDateChange: (date) {
                           context
                               .read<MyPlanBloc>()
-                              .add(HabitEvent.getSubscriptionsOn(date: date));
+                              .add(MyPlanEvent.getSubscriptionsOn(date: date));
                           setState(() {});
                         },
                       ),

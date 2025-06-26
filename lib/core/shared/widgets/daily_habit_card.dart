@@ -3,7 +3,7 @@ import 'package:habit_app/core/theme/app_colors.dart';
 import 'package:habit_app/core/theme/app_text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:habit_app/features/habit/domain/entities/habit_info.dart';
-import 'package:habit_app/features/habit/presentation/bloc/habit_bloc.dart';
+import 'package:habit_app/features/habit/presentation/bloc/my_plan/my_plan_bloc.dart';
 import 'package:habit_app/injection/injection.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
@@ -77,7 +77,7 @@ class HabitSubsriptionCard extends StatelessWidget {
                       ? (value) {
                           sl<Talker>().info('tapped');
                           context.read<MyPlanBloc>().add(
-                              HabitEvent.toggleHabitDoneStatus(
+                              MyPlanEvent.toggleHabitDoneStatus(
                                   date: DateTime.now(),
                                   habitId: habitInfo.habit.id,
                                   isDone: !(habitInfo.isDone ?? true)));

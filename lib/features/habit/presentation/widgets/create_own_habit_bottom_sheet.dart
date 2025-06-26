@@ -7,7 +7,8 @@ import 'package:habit_app/core/shared/widgets/labeled_text_form_field.dart';
 import 'package:habit_app/core/theme/app_colors.dart';
 import 'package:habit_app/core/theme/app_text_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:habit_app/features/habit/presentation/bloc/habit_bloc.dart';
+import 'package:habit_app/features/habit/domain/entities/tip_entity.dart';
+import 'package:habit_app/features/habit/presentation/bloc/my_plan/my_plan_bloc.dart';
 
 class CreateOwnHabitBottomSheet extends StatefulWidget {
   const CreateOwnHabitBottomSheet({super.key, required myPlanBloc})
@@ -24,7 +25,8 @@ class _CreateOwnHabitBottomSheetState extends State<CreateOwnHabitBottomSheet>
   final _titleController = TextEditingController();
   final _descriptionController = TextEditingController();
   final _estimatedTimeController = TextEditingController();
-  final _tipController = TextEditingController();
+  final _tipTitleController = TextEditingController();
+  final _tipDescriptionController = TextEditingController();
   final _whyController = TextEditingController();
   final _selectedDays = List.filled(7, false);
   bool _isOpenedTheDetailsForm = false;
@@ -61,13 +63,20 @@ class _CreateOwnHabitBottomSheetState extends State<CreateOwnHabitBottomSheet>
     final description = _descriptionController.text;
     final takesTime = _estimatedTimeController.text;
     final why = _whyController.text;
+    final tipTitle = _tipTitleController.text;
+    final tipDescription = _tipDescriptionController.text;
     final selectedDays = [
       for (int i = 0; i < _selectedDays.length; i++)
         if (_selectedDays[i]) _weekdays[i]
     ];
+    final tips = <TipEntity>[];
+    if (tipDescription.isNotEmpty && tipTitle.isNotEmpty) {
+      tips.add(TipEntity(id: 0, title: tipTitle, content: tipDescription));
+    }
     widget._myPlanBloc.add(
-      HabitEvent.addNewHabit(
+      MyPlanEvent.addNewHabit(
           why: why,
+          tips: tips.isNotEmpty ? tips : null,
           title: title,
           description: description,
           takeMinutes: int.tryParse(takesTime),
@@ -88,7 +97,7 @@ class _CreateOwnHabitBottomSheetState extends State<CreateOwnHabitBottomSheet>
   Widget build(BuildContext context) {
     return BlocListener(
       listener: (context, state) {
-        if (state is HabitCreated) {
+        if (state is MyPlanStateCreated) {
           Navigator.of(context).pop();
         }
       },
@@ -194,8 +203,28 @@ class _CreateOwnHabitBottomSheetState extends State<CreateOwnHabitBottomSheet>
                         Visibility(
                           visible: _isOpenedTheDetailsForm,
                           child: LabeledTextFormField(
+                            label: 'Why',
+                            controller: _whyController,
+                          ),
+                        ),
+                        Visibility(
+                            visible: _isOpenedTheDetailsForm,
+                            child: Divider(
+                                height: 1,
+                                color: AppColors.grey.withAlpha(50))),
+                        Visibility(
+                            visible: _isOpenedTheDetailsForm,
+                            child: SizedBox(height: 20)),
+                        Visibility(
+                            visible: _isOpenedTheDetailsForm,
+                            child: Divider(
+                                height: 1,
+                                color: AppColors.grey.withAlpha(50))),
+                        Visibility(
+                          visible: _isOpenedTheDetailsForm,
+                          child: LabeledTextFormField(
                               label: 'Tip to habit',
-                              controller: _tipController),
+                              controller: _tipTitleController),
                         ),
                         Visibility(
                             visible: _isOpenedTheDetailsForm,
@@ -205,35 +234,8 @@ class _CreateOwnHabitBottomSheetState extends State<CreateOwnHabitBottomSheet>
                         Visibility(
                           visible: _isOpenedTheDetailsForm,
                           child: LabeledTextFormField(
-                              label: 'Why', controller: _whyController),
-                        ),
-                        Visibility(
-                            visible: _isOpenedTheDetailsForm,
-                            child: Divider(
-                                height: 1,
-                                color: AppColors.grey.withAlpha(50))),
-                        Visibility(
-                          visible: _isOpenedTheDetailsForm,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text('Set a picture to habit',
-                                  style: AppTextTheme.bodySmall),
-                              SizedBox(
-                                height: 30,
-                                child: VerticalDivider(
-                                  color: AppColors.grey.withAlpha(50),
-                                ),
-                              ),
-                              TextButton(
-                                  onPressed: () {},
-                                  child: Text(
-                                    'Pick from gallery',
-                                    style: AppTextTheme.bodySmall
-                                        .copyWith(color: AppColors.primary),
-                                  ))
-                            ],
-                          ),
+                              label: 'Tip description',
+                              controller: _tipDescriptionController),
                         ),
                       ],
                     ),

@@ -1,0 +1,20 @@
+[
+    {
+        "id": 0,
+        "title": "Daily habits",
+        "description": "This category includes habits you want to practice every day.",
+        "imagePath": "lib/assets/pictures/daily_habit.jpg"
+    },
+    {
+        "id": 1,
+        "title": "Education habits",
+        "description": "This category includes habits related to learning, studying, and personal development.",
+        "imagePath": "lib/assets/pictures/education.jpg"
+    },
+    {
+        "id": 9999,
+        "title": "Your custom habits",
+        "description": "This category is for your own custom habits.",
+        "imagePath": "lib/assets/pictures/your.jpg"
+    }
+]

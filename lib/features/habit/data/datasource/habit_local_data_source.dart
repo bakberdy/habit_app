@@ -1,6 +1,7 @@
 import 'package:drift/drift.dart';
 import 'package:habit_app/core/database/app_database.dart';
 import 'package:habit_app/core/shared/enums/weekday.dart';
+import 'package:habit_app/features/habit/data/models/category_model.dart';
 import 'package:habit_app/features/habit/data/models/habit_model.dart';
 import 'package:habit_app/features/habit/data/models/tip_model.dart';
 import 'package:habit_app/features/habit/data/models/habit_completion_model.dart';
@@ -8,7 +9,7 @@ import 'package:habit_app/features/habit/data/models/habit_subscription_model.da
 import 'package:injectable/injectable.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
-abstract interface class MyPlanLocalDataSource {
+abstract interface class HabitLocalDataSource {
   Future<List<HabitSubscriptionModel>> getHabitSubscriptionsOfDay(
       DateTime date);
 
@@ -24,14 +25,19 @@ abstract interface class MyPlanLocalDataSource {
   });
   Future<void> setHabitCompletionStatus(
       {required int habitId, required bool isDone, required DateTime date});
+
+  Future<List<CategoryModel>> getCategories();
+  Future<CategoryModel> getCategory({required int categoryId});
+  Future<List<HabitModel>> getHabitsOfCategpry({required int categoryId});
+  Future<HabitModel> getHabitById({required int habitId});
 }
 
-@LazySingleton(as: MyPlanLocalDataSource)
-class MyPlanLocalDataSourceImpl implements MyPlanLocalDataSource {
+@LazySingleton(as: HabitLocalDataSource)
+class HabitLocalDataSourceImpl implements HabitLocalDataSource {
   final AppDatabase _db;
   final Talker _logger;
 
-  MyPlanLocalDataSourceImpl(this._db, this._logger);
+  HabitLocalDataSourceImpl(this._db, this._logger);
 
   @override
   Future<List<HabitSubscriptionModel>> getHabitSubscriptionsOfDay(
@@ -142,6 +148,7 @@ class MyPlanLocalDataSourceImpl implements MyPlanLocalDataSource {
               description: description,
               takesTime: takeMinutes,
               why: Value(why),
+              categoryId: 9999,
             ),
           );
 
@@ -178,5 +185,56 @@ class MyPlanLocalDataSourceImpl implements MyPlanLocalDataSource {
             ),
           );
     });
+  }
+
+  @override
+  Future<List<CategoryModel>> getCategories() async {
+    final categories = await _db.select(_db.categories).get();
+
+    _logger.info(categories.length);
+
+    return categories
+        .map((e) => CategoryModel(
+              id: e.id,
+              title: e.title,
+              description: e.description,
+              imagePath: e.imagePath,
+            ))
+        .toList();
+  }
+
+  @override
+  Future<CategoryModel> getCategory({required int categoryId}) async {
+    final response = await (_db.select(_db.categories)
+          ..where((e) => (e.id).equals(categoryId)))
+        .getSingleOrNull();
+    if (response != null) {
+      return CategoryModel(
+          id: response.id,
+          title: response.title,
+          imagePath: response.imagePath,
+          description: response.description);
+    } else {
+      throw Exception();
+    }
+  }
+
+  @override
+  Future<List<HabitModel>> getHabitsOfCategpry(
+      {required int categoryId}) async {
+    final habitsResponse = await (_db.select(_db.habits)
+          ..where((e) => (e.categoryId).equals(categoryId)))
+        .get();
+    final habits = await Future.wait(
+        habitsResponse.map((e) => HabitModel.fromDrift(e, _db)));
+    return habits;
+  }
+
+  @override
+  Future<HabitModel> getHabitById({required int habitId}) async {
+    final habit = await (_db.select(_db.habits)
+          ..where((e) => (e.id).equals(habitId)))
+        .getSingle();
+    return HabitModel.fromDrift(habit, _db);
   }
 }
