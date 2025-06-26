@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:habit_app/core/error/error.dart';
 import 'package:habit_app/core/shared/enums/weekday.dart';
 import 'package:habit_app/core/utils/typedef.dart';
+import 'package:habit_app/features/habit/data/models/tip_model.dart';
 import 'package:habit_app/features/habit/domain/entities/category_entity.dart';
 import 'package:habit_app/features/habit/domain/entities/category_info_entity.dart';
 import 'package:habit_app/features/habit/domain/entities/habit_entity.dart';
@@ -65,6 +66,9 @@ class HabitRepoImpl implements HabitRepo {
           title: title,
           description: description,
           takeMinutes: takeMinutes,
+          tips: tips
+              ?.map((e) => TipModel(id: 0, title: e.title, content: e.content))
+              .toList(),
           days: days);
       return Right(null);
     } catch (e) {

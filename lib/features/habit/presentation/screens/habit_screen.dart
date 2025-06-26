@@ -93,7 +93,7 @@ class _HabitScreenState extends State<HabitScreenContent> {
                               style: AppTextTheme.bodySmall,
                             ),
                             SizedBox(height: 20),
-                            habit.why == null
+                            habit.why == null || habit.why!.isEmpty
                                 ? SizedBox()
                                 : Column(
                                     crossAxisAlignment:
@@ -132,8 +132,8 @@ class _HabitScreenState extends State<HabitScreenContent> {
                         ),
                       ),
                     ),
-                    habit.tips == null
-                        ? SizedBox()
+                    habit.tips == null || habit.tips!.isEmpty
+                        ? SliverToBoxAdapter(child: SizedBox())
                         : SliverList(
                             delegate: SliverChildListDelegate([
                               Padding(
