@@ -38,12 +38,18 @@ class _RecomendationBarState extends State<RecomendationBar> {
               height: 180,
               width: double.infinity,
               clipBehavior: Clip.hardEdge,
-              decoration: BoxDecoration(boxShadow: [
-                BoxShadow(
-                    offset: Offset(2, 2),
-                    blurRadius: 10,
-                    color: AppColors.grey.withAlpha(40))
-              ], borderRadius: BorderRadius.circular(12), color: Colors.pink),
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage(
+                          'lib/assets/illustrations/habit_book_tea.jpg')),
+                  boxShadow: [
+                    BoxShadow(
+                        offset: Offset(2, 2),
+                        blurRadius: 10,
+                        color: AppColors.grey.withAlpha(40))
+                  ],
+                  borderRadius: BorderRadius.circular(12),
+                  color: Colors.pink),
               child: Text('Some article'),
             ),
           ),

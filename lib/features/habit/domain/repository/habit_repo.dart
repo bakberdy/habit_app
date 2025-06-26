@@ -9,6 +9,8 @@ import 'package:habit_app/features/habit/domain/entities/habit_info.dart';
 abstract interface class HabitRepo {
   ResultFuture<List<HabitInfo>> getHabitSubscriptionsOfDay(DateTime date);
   ResultFuture<CategoryInfoEntity> getCategory(int categoryId);
+  ResultFuture<List<HabitEntity>> searchHabit(
+      {required String query, int? categoryId});
   ResultVoid addNewHabit(
       {required String title,
       required String description,

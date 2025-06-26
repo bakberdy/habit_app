@@ -30,6 +30,8 @@ abstract interface class HabitLocalDataSource {
   Future<CategoryModel> getCategory({required int categoryId});
   Future<List<HabitModel>> getHabitsOfCategpry({required int categoryId});
   Future<HabitModel> getHabitById({required int habitId});
+  Future<List<HabitModel>> searchHabit(
+      {required String query, int? categoryId});
 }
 
 @LazySingleton(as: HabitLocalDataSource)
@@ -271,6 +273,28 @@ class HabitLocalDataSourceImpl implements HabitLocalDataSource {
       return HabitModel.fromDrift(habit, _db);
     } catch (e, s) {
       _logger.error(e, s);
+      rethrow;
+    }
+  }
+
+  @override
+  Future<List<HabitModel>> searchHabit(
+      {required String query, int? categoryId}) async {
+    try {
+      final rows = categoryId == null
+          ? await (_db.select(_db.habits)
+                ..where((e) =>
+                    e.title.like('%$query%') | e.description.like('%$query%')))
+              .get()
+          : await (_db.select(_db.habits)
+                ..where((e) =>
+                    (e.title.like('%$query%') |
+                        e.description.like('%$query%')) &
+                    e.categoryId.equals(categoryId)))
+              .get();
+      return Future.wait(rows.map((e) => HabitModel.fromDrift(e, _db)));
+    } catch (e, s) {
+      _logger.info(e, s);
       rethrow;
     }
   }

@@ -106,4 +106,15 @@ class HabitRepoImpl implements HabitRepo {
       return Left(UnknownFailure(e.toString()));
     }
   }
+
+  @override
+  ResultFuture<List<HabitEntity>> searchHabit(
+      {required String query, int? categoryId}) async {
+    try {
+      return Right(await _localDataSource.searchHabit(
+          query: query, categoryId: categoryId));
+    } catch (e) {
+      return Left(UnknownFailure(e.toString()));
+    }
+  }
 }

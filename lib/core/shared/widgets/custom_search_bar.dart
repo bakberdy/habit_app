@@ -4,9 +4,11 @@ class CustomSearchBar extends StatelessWidget {
   const CustomSearchBar({
     super.key,
     this.controller,
+    required this.onChange,
   });
 
   final TextEditingController? controller;
+  final ValueChanged onChange;
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +24,7 @@ class CustomSearchBar extends StatelessWidget {
       height: 40,
       width: double.infinity,
       child: TextField(
+        onChanged: onChange,
         controller: controller,
         style: themeData.textTheme.bodyMedium,
         decoration: InputDecoration(
