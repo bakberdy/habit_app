@@ -85,4 +85,6 @@ flutter:
     - lib/assets/icons/
     - lib/assets/illustrations/
     - lib/assets/animations/
+    - lib/assets/pictures/
+    - lib/assets/data/
 

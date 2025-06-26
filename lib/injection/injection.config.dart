@@ -52,7 +52,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i361.Dio>(() => appModule.dio);
     gh.singleton<_i162.TalkerDioLogger>(() => appModule.talkerDioLogger);
     gh.singleton<_i156.AppRouter>(() => appModule.appRouter);
-    gh.lazySingleton<_i935.AppDatabase>(() => _i935.AppDatabase());
+    gh.lazySingleton<_i935.AppDatabase>(
+        () => _i935.AppDatabase(gh<_i207.Talker>()));
     gh.lazySingleton<_i655.HabitLocalDataSource>(
         () => _i655.HabitLocalDataSourceImpl(
               gh<_i935.AppDatabase>(),
@@ -64,12 +65,12 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.lazySingleton<_i166.HabitRepo>(
         () => _i687.HabitRepoImpl(gh<_i655.HabitLocalDataSource>()));
-    gh.lazySingleton<_i1031.GetCategories>(
-        () => _i1031.GetCategories(gh<_i166.HabitRepo>()));
     gh.lazySingleton<_i545.GetCategoryInfo>(
         () => _i545.GetCategoryInfo(gh<_i166.HabitRepo>()));
     gh.lazySingleton<_i740.GetHabitById>(
         () => _i740.GetHabitById(gh<_i166.HabitRepo>()));
+    gh.lazySingleton<_i1031.GetCategories>(
+        () => _i1031.GetCategories(gh<_i166.HabitRepo>()));
     gh.lazySingleton<_i65.AddNewHabit>(
         () => _i65.AddNewHabit(gh<_i166.HabitRepo>()));
     gh.lazySingleton<_i825.GetHabitsOfDay>(

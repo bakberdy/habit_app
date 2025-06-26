@@ -1,12 +1,14 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:drift/drift.dart';
+import 'package:drift/isolate.dart';
 import 'package:drift/native.dart';
 import 'package:flutter/services.dart';
 import 'package:habit_app/core/database/tables.dart';
 import 'package:injectable/injectable.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
+import 'package:talker_flutter/talker_flutter.dart';
 
 part 'app_database.g.dart';
 
@@ -19,16 +21,16 @@ part 'app_database.g.dart';
 ])
 @lazySingleton
 class AppDatabase extends _$AppDatabase {
-  AppDatabase() : super(_openConnection());
+  AppDatabase(this._logger) : super(_openConnection());
+  final Talker _logger;
 
   @override
   int get schemaVersion => 1;
 
   @override
-  MigrationStrategy get migration => MigrationStrategy(
-        onCreate: (m) async {
-          await m.createAll();
-
+  MigrationStrategy get migration => MigrationStrategy(onCreate: (m) async {
+        await m.createAll();
+        try {
           // === Загрузка и вставка категорий ===
           final categoriesJson =
               await rootBundle.loadString('lib/assets/data/categories.json');
@@ -73,8 +75,12 @@ class AppDatabase extends _$AppDatabase {
               ),
             );
           }
-        },
-      );
+        } on SqliteException catch (e, s) {
+          _logger.error(e, s);
+        } catch (e, s) {
+          _logger.error(e, s);
+        }
+      });
 }
 
 LazyDatabase _openConnection() {

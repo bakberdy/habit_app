@@ -227,6 +227,69 @@ class CatalogInitial implements CatalogState {
 
 /// @nodoc
 
+class CatalogError implements CatalogState {
+  const CatalogError(this.message);
+
+  final String message;
+
+  /// Create a copy of CatalogState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $CatalogErrorCopyWith<CatalogError> get copyWith =>
+      _$CatalogErrorCopyWithImpl<CatalogError>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is CatalogError &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @override
+  String toString() {
+    return 'CatalogState.error(message: $message)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $CatalogErrorCopyWith<$Res>
+    implements $CatalogStateCopyWith<$Res> {
+  factory $CatalogErrorCopyWith(
+          CatalogError value, $Res Function(CatalogError) _then) =
+      _$CatalogErrorCopyWithImpl;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class _$CatalogErrorCopyWithImpl<$Res> implements $CatalogErrorCopyWith<$Res> {
+  _$CatalogErrorCopyWithImpl(this._self, this._then);
+
+  final CatalogError _self;
+  final $Res Function(CatalogError) _then;
+
+  /// Create a copy of CatalogState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(CatalogError(
+      null == message
+          ? _self.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
 class CatalogLoaded implements CatalogState {
   const CatalogLoaded({required final List<CategoryEntity> categories})
       : _categories = categories;

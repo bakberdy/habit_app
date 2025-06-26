@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:habit_app/core/error/error.dart';
 import 'package:habit_app/core/shared/enums/weekday.dart';
 import 'package:habit_app/core/utils/typedef.dart';
 import 'package:habit_app/features/habit/domain/entities/category_entity.dart';
@@ -19,17 +20,21 @@ class HabitRepoImpl implements HabitRepo {
   @override
   ResultFuture<List<HabitInfo>> getHabitSubscriptionsOfDay(
       DateTime date) async {
-    final subscriptions =
-        await _localDataSource.getHabitSubscriptionsOfDay(date);
-    final completions = await _localDataSource.getHabitCompletions(date);
+    try {
+      final subscriptions =
+          await _localDataSource.getHabitSubscriptionsOfDay(date);
+      final completions = await _localDataSource.getHabitCompletions(date);
 
-    final List<HabitInfo> habitInfos = subscriptions.map((sub) {
-      final isDone =
-          completions.any((c) => c.habitId == sub.habit.id && c.isDone);
-      return HabitInfo(habit: sub.habit, isDone: isDone);
-    }).toList();
+      final List<HabitInfo> habitInfos = subscriptions.map((sub) {
+        final isDone =
+            completions.any((c) => c.habitId == sub.habit.id && c.isDone);
+        return HabitInfo(habit: sub.habit, isDone: isDone);
+      }).toList();
 
-    return Right(habitInfos);
+      return Right(habitInfos);
+    } catch (e) {
+      return Left(UnknownFailure(e.toString()));
+    }
   }
 
   @override
@@ -37,10 +42,14 @@ class HabitRepoImpl implements HabitRepo {
       {required bool isDone,
       required int habitId,
       required DateTime date}) async {
-    await _localDataSource.setHabitCompletionStatus(
-        habitId: habitId, isDone: isDone, date: date);
+    try {
+      await _localDataSource.setHabitCompletionStatus(
+          habitId: habitId, isDone: isDone, date: date);
 
-    return Right(null);
+      return Right(null);
+    } catch (e) {
+      return Left(UnknownFailure(e.toString()));
+    }
   }
 
   @override
@@ -51,29 +60,46 @@ class HabitRepoImpl implements HabitRepo {
       required List<Weekday> days,
       String? why,
       List<TipEntity>? tips}) async {
-    await _localDataSource.addNewHabit(
-        title: title,
-        description: description,
-        takeMinutes: takeMinutes,
-        days: days);
-    return Right(null);
+    try {
+      await _localDataSource.addNewHabit(
+          title: title,
+          description: description,
+          takeMinutes: takeMinutes,
+          days: days);
+      return Right(null);
+    } catch (e) {
+      return Left(UnknownFailure(e.toString()));
+    }
   }
 
   @override
   ResultFuture<List<CategoryEntity>> getCategories() async {
-    return Right(await _localDataSource.getCategories());
+    try {
+      return Right(await _localDataSource.getCategories());
+    } catch (e) {
+      return Left(UnknownFailure(e.toString()));
+    }
   }
 
   @override
   ResultFuture<CategoryInfoEntity> getCategory(int categoryId) async {
-    final category = await _localDataSource.getCategory(categoryId: categoryId);
-    final habits =
-        await _localDataSource.getHabitsOfCategpry(categoryId: categoryId);
-    return Right(CategoryInfoEntity(category: category, habits: habits));
+    try {
+      final category =
+          await _localDataSource.getCategory(categoryId: categoryId);
+      final habits =
+          await _localDataSource.getHabitsOfCategpry(categoryId: categoryId);
+      return Right(CategoryInfoEntity(category: category, habits: habits));
+    } catch (e) {
+      return Left(UnknownFailure(e.toString()));
+    }
   }
 
   @override
   ResultFuture<HabitEntity> getHabitById(int habitId) async {
-    return Right(await _localDataSource.getHabitById(habitId: habitId));
+    try {
+      return Right(await _localDataSource.getHabitById(habitId: habitId));
+    } catch (e) {
+      return Left(UnknownFailure(e.toString()));
+    }
   }
 }

@@ -29,7 +29,9 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
   Future<void> _onGetCategories(
       _GetCategories event, Emitter<CatalogState> emit) async {
     final categories = await _getCategories(NoParams());
-    categories.fold((_) {}, (success) {
+    categories.fold((failure) {
+      emit(CatalogState.error(failure.message));
+    }, (success) {
       emit(CatalogState.loaded(categories: success));
     });
   }
@@ -37,7 +39,9 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
   FutureOr<void> _onLoadCategory(
       _LoadCategory event, Emitter<CatalogState> emit) async {
     final failureOrSuccess = await _getCategoryInfo(event.categoryId);
-    failureOrSuccess.fold((_) {}, (success) {
+    failureOrSuccess.fold((failure) {
+      emit(CatalogState.error(failure.message));
+    }, (success) {
       emit(CatalogState.categoryLoaded(
           habits: success.habits, category: success.category));
     });
@@ -46,7 +50,9 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
   Future<void> _onLoadHabit(
       _LoadHabit event, Emitter<CatalogState> emit) async {
     final failureOrSuccess = await _getHabitById(event.habitId);
-    failureOrSuccess.fold((_) {}, (success) {
+    failureOrSuccess.fold((failure) {
+      emit(CatalogState.error(failure.message));
+    }, (success) {
       emit(CatalogState.habitLoaded(habit: success));
     });
   }

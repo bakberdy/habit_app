@@ -3,6 +3,7 @@ part of 'catalog_bloc.dart';
 @freezed
 class CatalogState with _$CatalogState {
   const factory CatalogState.initial() = CatalogInitial;
+  const factory CatalogState.error(String message) = CatalogError;
   const factory CatalogState.loaded({
     required List<CategoryEntity> categories,
   }) = CatalogLoaded;
