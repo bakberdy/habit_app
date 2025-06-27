@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:habit_app/core/core.dart';
+import 'package:flutter_heatmap_calendar/flutter_heatmap_calendar.dart';
 import 'package:habit_app/core/shared/widgets/custom_sliver_app_bar.dart';
-import 'package:habit_app/core/shared/widgets/daily_habit_card.dart';
+import 'package:habit_app/features/habit/presentation/widgets/daily_habit_card.dart';
 import 'package:habit_app/core/theme/app_colors.dart';
 import 'package:habit_app/core/theme/app_text_theme.dart';
 import 'package:habit_app/features/habit/presentation/bloc/my_plan/my_plan_bloc.dart';
@@ -66,46 +66,77 @@ class _HomeScreenState extends State<HomeScreenContent> {
               SliverVisibility(
                   visible: _searchController.text.isEmpty,
                   sliver: SliverToBoxAdapter(child: RecomendationBar())),
-              // SliverVisibility(
-              //   visible: _searchController.text.isEmpty,
-              //   sliver: SliverToBoxAdapter(
-              //     child: Padding(
-              //       padding: const EdgeInsets.symmetric(horizontal: 20),
-              //       child: Column(
-              //         crossAxisAlignment: CrossAxisAlignment.start,
-              //         children: [
-              //           SizedBox(height: 10),
-              //           Text('Your today\'s plan', style: AppTextTheme.h4),
-              //           SizedBox(height: 10),
-              //         ],
-              //       ),
-              //     ),
-              //   ),
-              // ),
+              SliverVisibility(
+                  visible: _searchController.text.isEmpty,
+                  sliver: SliverToBoxAdapter(child: SizedBox(height: 10))),
+              SliverVisibility(
+                visible: _searchController.text.isEmpty,
+                sliver: SliverToBoxAdapter(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(height: 10),
+                        Text('Your activity calendar', style: AppTextTheme.h4),
+                        SizedBox(height: 10),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              SliverVisibility(
+                  visible: _searchController.text.isEmpty,
+                  sliver: SliverToBoxAdapter(
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          SizedBox(width: 20),
+                          HeatMap(
+                            showText: true,
+                            startDate: DateTime(2025),
+                            datasets: {
+                              DateTime(2025, 2, 2): 1,
+                              DateTime(2025, 2, 3): 2,
+                              DateTime(2025, 2, 4): 3,
+                              DateTime(2025, 2, 5): 4,
+                            },
+                            size: 30,
+                            colorsets: {
+                              1: AppColors.primary,
+                              2: AppColors.primary,
+                              3: AppColors.primary,
+                              4: AppColors.primary,
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                  )),
               SliverVisibility(
                 visible: _searchController.text.isEmpty,
                 sliver: BlocBuilder<MyPlanBloc, MyPlanState>(
                   builder: (context, state) {
                     if (state is MyPlanStateLoaded &&
                         state.habitInfo.isNotEmpty) {
-                      return SliverList.separated(
-                        separatorBuilder: (context, index) => Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20),
-                          child: Divider(
-                            height: 1,
-                            color: AppColors.white,
+                      return SliverPadding(
+                        padding: EdgeInsets.symmetric(horizontal: 20),
+                        sliver: SliverList.separated(
+                          separatorBuilder: (context, index) => Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: Divider(
+                              height: 1,
+                              color: AppColors.white,
+                            ),
                           ),
-                        ),
-                        itemCount: (state.habitInfo.length >= 3
-                                ? 3
-                                : state.habitInfo.length) +
-                            1,
-                        itemBuilder: (context, index) {
-                          if (index == 0) {
-                            return Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 20),
-                              child: Column(
+                          itemCount: (state.habitInfo.length >= 3
+                                  ? 3
+                                  : state.habitInfo.length) +
+                              1,
+                          itemBuilder: (context, index) {
+                            if (index == 0) {
+                              return Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   SizedBox(height: 10),
@@ -113,18 +144,18 @@ class _HomeScreenState extends State<HomeScreenContent> {
                                       style: AppTextTheme.h4),
                                   SizedBox(height: 10),
                                 ],
-                              ),
+                              );
+                            }
+                            return HabitSubsriptionCard(
+                              isLast: state.habitInfo.length >= 3
+                                  ? index == 3
+                                  : state.habitInfo.length == index,
+                              isFirst: index == 1,
+                              habitInfo: state.habitInfo[index - 1],
+                              dayStatus: state.dayStatus,
                             );
-                          }
-                          return HabitSubsriptionCard(
-                            isLast: state.habitInfo.length >= 3
-                                ? index == 3
-                                : state.habitInfo.length == index,
-                            isFirst: index == 1,
-                            habitInfo: state.habitInfo[index - 1],
-                            dayStatus: state.dayStatus,
-                          );
-                        },
+                          },
+                        ),
                       );
                     } else {
                       return SliverToBoxAdapter();
@@ -134,10 +165,7 @@ class _HomeScreenState extends State<HomeScreenContent> {
               ),
               SliverToBoxAdapter(
                 child: SizedBox(height: 10),
-              )
-              // SliverToBoxAdapter(child: HabitsBar(title: 'Education')),
-              // SliverToBoxAdapter(child: HabitsBar(title: 'Life')),
-              // SliverToBoxAdapter(child: HabitsBar(title: 'Sport')),
+              ),
             ],
           ),
         ),

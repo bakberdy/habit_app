@@ -29,6 +29,8 @@ import '../features/habit/domain/usecases/add_new_habit_from_default.dart'
 import '../features/habit/domain/usecases/get_categories.dart' as _i1031;
 import '../features/habit/domain/usecases/get_category_info.dart' as _i545;
 import '../features/habit/domain/usecases/get_habit_by_id.dart' as _i740;
+import '../features/habit/domain/usecases/get_habit_subscription_with_date_and_habit_id.dart'
+    as _i1055;
 import '../features/habit/domain/usecases/get_habits_of_day.dart' as _i825;
 import '../features/habit/domain/usecases/search_habit_usecase.dart' as _i680;
 import '../features/habit/domain/usecases/set_habit_completions_status.dart'
@@ -79,6 +81,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i680.SearchHabitUsecase(gh<_i166.HabitRepo>()));
     gh.lazySingleton<_i618.AddNewHabitFromDefault>(
         () => _i618.AddNewHabitFromDefault(gh<_i166.HabitRepo>()));
+    gh.lazySingleton<_i1055.GetHabitSubscriptionWithDateAndHabitId>(() =>
+        _i1055.GetHabitSubscriptionWithDateAndHabitId(gh<_i166.HabitRepo>()));
     gh.lazySingleton<_i65.AddNewHabit>(
         () => _i65.AddNewHabit(gh<_i166.HabitRepo>()));
     gh.lazySingleton<_i825.GetHabitsOfDay>(
@@ -89,6 +93,7 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i1031.GetCategories>(),
           gh<_i545.GetCategoryInfo>(),
           gh<_i740.GetHabitById>(),
+          gh<_i1055.GetHabitSubscriptionWithDateAndHabitId>(),
         ));
     gh.factory<_i373.SearchBloc>(
         () => _i373.SearchBloc(gh<_i680.SearchHabitUsecase>()));

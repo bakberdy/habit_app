@@ -34,6 +34,8 @@ abstract interface class HabitLocalDataSource {
   Future<HabitModel> getHabitById({required int habitId});
   Future<List<HabitModel>> searchHabit(
       {required String query, int? categoryId});
+  Future<HabitSubscriptionModel?> getSubscriptionWithHabitIdAndDate(
+      {required int habitId, required DateTime date});
 }
 
 @LazySingleton(as: HabitLocalDataSource)
@@ -317,5 +319,35 @@ class HabitLocalDataSourceImpl implements HabitLocalDataSource {
       _logger.error(e, s);
       rethrow;
     }
+  }
+
+  @override
+  Future<HabitSubscriptionModel?> getSubscriptionWithHabitIdAndDate(
+      {required int habitId, required DateTime date}) async {
+    final dateWithoutTime = DateTime(date.year, date.month, date.day);
+    final habit = (await (_db.select(_db.habits)
+          ..where((e) => e.id.equals(habitId)))
+        .getSingleOrNull());
+    if (habit == null) {
+      return null;
+    }
+    final subscription = await (_db.select(_db.habitSubscriptions)
+          ..where(
+              (e) => e.subscriptionDate.isSmallerOrEqualValue(dateWithoutTime))
+          ..where(
+            (e) =>
+                e.unsubscribeDate.isNull() |
+                _db.habitSubscriptions.unsubscribeDate
+                    .isBiggerOrEqualValue(dateWithoutTime),
+          )
+          ..where((e) => e.habitId.equals(habitId)))
+        .getSingleOrNull();
+    if (subscription == null) {
+      return null;
+    }
+    return HabitSubscriptionModel(
+        id: subscription.id,
+        habit: await HabitModel.fromDrift(habit, _db),
+        subscriptionDate: subscription.subscriptionDate);
   }
 }

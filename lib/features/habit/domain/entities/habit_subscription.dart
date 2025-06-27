@@ -1,13 +1,13 @@
 import 'package:equatable/equatable.dart';
 import 'package:habit_app/features/habit/domain/entities/habit_entity.dart';
 
-class HabitSubscription extends Equatable {
+class HabitSubscriptionEntity extends Equatable {
   final int id;
   final HabitEntity habit;
   final DateTime subscriptionDate;
   final DateTime? unsubscribeDate;
 
-  const HabitSubscription({
+  const HabitSubscriptionEntity({
     required this.id,
     required this.habit,
     required this.subscriptionDate,

@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:habit_app/core/core.dart';
-import 'package:habit_app/core/shared/widgets/daily_habit_card.dart';
+import 'package:habit_app/core/shared/widgets/custom_sliver_app_bar.dart';
+import 'package:habit_app/features/habit/presentation/widgets/daily_habit_card.dart';
 import 'package:habit_app/core/theme/app_colors.dart';
 import 'package:habit_app/core/theme/app_text_theme.dart';
 import 'package:habit_app/features/habit/presentation/bloc/my_plan/my_plan_bloc.dart';
@@ -105,23 +106,26 @@ class _MyPlanScreenContentState extends State<MyPlanScreenContent> {
                       },
                     ),
                   ),
-                  SliverList.separated(
-                    separatorBuilder: (context, index) => Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Divider(
-                        height: 1,
-                        color: AppColors.white,
+                  SliverPadding(
+                    padding: EdgeInsetsGeometry.symmetric(horizontal: 20),
+                    sliver: SliverList.separated(
+                      separatorBuilder: (context, index) => Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: Divider(
+                          height: 1,
+                          color: AppColors.white,
+                        ),
                       ),
+                      itemCount: state.habitInfo.length,
+                      itemBuilder: (context, index) {
+                        return HabitSubsriptionCard(
+                          habitInfo: state.habitInfo[index],
+                          isLast: index == state.habitInfo.length - 1,
+                          isFirst: index == 0,
+                          dayStatus: state.dayStatus,
+                        );
+                      },
                     ),
-                    itemCount: state.habitInfo.length,
-                    itemBuilder: (context, index) {
-                      return HabitSubsriptionCard(
-                        habitInfo: state.habitInfo[index],
-                        isLast: index == state.habitInfo.length - 1,
-                        isFirst: index == 0,
-                        dayStatus: state.dayStatus,
-                      );
-                    },
                   ),
                   if (state.habitInfo.isNotEmpty &&
                       (state.dayStatus.isPast() || state.dayStatus.isToday()))

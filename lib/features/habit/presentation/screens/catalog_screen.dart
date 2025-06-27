@@ -1,7 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:habit_app/core/core.dart';
 import 'package:habit_app/core/shared/widgets/app_bar_bottom_with_search_field.dart';
-import 'package:habit_app/core/shared/widgets/widgets.dart';
+import 'package:habit_app/core/shared/widgets/custom_sliver_app_bar.dart';
 import 'package:habit_app/features/habit/presentation/bloc/catalog/catalog_bloc.dart';
 import 'package:habit_app/features/habit/presentation/bloc/search/search_bloc.dart';
 import 'package:habit_app/features/habit/presentation/screens/category_screen.dart';

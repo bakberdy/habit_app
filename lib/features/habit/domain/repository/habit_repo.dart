@@ -3,14 +3,15 @@ import 'package:habit_app/core/utils/typedef.dart';
 import 'package:habit_app/features/habit/domain/entities/category_entity.dart';
 import 'package:habit_app/features/habit/domain/entities/category_info_entity.dart';
 import 'package:habit_app/features/habit/domain/entities/habit_entity.dart';
+import 'package:habit_app/features/habit/domain/entities/habit_subscription.dart';
 import 'package:habit_app/features/habit/domain/entities/tip_entity.dart';
 import 'package:habit_app/features/habit/domain/entities/habit_info.dart';
 
 abstract interface class HabitRepo {
   ResultFuture<List<HabitInfo>> getHabitSubscriptionsOfDay(DateTime date);
   ResultFuture<CategoryInfoEntity> getCategory(int categoryId);
-  // ResultFuture<HabitSubscription?> getHabitSubscription(
-  //     {required int habitId, required DateTime date});
+  ResultFuture<HabitSubscriptionEntity?> getHabitSubscription(
+      {required int habitId, required DateTime date});
   ResultFuture<List<HabitEntity>> searchHabit(
       {required String query, int? categoryId});
   ResultVoid addNewHabitFromDb(int habitId);

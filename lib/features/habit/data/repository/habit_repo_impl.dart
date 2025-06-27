@@ -6,6 +6,7 @@ import 'package:habit_app/features/habit/data/models/tip_model.dart';
 import 'package:habit_app/features/habit/domain/entities/category_entity.dart';
 import 'package:habit_app/features/habit/domain/entities/category_info_entity.dart';
 import 'package:habit_app/features/habit/domain/entities/habit_entity.dart';
+import 'package:habit_app/features/habit/domain/entities/habit_subscription.dart';
 import 'package:habit_app/features/habit/domain/entities/tip_entity.dart';
 import 'package:habit_app/features/habit/data/datasource/habit_local_data_source.dart';
 import 'package:habit_app/features/habit/domain/entities/habit_info.dart';
@@ -122,6 +123,18 @@ class HabitRepoImpl implements HabitRepo {
   ResultVoid addNewHabitFromDb(int habitId) async {
     try {
       return Right(await _localDataSource.addNewHabitFromDb(habitId));
+    } catch (e) {
+      return Left(UnknownFailure(e.toString()));
+    }
+  }
+
+  @override
+  ResultFuture<HabitSubscriptionEntity?> getHabitSubscription(
+      {required int habitId, required DateTime date}) async {
+    try {
+      final subscription = await _localDataSource
+          .getSubscriptionWithHabitIdAndDate(habitId: habitId, date: date);
+      return Right(subscription);
     } catch (e) {
       return Left(UnknownFailure(e.toString()));
     }

@@ -38,7 +38,7 @@ class HabitCard extends StatelessWidget {
                         style: AppTextTheme.h5.copyWith(height: 1.2)),
                     SizedBox(height: 4),
                     Text(
-                      'This is a description of the habit.',
+                      habit.description,
                       style: AppTextTheme.bodySmall
                           .copyWith(color: Colors.black54),
                     ),

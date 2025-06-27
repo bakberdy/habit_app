@@ -1,24 +1,25 @@
-
-abstract class AppException implements Exception {
-   String get message;
-  const AppException();
+class AppException implements Exception {
+  final String _defaultMessage = "Error occured";
+  String get message => _defaultMessage;
+  AppException();
 }
 
 class ParsingDataException extends AppException {
   @override
   final String message;
 
-  const ParsingDataException(this.message);
+  ParsingDataException(this.message);
 
   @override
   String toString() => 'ParsingDataException: $message';
 }
 
-class TokenException extends AppException{
-  final String _message;
-
-  TokenException(this._message);
+class NotFoundException extends AppException {
   @override
-  String get message => _message;
+  final String message;
 
+  NotFoundException([this.message = "Resource not found"]);
+
+  @override
+  String toString() => 'NotFoundException: $message';
 }

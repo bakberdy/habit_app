@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:habit_app/core/shared/widgets/widgets.dart';
+import 'package:habit_app/core/shared/widgets/custom_filled_button.dart';
 import 'package:habit_app/core/theme/app_colors.dart';
 import 'package:habit_app/core/theme/app_text_theme.dart';
 import 'package:habit_app/features/habit/presentation/bloc/catalog/catalog_bloc.dart';
@@ -155,23 +155,48 @@ class _HabitScreenState extends State<HabitScreenContent> {
                     SliverToBoxAdapter(
                       child: SizedBox(height: 20),
                     ),
-                    SliverToBoxAdapter(
-                      child: Padding(
-                        padding: const EdgeInsets.all(20),
-                        child: SizedBox(
-                          height: 40,
-                          child: CustomFilledButton(
-                              titleColor: Colors.white,
-                              title: 'Add To Plan',
-                              onPressed: () {
-                                context.read<MyPlanBloc>().add(
-                                    MyPlanEvent.addHabitFromDb(
-                                        habitId: state.habit.id));
-                              },
-                              backgroundColor: AppColors.primary),
-                        ),
-                      ),
-                    )
+                    state.isSubscribed
+                        ? SliverToBoxAdapter(
+                            child: Padding(
+                              padding: const EdgeInsets.all(20),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Habit is already in your plan. Good job! ',
+                                    style: AppTextTheme.bodyMedium.copyWith(
+                                      color: AppColors.primary,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                  Text(
+                                    '😊',
+                                    style: TextStyle(fontSize: 20),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          )
+                        : SliverToBoxAdapter(
+                            child: Padding(
+                              padding: const EdgeInsets.all(20),
+                              child: SizedBox(
+                                height: 40,
+                                child: CustomFilledButton(
+                                    titleColor: Colors.white,
+                                    title: 'Add To Plan',
+                                    onPressed: () {
+                                      context.read<MyPlanBloc>().add(
+                                          MyPlanEvent.addHabitFromDb(
+                                              habitId: state.habit.id));
+                                      context.read<CatalogBloc>().add(
+                                          CatalogEvent.loadHabit(
+                                              habitId: state.habit.id));
+                                    },
+                                    backgroundColor: AppColors.primary),
+                              ),
+                            ),
+                          )
                   ],
                 );
               } else {

@@ -13,6 +13,8 @@ class CatalogState with _$CatalogState {
     required CategoryEntity category,
   }) = CategoryLoaded;
 
-  const factory CatalogState.habitLoaded({required HabitEntity habit}) =
-      HabitLoaded;
+  const factory CatalogState.habitLoaded({
+    required HabitEntity habit,
+    required bool isSubscribed,
+  }) = HabitLoaded;
 }

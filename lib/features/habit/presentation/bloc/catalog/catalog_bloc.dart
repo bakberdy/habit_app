@@ -8,6 +8,7 @@ import 'package:habit_app/features/habit/domain/entities/habit_entity.dart';
 import 'package:habit_app/features/habit/domain/usecases/get_categories.dart';
 import 'package:habit_app/features/habit/domain/usecases/get_category_info.dart';
 import 'package:habit_app/features/habit/domain/usecases/get_habit_by_id.dart';
+import 'package:habit_app/features/habit/domain/usecases/get_habit_subscription_with_date_and_habit_id.dart';
 import 'package:injectable/injectable.dart';
 
 part 'catalog_event.dart';
@@ -19,8 +20,14 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
   final GetCategories _getCategories;
   final GetCategoryInfo _getCategoryInfo;
   final GetHabitById _getHabitById;
-  CatalogBloc(this._getCategories, this._getCategoryInfo, this._getHabitById)
-      : super(CatalogState.initial()) {
+  final GetHabitSubscriptionWithDateAndHabitId
+      _getHabitSubscriptionWithDateAndHabitId;
+  CatalogBloc(
+    this._getCategories,
+    this._getCategoryInfo,
+    this._getHabitById,
+    this._getHabitSubscriptionWithDateAndHabitId,
+  ) : super(CatalogState.initial()) {
     on<_GetCategories>(_onGetCategories);
     on<_LoadCategory>(_onLoadCategory);
     on<_LoadHabit>(_onLoadHabit);
@@ -50,10 +57,16 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
   Future<void> _onLoadHabit(
       _LoadHabit event, Emitter<CatalogState> emit) async {
     final failureOrSuccess = await _getHabitById(event.habitId);
-    failureOrSuccess.fold((failure) {
+    await failureOrSuccess.fold((failure) {
       emit(CatalogState.error(failure.message));
-    }, (success) {
-      emit(CatalogState.habitLoaded(habit: success));
+    }, (success) async {
+      final subscriptionOrFailure =
+          await _getHabitSubscriptionWithDateAndHabitId(
+              GeySubParams(success.id, DateTime.now()));
+      subscriptionOrFailure.fold((l) => emit(CatalogState.error(l.message)),
+          (r) {
+        emit(CatalogState.habitLoaded(habit: success, isSubscribed: r != null));
+      });
     });
   }
 }

@@ -444,9 +444,10 @@ class _$CategoryLoadedCopyWithImpl<$Res>
 /// @nodoc
 
 class HabitLoaded implements CatalogState {
-  const HabitLoaded({required this.habit});
+  const HabitLoaded({required this.habit, required this.isSubscribed});
 
   final HabitEntity habit;
+  final bool isSubscribed;
 
   /// Create a copy of CatalogState
   /// with the given fields replaced by the non-null parameter values.
@@ -460,15 +461,17 @@ class HabitLoaded implements CatalogState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is HabitLoaded &&
-            (identical(other.habit, habit) || other.habit == habit));
+            (identical(other.habit, habit) || other.habit == habit) &&
+            (identical(other.isSubscribed, isSubscribed) ||
+                other.isSubscribed == isSubscribed));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, habit);
+  int get hashCode => Object.hash(runtimeType, habit, isSubscribed);
 
   @override
   String toString() {
-    return 'CatalogState.habitLoaded(habit: $habit)';
+    return 'CatalogState.habitLoaded(habit: $habit, isSubscribed: $isSubscribed)';
   }
 }
 
@@ -479,7 +482,7 @@ abstract mixin class $HabitLoadedCopyWith<$Res>
           HabitLoaded value, $Res Function(HabitLoaded) _then) =
       _$HabitLoadedCopyWithImpl;
   @useResult
-  $Res call({HabitEntity habit});
+  $Res call({HabitEntity habit, bool isSubscribed});
 }
 
 /// @nodoc
@@ -494,12 +497,17 @@ class _$HabitLoadedCopyWithImpl<$Res> implements $HabitLoadedCopyWith<$Res> {
   @pragma('vm:prefer-inline')
   $Res call({
     Object? habit = null,
+    Object? isSubscribed = null,
   }) {
     return _then(HabitLoaded(
       habit: null == habit
           ? _self.habit
           : habit // ignore: cast_nullable_to_non_nullable
               as HabitEntity,
+      isSubscribed: null == isSubscribed
+          ? _self.isSubscribed
+          : isSubscribed // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
