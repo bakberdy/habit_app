@@ -7,6 +7,7 @@ import 'package:habit_app/features/habit/domain/entities/tip_entity.dart';
 import 'package:habit_app/features/habit/domain/entities/habit_completion.dart';
 import 'package:habit_app/features/habit/domain/entities/habit_info.dart';
 import 'package:habit_app/features/habit/domain/usecases/add_new_habit.dart';
+import 'package:habit_app/features/habit/domain/usecases/add_new_habit_from_default.dart';
 import 'package:habit_app/features/habit/domain/usecases/get_habits_of_day.dart';
 import 'package:habit_app/features/habit/domain/usecases/set_habit_completions_status.dart';
 import 'package:injectable/injectable.dart';
@@ -20,7 +21,9 @@ class MyPlanBloc extends Bloc<MyPlanEvent, MyPlanState> {
   final GetHabitsOfDay _getHabitsOfDay;
   final SetHabitCompletionStatus _setHabitCompletionStatus;
   final AddNewHabit _addNewHabit;
+  final AddNewHabitFromDefault _addNewHabitFromDefault;
   MyPlanBloc(
+    this._addNewHabitFromDefault,
     this._getHabitsOfDay,
     this._setHabitCompletionStatus,
     this._addNewHabit,
@@ -28,6 +31,7 @@ class MyPlanBloc extends Bloc<MyPlanEvent, MyPlanState> {
     on<_GetSubscriptions>(_onGetSubscriptions);
     on<_ToggleHabitDoneStatus>(_onToggleHabitDoneStatus);
     on<_AddNewHabit>(_onAddNewHabit);
+    on<_AddHabitFromDb>(_addHabitFromDb);
   }
 
   FutureOr<void> _onGetSubscriptions(
@@ -95,6 +99,19 @@ class MyPlanBloc extends Bloc<MyPlanEvent, MyPlanState> {
       tips: event.tips,
     ));
     failureOrSucccess.fold((failure) {
+      emit(MyPlanState.errorState(message: failure.message));
+    }, (success) {
+      final now = DateTime.now();
+      emit(MyPlanState.created());
+      add(MyPlanEvent.getSubscriptionsOn(
+          date: DateTime(now.year, now.month, now.day)));
+    });
+  }
+
+  Future<void> _addHabitFromDb(
+      _AddHabitFromDb event, Emitter<MyPlanState> emit) async {
+    final failureOrSuccess = await _addNewHabitFromDefault(event.habitId);
+    failureOrSuccess.fold((failure) {
       emit(MyPlanState.errorState(message: failure.message));
     }, (success) {
       final now = DateTime.now();

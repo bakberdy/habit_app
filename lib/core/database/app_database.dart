@@ -74,6 +74,18 @@ class AppDatabase extends _$AppDatabase {
               ),
             );
           }
+
+          final weekdaysJson =
+              await rootBundle.loadString('lib/assets/data/weekday.json');
+          final weekdaysDData = jsonDecode(weekdaysJson) as List;
+          for (final weekday in weekdaysDData) {
+            await into(habitWeekdays).insert(
+              HabitWeekdaysCompanion.insert(
+                habitId: weekday['habitId'],
+                weekday: weekday['weekday'],
+              ),
+            );
+          }
         } on SqliteException catch (e, s) {
           _logger.error(e, s);
         } catch (e, s) {
@@ -85,7 +97,7 @@ class AppDatabase extends _$AppDatabase {
 LazyDatabase _openConnection() {
   return LazyDatabase(() async {
     final dir = await getApplicationDocumentsDirectory();
-    final file = File(p.join(dir.path, 'habit_app:_db'));
+    final file = File(p.join(dir.path, 'habit_app_dbd_db'));
     return NativeDatabase(file);
   });
 }

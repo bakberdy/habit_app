@@ -285,7 +285,8 @@ class $HabitsTable extends Habits with TableInfo<$HabitsTable, Habit> {
             minTextLength: 1,
           ),
           type: DriftSqlType.string,
-          requiredDuringInsert: true);
+          requiredDuringInsert: true,
+          defaultConstraints: GeneratedColumn.constraintIsAlways('UNIQUE'));
   static const VerificationMeta _descriptionMeta =
       const VerificationMeta('description');
   @override
@@ -365,6 +366,10 @@ class $HabitsTable extends Habits with TableInfo<$HabitsTable, Habit> {
 
   @override
   Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  List<Set<GeneratedColumn>> get uniqueKeys => [
+        {title, description},
+      ];
   @override
   Habit map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
@@ -946,6 +951,10 @@ class $HabitSubscriptionsTable extends HabitSubscriptions
 
   @override
   Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  List<Set<GeneratedColumn>> get uniqueKeys => [
+        {habitId, subscriptionDate},
+      ];
   @override
   HabitSubscription map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';

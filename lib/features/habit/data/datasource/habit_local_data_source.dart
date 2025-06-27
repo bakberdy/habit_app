@@ -15,6 +15,8 @@ abstract interface class HabitLocalDataSource {
 
   Future<List<HabitCompletionModel>> getHabitCompletions(DateTime date);
 
+  Future<void> addNewHabitFromDb(int habitId);
+
   Future<void> addNewHabit({
     required String title,
     required String description,
@@ -295,6 +297,24 @@ class HabitLocalDataSourceImpl implements HabitLocalDataSource {
       return Future.wait(rows.map((e) => HabitModel.fromDrift(e, _db)));
     } catch (e, s) {
       _logger.info(e, s);
+      rethrow;
+    }
+  }
+
+  @override
+  Future<void> addNewHabitFromDb(int habitId) async {
+    try {
+      final now = DateTime.now();
+      final today = DateTime(now.year, now.month, now.day);
+
+      await _db.into(_db.habitSubscriptions).insert(
+            HabitSubscriptionsCompanion.insert(
+              habitId: habitId,
+              subscriptionDate: today,
+            ),
+          );
+    } catch (e, s) {
+      _logger.error(e, s);
       rethrow;
     }
   }

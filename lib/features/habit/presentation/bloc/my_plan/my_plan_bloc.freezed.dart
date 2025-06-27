@@ -101,6 +101,70 @@ class __$GetSubscriptionsCopyWithImpl<$Res>
 
 /// @nodoc
 
+class _AddHabitFromDb implements MyPlanEvent {
+  _AddHabitFromDb({required this.habitId});
+
+  final int habitId;
+
+  /// Create a copy of MyPlanEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$AddHabitFromDbCopyWith<_AddHabitFromDb> get copyWith =>
+      __$AddHabitFromDbCopyWithImpl<_AddHabitFromDb>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _AddHabitFromDb &&
+            (identical(other.habitId, habitId) || other.habitId == habitId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, habitId);
+
+  @override
+  String toString() {
+    return 'MyPlanEvent.addHabitFromDb(habitId: $habitId)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$AddHabitFromDbCopyWith<$Res>
+    implements $MyPlanEventCopyWith<$Res> {
+  factory _$AddHabitFromDbCopyWith(
+          _AddHabitFromDb value, $Res Function(_AddHabitFromDb) _then) =
+      __$AddHabitFromDbCopyWithImpl;
+  @useResult
+  $Res call({int habitId});
+}
+
+/// @nodoc
+class __$AddHabitFromDbCopyWithImpl<$Res>
+    implements _$AddHabitFromDbCopyWith<$Res> {
+  __$AddHabitFromDbCopyWithImpl(this._self, this._then);
+
+  final _AddHabitFromDb _self;
+  final $Res Function(_AddHabitFromDb) _then;
+
+  /// Create a copy of MyPlanEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? habitId = null,
+  }) {
+    return _then(_AddHabitFromDb(
+      habitId: null == habitId
+          ? _self.habitId
+          : habitId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
 class _AddNewHabit implements MyPlanEvent {
   _AddNewHabit(
       {required this.title,

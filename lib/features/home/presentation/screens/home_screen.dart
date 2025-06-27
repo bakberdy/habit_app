@@ -7,7 +7,6 @@ import 'package:habit_app/core/theme/app_text_theme.dart';
 import 'package:habit_app/features/habit/presentation/bloc/my_plan/my_plan_bloc.dart';
 import 'package:habit_app/features/habit/presentation/bloc/search/search_bloc.dart';
 import 'package:habit_app/features/habit/presentation/screens/category_screen.dart';
-import 'package:habit_app/features/home/presentation/widgets/habits_bar.dart';
 import 'package:habit_app/core/shared/widgets/app_bar_bottom_with_search_field.dart';
 import 'package:habit_app/features/home/presentation/widgets/quote_card.dart';
 import 'package:habit_app/features/home/presentation/widgets/recomendation_bar.dart';
@@ -67,27 +66,28 @@ class _HomeScreenState extends State<HomeScreenContent> {
               SliverVisibility(
                   visible: _searchController.text.isEmpty,
                   sliver: SliverToBoxAdapter(child: RecomendationBar())),
-              SliverVisibility(
-                visible: _searchController.text.isEmpty,
-                sliver: SliverToBoxAdapter(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(height: 10),
-                        Text('Your today\'s plan', style: AppTextTheme.h4),
-                        SizedBox(height: 10),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
+              // SliverVisibility(
+              //   visible: _searchController.text.isEmpty,
+              //   sliver: SliverToBoxAdapter(
+              //     child: Padding(
+              //       padding: const EdgeInsets.symmetric(horizontal: 20),
+              //       child: Column(
+              //         crossAxisAlignment: CrossAxisAlignment.start,
+              //         children: [
+              //           SizedBox(height: 10),
+              //           Text('Your today\'s plan', style: AppTextTheme.h4),
+              //           SizedBox(height: 10),
+              //         ],
+              //       ),
+              //     ),
+              //   ),
+              // ),
               SliverVisibility(
                 visible: _searchController.text.isEmpty,
                 sliver: BlocBuilder<MyPlanBloc, MyPlanState>(
                   builder: (context, state) {
-                    if (state is MyPlanStateLoaded) {
+                    if (state is MyPlanStateLoaded &&
+                        state.habitInfo.isNotEmpty) {
                       return SliverList.separated(
                         separatorBuilder: (context, index) => Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -96,16 +96,32 @@ class _HomeScreenState extends State<HomeScreenContent> {
                             color: AppColors.white,
                           ),
                         ),
-                        itemCount: state.habitInfo.length >= 3
-                            ? 3
-                            : state.habitInfo.length,
+                        itemCount: (state.habitInfo.length >= 3
+                                ? 3
+                                : state.habitInfo.length) +
+                            1,
                         itemBuilder: (context, index) {
+                          if (index == 0) {
+                            return Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 20),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(height: 10),
+                                  Text('Your today\'s plan',
+                                      style: AppTextTheme.h4),
+                                  SizedBox(height: 10),
+                                ],
+                              ),
+                            );
+                          }
                           return HabitSubsriptionCard(
                             isLast: state.habitInfo.length >= 3
-                                ? index == 2
-                                : state.habitInfo.length - 1 == index,
-                            isFirst: index == 0,
-                            habitInfo: state.habitInfo[index],
+                                ? index == 3
+                                : state.habitInfo.length == index,
+                            isFirst: index == 1,
+                            habitInfo: state.habitInfo[index - 1],
                             dayStatus: state.dayStatus,
                           );
                         },
@@ -116,6 +132,9 @@ class _HomeScreenState extends State<HomeScreenContent> {
                   },
                 ),
               ),
+              SliverToBoxAdapter(
+                child: SizedBox(height: 10),
+              )
               // SliverToBoxAdapter(child: HabitsBar(title: 'Education')),
               // SliverToBoxAdapter(child: HabitsBar(title: 'Life')),
               // SliverToBoxAdapter(child: HabitsBar(title: 'Sport')),

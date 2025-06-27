@@ -4,6 +4,7 @@ part of 'my_plan_bloc.dart';
 sealed class MyPlanEvent with _$MyPlanEvent {
   factory MyPlanEvent.getSubscriptionsOn({required DateTime date}) =
       _GetSubscriptions;
+  factory MyPlanEvent.addHabitFromDb({required int habitId}) = _AddHabitFromDb;
   factory MyPlanEvent.addNewHabit(
       {required String title,
       required String description,

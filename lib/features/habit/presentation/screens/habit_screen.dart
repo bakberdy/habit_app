@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:habit_app/core/shared/widgets/widgets.dart';
 import 'package:habit_app/core/theme/app_colors.dart';
 import 'package:habit_app/core/theme/app_text_theme.dart';
 import 'package:habit_app/features/habit/presentation/bloc/catalog/catalog_bloc.dart';
+import 'package:habit_app/features/habit/presentation/bloc/my_plan/my_plan_bloc.dart';
 import 'package:habit_app/features/habit/presentation/widgets/days_widget.dart';
 import 'package:habit_app/features/habit/presentation/widgets/tips_widget.dart';
 import 'package:habit_app/injection/injection.dart';
@@ -14,11 +16,15 @@ class HabitScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<CatalogBloc>(
-      create: (_) =>
-          sl<CatalogBloc>()..add(CatalogEvent.loadHabit(habitId: habitId)),
-      child: HabitScreenContent(habitId: habitId),
-    );
+    return MultiBlocProvider(providers: [
+      BlocProvider<CatalogBloc>(
+        create: (_) =>
+            sl<CatalogBloc>()..add(CatalogEvent.loadHabit(habitId: habitId)),
+      ),
+      BlocProvider<MyPlanBloc>(
+        create: (_) => sl<MyPlanBloc>(),
+      ),
+    ], child: HabitScreenContent(habitId: habitId));
   }
 }
 
@@ -122,7 +128,7 @@ class _HabitScreenState extends State<HabitScreenContent> {
                               ],
                             ),
                             SizedBox(height: 10),
-                            Text('Suggested days:',
+                            Text('Days:',
                                 style: AppTextTheme.bodyMedium
                                     .copyWith(fontWeight: FontWeight.w600)),
                             SizedBox(height: 5),
@@ -145,7 +151,27 @@ class _HabitScreenState extends State<HabitScreenContent> {
                               ),
                               TipsWidget(tips: habit.tips!)
                             ]),
-                          )
+                          ),
+                    SliverToBoxAdapter(
+                      child: SizedBox(height: 20),
+                    ),
+                    SliverToBoxAdapter(
+                      child: Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: SizedBox(
+                          height: 40,
+                          child: CustomFilledButton(
+                              titleColor: Colors.white,
+                              title: 'Add To Plan',
+                              onPressed: () {
+                                context.read<MyPlanBloc>().add(
+                                    MyPlanEvent.addHabitFromDb(
+                                        habitId: state.habit.id));
+                              },
+                              backgroundColor: AppColors.primary),
+                        ),
+                      ),
+                    )
                   ],
                 );
               } else {

@@ -12,6 +12,11 @@ class RecomendationBar extends StatefulWidget {
 class _RecomendationBarState extends State<RecomendationBar> {
   int _currentPage = 0;
   final int _count = 3;
+  final images = [
+    "lib/assets/illustrations/1.jpg",
+    "lib/assets/illustrations/2.jpg",
+    "lib/assets/illustrations/3.jpg",
+  ];
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -26,7 +31,7 @@ class _RecomendationBarState extends State<RecomendationBar> {
           ]),
         ),
         SizedBox(
-          height: 180,
+          height: 220,
           child: PageView.builder(
             itemCount: _count,
             onPageChanged: (value) {
@@ -35,22 +40,22 @@ class _RecomendationBarState extends State<RecomendationBar> {
             },
             itemBuilder: (context, index) => Container(
               margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              height: 180,
+              height: 220,
               width: double.infinity,
+              alignment: Alignment.bottomRight,
               clipBehavior: Clip.hardEdge,
+              padding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
               decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage(
-                          'lib/assets/illustrations/habit_book_tea.jpg')),
-                  boxShadow: [
-                    BoxShadow(
-                        offset: Offset(2, 2),
-                        blurRadius: 10,
-                        color: AppColors.grey.withAlpha(40))
-                  ],
-                  borderRadius: BorderRadius.circular(12),
-                  color: Colors.pink),
-              child: Text('Some article'),
+                image: DecorationImage(
+                    fit: BoxFit.cover, image: AssetImage(images[index])),
+                boxShadow: [
+                  BoxShadow(
+                      offset: Offset(2, 2),
+                      blurRadius: 10,
+                      color: AppColors.grey.withAlpha(40))
+                ],
+                borderRadius: BorderRadius.circular(12),
+              ),
             ),
           ),
         ),

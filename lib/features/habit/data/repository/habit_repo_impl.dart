@@ -117,4 +117,13 @@ class HabitRepoImpl implements HabitRepo {
       return Left(UnknownFailure(e.toString()));
     }
   }
+
+  @override
+  ResultVoid addNewHabitFromDb(int habitId) async {
+    try {
+      return Right(await _localDataSource.addNewHabitFromDb(habitId));
+    } catch (e) {
+      return Left(UnknownFailure(e.toString()));
+    }
+  }
 }
