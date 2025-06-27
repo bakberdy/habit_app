@@ -1,6 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_heatmap_calendar/flutter_heatmap_calendar.dart';
+import 'package:go_router/go_router.dart';
 import 'package:habit_app/core/shared/widgets/custom_sliver_app_bar.dart';
+import 'package:habit_app/features/habit/presentation/bloc/catalog/catalog_bloc.dart';
+import 'package:habit_app/features/habit/presentation/bloc/habit_map/habit_map_bloc.dart';
 import 'package:habit_app/features/habit/presentation/widgets/daily_habit_card.dart';
 import 'package:habit_app/core/theme/app_colors.dart';
 import 'package:habit_app/core/theme/app_text_theme.dart';
@@ -20,6 +23,8 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(providers: [
       BlocProvider(create: (_) => sl<SearchBloc>()),
+      BlocProvider(
+          create: (_) => sl<HabitMapBloc>()..add(HabitMapEvent.load())),
       BlocProvider(
           create: (_) => sl<MyPlanBloc>()
             ..add(MyPlanEvent.getSubscriptionsOn(date: DateTime.now())))
@@ -90,28 +95,30 @@ class _HomeScreenState extends State<HomeScreenContent> {
                   sliver: SliverToBoxAdapter(
                     child: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: [
-                          SizedBox(width: 20),
-                          HeatMap(
-                            showText: true,
-                            startDate: DateTime(2025),
-                            datasets: {
-                              DateTime(2025, 2, 2): 1,
-                              DateTime(2025, 2, 3): 2,
-                              DateTime(2025, 2, 4): 3,
-                              DateTime(2025, 2, 5): 4,
-                            },
-                            size: 30,
-                            colorsets: {
-                              1: AppColors.primary,
-                              2: AppColors.primary,
-                              3: AppColors.primary,
-                              4: AppColors.primary,
-                            },
-                          ),
-                        ],
-                      ),
+                      child: BlocBuilder<HabitMapBloc, HabitMapState>(
+                          builder: (context, state) {
+                        Map<DateTime, int> dataset = {};
+                        if (state is HabitMapLoaded) {
+                          dataset = state.dateset;
+                        }
+                        return Row(
+                          children: [
+                            SizedBox(width: 20),
+                            HeatMap(
+                              endDate: DateTime(2026, 9),
+                              startDate: DateTime(2025, 6),
+                              datasets: dataset,
+                              size: 30,
+                              colorsets: {
+                                1: AppColors.primary.withAlpha(50),
+                                2: AppColors.primary.withAlpha(120),
+                                3: AppColors.primary.withAlpha(200),
+                                4: AppColors.primary,
+                              },
+                            ),
+                          ],
+                        );
+                      }),
                     ),
                   )),
               SliverVisibility(
@@ -131,7 +138,7 @@ class _HomeScreenState extends State<HomeScreenContent> {
                             ),
                           ),
                           itemCount: (state.habitInfo.length >= 3
-                                  ? 3
+                                  ? 4
                                   : state.habitInfo.length) +
                               1,
                           itemBuilder: (context, index) {
@@ -145,6 +152,38 @@ class _HomeScreenState extends State<HomeScreenContent> {
                                   SizedBox(height: 10),
                                 ],
                               );
+                            }
+                            if (index == 4) {
+                              return InkWell(
+                                  onTap: () {
+                                    context.goNamed('my_plan');
+                                  },
+                                  child: Align(
+                                    alignment: Alignment.centerRight,
+                                    child: SizedBox(
+                                      height: 40,
+                                      child: Center(
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              'More plan',
+                                              style: AppTextTheme.bodySmall
+                                                  .copyWith(
+                                                      fontWeight:
+                                                          FontWeight.w600),
+                                            ),
+                                            SizedBox(width: 5),
+                                            Icon(
+                                              Icons.arrow_forward_ios,
+                                              size: 15,
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ));
                             }
                             return HabitSubsriptionCard(
                               isLast: state.habitInfo.length >= 3

@@ -47,6 +47,7 @@ class MyPlanBloc extends Bloc<MyPlanEvent, MyPlanState> {
           numberOfDoneHabits++;
         }
       }
+
       emit(MyPlanState.loaded(
         numberOfDoneHabits: numberOfDoneHabits,
         date: event.date,

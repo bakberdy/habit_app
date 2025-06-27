@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:dartz/dartz.dart';
 import 'package:habit_app/core/error/error.dart';
 import 'package:habit_app/core/shared/enums/weekday.dart';
@@ -138,5 +140,33 @@ class HabitRepoImpl implements HabitRepo {
     } catch (e) {
       return Left(UnknownFailure(e.toString()));
     }
+  }
+
+  @override
+  ResultFuture<Map<DateTime, double>> getHabitsDonePercentage() async {
+    final loopStartDate = DateTime(2025, 6, 1); // исправлено
+    final now = DateTime.now();
+    final today = DateTime(now.year, now.month, now.day);
+
+    final Map<DateTime, double> datasets = {};
+
+    for (int i = 0;; i++) {
+      final date = loopStartDate.add(Duration(days: i));
+      if (date.isAfter(today)) break;
+
+      final subscriptions =
+          await _localDataSource.getHabitSubscriptionsOfDay(date);
+      final completions = (await _localDataSource.getHabitCompletions(date))
+          .where((e) => e.isDone)
+          .toList();
+
+      if (subscriptions.isEmpty) {
+        datasets[date] = 0.0;
+      } else {
+        datasets[date] = completions.length / subscriptions.length;
+      }
+    }
+
+    return Right(datasets);
   }
 }

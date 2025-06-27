@@ -8,6 +8,7 @@ import 'package:habit_app/features/habit/domain/entities/tip_entity.dart';
 import 'package:habit_app/features/habit/domain/entities/habit_info.dart';
 
 abstract interface class HabitRepo {
+  ResultFuture<Map<DateTime, double>> getHabitsDonePercentage();
   ResultFuture<List<HabitInfo>> getHabitSubscriptionsOfDay(DateTime date);
   ResultFuture<CategoryInfoEntity> getCategory(int categoryId);
   ResultFuture<HabitSubscriptionEntity?> getHabitSubscription(

@@ -1,3 +1,4 @@
+import 'package:habit_app/core/theme/app_text_theme.dart';
 import 'package:habit_app/features/settings/presentation/widgets/buttons_list.dart';
 import 'package:flutter/material.dart';
 
@@ -26,26 +27,17 @@ class _SettingsPageContentState extends State<SettingsPageContent> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          title: Text(
+            'Settings',
+            style: AppTextTheme.h5.copyWith(fontWeight: FontWeight.w700),
+          ),
+          centerTitle: true,
+        ),
         body: Padding(
             padding: const EdgeInsets.only(right: 20, left: 20),
             child: ListView(
               children: [
-                SizedBox(height: 25),
-                ButtonsList(
-                  children: [
-                    ButtonDetails(
-                        onTap: () {
-                          // context
-                          //     .push('${AppPaths.settings}${AppPaths.profile}');
-                        },
-                        title: 'Profile',
-                        prefixIcon: SizedBox(
-                            height: 25,
-                            width: 25,
-                            child:
-                                Image.asset('lib/assets/icons/profile.png'))),
-                  ],
-                ),
                 SizedBox(height: 20),
                 ButtonsList(
                   children: [

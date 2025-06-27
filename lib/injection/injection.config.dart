@@ -31,11 +31,15 @@ import '../features/habit/domain/usecases/get_category_info.dart' as _i545;
 import '../features/habit/domain/usecases/get_habit_by_id.dart' as _i740;
 import '../features/habit/domain/usecases/get_habit_subscription_with_date_and_habit_id.dart'
     as _i1055;
+import '../features/habit/domain/usecases/get_habits_done_percentage.dart'
+    as _i854;
 import '../features/habit/domain/usecases/get_habits_of_day.dart' as _i825;
 import '../features/habit/domain/usecases/search_habit_usecase.dart' as _i680;
 import '../features/habit/domain/usecases/set_habit_completions_status.dart'
     as _i56;
 import '../features/habit/presentation/bloc/catalog/catalog_bloc.dart' as _i216;
+import '../features/habit/presentation/bloc/habit_map/habit_map_bloc.dart'
+    as _i257;
 import '../features/habit/presentation/bloc/my_plan/my_plan_bloc.dart' as _i836;
 import '../features/habit/presentation/bloc/search/search_bloc.dart' as _i373;
 import 'injection.dart' as _i464;
@@ -71,18 +75,22 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.lazySingleton<_i166.HabitRepo>(
         () => _i687.HabitRepoImpl(gh<_i655.HabitLocalDataSource>()));
+    gh.lazySingleton<_i1055.GetHabitSubscriptionWithDateAndHabitId>(() =>
+        _i1055.GetHabitSubscriptionWithDateAndHabitId(gh<_i166.HabitRepo>()));
     gh.lazySingleton<_i545.GetCategoryInfo>(
         () => _i545.GetCategoryInfo(gh<_i166.HabitRepo>()));
+    gh.lazySingleton<_i618.AddNewHabitFromDefault>(
+        () => _i618.AddNewHabitFromDefault(gh<_i166.HabitRepo>()));
     gh.lazySingleton<_i740.GetHabitById>(
         () => _i740.GetHabitById(gh<_i166.HabitRepo>()));
     gh.lazySingleton<_i1031.GetCategories>(
         () => _i1031.GetCategories(gh<_i166.HabitRepo>()));
     gh.lazySingleton<_i680.SearchHabitUsecase>(
         () => _i680.SearchHabitUsecase(gh<_i166.HabitRepo>()));
-    gh.lazySingleton<_i618.AddNewHabitFromDefault>(
-        () => _i618.AddNewHabitFromDefault(gh<_i166.HabitRepo>()));
-    gh.lazySingleton<_i1055.GetHabitSubscriptionWithDateAndHabitId>(() =>
-        _i1055.GetHabitSubscriptionWithDateAndHabitId(gh<_i166.HabitRepo>()));
+    gh.lazySingleton<_i854.GetHabitsDonePercentage>(
+        () => _i854.GetHabitsDonePercentage(gh<_i166.HabitRepo>()));
+    gh.factory<_i257.HabitMapBloc>(
+        () => _i257.HabitMapBloc(gh<_i854.GetHabitsDonePercentage>()));
     gh.lazySingleton<_i65.AddNewHabit>(
         () => _i65.AddNewHabit(gh<_i166.HabitRepo>()));
     gh.lazySingleton<_i825.GetHabitsOfDay>(
