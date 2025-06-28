@@ -11,6 +11,7 @@ import 'package:habit_app/features/habit/presentation/bloc/my_plan/my_plan_bloc.
 import 'package:habit_app/features/habit/presentation/bloc/search/search_bloc.dart';
 import 'package:habit_app/core/shared/widgets/app_bar_bottom_with_search_field.dart';
 import 'package:habit_app/features/habit/presentation/widgets/search_result_sliver.dart';
+import 'package:habit_app/features/home/presentation/bloc/home_bloc.dart';
 import 'package:habit_app/features/home/presentation/widgets/quote_card.dart';
 import 'package:habit_app/features/home/presentation/widgets/recomendation_bar.dart';
 import 'package:flutter/material.dart';
@@ -26,12 +27,18 @@ class HomeScreen extends StatelessWidget {
     return MultiBlocProvider(providers: [
       BlocProvider(create: (_) => sl<SearchBloc>()),
       BlocProvider(
+          create: (_) => sl<HomeBloc>()
+            ..add(HomeEvent.loadDailyQuote(
+                locale: Provider.of<LocaleProvider>(context, listen: false)
+                    .locale))),
+      BlocProvider(
           create: (_) => sl<HabitMapBloc>()..add(HabitMapEvent.load())),
       BlocProvider(
           create: (_) => sl<MyPlanBloc>()
             ..add(MyPlanEvent.getSubscriptionsOn(
                 date: DateTime.now(),
-                locale: Provider.of<LocaleProvider>(context).locale)))
+                locale: Provider.of<LocaleProvider>(context, listen: false)
+                    .locale)))
     ], child: HomeScreenContent());
   }
 }
@@ -57,13 +64,7 @@ class _HomeScreenState extends State<HomeScreenContent> {
                 bottom: AppBarBottomWithSearchField(
                   title: S.of(context).welcome("Bakberdi"),
                   searchController: _searchController,
-                  onChange: (value) {
-                    context.read<SearchBloc>().add(SearchEvent.search(
-                        query: value,
-                        locale:
-                            Provider.of<LocaleProvider>(context, listen: false)
-                                .locale));
-                  },
+                  onChange: _onSearchBarChange,
                 ),
               ),
               if (state is Searching && _searchController.text.isNotEmpty)
@@ -71,7 +72,16 @@ class _HomeScreenState extends State<HomeScreenContent> {
               SliverVisibility(
                 visible: _searchController.text.isEmpty,
                 sliver: SliverToBoxAdapter(
-                  child: QuoteCard(),
+                  child: BlocBuilder<HomeBloc, HomeState>(
+                      builder: (context, state) {
+                    if (state is HomeLoaded) {
+                      return QuoteCard(
+                        quote: state.quote,
+                      );
+                    } else {
+                      return SizedBox();
+                    }
+                  }),
                 ),
               ),
               SliverVisibility(
@@ -217,5 +227,11 @@ class _HomeScreenState extends State<HomeScreenContent> {
         ),
       ),
     );
+  }
+
+  _onSearchBarChange(value) {
+    context.read<SearchBloc>().add(SearchEvent.search(
+        query: value,
+        locale: Provider.of<LocaleProvider>(context, listen: false).locale));
   }
 }

@@ -175,9 +175,12 @@ class _CreateOwnHabitBottomSheetState extends State<CreateOwnHabitBottomSheet>
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          S.of(context).addMoreDetailsToClarifyYourHabit,
-                          style: AppTextTheme.bodySmall,
+                        SizedBox(
+                          width: 280,
+                          child: Text(
+                            S.of(context).addMoreDetailsToClarifyYourHabit,
+                            style: AppTextTheme.bodySmall,
+                          ),
                         ),
                         AnimatedBuilder(
                           animation: _rotationAnimationController,

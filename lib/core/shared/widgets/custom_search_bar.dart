@@ -29,6 +29,14 @@ class CustomSearchBar extends StatelessWidget {
         controller: controller,
         style: themeData.textTheme.bodyMedium,
         decoration: InputDecoration(
+            suffixIcon: controller?.text.isNotEmpty ?? false
+                ? IconButton(
+                    onPressed: () {
+                      controller?.clear();
+                      onChange("");
+                    },
+                    icon: Icon(Icons.close))
+                : null,
             contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             fillColor: Colors.white,
             filled: true,
