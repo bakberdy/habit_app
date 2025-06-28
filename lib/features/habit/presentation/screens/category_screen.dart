@@ -58,7 +58,9 @@ class _CategoryScreenContentState extends State<CategoryScreenContent> {
                       searchController: _searchController,
                       onChange: (value) {
                         context.read<SearchBloc>().add(SearchEvent.search(
-                            locale: Provider.of<LocaleProvider>(context).locale,
+                            locale: Provider.of<LocaleProvider>(context,
+                                    listen: false)
+                                .locale,
                             query: value,
                             categoryId: widget.categoryId));
                       },
