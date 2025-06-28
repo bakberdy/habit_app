@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:habit_app/core/providers/locale_provider.dart';
 import 'package:habit_app/core/shared/widgets/custom_filled_button.dart';
 import 'package:habit_app/core/theme/app_colors.dart';
 import 'package:habit_app/core/theme/app_text_theme.dart';
@@ -7,8 +8,10 @@ import 'package:habit_app/features/habit/presentation/bloc/catalog/catalog_bloc.
 import 'package:habit_app/features/habit/presentation/bloc/my_plan/my_plan_bloc.dart';
 import 'package:habit_app/features/habit/presentation/widgets/days_widget.dart';
 import 'package:habit_app/features/habit/presentation/widgets/tips_widget.dart';
+import 'package:habit_app/generated/l10n.dart';
 import 'package:habit_app/injection/injection.dart';
 import 'package:lottie/lottie.dart';
+import 'package:provider/provider.dart';
 
 class HabitScreen extends StatelessWidget {
   const HabitScreen({super.key, required this.habitId});
@@ -18,8 +21,10 @@ class HabitScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(providers: [
       BlocProvider<CatalogBloc>(
-        create: (_) =>
-            sl<CatalogBloc>()..add(CatalogEvent.loadHabit(habitId: habitId)),
+        create: (_) => sl<CatalogBloc>()
+          ..add(CatalogEvent.loadHabit(
+              habitId: habitId,
+              locale: Provider.of<LocaleProvider>(context).locale)),
       ),
       BlocProvider<MyPlanBloc>(
         create: (_) => sl<MyPlanBloc>(),
@@ -61,7 +66,7 @@ class _HabitScreenState extends State<HabitScreenContent> {
                             color: AppColors.textPrimary,
                           ),
                           Text(
-                            "Details",
+                            S.of(context).details,
                             style: AppTextTheme.h5.copyWith(
                               fontWeight: FontWeight.w700,
                             ),
@@ -105,7 +110,7 @@ class _HabitScreenState extends State<HabitScreenContent> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Text('Why:',
+                                      Text(S.of(context).why,
                                           style: AppTextTheme.bodyMedium
                                               .copyWith(
                                                   fontWeight: FontWeight.w600)),
@@ -118,7 +123,7 @@ class _HabitScreenState extends State<HabitScreenContent> {
                                   ),
                             Row(
                               children: [
-                                Text('Takes minutes:',
+                                Text(S.of(context).takesMinutes,
                                     style: AppTextTheme.bodyMedium
                                         .copyWith(fontWeight: FontWeight.w600)),
                                 SizedBox(width: 5),
@@ -128,7 +133,7 @@ class _HabitScreenState extends State<HabitScreenContent> {
                               ],
                             ),
                             SizedBox(height: 10),
-                            Text('Days:',
+                            Text(S.of(context).days,
                                 style: AppTextTheme.bodyMedium
                                     .copyWith(fontWeight: FontWeight.w600)),
                             SizedBox(height: 5),
@@ -145,7 +150,7 @@ class _HabitScreenState extends State<HabitScreenContent> {
                               Padding(
                                 padding: EdgeInsetsGeometry.symmetric(
                                     horizontal: 20, vertical: 10),
-                                child: Text('Tips:',
+                                child: Text(S.of(context).tips,
                                     style: AppTextTheme.bodyMedium
                                         .copyWith(fontWeight: FontWeight.w600)),
                               ),
@@ -163,7 +168,9 @@ class _HabitScreenState extends State<HabitScreenContent> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    'Habit is already in your plan. Good job! ',
+                                    S
+                                        .of(context)
+                                        .habitIsAlreadyInYourPlanGoodJob,
                                     style: AppTextTheme.bodyMedium.copyWith(
                                       color: AppColors.primary,
                                       fontWeight: FontWeight.w600,
@@ -184,13 +191,23 @@ class _HabitScreenState extends State<HabitScreenContent> {
                                 height: 40,
                                 child: CustomFilledButton(
                                     titleColor: Colors.white,
-                                    title: 'Add To Plan',
+                                    title: S.of(context).addToPlan,
                                     onPressed: () {
                                       context.read<MyPlanBloc>().add(
                                           MyPlanEvent.addHabitFromDb(
+                                              locale:
+                                                  Provider.of<LocaleProvider>(
+                                                          context,
+                                                          listen: false)
+                                                      .locale,
                                               habitId: state.habit.id));
                                       context.read<CatalogBloc>().add(
                                           CatalogEvent.loadHabit(
+                                              locale:
+                                                  Provider.of<LocaleProvider>(
+                                                          listen: false,
+                                                          context)
+                                                      .locale,
                                               habitId: state.habit.id));
                                     },
                                     backgroundColor: AppColors.primary),

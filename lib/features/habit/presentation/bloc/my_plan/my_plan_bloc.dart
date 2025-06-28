@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:ui';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -10,6 +11,7 @@ import 'package:habit_app/features/habit/domain/usecases/add_new_habit.dart';
 import 'package:habit_app/features/habit/domain/usecases/add_new_habit_from_default.dart';
 import 'package:habit_app/features/habit/domain/usecases/get_habits_of_day.dart';
 import 'package:habit_app/features/habit/domain/usecases/set_habit_completions_status.dart';
+import 'package:habit_app/generated/l10n.dart';
 import 'package:injectable/injectable.dart';
 
 part 'my_plan_event.dart';
@@ -36,7 +38,8 @@ class MyPlanBloc extends Bloc<MyPlanEvent, MyPlanState> {
 
   FutureOr<void> _onGetSubscriptions(
       _GetSubscriptions event, Emitter<MyPlanState> emit) async {
-    final res = await _getHabitsOfDay(event.date);
+    final res = await _getHabitsOfDay(
+        GetHabitsOfDayParams(date: event.date, locale: event.locale));
 
     res.fold((failure) {
       emit(MyPlanState.errorState(message: failure.message));
@@ -65,7 +68,8 @@ class MyPlanBloc extends Bloc<MyPlanEvent, MyPlanState> {
     res.fold((failure) {
       emit(MyPlanState.errorState(message: failure.message));
     }, (_) {
-      add(MyPlanEvent.getSubscriptionsOn(date: event.date));
+      add(MyPlanEvent.getSubscriptionsOn(
+          date: event.date, locale: event.locale));
     });
   }
 
@@ -105,7 +109,12 @@ class MyPlanBloc extends Bloc<MyPlanEvent, MyPlanState> {
       final now = DateTime.now();
       emit(MyPlanState.created());
       add(MyPlanEvent.getSubscriptionsOn(
-          date: DateTime(now.year, now.month, now.day)));
+          locale: event.locale,
+          date: DateTime(
+            now.year,
+            now.month,
+            now.day,
+          )));
     });
   }
 
@@ -118,19 +127,19 @@ class MyPlanBloc extends Bloc<MyPlanEvent, MyPlanState> {
       final now = DateTime.now();
       emit(MyPlanState.created());
       add(MyPlanEvent.getSubscriptionsOn(
-          date: DateTime(now.year, now.month, now.day)));
+          locale: event.locale, date: DateTime(now.year, now.month, now.day)));
     });
   }
 
   String _textOfTheDay(DateTime date) {
     if (_isSameDate(date, DateTime.now())) {
-      return "Your today's plan";
+      return S.current.yourTodaysPlan;
     } else if (_isSameDate(date, DateTime.now().subtract(Duration(days: 1)))) {
-      return "Your yesterday plan";
+      return S.current.yourYesterdayPlan;
     } else if (_isSameDate(date, DateTime.now().add(Duration(days: 1)))) {
-      return "Your tomorrow plan";
+      return S.current.yourTomorrowPlan;
     } else {
-      return 'Your plan of ${date.day} ${_monthName(date.month)}';
+      return S.current.yourPlanOfDayMonth(date.day, _monthName(date.month));
     }
   }
 
@@ -139,19 +148,19 @@ class MyPlanBloc extends Bloc<MyPlanEvent, MyPlanState> {
   }
 
   String _monthName(int month) {
-    const months = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December'
+    final months = [
+      S.current.january,
+      S.current.february,
+      S.current.march,
+      S.current.april,
+      S.current.may,
+      S.current.june,
+      S.current.july,
+      S.current.august,
+      S.current.september,
+      S.current.october,
+      S.current.november,
+      S.current.december,
     ];
     return months[month - 1];
   }

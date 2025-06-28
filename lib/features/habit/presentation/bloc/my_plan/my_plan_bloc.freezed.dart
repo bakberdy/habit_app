@@ -15,35 +15,76 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$MyPlanEvent {
+  Locale get locale;
+
+  /// Create a copy of MyPlanEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $MyPlanEventCopyWith<MyPlanEvent> get copyWith =>
+      _$MyPlanEventCopyWithImpl<MyPlanEvent>(this as MyPlanEvent, _$identity);
+
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is MyPlanEvent);
+        (other.runtimeType == runtimeType &&
+            other is MyPlanEvent &&
+            (identical(other.locale, locale) || other.locale == locale));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, locale);
 
   @override
   String toString() {
-    return 'MyPlanEvent()';
+    return 'MyPlanEvent(locale: $locale)';
   }
 }
 
 /// @nodoc
-class $MyPlanEventCopyWith<$Res> {
-  $MyPlanEventCopyWith(MyPlanEvent _, $Res Function(MyPlanEvent) __);
+abstract mixin class $MyPlanEventCopyWith<$Res> {
+  factory $MyPlanEventCopyWith(
+          MyPlanEvent value, $Res Function(MyPlanEvent) _then) =
+      _$MyPlanEventCopyWithImpl;
+  @useResult
+  $Res call({Locale locale});
+}
+
+/// @nodoc
+class _$MyPlanEventCopyWithImpl<$Res> implements $MyPlanEventCopyWith<$Res> {
+  _$MyPlanEventCopyWithImpl(this._self, this._then);
+
+  final MyPlanEvent _self;
+  final $Res Function(MyPlanEvent) _then;
+
+  /// Create a copy of MyPlanEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? locale = null,
+  }) {
+    return _then(_self.copyWith(
+      locale: null == locale
+          ? _self.locale
+          : locale // ignore: cast_nullable_to_non_nullable
+              as Locale,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _GetSubscriptions implements MyPlanEvent {
-  _GetSubscriptions({required this.date});
+  _GetSubscriptions({required this.date, required this.locale});
 
   final DateTime date;
+  @override
+  final Locale locale;
 
   /// Create a copy of MyPlanEvent
   /// with the given fields replaced by the non-null parameter values.
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   _$GetSubscriptionsCopyWith<_GetSubscriptions> get copyWith =>
@@ -54,15 +95,16 @@ class _GetSubscriptions implements MyPlanEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _GetSubscriptions &&
-            (identical(other.date, date) || other.date == date));
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.locale, locale) || other.locale == locale));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, date);
+  int get hashCode => Object.hash(runtimeType, date, locale);
 
   @override
   String toString() {
-    return 'MyPlanEvent.getSubscriptionsOn(date: $date)';
+    return 'MyPlanEvent.getSubscriptionsOn(date: $date, locale: $locale)';
   }
 }
 
@@ -72,8 +114,9 @@ abstract mixin class _$GetSubscriptionsCopyWith<$Res>
   factory _$GetSubscriptionsCopyWith(
           _GetSubscriptions value, $Res Function(_GetSubscriptions) _then) =
       __$GetSubscriptionsCopyWithImpl;
+  @override
   @useResult
-  $Res call({DateTime date});
+  $Res call({DateTime date, Locale locale});
 }
 
 /// @nodoc
@@ -86,15 +129,21 @@ class __$GetSubscriptionsCopyWithImpl<$Res>
 
   /// Create a copy of MyPlanEvent
   /// with the given fields replaced by the non-null parameter values.
+  @override
   @pragma('vm:prefer-inline')
   $Res call({
     Object? date = null,
+    Object? locale = null,
   }) {
     return _then(_GetSubscriptions(
       date: null == date
           ? _self.date
           : date // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      locale: null == locale
+          ? _self.locale
+          : locale // ignore: cast_nullable_to_non_nullable
+              as Locale,
     ));
   }
 }
@@ -102,12 +151,15 @@ class __$GetSubscriptionsCopyWithImpl<$Res>
 /// @nodoc
 
 class _AddHabitFromDb implements MyPlanEvent {
-  _AddHabitFromDb({required this.habitId});
+  _AddHabitFromDb({required this.habitId, required this.locale});
 
   final int habitId;
+  @override
+  final Locale locale;
 
   /// Create a copy of MyPlanEvent
   /// with the given fields replaced by the non-null parameter values.
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   _$AddHabitFromDbCopyWith<_AddHabitFromDb> get copyWith =>
@@ -118,15 +170,16 @@ class _AddHabitFromDb implements MyPlanEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _AddHabitFromDb &&
-            (identical(other.habitId, habitId) || other.habitId == habitId));
+            (identical(other.habitId, habitId) || other.habitId == habitId) &&
+            (identical(other.locale, locale) || other.locale == locale));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, habitId);
+  int get hashCode => Object.hash(runtimeType, habitId, locale);
 
   @override
   String toString() {
-    return 'MyPlanEvent.addHabitFromDb(habitId: $habitId)';
+    return 'MyPlanEvent.addHabitFromDb(habitId: $habitId, locale: $locale)';
   }
 }
 
@@ -136,8 +189,9 @@ abstract mixin class _$AddHabitFromDbCopyWith<$Res>
   factory _$AddHabitFromDbCopyWith(
           _AddHabitFromDb value, $Res Function(_AddHabitFromDb) _then) =
       __$AddHabitFromDbCopyWithImpl;
+  @override
   @useResult
-  $Res call({int habitId});
+  $Res call({int habitId, Locale locale});
 }
 
 /// @nodoc
@@ -150,15 +204,21 @@ class __$AddHabitFromDbCopyWithImpl<$Res>
 
   /// Create a copy of MyPlanEvent
   /// with the given fields replaced by the non-null parameter values.
+  @override
   @pragma('vm:prefer-inline')
   $Res call({
     Object? habitId = null,
+    Object? locale = null,
   }) {
     return _then(_AddHabitFromDb(
       habitId: null == habitId
           ? _self.habitId
           : habitId // ignore: cast_nullable_to_non_nullable
               as int,
+      locale: null == locale
+          ? _self.locale
+          : locale // ignore: cast_nullable_to_non_nullable
+              as Locale,
     ));
   }
 }
@@ -171,6 +231,7 @@ class _AddNewHabit implements MyPlanEvent {
       required this.description,
       required this.takeMinutes,
       required final List<Weekday> days,
+      required this.locale,
       this.why,
       final List<TipEntity>? tips})
       : _days = days,
@@ -186,6 +247,8 @@ class _AddNewHabit implements MyPlanEvent {
     return EqualUnmodifiableListView(_days);
   }
 
+  @override
+  final Locale locale;
   final String? why;
   final List<TipEntity>? _tips;
   List<TipEntity>? get tips {
@@ -198,6 +261,7 @@ class _AddNewHabit implements MyPlanEvent {
 
   /// Create a copy of MyPlanEvent
   /// with the given fields replaced by the non-null parameter values.
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   _$AddNewHabitCopyWith<_AddNewHabit> get copyWith =>
@@ -214,6 +278,7 @@ class _AddNewHabit implements MyPlanEvent {
             (identical(other.takeMinutes, takeMinutes) ||
                 other.takeMinutes == takeMinutes) &&
             const DeepCollectionEquality().equals(other._days, _days) &&
+            (identical(other.locale, locale) || other.locale == locale) &&
             (identical(other.why, why) || other.why == why) &&
             const DeepCollectionEquality().equals(other._tips, _tips));
   }
@@ -225,12 +290,13 @@ class _AddNewHabit implements MyPlanEvent {
       description,
       takeMinutes,
       const DeepCollectionEquality().hash(_days),
+      locale,
       why,
       const DeepCollectionEquality().hash(_tips));
 
   @override
   String toString() {
-    return 'MyPlanEvent.addNewHabit(title: $title, description: $description, takeMinutes: $takeMinutes, days: $days, why: $why, tips: $tips)';
+    return 'MyPlanEvent.addNewHabit(title: $title, description: $description, takeMinutes: $takeMinutes, days: $days, locale: $locale, why: $why, tips: $tips)';
   }
 }
 
@@ -240,12 +306,14 @@ abstract mixin class _$AddNewHabitCopyWith<$Res>
   factory _$AddNewHabitCopyWith(
           _AddNewHabit value, $Res Function(_AddNewHabit) _then) =
       __$AddNewHabitCopyWithImpl;
+  @override
   @useResult
   $Res call(
       {String title,
       String description,
       int? takeMinutes,
       List<Weekday> days,
+      Locale locale,
       String? why,
       List<TipEntity>? tips});
 }
@@ -259,12 +327,14 @@ class __$AddNewHabitCopyWithImpl<$Res> implements _$AddNewHabitCopyWith<$Res> {
 
   /// Create a copy of MyPlanEvent
   /// with the given fields replaced by the non-null parameter values.
+  @override
   @pragma('vm:prefer-inline')
   $Res call({
     Object? title = null,
     Object? description = null,
     Object? takeMinutes = freezed,
     Object? days = null,
+    Object? locale = null,
     Object? why = freezed,
     Object? tips = freezed,
   }) {
@@ -285,6 +355,10 @@ class __$AddNewHabitCopyWithImpl<$Res> implements _$AddNewHabitCopyWith<$Res> {
           ? _self._days
           : days // ignore: cast_nullable_to_non_nullable
               as List<Weekday>,
+      locale: null == locale
+          ? _self.locale
+          : locale // ignore: cast_nullable_to_non_nullable
+              as Locale,
       why: freezed == why
           ? _self.why
           : why // ignore: cast_nullable_to_non_nullable
@@ -301,14 +375,20 @@ class __$AddNewHabitCopyWithImpl<$Res> implements _$AddNewHabitCopyWith<$Res> {
 
 class _ToggleHabitDoneStatus implements MyPlanEvent {
   _ToggleHabitDoneStatus(
-      {required this.date, required this.habitId, required this.isDone});
+      {required this.date,
+      required this.locale,
+      required this.habitId,
+      required this.isDone});
 
   final DateTime date;
+  @override
+  final Locale locale;
   final int habitId;
   final bool isDone;
 
   /// Create a copy of MyPlanEvent
   /// with the given fields replaced by the non-null parameter values.
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   _$ToggleHabitDoneStatusCopyWith<_ToggleHabitDoneStatus> get copyWith =>
@@ -321,16 +401,17 @@ class _ToggleHabitDoneStatus implements MyPlanEvent {
         (other.runtimeType == runtimeType &&
             other is _ToggleHabitDoneStatus &&
             (identical(other.date, date) || other.date == date) &&
+            (identical(other.locale, locale) || other.locale == locale) &&
             (identical(other.habitId, habitId) || other.habitId == habitId) &&
             (identical(other.isDone, isDone) || other.isDone == isDone));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, date, habitId, isDone);
+  int get hashCode => Object.hash(runtimeType, date, locale, habitId, isDone);
 
   @override
   String toString() {
-    return 'MyPlanEvent.toggleHabitDoneStatus(date: $date, habitId: $habitId, isDone: $isDone)';
+    return 'MyPlanEvent.toggleHabitDoneStatus(date: $date, locale: $locale, habitId: $habitId, isDone: $isDone)';
   }
 }
 
@@ -340,8 +421,9 @@ abstract mixin class _$ToggleHabitDoneStatusCopyWith<$Res>
   factory _$ToggleHabitDoneStatusCopyWith(_ToggleHabitDoneStatus value,
           $Res Function(_ToggleHabitDoneStatus) _then) =
       __$ToggleHabitDoneStatusCopyWithImpl;
+  @override
   @useResult
-  $Res call({DateTime date, int habitId, bool isDone});
+  $Res call({DateTime date, Locale locale, int habitId, bool isDone});
 }
 
 /// @nodoc
@@ -354,9 +436,11 @@ class __$ToggleHabitDoneStatusCopyWithImpl<$Res>
 
   /// Create a copy of MyPlanEvent
   /// with the given fields replaced by the non-null parameter values.
+  @override
   @pragma('vm:prefer-inline')
   $Res call({
     Object? date = null,
+    Object? locale = null,
     Object? habitId = null,
     Object? isDone = null,
   }) {
@@ -365,6 +449,10 @@ class __$ToggleHabitDoneStatusCopyWithImpl<$Res>
           ? _self.date
           : date // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      locale: null == locale
+          ? _self.locale
+          : locale // ignore: cast_nullable_to_non_nullable
+              as Locale,
       habitId: null == habitId
           ? _self.habitId
           : habitId // ignore: cast_nullable_to_non_nullable

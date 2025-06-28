@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:habit_app/core/core.dart';
 import 'package:habit_app/features/habit/domain/entities/habit_entity.dart';
 import 'package:habit_app/features/habit/domain/repository/habit_repo.dart';
@@ -10,13 +12,17 @@ class SearchHabitUsecase extends Usecase<List<HabitEntity>, SearchHabitParams> {
   @override
   ResultFuture<List<HabitEntity>> call(SearchHabitParams params) {
     return _repo.searchHabit(
-        query: params.query, categoryId: params.categoryId);
+        locale: params.locale,
+        query: params.query,
+        categoryId: params.categoryId);
   }
 }
 
 class SearchHabitParams {
   final String query;
   final int? categoryId;
+  final Locale locale;
 
-  SearchHabitParams({required this.query, required this.categoryId});
+  SearchHabitParams(
+      {required this.query, required this.categoryId, required this.locale});
 }

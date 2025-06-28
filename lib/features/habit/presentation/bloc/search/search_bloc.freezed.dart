@@ -38,10 +38,12 @@ class $SearchEventCopyWith<$Res> {
 /// @nodoc
 
 class _SearchEvent implements SearchEvent {
-  const _SearchEvent({required this.query, this.categoryId});
+  const _SearchEvent(
+      {required this.query, this.categoryId, required this.locale});
 
   final String query;
   final int? categoryId;
+  final Locale locale;
 
   /// Create a copy of SearchEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -57,15 +59,16 @@ class _SearchEvent implements SearchEvent {
             other is _SearchEvent &&
             (identical(other.query, query) || other.query == query) &&
             (identical(other.categoryId, categoryId) ||
-                other.categoryId == categoryId));
+                other.categoryId == categoryId) &&
+            (identical(other.locale, locale) || other.locale == locale));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, query, categoryId);
+  int get hashCode => Object.hash(runtimeType, query, categoryId, locale);
 
   @override
   String toString() {
-    return 'SearchEvent.search(query: $query, categoryId: $categoryId)';
+    return 'SearchEvent.search(query: $query, categoryId: $categoryId, locale: $locale)';
   }
 }
 
@@ -76,7 +79,7 @@ abstract mixin class _$SearchEventCopyWith<$Res>
           _SearchEvent value, $Res Function(_SearchEvent) _then) =
       __$SearchEventCopyWithImpl;
   @useResult
-  $Res call({String query, int? categoryId});
+  $Res call({String query, int? categoryId, Locale locale});
 }
 
 /// @nodoc
@@ -92,6 +95,7 @@ class __$SearchEventCopyWithImpl<$Res> implements _$SearchEventCopyWith<$Res> {
   $Res call({
     Object? query = null,
     Object? categoryId = freezed,
+    Object? locale = null,
   }) {
     return _then(_SearchEvent(
       query: null == query
@@ -102,6 +106,10 @@ class __$SearchEventCopyWithImpl<$Res> implements _$SearchEventCopyWith<$Res> {
           ? _self.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
               as int?,
+      locale: null == locale
+          ? _self.locale
+          : locale // ignore: cast_nullable_to_non_nullable
+              as Locale,
     ));
   }
 }

@@ -11,10 +11,16 @@ class AppRoutes {
         observers: [observer],
         routes: [
           GoRoute(
-            name: 'settings',
-            path: AppPaths.settings,
-            builder: (context, state) => SettingsPage(),
-          )
+              name: 'settings',
+              path: AppPaths.settings,
+              builder: (context, state) => SettingsPage(),
+              routes: [
+                GoRoute(
+                  path: AppPaths.selectLanguage,
+                  name: 'select_language',
+                  builder: (context, state) => SelectLanguagePage(),
+                )
+              ])
         ],
       );
 

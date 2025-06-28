@@ -38,9 +38,13 @@ class AppDatabase extends _$AppDatabase {
             await into(categories).insert(
               CategoriesCompanion.insert(
                 id: Value(item['id']),
-                title: item['title'],
-                description: item['description'],
                 imagePath: Value(item['imagePath']),
+                titleEn: item['title_en'],
+                descriptionEn: item['description_en'],
+                titleRu: item['title_ru'],
+                descriptionRu: item['description_ru'],
+                titleKk: item['title_kk'],
+                descriptionKk: item['description_kk'],
               ),
             );
           }
@@ -52,12 +56,17 @@ class AppDatabase extends _$AppDatabase {
           for (final item in habitsData) {
             await into(habits).insert(
               HabitsCompanion.insert(
-                title: item['title'],
-                description: item['description'],
-                why: Value(item['why']),
-                takesTime: item['takesTime'],
-                categoryId: item['categoryId'],
-              ),
+                  takesTime: item['takesTime'],
+                  categoryId: (item['categoryId']),
+                  titleEn: item['title_en'],
+                  descriptionEn: item['description_en'],
+                  whyEn: Value(item['why_en']),
+                  titleKk: item['title_kk'],
+                  descriptionKk: item['description_kk'],
+                  whyKk: Value(item['why_kk']),
+                  titleRu: item['title_ru'],
+                  descriptionRu: item['description_ru'],
+                  whyRu: Value(item['why_ru'])),
             );
           }
 
@@ -69,8 +78,12 @@ class AppDatabase extends _$AppDatabase {
             await into(tips).insert(
               TipsCompanion.insert(
                 habitId: tip['habitId'],
-                title: tip['title'],
-                content: tip['content'],
+                titleEn: tip['title_en'],
+                contentEn: tip['content_en'],
+                titleRu: tip['title_ru'],
+                contentRu: tip['content_ru'],
+                titleKk: tip['title_kk'],
+                contentKk: tip['content_kk'],
               ),
             );
           }
@@ -97,7 +110,7 @@ class AppDatabase extends _$AppDatabase {
 LazyDatabase _openConnection() {
   return LazyDatabase(() async {
     final dir = await getApplicationDocumentsDirectory();
-    final file = File(p.join(dir.path, 'habit_app_dbd_db'));
+    final file = File(p.join(dir.path, 'habit_app:dededededeata'));
     return NativeDatabase(file);
   });
 }

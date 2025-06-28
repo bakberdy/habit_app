@@ -13,6 +13,7 @@ import 'package:dio/dio.dart' as _i361;
 import 'package:flutter_bloc/flutter_bloc.dart' as _i331;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
+import 'package:shared_preferences/shared_preferences.dart' as _i460;
 import 'package:talker_dio_logger/talker_dio_logger_interceptor.dart' as _i162;
 import 'package:talker_flutter/talker_flutter.dart' as _i207;
 
@@ -42,20 +43,29 @@ import '../features/habit/presentation/bloc/habit_map/habit_map_bloc.dart'
     as _i257;
 import '../features/habit/presentation/bloc/my_plan/my_plan_bloc.dart' as _i836;
 import '../features/habit/presentation/bloc/search/search_bloc.dart' as _i373;
+import '../features/settings/domain/repository/settings_repository.dart'
+    as _i816;
+import '../features/settings/domain/usecases/set_locale.dart' as _i1030;
+import '../features/settings/presentation/blocs/settings/settings_bloc.dart'
+    as _i848;
 import 'injection.dart' as _i464;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
-  _i174.GetIt init({
+  Future<_i174.GetIt> init({
     String? environment,
     _i526.EnvironmentFilter? environmentFilter,
-  }) {
+  }) async {
     final gh = _i526.GetItHelper(
       this,
       environment,
       environmentFilter,
     );
     final appModule = _$AppModule();
+    await gh.factoryAsync<_i460.SharedPreferences>(
+      () => appModule.sharedPreferences,
+      preResolve: true,
+    );
     gh.singleton<_i207.Talker>(() => appModule.talker);
     gh.singleton<_i331.BlocObserver>(() => appModule.talkerBlocLogger);
     gh.singleton<_i207.TalkerRouteObserver>(() => appModule.routeObserver);
@@ -64,6 +74,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i156.AppRouter>(() => appModule.appRouter);
     gh.lazySingleton<_i935.AppDatabase>(
         () => _i935.AppDatabase(gh<_i207.Talker>()));
+    gh.lazySingleton<_i1030.SetLocale>(
+        () => _i1030.SetLocale(gh<_i816.SettingsRepository>()));
     gh.lazySingleton<_i655.HabitLocalDataSource>(
         () => _i655.HabitLocalDataSourceImpl(
               gh<_i935.AppDatabase>(),
@@ -89,6 +101,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i680.SearchHabitUsecase(gh<_i166.HabitRepo>()));
     gh.lazySingleton<_i854.GetHabitsDonePercentage>(
         () => _i854.GetHabitsDonePercentage(gh<_i166.HabitRepo>()));
+    gh.factory<_i848.SettingsBloc>(
+        () => _i848.SettingsBloc(gh<_i1030.SetLocale>()));
     gh.factory<_i257.HabitMapBloc>(
         () => _i257.HabitMapBloc(gh<_i854.GetHabitsDonePercentage>()));
     gh.lazySingleton<_i65.AddNewHabit>(

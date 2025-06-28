@@ -9,6 +9,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
 
   # UI packages
   cupertino_icons: ^1.0.8
@@ -24,7 +26,7 @@ dependencies:
   # State management
   flutter_bloc: ^9.0.0
   provider: ^6.1.4
-  
+
   # Navigation
   go_router: ^15.0.0
 
@@ -36,7 +38,6 @@ dependencies:
   json_annotation: ^4.9.0
   freezed_annotation: ^3.0.0
   equatable: ^2.0.7
-
 
   # Utils
   dartz: ^0.10.1
@@ -53,7 +54,7 @@ dependencies:
   drift_flutter: ^0.2.4
   path_provider: ^2.1.5
 
-#some
+  #some
   mime: ^2.0.0
   path: ^1.9.1
   dio: ^5.8.0+1
@@ -63,20 +64,20 @@ dependencies:
   easy_date_timeline: ^2.0.9
   lottie: ^3.3.1
   flutter_heatmap_calendar: ^1.0.5
+  shared_preferences: ^2.5.3
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^5.0.0
-  injectable_generator:
-  build_runner: ^2.4.15  
+  injectable_generator: null
+  build_runner: ^2.4.15
   json_serializable: ^6.9.5
   bloc_test: ^10.0.0
   freezed: ^3.0.6
   bloc_lint: 0.2.0-dev.0
   drift_dev: ^2.26.1
-
 
 flutter:
   uses-material-design: true
@@ -88,4 +89,5 @@ flutter:
     - lib/assets/animations/
     - lib/assets/pictures/
     - lib/assets/data/
-
+flutter_intl:
+  enabled: true

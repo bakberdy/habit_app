@@ -1,20 +1,32 @@
 [
     {
         "id": 0,
-        "title": "Daily habits",
-        "description": "This category includes habits you want to practice every day.",
+        "title_en": "Daily habits",
+        "description_en": "This category includes habits you want to practice every day.",
+        "title_ru": "Ежедневные привычки",
+        "description_ru": "Эта категория включает привычки, которые вы хотите практиковать каждый день.",
+        "title_kk": "Күнделікті әдеттер",
+        "description_kk": "Бұл санатта күн сайын қайталағыңыз келетін әдеттер бар.",
         "imagePath": "lib/assets/pictures/daily_habit.jpg"
     },
     {
         "id": 1,
-        "title": "Education habits",
-        "description": "This category includes habits related to learning, studying, and personal development.",
+        "title_en": "Education habits",
+        "description_en": "This category includes habits related to learning, studying, and personal development.",
+        "title_ru": "Образовательные привычки",
+        "description_ru": "Эта категория включает привычки, связанные с обучением, учёбой и саморазвитием.",
+        "title_kk": "Білім беру әдеттері",
+        "description_kk": "Бұл санатқа оқу, білім алу және жеке даму әдеттері кіреді.",
         "imagePath": "lib/assets/pictures/education.jpg"
     },
     {
         "id": 9999,
-        "title": "Your custom habits",
-        "description": "This category is for your own custom habits.",
+        "title_en": "Your custom habits",
+        "description_en": "This category is for your own custom habits.",
+        "title_ru": "Ваши собственные привычки",
+        "description_ru": "Эта категория предназначена для ваших собственных привычек.",
+        "title_kk": "Жеке әдеттеріңіз",
+        "description_kk": "Бұл санат сіздің жеке әдеттеріңізге арналған.",
         "imagePath": "lib/assets/pictures/your.jpg"
     }
 ]

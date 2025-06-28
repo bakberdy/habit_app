@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:drift/drift.dart';
 import 'package:habit_app/core/database/app_database.dart';
 import 'package:habit_app/core/shared/enums/weekday.dart';
@@ -11,7 +13,7 @@ import 'package:talker_flutter/talker_flutter.dart';
 
 abstract interface class HabitLocalDataSource {
   Future<List<HabitSubscriptionModel>> getHabitSubscriptionsOfDay(
-      DateTime date);
+      DateTime date, Locale locale);
 
   Future<List<HabitCompletionModel>> getHabitCompletions(DateTime date);
 
@@ -28,14 +30,17 @@ abstract interface class HabitLocalDataSource {
   Future<void> setHabitCompletionStatus(
       {required int habitId, required bool isDone, required DateTime date});
 
-  Future<List<CategoryModel>> getCategories();
-  Future<CategoryModel> getCategory({required int categoryId});
-  Future<List<HabitModel>> getHabitsOfCategpry({required int categoryId});
-  Future<HabitModel> getHabitById({required int habitId});
+  Future<List<CategoryModel>> getCategories({required Locale locale});
+  Future<CategoryModel> getCategory(
+      {required int categoryId, required Locale locale});
+  Future<List<HabitModel>> getHabitsOfCategpry(
+      {required int categoryId, required Locale locale});
+  Future<HabitModel> getHabitById(
+      {required int habitId, required Locale locale});
   Future<List<HabitModel>> searchHabit(
-      {required String query, int? categoryId});
+      {required String query, int? categoryId, required Locale locale});
   Future<HabitSubscriptionModel?> getSubscriptionWithHabitIdAndDate(
-      {required int habitId, required DateTime date});
+      {required int habitId, required DateTime date, required Locale locale});
 }
 
 @LazySingleton(as: HabitLocalDataSource)
@@ -47,7 +52,7 @@ class HabitLocalDataSourceImpl implements HabitLocalDataSource {
 
   @override
   Future<List<HabitSubscriptionModel>> getHabitSubscriptionsOfDay(
-      DateTime date) async {
+      DateTime date, Locale locale) async {
     try {
       final dateWithoutTime = DateTime(date.year, date.month, date.day);
       final weekday = date.weekday;
@@ -77,7 +82,7 @@ class HabitLocalDataSourceImpl implements HabitLocalDataSource {
         final habit = row.readTable(_db.habits);
         final subscription = row.readTable(_db.habitSubscriptions);
 
-        final habitModel = await HabitModel.fromDrift(habit, _db);
+        final habitModel = await HabitModel.fromDrift(habit, _db, locale);
 
         return HabitSubscriptionModel(
           id: subscription.id,
@@ -163,35 +168,42 @@ class HabitLocalDataSourceImpl implements HabitLocalDataSource {
   }) async {
     try {
       await _db.transaction(() async {
-        // 1. Вставляем привычку
         final habitId = await _db.into(_db.habits).insert(
               HabitsCompanion.insert(
-                title: title,
-                description: description,
+                titleEn: title,
+                titleRu: title,
+                titleKk: title,
+                descriptionEn: description,
+                descriptionRu: description,
+                descriptionKk: description,
                 takesTime: takeMinutes,
-                why: Value(why),
+                whyEn: Value(why),
+                whyRu: Value(why),
+                whyKk: Value(why),
                 categoryId: 9999,
               ),
             );
 
-        // 2. Вставляем дни недели
         for (final day in days) {
           await _db.into(_db.habitWeekdays).insert(
                 HabitWeekdaysCompanion.insert(
                   habitId: habitId,
-                  weekday: day.index + 1, // Weekday.monday == index 0
+                  weekday: day.index + 1,
                 ),
               );
         }
 
-        // 3. Вставляем советы (если есть)
         if (tips != null) {
           for (final tip in tips) {
             await _db.into(_db.tips).insert(
                   TipsCompanion.insert(
                     habitId: habitId,
-                    title: tip.title,
-                    content: tip.content,
+                    titleEn: tip.title,
+                    contentEn: tip.content,
+                    titleRu: tip.title,
+                    contentRu: tip.content,
+                    titleKk: tip.title,
+                    contentKk: tip.content,
                   ),
                 );
           }
@@ -214,17 +226,10 @@ class HabitLocalDataSourceImpl implements HabitLocalDataSource {
   }
 
   @override
-  Future<List<CategoryModel>> getCategories() async {
+  Future<List<CategoryModel>> getCategories({required Locale locale}) async {
     final categories = await _db.select(_db.categories).get();
     try {
-      return categories
-          .map((e) => CategoryModel(
-                id: e.id,
-                title: e.title,
-                description: e.description,
-                imagePath: e.imagePath,
-              ))
-          .toList();
+      return categories.map((e) => CategoryModel.fromDrift(e, locale)).toList();
     } catch (e, s) {
       _logger.error(e, s);
       rethrow;
@@ -232,17 +237,14 @@ class HabitLocalDataSourceImpl implements HabitLocalDataSource {
   }
 
   @override
-  Future<CategoryModel> getCategory({required int categoryId}) async {
+  Future<CategoryModel> getCategory(
+      {required int categoryId, required Locale locale}) async {
     try {
       final response = await (_db.select(_db.categories)
             ..where((e) => (e.id).equals(categoryId)))
           .getSingleOrNull();
       if (response != null) {
-        return CategoryModel(
-            id: response.id,
-            title: response.title,
-            imagePath: response.imagePath,
-            description: response.description);
+        return CategoryModel.fromDrift(response, locale);
       } else {
         throw Exception();
       }
@@ -254,13 +256,13 @@ class HabitLocalDataSourceImpl implements HabitLocalDataSource {
 
   @override
   Future<List<HabitModel>> getHabitsOfCategpry(
-      {required int categoryId}) async {
+      {required int categoryId, required Locale locale}) async {
     try {
       final habitsResponse = await (_db.select(_db.habits)
             ..where((e) => (e.categoryId).equals(categoryId)))
           .get();
       final habits = await Future.wait(
-          habitsResponse.map((e) => HabitModel.fromDrift(e, _db)));
+          habitsResponse.map((e) => HabitModel.fromDrift(e, _db, locale)));
       return habits;
     } catch (e, s) {
       _logger.error(e, s);
@@ -269,12 +271,13 @@ class HabitLocalDataSourceImpl implements HabitLocalDataSource {
   }
 
   @override
-  Future<HabitModel> getHabitById({required int habitId}) async {
+  Future<HabitModel> getHabitById(
+      {required int habitId, required Locale locale}) async {
     try {
       final habit = await (_db.select(_db.habits)
             ..where((e) => (e.id).equals(habitId)))
           .getSingle();
-      return HabitModel.fromDrift(habit, _db);
+      return HabitModel.fromDrift(habit, _db, locale);
     } catch (e, s) {
       _logger.error(e, s);
       rethrow;
@@ -283,20 +286,28 @@ class HabitLocalDataSourceImpl implements HabitLocalDataSource {
 
   @override
   Future<List<HabitModel>> searchHabit(
-      {required String query, int? categoryId}) async {
+      {required String query, int? categoryId, required Locale locale}) async {
     try {
       final rows = categoryId == null
           ? await (_db.select(_db.habits)
-                ..where((e) =>
-                    e.title.like('%$query%') | e.description.like('%$query%')))
+                ..where((e) => ((e.titleEn.like('%$query%') |
+                        e.descriptionEn.like('%$query%')) |
+                    (e.titleRu.like('%$query%') |
+                        e.descriptionRu.like('%$query%')) |
+                    (e.titleKk.like('%$query%') |
+                        e.descriptionKk.like('%$query%')))))
               .get()
           : await (_db.select(_db.habits)
                 ..where((e) =>
-                    (e.title.like('%$query%') |
-                        e.description.like('%$query%')) &
+                    ((e.titleEn.like('%$query%') |
+                            e.descriptionEn.like('%$query%')) |
+                        (e.titleRu.like('%$query%') |
+                            e.descriptionRu.like('%$query%')) |
+                        (e.titleKk.like('%$query%') |
+                            e.descriptionKk.like('%$query%'))) &
                     e.categoryId.equals(categoryId)))
               .get();
-      return Future.wait(rows.map((e) => HabitModel.fromDrift(e, _db)));
+      return Future.wait(rows.map((e) => HabitModel.fromDrift(e, _db, locale)));
     } catch (e, s) {
       _logger.info(e, s);
       rethrow;
@@ -323,7 +334,9 @@ class HabitLocalDataSourceImpl implements HabitLocalDataSource {
 
   @override
   Future<HabitSubscriptionModel?> getSubscriptionWithHabitIdAndDate(
-      {required int habitId, required DateTime date}) async {
+      {required int habitId,
+      required DateTime date,
+      required Locale locale}) async {
     final dateWithoutTime = DateTime(date.year, date.month, date.day);
     final habit = (await (_db.select(_db.habits)
           ..where((e) => e.id.equals(habitId)))
@@ -347,7 +360,7 @@ class HabitLocalDataSourceImpl implements HabitLocalDataSource {
     }
     return HabitSubscriptionModel(
         id: subscription.id,
-        habit: await HabitModel.fromDrift(habit, _db),
+        habit: await HabitModel.fromDrift(habit, _db, locale),
         subscriptionDate: subscription.subscriptionDate);
   }
 }

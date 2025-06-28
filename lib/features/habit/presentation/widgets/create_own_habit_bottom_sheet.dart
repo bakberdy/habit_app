@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:habit_app/core/providers/locale_provider.dart';
 import 'package:habit_app/core/shared/enums/weekday.dart';
 import 'package:habit_app/core/shared/widgets/custom_filled_button.dart';
 import 'package:habit_app/core/shared/widgets/labeled_text_form_field.dart';
@@ -9,6 +10,8 @@ import 'package:habit_app/core/theme/app_text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:habit_app/features/habit/domain/entities/tip_entity.dart';
 import 'package:habit_app/features/habit/presentation/bloc/my_plan/my_plan_bloc.dart';
+import 'package:habit_app/generated/l10n.dart';
+import 'package:provider/provider.dart';
 
 class CreateOwnHabitBottomSheet extends StatefulWidget {
   const CreateOwnHabitBottomSheet({super.key, required myPlanBloc})
@@ -76,6 +79,7 @@ class _CreateOwnHabitBottomSheetState extends State<CreateOwnHabitBottomSheet>
     widget._myPlanBloc.add(
       MyPlanEvent.addNewHabit(
           why: why,
+          locale: Provider.of<LocaleProvider>(context, listen: false).locale,
           tips: tips.isNotEmpty ? tips : null,
           title: title,
           description: description,
@@ -112,23 +116,24 @@ class _CreateOwnHabitBottomSheetState extends State<CreateOwnHabitBottomSheet>
               children: [
                 SizedBox(height: 20),
                 Center(
-                    child:
-                        Text('Create your own habit', style: AppTextTheme.h4)),
+                    child: Text(S.of(context).createYourOwnHabit,
+                        style: AppTextTheme.h4)),
                 SizedBox(height: 15),
                 LabeledTextFormField(
-                    label: 'Title', controller: _titleController),
+                    label: S.of(context).title, controller: _titleController),
                 Divider(height: 1, color: AppColors.grey.withAlpha(50)),
                 LabeledTextFormField(
-                    label: 'Description', controller: _descriptionController),
+                    label: S.of(context).description,
+                    controller: _descriptionController),
                 Divider(height: 1, color: AppColors.grey.withAlpha(50)),
                 LabeledTextFormField(
-                  label: 'Estimated time(minute)',
+                  label: S.of(context).estimatedTimeminute,
                   controller: _estimatedTimeController,
                   keyboardType: TextInputType.number,
                 ),
                 Divider(height: 1, color: AppColors.grey.withAlpha(50)),
                 SizedBox(height: 10),
-                Text('Days that you want to do'),
+                Text(S.of(context).daysThatYouWantToDo),
                 SizedBox(height: 5),
                 Wrap(
                   spacing: 10,
@@ -152,7 +157,7 @@ class _CreateOwnHabitBottomSheetState extends State<CreateOwnHabitBottomSheet>
                               ? bgColor
                               : bgColor.withAlpha(50),
                         ),
-                        child: Text(_weekdays[index].value,
+                        child: Text(_weekdays[index].label(context),
                             style: AppTextTheme.bodySmall.copyWith(
                                 color: _selectedDays[index]
                                     ? Colors.white
@@ -171,7 +176,7 @@ class _CreateOwnHabitBottomSheetState extends State<CreateOwnHabitBottomSheet>
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Add more details to clarify your habit',
+                          S.of(context).addMoreDetailsToClarifyYourHabit,
                           style: AppTextTheme.bodySmall,
                         ),
                         AnimatedBuilder(
@@ -203,7 +208,7 @@ class _CreateOwnHabitBottomSheetState extends State<CreateOwnHabitBottomSheet>
                         Visibility(
                           visible: _isOpenedTheDetailsForm,
                           child: LabeledTextFormField(
-                            label: 'Why',
+                            label: S.of(context).why,
                             controller: _whyController,
                           ),
                         ),
@@ -223,7 +228,7 @@ class _CreateOwnHabitBottomSheetState extends State<CreateOwnHabitBottomSheet>
                         Visibility(
                           visible: _isOpenedTheDetailsForm,
                           child: LabeledTextFormField(
-                              label: 'Tip to habit',
+                              label: S.of(context).tipToHabit,
                               controller: _tipTitleController),
                         ),
                         Visibility(
@@ -234,7 +239,7 @@ class _CreateOwnHabitBottomSheetState extends State<CreateOwnHabitBottomSheet>
                         Visibility(
                           visible: _isOpenedTheDetailsForm,
                           child: LabeledTextFormField(
-                              label: 'Tip description',
+                              label: S.of(context).tipDescription,
                               controller: _tipDescriptionController),
                         ),
                       ],
@@ -246,7 +251,7 @@ class _CreateOwnHabitBottomSheetState extends State<CreateOwnHabitBottomSheet>
                 SizedBox(
                     height: 40,
                     child: CustomFilledButton(
-                      title: 'Create',
+                      title: S.of(context).create,
                       titleColor: AppColors.primary,
                       onPressed: () => _onCreateTapped(context),
                       backgroundColor: AppColors.primary.withAlpha(10),

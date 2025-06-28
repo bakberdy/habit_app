@@ -7,7 +7,7 @@ class AppTheme {
     primaryColor: AppColors.primary,
     appBarTheme: AppBarTheme(
       backgroundColor: AppColors.white,
-      foregroundColor: AppColors.primary,
+      foregroundColor: AppColors.textPrimary,
       surfaceTintColor: AppColors.transparent,
     ),
     scaffoldBackgroundColor: AppColors.white,

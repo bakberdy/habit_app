@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'dart:ui';
 
 import 'package:dartz/dartz.dart';
 import 'package:habit_app/core/error/error.dart';
@@ -23,10 +24,10 @@ class HabitRepoImpl implements HabitRepo {
 
   @override
   ResultFuture<List<HabitInfo>> getHabitSubscriptionsOfDay(
-      DateTime date) async {
+      DateTime date, Locale locale) async {
     try {
       final subscriptions =
-          await _localDataSource.getHabitSubscriptionsOfDay(date);
+          await _localDataSource.getHabitSubscriptionsOfDay(date, locale);
       final completions = await _localDataSource.getHabitCompletions(date);
 
       final List<HabitInfo> habitInfos = subscriptions.map((sub) {
@@ -42,10 +43,11 @@ class HabitRepoImpl implements HabitRepo {
   }
 
   @override
-  ResultFuture<void> setHabitCompletionStatus(
-      {required bool isDone,
-      required int habitId,
-      required DateTime date}) async {
+  ResultFuture<void> setHabitCompletionStatus({
+    required bool isDone,
+    required int habitId,
+    required DateTime date,
+  }) async {
     try {
       await _localDataSource.setHabitCompletionStatus(
           habitId: habitId, isDone: isDone, date: date);
@@ -80,21 +82,23 @@ class HabitRepoImpl implements HabitRepo {
   }
 
   @override
-  ResultFuture<List<CategoryEntity>> getCategories() async {
+  ResultFuture<List<CategoryEntity>> getCategories(
+      {required Locale locale}) async {
     try {
-      return Right(await _localDataSource.getCategories());
+      return Right(await _localDataSource.getCategories(locale: locale));
     } catch (e) {
       return Left(UnknownFailure(e.toString()));
     }
   }
 
   @override
-  ResultFuture<CategoryInfoEntity> getCategory(int categoryId) async {
+  ResultFuture<CategoryInfoEntity> getCategory(
+      int categoryId, Locale locale) async {
     try {
-      final category =
-          await _localDataSource.getCategory(categoryId: categoryId);
-      final habits =
-          await _localDataSource.getHabitsOfCategpry(categoryId: categoryId);
+      final category = await _localDataSource.getCategory(
+          categoryId: categoryId, locale: locale);
+      final habits = await _localDataSource.getHabitsOfCategpry(
+          categoryId: categoryId, locale: locale);
       return Right(CategoryInfoEntity(category: category, habits: habits));
     } catch (e) {
       return Left(UnknownFailure(e.toString()));
@@ -102,9 +106,10 @@ class HabitRepoImpl implements HabitRepo {
   }
 
   @override
-  ResultFuture<HabitEntity> getHabitById(int habitId) async {
+  ResultFuture<HabitEntity> getHabitById(int habitId, Locale locale) async {
     try {
-      return Right(await _localDataSource.getHabitById(habitId: habitId));
+      return Right(await _localDataSource.getHabitById(
+          habitId: habitId, locale: locale));
     } catch (e) {
       return Left(UnknownFailure(e.toString()));
     }
@@ -112,10 +117,10 @@ class HabitRepoImpl implements HabitRepo {
 
   @override
   ResultFuture<List<HabitEntity>> searchHabit(
-      {required String query, int? categoryId}) async {
+      {required String query, int? categoryId, required Locale locale}) async {
     try {
       return Right(await _localDataSource.searchHabit(
-          query: query, categoryId: categoryId));
+          locale: locale, query: query, categoryId: categoryId));
     } catch (e) {
       return Left(UnknownFailure(e.toString()));
     }
@@ -132,10 +137,13 @@ class HabitRepoImpl implements HabitRepo {
 
   @override
   ResultFuture<HabitSubscriptionEntity?> getHabitSubscription(
-      {required int habitId, required DateTime date}) async {
+      {required int habitId,
+      required DateTime date,
+      required Locale locale}) async {
     try {
-      final subscription = await _localDataSource
-          .getSubscriptionWithHabitIdAndDate(habitId: habitId, date: date);
+      final subscription =
+          await _localDataSource.getSubscriptionWithHabitIdAndDate(
+              habitId: habitId, date: date, locale: locale);
       return Right(subscription);
     } catch (e) {
       return Left(UnknownFailure(e.toString()));
@@ -155,7 +163,7 @@ class HabitRepoImpl implements HabitRepo {
       if (date.isAfter(today)) break;
 
       final subscriptions =
-          await _localDataSource.getHabitSubscriptionsOfDay(date);
+          await _localDataSource.getHabitSubscriptionsOfDay(date, Locale('en'));
       final completions = (await _localDataSource.getHabitCompletions(date))
           .where((e) => e.isDone)
           .toList();

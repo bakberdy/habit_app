@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:habit_app/generated/l10n.dart';
 
 class CustomSearchBar extends StatelessWidget {
   const CustomSearchBar({
@@ -38,7 +39,7 @@ class CustomSearchBar extends StatelessWidget {
             border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8),
                 borderSide: BorderSide.none),
-            hintText: "Search",
+            hintText: S.of(context).search,
             hintStyle: themeData.textTheme.bodyMedium
                 ?.copyWith(color: themeData.hintColor)),
       ),

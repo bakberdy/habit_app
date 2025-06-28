@@ -3,6 +3,7 @@ import 'package:habit_app/features/habit/presentation/screens/catalog_screen.dar
 import 'package:habit_app/features/habit/presentation/screens/category_screen.dart';
 import 'package:habit_app/features/home/presentation/screens/home_screen.dart';
 import 'package:habit_app/features/habit/presentation/screens/my_plan_screen.dart';
+import 'package:habit_app/features/settings/presentation/screens/select_language_page.dart';
 import 'package:habit_app/features/settings/presentation/screens/settings_page.dart';
 
 import '../navigation.dart';

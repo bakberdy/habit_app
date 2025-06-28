@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:ui';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -35,7 +36,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
 
   Future<void> _onGetCategories(
       _GetCategories event, Emitter<CatalogState> emit) async {
-    final categories = await _getCategories(NoParams());
+    final categories = await _getCategories(event.locale);
     categories.fold((failure) {
       emit(CatalogState.error(failure.message));
     }, (success) {
@@ -45,7 +46,8 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
 
   FutureOr<void> _onLoadCategory(
       _LoadCategory event, Emitter<CatalogState> emit) async {
-    final failureOrSuccess = await _getCategoryInfo(event.categoryId);
+    final failureOrSuccess = await _getCategoryInfo(GetCategoryInfoParams(
+        categoryId: event.categoryId, locale: event.locale));
     failureOrSuccess.fold((failure) {
       emit(CatalogState.error(failure.message));
     }, (success) {
@@ -56,13 +58,14 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
 
   Future<void> _onLoadHabit(
       _LoadHabit event, Emitter<CatalogState> emit) async {
-    final failureOrSuccess = await _getHabitById(event.habitId);
+    final failureOrSuccess = await _getHabitById(
+        GetHabitByIdParams(habitId: event.habitId, locale: event.locale));
     await failureOrSuccess.fold((failure) {
       emit(CatalogState.error(failure.message));
     }, (success) async {
       final subscriptionOrFailure =
-          await _getHabitSubscriptionWithDateAndHabitId(
-              GeySubParams(success.id, DateTime.now()));
+          await _getHabitSubscriptionWithDateAndHabitId(GeySubParams(
+              habitId: success.id, date: DateTime.now(), locale: event.locale));
       subscriptionOrFailure.fold((l) => emit(CatalogState.error(l.message)),
           (r) {
         emit(CatalogState.habitLoaded(habit: success, isSubscribed: r != null));

@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:habit_app/core/core.dart';
 import 'package:habit_app/features/habit/domain/entities/habit_subscription.dart';
 import 'package:habit_app/features/habit/domain/repository/habit_repo.dart';
@@ -12,13 +14,15 @@ class GetHabitSubscriptionWithDateAndHabitId
   @override
   ResultFuture<HabitSubscriptionEntity?> call(GeySubParams params) {
     return _repo.getHabitSubscription(
-        habitId: params.habitId, date: params.date);
+        habitId: params.habitId, date: params.date, locale: params.locale);
   }
 }
 
 class GeySubParams {
   final int habitId;
   final DateTime date;
+  final Locale locale;
 
-  GeySubParams(this.habitId, this.date);
+  GeySubParams(
+      {required this.habitId, required this.date, required this.locale});
 }

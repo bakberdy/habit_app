@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:habit_app/core/providers/locale_provider.dart';
 import 'package:habit_app/core/shared/widgets/app_bar_bottom_with_search_field.dart';
 import 'package:habit_app/core/shared/widgets/custom_sliver_app_bar.dart';
 import 'package:habit_app/features/habit/domain/entities/habit_entity.dart';
@@ -8,7 +9,10 @@ import 'package:habit_app/features/habit/presentation/widgets/habit_card.dart';
 import 'package:habit_app/core/theme/app_colors.dart';
 import 'package:habit_app/core/theme/app_text_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:habit_app/features/habit/presentation/widgets/search_result_sliver.dart';
+import 'package:habit_app/generated/l10n.dart';
 import 'package:habit_app/injection/injection.dart';
+import 'package:provider/provider.dart';
 
 class CategoryScreen extends StatelessWidget {
   const CategoryScreen({super.key, required this.categoryId});
@@ -19,7 +23,9 @@ class CategoryScreen extends StatelessWidget {
     return MultiBlocProvider(providers: [
       BlocProvider<CatalogBloc>.value(
         value: sl<CatalogBloc>()
-          ..add(CatalogEvent.loadCategory(categoryId: categoryId)),
+          ..add(CatalogEvent.loadCategory(
+              categoryId: categoryId,
+              locale: Provider.of<LocaleProvider>(context).locale)),
       ),
       BlocProvider<SearchBloc>.value(value: sl<SearchBloc>())
     ], child: CategoryScreenContent(categoryId: categoryId));
@@ -47,13 +53,15 @@ class _CategoryScreenContentState extends State<CategoryScreenContent> {
             return CustomScrollView(
               slivers: [
                 CustomSliverAppBar(
-                    title: 'Category',
+                    title: S.of(context).category,
                     bottom: AppBarBottomWithSearchField(
                       title: state.category.title,
                       searchController: _searchController,
                       onChange: (value) {
                         context.read<SearchBloc>().add(SearchEvent.search(
-                            query: value, categoryId: widget.categoryId));
+                            locale: Provider.of<LocaleProvider>(context).locale,
+                            query: value,
+                            categoryId: widget.categoryId));
                       },
                     )),
                 SliverToBoxAdapter(
@@ -115,7 +123,7 @@ class _CategoryScreenContentState extends State<CategoryScreenContent> {
                   sliver: SliverToBoxAdapter(
                     child: Padding(
                         padding: EdgeInsets.symmetric(horizontal: 20),
-                        child: Text('Habits',
+                        child: Text(S.of(context).habits,
                             style: AppTextTheme.h5
                                 .copyWith(fontWeight: FontWeight.w600))),
                   ),
@@ -143,43 +151,5 @@ class _CategoryScreenContentState extends State<CategoryScreenContent> {
         }
       })),
     );
-  }
-}
-
-class SearchResultSliver extends StatelessWidget {
-  const SearchResultSliver({
-    super.key,
-    required this.habits,
-  });
-
-  final List<HabitEntity> habits;
-
-  @override
-  Widget build(BuildContext context) {
-    return SliverPadding(
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-        sliver: habits.isEmpty
-            ? SliverToBoxAdapter(
-                child: Center(
-                    child: Text(
-                'No habits found.',
-                style: AppTextTheme.h4.copyWith(color: AppColors.hint),
-              )))
-            : SliverList.separated(
-                itemCount: habits.length + 1,
-                itemBuilder: (context, index) {
-                  if (index == 0) {
-                    return Text(
-                      'Search Results',
-                      style:
-                          AppTextTheme.h5.copyWith(fontWeight: FontWeight.bold),
-                    );
-                  }
-                  return HabitCard(
-                    habit: habits[index - 1],
-                  );
-                },
-                separatorBuilder: (BuildContext context, int index) =>
-                    SizedBox(height: 10)));
   }
 }

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:ui';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -19,8 +20,10 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
   }
 
   Future<void> _onSearch(_SearchEvent event, Emitter<SearchState> emit) async {
-    final failureOrSuccess = await _searchHabitUsecase(
-        SearchHabitParams(query: event.query, categoryId: event.categoryId));
+    final failureOrSuccess = await _searchHabitUsecase(SearchHabitParams(
+        query: event.query,
+        categoryId: event.categoryId,
+        locale: event.locale));
     failureOrSuccess.fold(
       (failure) {
         emit(SearchState.error());

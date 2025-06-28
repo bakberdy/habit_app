@@ -1,5 +1,6 @@
 import 'package:habit_app/core/theme/app_text_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:habit_app/generated/l10n.dart';
 
 class QuoteCard extends StatelessWidget {
   const QuoteCard({
@@ -12,7 +13,7 @@ class QuoteCard extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         SizedBox(height: 10),
-        Text('Daily motivation', style: AppTextTheme.h4),
+        Text(S.of(context).dailyMotivation, style: AppTextTheme.h4),
         SizedBox(height: 10),
         Container(
             width: double.infinity,
@@ -31,7 +32,7 @@ class QuoteCard extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerRight,
                   child: Text(
-                    'Author: Abay Kunanbayev',
+                    S.of(context).author("Kanye West"),
                     style: AppTextTheme.bodySmall.copyWith(
                       fontSize: 12,
                       fontWeight: FontWeight.w600,

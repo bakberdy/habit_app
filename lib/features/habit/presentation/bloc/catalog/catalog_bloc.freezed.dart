@@ -15,55 +15,145 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$CatalogEvent {
+  Locale get locale;
+
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $CatalogEventCopyWith<CatalogEvent> get copyWith =>
+      _$CatalogEventCopyWithImpl<CatalogEvent>(
+          this as CatalogEvent, _$identity);
+
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is CatalogEvent);
+        (other.runtimeType == runtimeType &&
+            other is CatalogEvent &&
+            (identical(other.locale, locale) || other.locale == locale));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, locale);
 
   @override
   String toString() {
-    return 'CatalogEvent()';
+    return 'CatalogEvent(locale: $locale)';
   }
 }
 
 /// @nodoc
-class $CatalogEventCopyWith<$Res> {
-  $CatalogEventCopyWith(CatalogEvent _, $Res Function(CatalogEvent) __);
+abstract mixin class $CatalogEventCopyWith<$Res> {
+  factory $CatalogEventCopyWith(
+          CatalogEvent value, $Res Function(CatalogEvent) _then) =
+      _$CatalogEventCopyWithImpl;
+  @useResult
+  $Res call({Locale locale});
+}
+
+/// @nodoc
+class _$CatalogEventCopyWithImpl<$Res> implements $CatalogEventCopyWith<$Res> {
+  _$CatalogEventCopyWithImpl(this._self, this._then);
+
+  final CatalogEvent _self;
+  final $Res Function(CatalogEvent) _then;
+
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? locale = null,
+  }) {
+    return _then(_self.copyWith(
+      locale: null == locale
+          ? _self.locale
+          : locale // ignore: cast_nullable_to_non_nullable
+              as Locale,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _GetCategories implements CatalogEvent {
-  const _GetCategories();
+  const _GetCategories({required this.locale});
+
+  @override
+  final Locale locale;
+
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$GetCategoriesCopyWith<_GetCategories> get copyWith =>
+      __$GetCategoriesCopyWithImpl<_GetCategories>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _GetCategories);
+        (other.runtimeType == runtimeType &&
+            other is _GetCategories &&
+            (identical(other.locale, locale) || other.locale == locale));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, locale);
 
   @override
   String toString() {
-    return 'CatalogEvent.loadCategories()';
+    return 'CatalogEvent.loadCategories(locale: $locale)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$GetCategoriesCopyWith<$Res>
+    implements $CatalogEventCopyWith<$Res> {
+  factory _$GetCategoriesCopyWith(
+          _GetCategories value, $Res Function(_GetCategories) _then) =
+      __$GetCategoriesCopyWithImpl;
+  @override
+  @useResult
+  $Res call({Locale locale});
+}
+
+/// @nodoc
+class __$GetCategoriesCopyWithImpl<$Res>
+    implements _$GetCategoriesCopyWith<$Res> {
+  __$GetCategoriesCopyWithImpl(this._self, this._then);
+
+  final _GetCategories _self;
+  final $Res Function(_GetCategories) _then;
+
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? locale = null,
+  }) {
+    return _then(_GetCategories(
+      locale: null == locale
+          ? _self.locale
+          : locale // ignore: cast_nullable_to_non_nullable
+              as Locale,
+    ));
   }
 }
 
 /// @nodoc
 
 class _LoadCategory implements CatalogEvent {
-  const _LoadCategory({required this.categoryId});
+  const _LoadCategory({required this.categoryId, required this.locale});
 
   final int categoryId;
+  @override
+  final Locale locale;
 
   /// Create a copy of CatalogEvent
   /// with the given fields replaced by the non-null parameter values.
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   _$LoadCategoryCopyWith<_LoadCategory> get copyWith =>
@@ -75,15 +165,16 @@ class _LoadCategory implements CatalogEvent {
         (other.runtimeType == runtimeType &&
             other is _LoadCategory &&
             (identical(other.categoryId, categoryId) ||
-                other.categoryId == categoryId));
+                other.categoryId == categoryId) &&
+            (identical(other.locale, locale) || other.locale == locale));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, categoryId);
+  int get hashCode => Object.hash(runtimeType, categoryId, locale);
 
   @override
   String toString() {
-    return 'CatalogEvent.loadCategory(categoryId: $categoryId)';
+    return 'CatalogEvent.loadCategory(categoryId: $categoryId, locale: $locale)';
   }
 }
 
@@ -93,8 +184,9 @@ abstract mixin class _$LoadCategoryCopyWith<$Res>
   factory _$LoadCategoryCopyWith(
           _LoadCategory value, $Res Function(_LoadCategory) _then) =
       __$LoadCategoryCopyWithImpl;
+  @override
   @useResult
-  $Res call({int categoryId});
+  $Res call({int categoryId, Locale locale});
 }
 
 /// @nodoc
@@ -107,15 +199,21 @@ class __$LoadCategoryCopyWithImpl<$Res>
 
   /// Create a copy of CatalogEvent
   /// with the given fields replaced by the non-null parameter values.
+  @override
   @pragma('vm:prefer-inline')
   $Res call({
     Object? categoryId = null,
+    Object? locale = null,
   }) {
     return _then(_LoadCategory(
       categoryId: null == categoryId
           ? _self.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
               as int,
+      locale: null == locale
+          ? _self.locale
+          : locale // ignore: cast_nullable_to_non_nullable
+              as Locale,
     ));
   }
 }
@@ -123,12 +221,15 @@ class __$LoadCategoryCopyWithImpl<$Res>
 /// @nodoc
 
 class _LoadHabit implements CatalogEvent {
-  const _LoadHabit({required this.habitId});
+  const _LoadHabit({required this.habitId, required this.locale});
 
   final int habitId;
+  @override
+  final Locale locale;
 
   /// Create a copy of CatalogEvent
   /// with the given fields replaced by the non-null parameter values.
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   _$LoadHabitCopyWith<_LoadHabit> get copyWith =>
@@ -139,15 +240,16 @@ class _LoadHabit implements CatalogEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _LoadHabit &&
-            (identical(other.habitId, habitId) || other.habitId == habitId));
+            (identical(other.habitId, habitId) || other.habitId == habitId) &&
+            (identical(other.locale, locale) || other.locale == locale));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, habitId);
+  int get hashCode => Object.hash(runtimeType, habitId, locale);
 
   @override
   String toString() {
-    return 'CatalogEvent.loadHabit(habitId: $habitId)';
+    return 'CatalogEvent.loadHabit(habitId: $habitId, locale: $locale)';
   }
 }
 
@@ -157,8 +259,9 @@ abstract mixin class _$LoadHabitCopyWith<$Res>
   factory _$LoadHabitCopyWith(
           _LoadHabit value, $Res Function(_LoadHabit) _then) =
       __$LoadHabitCopyWithImpl;
+  @override
   @useResult
-  $Res call({int habitId});
+  $Res call({int habitId, Locale locale});
 }
 
 /// @nodoc
@@ -170,15 +273,21 @@ class __$LoadHabitCopyWithImpl<$Res> implements _$LoadHabitCopyWith<$Res> {
 
   /// Create a copy of CatalogEvent
   /// with the given fields replaced by the non-null parameter values.
+  @override
   @pragma('vm:prefer-inline')
   $Res call({
     Object? habitId = null,
+    Object? locale = null,
   }) {
     return _then(_LoadHabit(
       habitId: null == habitId
           ? _self.habitId
           : habitId // ignore: cast_nullable_to_non_nullable
               as int,
+      locale: null == locale
+          ? _self.locale
+          : locale // ignore: cast_nullable_to_non_nullable
+              as Locale,
     ));
   }
 }

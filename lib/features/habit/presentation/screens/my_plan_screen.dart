@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:habit_app/core/core.dart';
+import 'package:habit_app/core/providers/locale_provider.dart';
 import 'package:habit_app/core/shared/widgets/custom_sliver_app_bar.dart';
 import 'package:habit_app/features/habit/presentation/widgets/daily_habit_card.dart';
 import 'package:habit_app/core/theme/app_colors.dart';
@@ -8,7 +9,9 @@ import 'package:habit_app/features/habit/presentation/bloc/my_plan/my_plan_bloc.
 import 'package:habit_app/features/habit/presentation/widgets/my_plan_floating_action_button.dart';
 import 'package:easy_date_timeline/easy_date_timeline.dart';
 import 'package:flutter/material.dart';
+import 'package:habit_app/generated/l10n.dart';
 import 'package:habit_app/injection/injection.dart';
+import 'package:provider/provider.dart';
 
 class MyPlanScreen extends StatelessWidget {
   const MyPlanScreen({super.key});
@@ -17,7 +20,9 @@ class MyPlanScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<MyPlanBloc>(
       create: (_) => sl<MyPlanBloc>()
-        ..add(MyPlanEvent.getSubscriptionsOn(date: DateTime.now())),
+        ..add(MyPlanEvent.getSubscriptionsOn(
+            date: DateTime.now(),
+            locale: Provider.of<LocaleProvider>(context).locale)),
       child: MyPlanScreenContent(),
     );
   }
@@ -42,30 +47,34 @@ class _MyPlanScreenContentState extends State<MyPlanScreenContent> {
           listener: (context, state) {
             if (state is MyPlanStateError) {
               showErrorToast(context, message: state.message);
-              context
-                  .read<MyPlanBloc>()
-                  .add(MyPlanEvent.getSubscriptionsOn(date: DateTime.now()));
+              context.read<MyPlanBloc>().add(MyPlanEvent.getSubscriptionsOn(
+                  date: DateTime.now(),
+                  locale: Provider.of<LocaleProvider>(context).locale));
             }
           },
           builder: (context, state) {
             if (state is MyPlanStateLoaded) {
               return CustomScrollView(
                 slivers: [
-                  CustomSliverAppBar(title: 'My plan'),
+                  CustomSliverAppBar(title: S.of(context).myPlan),
                   SliverToBoxAdapter(
                     child: Theme(
                       data: ThemeData(
                           colorScheme: ColorScheme.fromSwatch(
                               primarySwatch: Colors.blue)),
                       child: EasyDateTimeLinePicker(
+                        locale: Provider.of<LocaleProvider>(context).locale,
                         firstDate: DateTime(2025, 6, 13),
                         lastDate: DateTime(2030, 3, 18),
                         focusedDate: state.date,
                         currentDate: DateTime.now(),
                         onDateChange: (date) {
-                          context
-                              .read<MyPlanBloc>()
-                              .add(MyPlanEvent.getSubscriptionsOn(date: date));
+                          context.read<MyPlanBloc>().add(
+                              MyPlanEvent.getSubscriptionsOn(
+                                  date: date,
+                                  locale: Provider.of<LocaleProvider>(context,
+                                          listen: false)
+                                      .locale));
                           setState(() {});
                         },
                       ),
@@ -93,7 +102,9 @@ class _MyPlanScreenContentState extends State<MyPlanScreenContent> {
                               SizedBox(height: 100),
                               Center(
                                 child: Text(
-                                  "You don't have any plans on this day.\nTap + to add a new habit!",
+                                  S
+                                      .of(context)
+                                      .youDontHaveAnyPlansOnThisDayntapToAdd,
                                   textAlign: TextAlign.center,
                                   style: AppTextTheme.h4
                                       .copyWith(color: AppColors.hint),
@@ -133,7 +144,12 @@ class _MyPlanScreenContentState extends State<MyPlanScreenContent> {
                       child: Padding(
                         padding: const EdgeInsets.all(25),
                         child: Text(
-                          'Great job! You completed ${state.numberOfDoneHabits} out of ${state.habitInfo.length} habits ${state.textOfDay.toLowerCase()}. 😊',
+                          S
+                              .of(context)
+                              .greatJobYouCompletedStatenumberofdonehabitsOutOfStatehabitinfolengthHabitsStatetextofdaytolowercase(
+                                  state.numberOfDoneHabits,
+                                  state.habitInfo.length,
+                                  state.textOfDay.toLowerCase()),
                           style: AppTextTheme.h4,
                         ),
                       ),

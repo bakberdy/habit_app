@@ -14,25 +14,59 @@ class $CategoriesTable extends Categories
   late final GeneratedColumn<int> id = GeneratedColumn<int>(
       'id', aliasedName, false,
       type: DriftSqlType.int, requiredDuringInsert: false);
-  static const VerificationMeta _titleMeta = const VerificationMeta('title');
-  @override
-  late final GeneratedColumn<String> title = GeneratedColumn<String>(
-      'title', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _descriptionMeta =
-      const VerificationMeta('description');
-  @override
-  late final GeneratedColumn<String> description = GeneratedColumn<String>(
-      'description', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
   static const VerificationMeta _imagePathMeta =
       const VerificationMeta('imagePath');
   @override
   late final GeneratedColumn<String> imagePath = GeneratedColumn<String>(
       'image_path', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _titleEnMeta =
+      const VerificationMeta('titleEn');
   @override
-  List<GeneratedColumn> get $columns => [id, title, description, imagePath];
+  late final GeneratedColumn<String> titleEn = GeneratedColumn<String>(
+      'title_en', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _descriptionEnMeta =
+      const VerificationMeta('descriptionEn');
+  @override
+  late final GeneratedColumn<String> descriptionEn = GeneratedColumn<String>(
+      'description_en', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _titleRuMeta =
+      const VerificationMeta('titleRu');
+  @override
+  late final GeneratedColumn<String> titleRu = GeneratedColumn<String>(
+      'title_ru', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _descriptionRuMeta =
+      const VerificationMeta('descriptionRu');
+  @override
+  late final GeneratedColumn<String> descriptionRu = GeneratedColumn<String>(
+      'description_ru', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _titleKkMeta =
+      const VerificationMeta('titleKk');
+  @override
+  late final GeneratedColumn<String> titleKk = GeneratedColumn<String>(
+      'title_kk', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _descriptionKkMeta =
+      const VerificationMeta('descriptionKk');
+  @override
+  late final GeneratedColumn<String> descriptionKk = GeneratedColumn<String>(
+      'description_kk', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  @override
+  List<GeneratedColumn> get $columns => [
+        id,
+        imagePath,
+        titleEn,
+        descriptionEn,
+        titleRu,
+        descriptionRu,
+        titleKk,
+        descriptionKk
+      ];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
@@ -46,23 +80,51 @@ class $CategoriesTable extends Categories
     if (data.containsKey('id')) {
       context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
     }
-    if (data.containsKey('title')) {
-      context.handle(
-          _titleMeta, title.isAcceptableOrUnknown(data['title']!, _titleMeta));
-    } else if (isInserting) {
-      context.missing(_titleMeta);
-    }
-    if (data.containsKey('description')) {
-      context.handle(
-          _descriptionMeta,
-          description.isAcceptableOrUnknown(
-              data['description']!, _descriptionMeta));
-    } else if (isInserting) {
-      context.missing(_descriptionMeta);
-    }
     if (data.containsKey('image_path')) {
       context.handle(_imagePathMeta,
           imagePath.isAcceptableOrUnknown(data['image_path']!, _imagePathMeta));
+    }
+    if (data.containsKey('title_en')) {
+      context.handle(_titleEnMeta,
+          titleEn.isAcceptableOrUnknown(data['title_en']!, _titleEnMeta));
+    } else if (isInserting) {
+      context.missing(_titleEnMeta);
+    }
+    if (data.containsKey('description_en')) {
+      context.handle(
+          _descriptionEnMeta,
+          descriptionEn.isAcceptableOrUnknown(
+              data['description_en']!, _descriptionEnMeta));
+    } else if (isInserting) {
+      context.missing(_descriptionEnMeta);
+    }
+    if (data.containsKey('title_ru')) {
+      context.handle(_titleRuMeta,
+          titleRu.isAcceptableOrUnknown(data['title_ru']!, _titleRuMeta));
+    } else if (isInserting) {
+      context.missing(_titleRuMeta);
+    }
+    if (data.containsKey('description_ru')) {
+      context.handle(
+          _descriptionRuMeta,
+          descriptionRu.isAcceptableOrUnknown(
+              data['description_ru']!, _descriptionRuMeta));
+    } else if (isInserting) {
+      context.missing(_descriptionRuMeta);
+    }
+    if (data.containsKey('title_kk')) {
+      context.handle(_titleKkMeta,
+          titleKk.isAcceptableOrUnknown(data['title_kk']!, _titleKkMeta));
+    } else if (isInserting) {
+      context.missing(_titleKkMeta);
+    }
+    if (data.containsKey('description_kk')) {
+      context.handle(
+          _descriptionKkMeta,
+          descriptionKk.isAcceptableOrUnknown(
+              data['description_kk']!, _descriptionKkMeta));
+    } else if (isInserting) {
+      context.missing(_descriptionKkMeta);
     }
     return context;
   }
@@ -75,12 +137,20 @@ class $CategoriesTable extends Categories
     return Category(
       id: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
-      title: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}title'])!,
-      description: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}description'])!,
       imagePath: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}image_path']),
+      titleEn: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}title_en'])!,
+      descriptionEn: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}description_en'])!,
+      titleRu: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}title_ru'])!,
+      descriptionRu: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}description_ru'])!,
+      titleKk: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}title_kk'])!,
+      descriptionKk: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}description_kk'])!,
     );
   }
 
@@ -92,34 +162,50 @@ class $CategoriesTable extends Categories
 
 class Category extends DataClass implements Insertable<Category> {
   final int id;
-  final String title;
-  final String description;
   final String? imagePath;
+  final String titleEn;
+  final String descriptionEn;
+  final String titleRu;
+  final String descriptionRu;
+  final String titleKk;
+  final String descriptionKk;
   const Category(
       {required this.id,
-      required this.title,
-      required this.description,
-      this.imagePath});
+      this.imagePath,
+      required this.titleEn,
+      required this.descriptionEn,
+      required this.titleRu,
+      required this.descriptionRu,
+      required this.titleKk,
+      required this.descriptionKk});
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     map['id'] = Variable<int>(id);
-    map['title'] = Variable<String>(title);
-    map['description'] = Variable<String>(description);
     if (!nullToAbsent || imagePath != null) {
       map['image_path'] = Variable<String>(imagePath);
     }
+    map['title_en'] = Variable<String>(titleEn);
+    map['description_en'] = Variable<String>(descriptionEn);
+    map['title_ru'] = Variable<String>(titleRu);
+    map['description_ru'] = Variable<String>(descriptionRu);
+    map['title_kk'] = Variable<String>(titleKk);
+    map['description_kk'] = Variable<String>(descriptionKk);
     return map;
   }
 
   CategoriesCompanion toCompanion(bool nullToAbsent) {
     return CategoriesCompanion(
       id: Value(id),
-      title: Value(title),
-      description: Value(description),
       imagePath: imagePath == null && nullToAbsent
           ? const Value.absent()
           : Value(imagePath),
+      titleEn: Value(titleEn),
+      descriptionEn: Value(descriptionEn),
+      titleRu: Value(titleRu),
+      descriptionRu: Value(descriptionRu),
+      titleKk: Value(titleKk),
+      descriptionKk: Value(descriptionKk),
     );
   }
 
@@ -128,9 +214,13 @@ class Category extends DataClass implements Insertable<Category> {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return Category(
       id: serializer.fromJson<int>(json['id']),
-      title: serializer.fromJson<String>(json['title']),
-      description: serializer.fromJson<String>(json['description']),
       imagePath: serializer.fromJson<String?>(json['imagePath']),
+      titleEn: serializer.fromJson<String>(json['titleEn']),
+      descriptionEn: serializer.fromJson<String>(json['descriptionEn']),
+      titleRu: serializer.fromJson<String>(json['titleRu']),
+      descriptionRu: serializer.fromJson<String>(json['descriptionRu']),
+      titleKk: serializer.fromJson<String>(json['titleKk']),
+      descriptionKk: serializer.fromJson<String>(json['descriptionKk']),
     );
   }
   @override
@@ -138,30 +228,51 @@ class Category extends DataClass implements Insertable<Category> {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
       'id': serializer.toJson<int>(id),
-      'title': serializer.toJson<String>(title),
-      'description': serializer.toJson<String>(description),
       'imagePath': serializer.toJson<String?>(imagePath),
+      'titleEn': serializer.toJson<String>(titleEn),
+      'descriptionEn': serializer.toJson<String>(descriptionEn),
+      'titleRu': serializer.toJson<String>(titleRu),
+      'descriptionRu': serializer.toJson<String>(descriptionRu),
+      'titleKk': serializer.toJson<String>(titleKk),
+      'descriptionKk': serializer.toJson<String>(descriptionKk),
     };
   }
 
   Category copyWith(
           {int? id,
-          String? title,
-          String? description,
-          Value<String?> imagePath = const Value.absent()}) =>
+          Value<String?> imagePath = const Value.absent(),
+          String? titleEn,
+          String? descriptionEn,
+          String? titleRu,
+          String? descriptionRu,
+          String? titleKk,
+          String? descriptionKk}) =>
       Category(
         id: id ?? this.id,
-        title: title ?? this.title,
-        description: description ?? this.description,
         imagePath: imagePath.present ? imagePath.value : this.imagePath,
+        titleEn: titleEn ?? this.titleEn,
+        descriptionEn: descriptionEn ?? this.descriptionEn,
+        titleRu: titleRu ?? this.titleRu,
+        descriptionRu: descriptionRu ?? this.descriptionRu,
+        titleKk: titleKk ?? this.titleKk,
+        descriptionKk: descriptionKk ?? this.descriptionKk,
       );
   Category copyWithCompanion(CategoriesCompanion data) {
     return Category(
       id: data.id.present ? data.id.value : this.id,
-      title: data.title.present ? data.title.value : this.title,
-      description:
-          data.description.present ? data.description.value : this.description,
       imagePath: data.imagePath.present ? data.imagePath.value : this.imagePath,
+      titleEn: data.titleEn.present ? data.titleEn.value : this.titleEn,
+      descriptionEn: data.descriptionEn.present
+          ? data.descriptionEn.value
+          : this.descriptionEn,
+      titleRu: data.titleRu.present ? data.titleRu.value : this.titleRu,
+      descriptionRu: data.descriptionRu.present
+          ? data.descriptionRu.value
+          : this.descriptionRu,
+      titleKk: data.titleKk.present ? data.titleKk.value : this.titleKk,
+      descriptionKk: data.descriptionKk.present
+          ? data.descriptionKk.value
+          : this.descriptionKk,
     );
   }
 
@@ -169,67 +280,108 @@ class Category extends DataClass implements Insertable<Category> {
   String toString() {
     return (StringBuffer('Category(')
           ..write('id: $id, ')
-          ..write('title: $title, ')
-          ..write('description: $description, ')
-          ..write('imagePath: $imagePath')
+          ..write('imagePath: $imagePath, ')
+          ..write('titleEn: $titleEn, ')
+          ..write('descriptionEn: $descriptionEn, ')
+          ..write('titleRu: $titleRu, ')
+          ..write('descriptionRu: $descriptionRu, ')
+          ..write('titleKk: $titleKk, ')
+          ..write('descriptionKk: $descriptionKk')
           ..write(')'))
         .toString();
   }
 
   @override
-  int get hashCode => Object.hash(id, title, description, imagePath);
+  int get hashCode => Object.hash(id, imagePath, titleEn, descriptionEn,
+      titleRu, descriptionRu, titleKk, descriptionKk);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is Category &&
           other.id == this.id &&
-          other.title == this.title &&
-          other.description == this.description &&
-          other.imagePath == this.imagePath);
+          other.imagePath == this.imagePath &&
+          other.titleEn == this.titleEn &&
+          other.descriptionEn == this.descriptionEn &&
+          other.titleRu == this.titleRu &&
+          other.descriptionRu == this.descriptionRu &&
+          other.titleKk == this.titleKk &&
+          other.descriptionKk == this.descriptionKk);
 }
 
 class CategoriesCompanion extends UpdateCompanion<Category> {
   final Value<int> id;
-  final Value<String> title;
-  final Value<String> description;
   final Value<String?> imagePath;
+  final Value<String> titleEn;
+  final Value<String> descriptionEn;
+  final Value<String> titleRu;
+  final Value<String> descriptionRu;
+  final Value<String> titleKk;
+  final Value<String> descriptionKk;
   const CategoriesCompanion({
     this.id = const Value.absent(),
-    this.title = const Value.absent(),
-    this.description = const Value.absent(),
     this.imagePath = const Value.absent(),
+    this.titleEn = const Value.absent(),
+    this.descriptionEn = const Value.absent(),
+    this.titleRu = const Value.absent(),
+    this.descriptionRu = const Value.absent(),
+    this.titleKk = const Value.absent(),
+    this.descriptionKk = const Value.absent(),
   });
   CategoriesCompanion.insert({
     this.id = const Value.absent(),
-    required String title,
-    required String description,
     this.imagePath = const Value.absent(),
-  })  : title = Value(title),
-        description = Value(description);
+    required String titleEn,
+    required String descriptionEn,
+    required String titleRu,
+    required String descriptionRu,
+    required String titleKk,
+    required String descriptionKk,
+  })  : titleEn = Value(titleEn),
+        descriptionEn = Value(descriptionEn),
+        titleRu = Value(titleRu),
+        descriptionRu = Value(descriptionRu),
+        titleKk = Value(titleKk),
+        descriptionKk = Value(descriptionKk);
   static Insertable<Category> custom({
     Expression<int>? id,
-    Expression<String>? title,
-    Expression<String>? description,
     Expression<String>? imagePath,
+    Expression<String>? titleEn,
+    Expression<String>? descriptionEn,
+    Expression<String>? titleRu,
+    Expression<String>? descriptionRu,
+    Expression<String>? titleKk,
+    Expression<String>? descriptionKk,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
-      if (title != null) 'title': title,
-      if (description != null) 'description': description,
       if (imagePath != null) 'image_path': imagePath,
+      if (titleEn != null) 'title_en': titleEn,
+      if (descriptionEn != null) 'description_en': descriptionEn,
+      if (titleRu != null) 'title_ru': titleRu,
+      if (descriptionRu != null) 'description_ru': descriptionRu,
+      if (titleKk != null) 'title_kk': titleKk,
+      if (descriptionKk != null) 'description_kk': descriptionKk,
     });
   }
 
   CategoriesCompanion copyWith(
       {Value<int>? id,
-      Value<String>? title,
-      Value<String>? description,
-      Value<String?>? imagePath}) {
+      Value<String?>? imagePath,
+      Value<String>? titleEn,
+      Value<String>? descriptionEn,
+      Value<String>? titleRu,
+      Value<String>? descriptionRu,
+      Value<String>? titleKk,
+      Value<String>? descriptionKk}) {
     return CategoriesCompanion(
       id: id ?? this.id,
-      title: title ?? this.title,
-      description: description ?? this.description,
       imagePath: imagePath ?? this.imagePath,
+      titleEn: titleEn ?? this.titleEn,
+      descriptionEn: descriptionEn ?? this.descriptionEn,
+      titleRu: titleRu ?? this.titleRu,
+      descriptionRu: descriptionRu ?? this.descriptionRu,
+      titleKk: titleKk ?? this.titleKk,
+      descriptionKk: descriptionKk ?? this.descriptionKk,
     );
   }
 
@@ -239,14 +391,26 @@ class CategoriesCompanion extends UpdateCompanion<Category> {
     if (id.present) {
       map['id'] = Variable<int>(id.value);
     }
-    if (title.present) {
-      map['title'] = Variable<String>(title.value);
-    }
-    if (description.present) {
-      map['description'] = Variable<String>(description.value);
-    }
     if (imagePath.present) {
       map['image_path'] = Variable<String>(imagePath.value);
+    }
+    if (titleEn.present) {
+      map['title_en'] = Variable<String>(titleEn.value);
+    }
+    if (descriptionEn.present) {
+      map['description_en'] = Variable<String>(descriptionEn.value);
+    }
+    if (titleRu.present) {
+      map['title_ru'] = Variable<String>(titleRu.value);
+    }
+    if (descriptionRu.present) {
+      map['description_ru'] = Variable<String>(descriptionRu.value);
+    }
+    if (titleKk.present) {
+      map['title_kk'] = Variable<String>(titleKk.value);
+    }
+    if (descriptionKk.present) {
+      map['description_kk'] = Variable<String>(descriptionKk.value);
     }
     return map;
   }
@@ -255,9 +419,13 @@ class CategoriesCompanion extends UpdateCompanion<Category> {
   String toString() {
     return (StringBuffer('CategoriesCompanion(')
           ..write('id: $id, ')
-          ..write('title: $title, ')
-          ..write('description: $description, ')
-          ..write('imagePath: $imagePath')
+          ..write('imagePath: $imagePath, ')
+          ..write('titleEn: $titleEn, ')
+          ..write('descriptionEn: $descriptionEn, ')
+          ..write('titleRu: $titleRu, ')
+          ..write('descriptionRu: $descriptionRu, ')
+          ..write('titleKk: $titleKk, ')
+          ..write('descriptionKk: $descriptionKk')
           ..write(')'))
         .toString();
   }
@@ -277,27 +445,6 @@ class $HabitsTable extends Habits with TableInfo<$HabitsTable, Habit> {
       requiredDuringInsert: false,
       defaultConstraints:
           GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
-  static const VerificationMeta _titleMeta = const VerificationMeta('title');
-  @override
-  late final GeneratedColumn<String> title =
-      GeneratedColumn<String>('title', aliasedName, false,
-          additionalChecks: GeneratedColumn.checkTextLength(
-            minTextLength: 1,
-          ),
-          type: DriftSqlType.string,
-          requiredDuringInsert: true,
-          defaultConstraints: GeneratedColumn.constraintIsAlways('UNIQUE'));
-  static const VerificationMeta _descriptionMeta =
-      const VerificationMeta('description');
-  @override
-  late final GeneratedColumn<String> description = GeneratedColumn<String>(
-      'description', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _whyMeta = const VerificationMeta('why');
-  @override
-  late final GeneratedColumn<String> why = GeneratedColumn<String>(
-      'why', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
   static const VerificationMeta _takesTimeMeta =
       const VerificationMeta('takesTime');
   @override
@@ -313,9 +460,87 @@ class $HabitsTable extends Habits with TableInfo<$HabitsTable, Habit> {
       requiredDuringInsert: true,
       defaultConstraints:
           GeneratedColumn.constraintIsAlways('REFERENCES categories (id)'));
+  static const VerificationMeta _titleEnMeta =
+      const VerificationMeta('titleEn');
   @override
-  List<GeneratedColumn> get $columns =>
-      [id, title, description, why, takesTime, categoryId];
+  late final GeneratedColumn<String> titleEn =
+      GeneratedColumn<String>('title_en', aliasedName, false,
+          additionalChecks: GeneratedColumn.checkTextLength(
+            minTextLength: 1,
+          ),
+          type: DriftSqlType.string,
+          requiredDuringInsert: true,
+          defaultConstraints: GeneratedColumn.constraintIsAlways('UNIQUE'));
+  static const VerificationMeta _descriptionEnMeta =
+      const VerificationMeta('descriptionEn');
+  @override
+  late final GeneratedColumn<String> descriptionEn = GeneratedColumn<String>(
+      'description_en', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _whyEnMeta = const VerificationMeta('whyEn');
+  @override
+  late final GeneratedColumn<String> whyEn = GeneratedColumn<String>(
+      'why_en', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _titleKkMeta =
+      const VerificationMeta('titleKk');
+  @override
+  late final GeneratedColumn<String> titleKk =
+      GeneratedColumn<String>('title_kk', aliasedName, false,
+          additionalChecks: GeneratedColumn.checkTextLength(
+            minTextLength: 1,
+          ),
+          type: DriftSqlType.string,
+          requiredDuringInsert: true,
+          defaultConstraints: GeneratedColumn.constraintIsAlways('UNIQUE'));
+  static const VerificationMeta _descriptionKkMeta =
+      const VerificationMeta('descriptionKk');
+  @override
+  late final GeneratedColumn<String> descriptionKk = GeneratedColumn<String>(
+      'description_kk', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _whyKkMeta = const VerificationMeta('whyKk');
+  @override
+  late final GeneratedColumn<String> whyKk = GeneratedColumn<String>(
+      'why_kk', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _titleRuMeta =
+      const VerificationMeta('titleRu');
+  @override
+  late final GeneratedColumn<String> titleRu =
+      GeneratedColumn<String>('title_ru', aliasedName, false,
+          additionalChecks: GeneratedColumn.checkTextLength(
+            minTextLength: 1,
+          ),
+          type: DriftSqlType.string,
+          requiredDuringInsert: true,
+          defaultConstraints: GeneratedColumn.constraintIsAlways('UNIQUE'));
+  static const VerificationMeta _descriptionRuMeta =
+      const VerificationMeta('descriptionRu');
+  @override
+  late final GeneratedColumn<String> descriptionRu = GeneratedColumn<String>(
+      'description_ru', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _whyRuMeta = const VerificationMeta('whyRu');
+  @override
+  late final GeneratedColumn<String> whyRu = GeneratedColumn<String>(
+      'why_ru', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  @override
+  List<GeneratedColumn> get $columns => [
+        id,
+        takesTime,
+        categoryId,
+        titleEn,
+        descriptionEn,
+        whyEn,
+        titleKk,
+        descriptionKk,
+        whyKk,
+        titleRu,
+        descriptionRu,
+        whyRu
+      ];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
@@ -328,24 +553,6 @@ class $HabitsTable extends Habits with TableInfo<$HabitsTable, Habit> {
     final data = instance.toColumns(true);
     if (data.containsKey('id')) {
       context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
-    }
-    if (data.containsKey('title')) {
-      context.handle(
-          _titleMeta, title.isAcceptableOrUnknown(data['title']!, _titleMeta));
-    } else if (isInserting) {
-      context.missing(_titleMeta);
-    }
-    if (data.containsKey('description')) {
-      context.handle(
-          _descriptionMeta,
-          description.isAcceptableOrUnknown(
-              data['description']!, _descriptionMeta));
-    } else if (isInserting) {
-      context.missing(_descriptionMeta);
-    }
-    if (data.containsKey('why')) {
-      context.handle(
-          _whyMeta, why.isAcceptableOrUnknown(data['why']!, _whyMeta));
     }
     if (data.containsKey('takes_time')) {
       context.handle(_takesTimeMeta,
@@ -361,31 +568,93 @@ class $HabitsTable extends Habits with TableInfo<$HabitsTable, Habit> {
     } else if (isInserting) {
       context.missing(_categoryIdMeta);
     }
+    if (data.containsKey('title_en')) {
+      context.handle(_titleEnMeta,
+          titleEn.isAcceptableOrUnknown(data['title_en']!, _titleEnMeta));
+    } else if (isInserting) {
+      context.missing(_titleEnMeta);
+    }
+    if (data.containsKey('description_en')) {
+      context.handle(
+          _descriptionEnMeta,
+          descriptionEn.isAcceptableOrUnknown(
+              data['description_en']!, _descriptionEnMeta));
+    } else if (isInserting) {
+      context.missing(_descriptionEnMeta);
+    }
+    if (data.containsKey('why_en')) {
+      context.handle(
+          _whyEnMeta, whyEn.isAcceptableOrUnknown(data['why_en']!, _whyEnMeta));
+    }
+    if (data.containsKey('title_kk')) {
+      context.handle(_titleKkMeta,
+          titleKk.isAcceptableOrUnknown(data['title_kk']!, _titleKkMeta));
+    } else if (isInserting) {
+      context.missing(_titleKkMeta);
+    }
+    if (data.containsKey('description_kk')) {
+      context.handle(
+          _descriptionKkMeta,
+          descriptionKk.isAcceptableOrUnknown(
+              data['description_kk']!, _descriptionKkMeta));
+    } else if (isInserting) {
+      context.missing(_descriptionKkMeta);
+    }
+    if (data.containsKey('why_kk')) {
+      context.handle(
+          _whyKkMeta, whyKk.isAcceptableOrUnknown(data['why_kk']!, _whyKkMeta));
+    }
+    if (data.containsKey('title_ru')) {
+      context.handle(_titleRuMeta,
+          titleRu.isAcceptableOrUnknown(data['title_ru']!, _titleRuMeta));
+    } else if (isInserting) {
+      context.missing(_titleRuMeta);
+    }
+    if (data.containsKey('description_ru')) {
+      context.handle(
+          _descriptionRuMeta,
+          descriptionRu.isAcceptableOrUnknown(
+              data['description_ru']!, _descriptionRuMeta));
+    } else if (isInserting) {
+      context.missing(_descriptionRuMeta);
+    }
+    if (data.containsKey('why_ru')) {
+      context.handle(
+          _whyRuMeta, whyRu.isAcceptableOrUnknown(data['why_ru']!, _whyRuMeta));
+    }
     return context;
   }
 
   @override
   Set<GeneratedColumn> get $primaryKey => {id};
   @override
-  List<Set<GeneratedColumn>> get uniqueKeys => [
-        {title, description},
-      ];
-  @override
   Habit map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return Habit(
       id: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
-      title: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}title'])!,
-      description: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}description'])!,
-      why: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}why']),
       takesTime: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}takes_time'])!,
       categoryId: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}category_id'])!,
+      titleEn: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}title_en'])!,
+      descriptionEn: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}description_en'])!,
+      whyEn: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}why_en']),
+      titleKk: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}title_kk'])!,
+      descriptionKk: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}description_kk'])!,
+      whyKk: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}why_kk']),
+      titleRu: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}title_ru'])!,
+      descriptionRu: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}description_ru'])!,
+      whyRu: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}why_ru']),
     );
   }
 
@@ -397,40 +666,71 @@ class $HabitsTable extends Habits with TableInfo<$HabitsTable, Habit> {
 
 class Habit extends DataClass implements Insertable<Habit> {
   final int id;
-  final String title;
-  final String description;
-  final String? why;
   final int takesTime;
   final int categoryId;
+  final String titleEn;
+  final String descriptionEn;
+  final String? whyEn;
+  final String titleKk;
+  final String descriptionKk;
+  final String? whyKk;
+  final String titleRu;
+  final String descriptionRu;
+  final String? whyRu;
   const Habit(
       {required this.id,
-      required this.title,
-      required this.description,
-      this.why,
       required this.takesTime,
-      required this.categoryId});
+      required this.categoryId,
+      required this.titleEn,
+      required this.descriptionEn,
+      this.whyEn,
+      required this.titleKk,
+      required this.descriptionKk,
+      this.whyKk,
+      required this.titleRu,
+      required this.descriptionRu,
+      this.whyRu});
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     map['id'] = Variable<int>(id);
-    map['title'] = Variable<String>(title);
-    map['description'] = Variable<String>(description);
-    if (!nullToAbsent || why != null) {
-      map['why'] = Variable<String>(why);
-    }
     map['takes_time'] = Variable<int>(takesTime);
     map['category_id'] = Variable<int>(categoryId);
+    map['title_en'] = Variable<String>(titleEn);
+    map['description_en'] = Variable<String>(descriptionEn);
+    if (!nullToAbsent || whyEn != null) {
+      map['why_en'] = Variable<String>(whyEn);
+    }
+    map['title_kk'] = Variable<String>(titleKk);
+    map['description_kk'] = Variable<String>(descriptionKk);
+    if (!nullToAbsent || whyKk != null) {
+      map['why_kk'] = Variable<String>(whyKk);
+    }
+    map['title_ru'] = Variable<String>(titleRu);
+    map['description_ru'] = Variable<String>(descriptionRu);
+    if (!nullToAbsent || whyRu != null) {
+      map['why_ru'] = Variable<String>(whyRu);
+    }
     return map;
   }
 
   HabitsCompanion toCompanion(bool nullToAbsent) {
     return HabitsCompanion(
       id: Value(id),
-      title: Value(title),
-      description: Value(description),
-      why: why == null && nullToAbsent ? const Value.absent() : Value(why),
       takesTime: Value(takesTime),
       categoryId: Value(categoryId),
+      titleEn: Value(titleEn),
+      descriptionEn: Value(descriptionEn),
+      whyEn:
+          whyEn == null && nullToAbsent ? const Value.absent() : Value(whyEn),
+      titleKk: Value(titleKk),
+      descriptionKk: Value(descriptionKk),
+      whyKk:
+          whyKk == null && nullToAbsent ? const Value.absent() : Value(whyKk),
+      titleRu: Value(titleRu),
+      descriptionRu: Value(descriptionRu),
+      whyRu:
+          whyRu == null && nullToAbsent ? const Value.absent() : Value(whyRu),
     );
   }
 
@@ -439,11 +739,17 @@ class Habit extends DataClass implements Insertable<Habit> {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return Habit(
       id: serializer.fromJson<int>(json['id']),
-      title: serializer.fromJson<String>(json['title']),
-      description: serializer.fromJson<String>(json['description']),
-      why: serializer.fromJson<String?>(json['why']),
       takesTime: serializer.fromJson<int>(json['takesTime']),
       categoryId: serializer.fromJson<int>(json['categoryId']),
+      titleEn: serializer.fromJson<String>(json['titleEn']),
+      descriptionEn: serializer.fromJson<String>(json['descriptionEn']),
+      whyEn: serializer.fromJson<String?>(json['whyEn']),
+      titleKk: serializer.fromJson<String>(json['titleKk']),
+      descriptionKk: serializer.fromJson<String>(json['descriptionKk']),
+      whyKk: serializer.fromJson<String?>(json['whyKk']),
+      titleRu: serializer.fromJson<String>(json['titleRu']),
+      descriptionRu: serializer.fromJson<String>(json['descriptionRu']),
+      whyRu: serializer.fromJson<String?>(json['whyRu']),
     );
   }
   @override
@@ -451,39 +757,68 @@ class Habit extends DataClass implements Insertable<Habit> {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
       'id': serializer.toJson<int>(id),
-      'title': serializer.toJson<String>(title),
-      'description': serializer.toJson<String>(description),
-      'why': serializer.toJson<String?>(why),
       'takesTime': serializer.toJson<int>(takesTime),
       'categoryId': serializer.toJson<int>(categoryId),
+      'titleEn': serializer.toJson<String>(titleEn),
+      'descriptionEn': serializer.toJson<String>(descriptionEn),
+      'whyEn': serializer.toJson<String?>(whyEn),
+      'titleKk': serializer.toJson<String>(titleKk),
+      'descriptionKk': serializer.toJson<String>(descriptionKk),
+      'whyKk': serializer.toJson<String?>(whyKk),
+      'titleRu': serializer.toJson<String>(titleRu),
+      'descriptionRu': serializer.toJson<String>(descriptionRu),
+      'whyRu': serializer.toJson<String?>(whyRu),
     };
   }
 
   Habit copyWith(
           {int? id,
-          String? title,
-          String? description,
-          Value<String?> why = const Value.absent(),
           int? takesTime,
-          int? categoryId}) =>
+          int? categoryId,
+          String? titleEn,
+          String? descriptionEn,
+          Value<String?> whyEn = const Value.absent(),
+          String? titleKk,
+          String? descriptionKk,
+          Value<String?> whyKk = const Value.absent(),
+          String? titleRu,
+          String? descriptionRu,
+          Value<String?> whyRu = const Value.absent()}) =>
       Habit(
         id: id ?? this.id,
-        title: title ?? this.title,
-        description: description ?? this.description,
-        why: why.present ? why.value : this.why,
         takesTime: takesTime ?? this.takesTime,
         categoryId: categoryId ?? this.categoryId,
+        titleEn: titleEn ?? this.titleEn,
+        descriptionEn: descriptionEn ?? this.descriptionEn,
+        whyEn: whyEn.present ? whyEn.value : this.whyEn,
+        titleKk: titleKk ?? this.titleKk,
+        descriptionKk: descriptionKk ?? this.descriptionKk,
+        whyKk: whyKk.present ? whyKk.value : this.whyKk,
+        titleRu: titleRu ?? this.titleRu,
+        descriptionRu: descriptionRu ?? this.descriptionRu,
+        whyRu: whyRu.present ? whyRu.value : this.whyRu,
       );
   Habit copyWithCompanion(HabitsCompanion data) {
     return Habit(
       id: data.id.present ? data.id.value : this.id,
-      title: data.title.present ? data.title.value : this.title,
-      description:
-          data.description.present ? data.description.value : this.description,
-      why: data.why.present ? data.why.value : this.why,
       takesTime: data.takesTime.present ? data.takesTime.value : this.takesTime,
       categoryId:
           data.categoryId.present ? data.categoryId.value : this.categoryId,
+      titleEn: data.titleEn.present ? data.titleEn.value : this.titleEn,
+      descriptionEn: data.descriptionEn.present
+          ? data.descriptionEn.value
+          : this.descriptionEn,
+      whyEn: data.whyEn.present ? data.whyEn.value : this.whyEn,
+      titleKk: data.titleKk.present ? data.titleKk.value : this.titleKk,
+      descriptionKk: data.descriptionKk.present
+          ? data.descriptionKk.value
+          : this.descriptionKk,
+      whyKk: data.whyKk.present ? data.whyKk.value : this.whyKk,
+      titleRu: data.titleRu.present ? data.titleRu.value : this.titleRu,
+      descriptionRu: data.descriptionRu.present
+          ? data.descriptionRu.value
+          : this.descriptionRu,
+      whyRu: data.whyRu.present ? data.whyRu.value : this.whyRu,
     );
   }
 
@@ -491,88 +826,157 @@ class Habit extends DataClass implements Insertable<Habit> {
   String toString() {
     return (StringBuffer('Habit(')
           ..write('id: $id, ')
-          ..write('title: $title, ')
-          ..write('description: $description, ')
-          ..write('why: $why, ')
           ..write('takesTime: $takesTime, ')
-          ..write('categoryId: $categoryId')
+          ..write('categoryId: $categoryId, ')
+          ..write('titleEn: $titleEn, ')
+          ..write('descriptionEn: $descriptionEn, ')
+          ..write('whyEn: $whyEn, ')
+          ..write('titleKk: $titleKk, ')
+          ..write('descriptionKk: $descriptionKk, ')
+          ..write('whyKk: $whyKk, ')
+          ..write('titleRu: $titleRu, ')
+          ..write('descriptionRu: $descriptionRu, ')
+          ..write('whyRu: $whyRu')
           ..write(')'))
         .toString();
   }
 
   @override
-  int get hashCode =>
-      Object.hash(id, title, description, why, takesTime, categoryId);
+  int get hashCode => Object.hash(
+      id,
+      takesTime,
+      categoryId,
+      titleEn,
+      descriptionEn,
+      whyEn,
+      titleKk,
+      descriptionKk,
+      whyKk,
+      titleRu,
+      descriptionRu,
+      whyRu);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is Habit &&
           other.id == this.id &&
-          other.title == this.title &&
-          other.description == this.description &&
-          other.why == this.why &&
           other.takesTime == this.takesTime &&
-          other.categoryId == this.categoryId);
+          other.categoryId == this.categoryId &&
+          other.titleEn == this.titleEn &&
+          other.descriptionEn == this.descriptionEn &&
+          other.whyEn == this.whyEn &&
+          other.titleKk == this.titleKk &&
+          other.descriptionKk == this.descriptionKk &&
+          other.whyKk == this.whyKk &&
+          other.titleRu == this.titleRu &&
+          other.descriptionRu == this.descriptionRu &&
+          other.whyRu == this.whyRu);
 }
 
 class HabitsCompanion extends UpdateCompanion<Habit> {
   final Value<int> id;
-  final Value<String> title;
-  final Value<String> description;
-  final Value<String?> why;
   final Value<int> takesTime;
   final Value<int> categoryId;
+  final Value<String> titleEn;
+  final Value<String> descriptionEn;
+  final Value<String?> whyEn;
+  final Value<String> titleKk;
+  final Value<String> descriptionKk;
+  final Value<String?> whyKk;
+  final Value<String> titleRu;
+  final Value<String> descriptionRu;
+  final Value<String?> whyRu;
   const HabitsCompanion({
     this.id = const Value.absent(),
-    this.title = const Value.absent(),
-    this.description = const Value.absent(),
-    this.why = const Value.absent(),
     this.takesTime = const Value.absent(),
     this.categoryId = const Value.absent(),
+    this.titleEn = const Value.absent(),
+    this.descriptionEn = const Value.absent(),
+    this.whyEn = const Value.absent(),
+    this.titleKk = const Value.absent(),
+    this.descriptionKk = const Value.absent(),
+    this.whyKk = const Value.absent(),
+    this.titleRu = const Value.absent(),
+    this.descriptionRu = const Value.absent(),
+    this.whyRu = const Value.absent(),
   });
   HabitsCompanion.insert({
     this.id = const Value.absent(),
-    required String title,
-    required String description,
-    this.why = const Value.absent(),
     required int takesTime,
     required int categoryId,
-  })  : title = Value(title),
-        description = Value(description),
-        takesTime = Value(takesTime),
-        categoryId = Value(categoryId);
+    required String titleEn,
+    required String descriptionEn,
+    this.whyEn = const Value.absent(),
+    required String titleKk,
+    required String descriptionKk,
+    this.whyKk = const Value.absent(),
+    required String titleRu,
+    required String descriptionRu,
+    this.whyRu = const Value.absent(),
+  })  : takesTime = Value(takesTime),
+        categoryId = Value(categoryId),
+        titleEn = Value(titleEn),
+        descriptionEn = Value(descriptionEn),
+        titleKk = Value(titleKk),
+        descriptionKk = Value(descriptionKk),
+        titleRu = Value(titleRu),
+        descriptionRu = Value(descriptionRu);
   static Insertable<Habit> custom({
     Expression<int>? id,
-    Expression<String>? title,
-    Expression<String>? description,
-    Expression<String>? why,
     Expression<int>? takesTime,
     Expression<int>? categoryId,
+    Expression<String>? titleEn,
+    Expression<String>? descriptionEn,
+    Expression<String>? whyEn,
+    Expression<String>? titleKk,
+    Expression<String>? descriptionKk,
+    Expression<String>? whyKk,
+    Expression<String>? titleRu,
+    Expression<String>? descriptionRu,
+    Expression<String>? whyRu,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
-      if (title != null) 'title': title,
-      if (description != null) 'description': description,
-      if (why != null) 'why': why,
       if (takesTime != null) 'takes_time': takesTime,
       if (categoryId != null) 'category_id': categoryId,
+      if (titleEn != null) 'title_en': titleEn,
+      if (descriptionEn != null) 'description_en': descriptionEn,
+      if (whyEn != null) 'why_en': whyEn,
+      if (titleKk != null) 'title_kk': titleKk,
+      if (descriptionKk != null) 'description_kk': descriptionKk,
+      if (whyKk != null) 'why_kk': whyKk,
+      if (titleRu != null) 'title_ru': titleRu,
+      if (descriptionRu != null) 'description_ru': descriptionRu,
+      if (whyRu != null) 'why_ru': whyRu,
     });
   }
 
   HabitsCompanion copyWith(
       {Value<int>? id,
-      Value<String>? title,
-      Value<String>? description,
-      Value<String?>? why,
       Value<int>? takesTime,
-      Value<int>? categoryId}) {
+      Value<int>? categoryId,
+      Value<String>? titleEn,
+      Value<String>? descriptionEn,
+      Value<String?>? whyEn,
+      Value<String>? titleKk,
+      Value<String>? descriptionKk,
+      Value<String?>? whyKk,
+      Value<String>? titleRu,
+      Value<String>? descriptionRu,
+      Value<String?>? whyRu}) {
     return HabitsCompanion(
       id: id ?? this.id,
-      title: title ?? this.title,
-      description: description ?? this.description,
-      why: why ?? this.why,
       takesTime: takesTime ?? this.takesTime,
       categoryId: categoryId ?? this.categoryId,
+      titleEn: titleEn ?? this.titleEn,
+      descriptionEn: descriptionEn ?? this.descriptionEn,
+      whyEn: whyEn ?? this.whyEn,
+      titleKk: titleKk ?? this.titleKk,
+      descriptionKk: descriptionKk ?? this.descriptionKk,
+      whyKk: whyKk ?? this.whyKk,
+      titleRu: titleRu ?? this.titleRu,
+      descriptionRu: descriptionRu ?? this.descriptionRu,
+      whyRu: whyRu ?? this.whyRu,
     );
   }
 
@@ -582,20 +986,38 @@ class HabitsCompanion extends UpdateCompanion<Habit> {
     if (id.present) {
       map['id'] = Variable<int>(id.value);
     }
-    if (title.present) {
-      map['title'] = Variable<String>(title.value);
-    }
-    if (description.present) {
-      map['description'] = Variable<String>(description.value);
-    }
-    if (why.present) {
-      map['why'] = Variable<String>(why.value);
-    }
     if (takesTime.present) {
       map['takes_time'] = Variable<int>(takesTime.value);
     }
     if (categoryId.present) {
       map['category_id'] = Variable<int>(categoryId.value);
+    }
+    if (titleEn.present) {
+      map['title_en'] = Variable<String>(titleEn.value);
+    }
+    if (descriptionEn.present) {
+      map['description_en'] = Variable<String>(descriptionEn.value);
+    }
+    if (whyEn.present) {
+      map['why_en'] = Variable<String>(whyEn.value);
+    }
+    if (titleKk.present) {
+      map['title_kk'] = Variable<String>(titleKk.value);
+    }
+    if (descriptionKk.present) {
+      map['description_kk'] = Variable<String>(descriptionKk.value);
+    }
+    if (whyKk.present) {
+      map['why_kk'] = Variable<String>(whyKk.value);
+    }
+    if (titleRu.present) {
+      map['title_ru'] = Variable<String>(titleRu.value);
+    }
+    if (descriptionRu.present) {
+      map['description_ru'] = Variable<String>(descriptionRu.value);
+    }
+    if (whyRu.present) {
+      map['why_ru'] = Variable<String>(whyRu.value);
     }
     return map;
   }
@@ -604,11 +1026,17 @@ class HabitsCompanion extends UpdateCompanion<Habit> {
   String toString() {
     return (StringBuffer('HabitsCompanion(')
           ..write('id: $id, ')
-          ..write('title: $title, ')
-          ..write('description: $description, ')
-          ..write('why: $why, ')
           ..write('takesTime: $takesTime, ')
-          ..write('categoryId: $categoryId')
+          ..write('categoryId: $categoryId, ')
+          ..write('titleEn: $titleEn, ')
+          ..write('descriptionEn: $descriptionEn, ')
+          ..write('whyEn: $whyEn, ')
+          ..write('titleKk: $titleKk, ')
+          ..write('descriptionKk: $descriptionKk, ')
+          ..write('whyKk: $whyKk, ')
+          ..write('titleRu: $titleRu, ')
+          ..write('descriptionRu: $descriptionRu, ')
+          ..write('whyRu: $whyRu')
           ..write(')'))
         .toString();
   }
@@ -637,22 +1065,54 @@ class $TipsTable extends Tips with TableInfo<$TipsTable, Tip> {
       requiredDuringInsert: true,
       defaultConstraints:
           GeneratedColumn.constraintIsAlways('REFERENCES habits (id)'));
-  static const VerificationMeta _titleMeta = const VerificationMeta('title');
+  static const VerificationMeta _titleEnMeta =
+      const VerificationMeta('titleEn');
   @override
-  late final GeneratedColumn<String> title = GeneratedColumn<String>(
-      'title', aliasedName, false,
+  late final GeneratedColumn<String> titleEn = GeneratedColumn<String>(
+      'title_en', aliasedName, false,
       additionalChecks:
           GeneratedColumn.checkTextLength(minTextLength: 1, maxTextLength: 255),
       type: DriftSqlType.string,
       requiredDuringInsert: true);
-  static const VerificationMeta _contentMeta =
-      const VerificationMeta('content');
+  static const VerificationMeta _contentEnMeta =
+      const VerificationMeta('contentEn');
   @override
-  late final GeneratedColumn<String> content = GeneratedColumn<String>(
-      'content', aliasedName, false,
+  late final GeneratedColumn<String> contentEn = GeneratedColumn<String>(
+      'content_en', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _titleRuMeta =
+      const VerificationMeta('titleRu');
+  @override
+  late final GeneratedColumn<String> titleRu = GeneratedColumn<String>(
+      'title_ru', aliasedName, false,
+      additionalChecks:
+          GeneratedColumn.checkTextLength(minTextLength: 1, maxTextLength: 255),
+      type: DriftSqlType.string,
+      requiredDuringInsert: true);
+  static const VerificationMeta _contentRuMeta =
+      const VerificationMeta('contentRu');
+  @override
+  late final GeneratedColumn<String> contentRu = GeneratedColumn<String>(
+      'content_ru', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _titleKkMeta =
+      const VerificationMeta('titleKk');
+  @override
+  late final GeneratedColumn<String> titleKk = GeneratedColumn<String>(
+      'title_kk', aliasedName, false,
+      additionalChecks:
+          GeneratedColumn.checkTextLength(minTextLength: 1, maxTextLength: 255),
+      type: DriftSqlType.string,
+      requiredDuringInsert: true);
+  static const VerificationMeta _contentKkMeta =
+      const VerificationMeta('contentKk');
+  @override
+  late final GeneratedColumn<String> contentKk = GeneratedColumn<String>(
+      'content_kk', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
   @override
-  List<GeneratedColumn> get $columns => [id, habitId, title, content];
+  List<GeneratedColumn> get $columns =>
+      [id, habitId, titleEn, contentEn, titleRu, contentRu, titleKk, contentKk];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
@@ -672,17 +1132,41 @@ class $TipsTable extends Tips with TableInfo<$TipsTable, Tip> {
     } else if (isInserting) {
       context.missing(_habitIdMeta);
     }
-    if (data.containsKey('title')) {
-      context.handle(
-          _titleMeta, title.isAcceptableOrUnknown(data['title']!, _titleMeta));
+    if (data.containsKey('title_en')) {
+      context.handle(_titleEnMeta,
+          titleEn.isAcceptableOrUnknown(data['title_en']!, _titleEnMeta));
     } else if (isInserting) {
-      context.missing(_titleMeta);
+      context.missing(_titleEnMeta);
     }
-    if (data.containsKey('content')) {
-      context.handle(_contentMeta,
-          content.isAcceptableOrUnknown(data['content']!, _contentMeta));
+    if (data.containsKey('content_en')) {
+      context.handle(_contentEnMeta,
+          contentEn.isAcceptableOrUnknown(data['content_en']!, _contentEnMeta));
     } else if (isInserting) {
-      context.missing(_contentMeta);
+      context.missing(_contentEnMeta);
+    }
+    if (data.containsKey('title_ru')) {
+      context.handle(_titleRuMeta,
+          titleRu.isAcceptableOrUnknown(data['title_ru']!, _titleRuMeta));
+    } else if (isInserting) {
+      context.missing(_titleRuMeta);
+    }
+    if (data.containsKey('content_ru')) {
+      context.handle(_contentRuMeta,
+          contentRu.isAcceptableOrUnknown(data['content_ru']!, _contentRuMeta));
+    } else if (isInserting) {
+      context.missing(_contentRuMeta);
+    }
+    if (data.containsKey('title_kk')) {
+      context.handle(_titleKkMeta,
+          titleKk.isAcceptableOrUnknown(data['title_kk']!, _titleKkMeta));
+    } else if (isInserting) {
+      context.missing(_titleKkMeta);
+    }
+    if (data.containsKey('content_kk')) {
+      context.handle(_contentKkMeta,
+          contentKk.isAcceptableOrUnknown(data['content_kk']!, _contentKkMeta));
+    } else if (isInserting) {
+      context.missing(_contentKkMeta);
     }
     return context;
   }
@@ -697,10 +1181,18 @@ class $TipsTable extends Tips with TableInfo<$TipsTable, Tip> {
           .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
       habitId: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}habit_id'])!,
-      title: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}title'])!,
-      content: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}content'])!,
+      titleEn: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}title_en'])!,
+      contentEn: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}content_en'])!,
+      titleRu: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}title_ru'])!,
+      contentRu: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}content_ru'])!,
+      titleKk: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}title_kk'])!,
+      contentKk: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}content_kk'])!,
     );
   }
 
@@ -713,20 +1205,32 @@ class $TipsTable extends Tips with TableInfo<$TipsTable, Tip> {
 class Tip extends DataClass implements Insertable<Tip> {
   final int id;
   final int habitId;
-  final String title;
-  final String content;
+  final String titleEn;
+  final String contentEn;
+  final String titleRu;
+  final String contentRu;
+  final String titleKk;
+  final String contentKk;
   const Tip(
       {required this.id,
       required this.habitId,
-      required this.title,
-      required this.content});
+      required this.titleEn,
+      required this.contentEn,
+      required this.titleRu,
+      required this.contentRu,
+      required this.titleKk,
+      required this.contentKk});
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     map['id'] = Variable<int>(id);
     map['habit_id'] = Variable<int>(habitId);
-    map['title'] = Variable<String>(title);
-    map['content'] = Variable<String>(content);
+    map['title_en'] = Variable<String>(titleEn);
+    map['content_en'] = Variable<String>(contentEn);
+    map['title_ru'] = Variable<String>(titleRu);
+    map['content_ru'] = Variable<String>(contentRu);
+    map['title_kk'] = Variable<String>(titleKk);
+    map['content_kk'] = Variable<String>(contentKk);
     return map;
   }
 
@@ -734,8 +1238,12 @@ class Tip extends DataClass implements Insertable<Tip> {
     return TipsCompanion(
       id: Value(id),
       habitId: Value(habitId),
-      title: Value(title),
-      content: Value(content),
+      titleEn: Value(titleEn),
+      contentEn: Value(contentEn),
+      titleRu: Value(titleRu),
+      contentRu: Value(contentRu),
+      titleKk: Value(titleKk),
+      contentKk: Value(contentKk),
     );
   }
 
@@ -745,8 +1253,12 @@ class Tip extends DataClass implements Insertable<Tip> {
     return Tip(
       id: serializer.fromJson<int>(json['id']),
       habitId: serializer.fromJson<int>(json['habitId']),
-      title: serializer.fromJson<String>(json['title']),
-      content: serializer.fromJson<String>(json['content']),
+      titleEn: serializer.fromJson<String>(json['titleEn']),
+      contentEn: serializer.fromJson<String>(json['contentEn']),
+      titleRu: serializer.fromJson<String>(json['titleRu']),
+      contentRu: serializer.fromJson<String>(json['contentRu']),
+      titleKk: serializer.fromJson<String>(json['titleKk']),
+      contentKk: serializer.fromJson<String>(json['contentKk']),
     );
   }
   @override
@@ -755,23 +1267,44 @@ class Tip extends DataClass implements Insertable<Tip> {
     return <String, dynamic>{
       'id': serializer.toJson<int>(id),
       'habitId': serializer.toJson<int>(habitId),
-      'title': serializer.toJson<String>(title),
-      'content': serializer.toJson<String>(content),
+      'titleEn': serializer.toJson<String>(titleEn),
+      'contentEn': serializer.toJson<String>(contentEn),
+      'titleRu': serializer.toJson<String>(titleRu),
+      'contentRu': serializer.toJson<String>(contentRu),
+      'titleKk': serializer.toJson<String>(titleKk),
+      'contentKk': serializer.toJson<String>(contentKk),
     };
   }
 
-  Tip copyWith({int? id, int? habitId, String? title, String? content}) => Tip(
+  Tip copyWith(
+          {int? id,
+          int? habitId,
+          String? titleEn,
+          String? contentEn,
+          String? titleRu,
+          String? contentRu,
+          String? titleKk,
+          String? contentKk}) =>
+      Tip(
         id: id ?? this.id,
         habitId: habitId ?? this.habitId,
-        title: title ?? this.title,
-        content: content ?? this.content,
+        titleEn: titleEn ?? this.titleEn,
+        contentEn: contentEn ?? this.contentEn,
+        titleRu: titleRu ?? this.titleRu,
+        contentRu: contentRu ?? this.contentRu,
+        titleKk: titleKk ?? this.titleKk,
+        contentKk: contentKk ?? this.contentKk,
       );
   Tip copyWithCompanion(TipsCompanion data) {
     return Tip(
       id: data.id.present ? data.id.value : this.id,
       habitId: data.habitId.present ? data.habitId.value : this.habitId,
-      title: data.title.present ? data.title.value : this.title,
-      content: data.content.present ? data.content.value : this.content,
+      titleEn: data.titleEn.present ? data.titleEn.value : this.titleEn,
+      contentEn: data.contentEn.present ? data.contentEn.value : this.contentEn,
+      titleRu: data.titleRu.present ? data.titleRu.value : this.titleRu,
+      contentRu: data.contentRu.present ? data.contentRu.value : this.contentRu,
+      titleKk: data.titleKk.present ? data.titleKk.value : this.titleKk,
+      contentKk: data.contentKk.present ? data.contentKk.value : this.contentKk,
     );
   }
 
@@ -780,67 +1313,108 @@ class Tip extends DataClass implements Insertable<Tip> {
     return (StringBuffer('Tip(')
           ..write('id: $id, ')
           ..write('habitId: $habitId, ')
-          ..write('title: $title, ')
-          ..write('content: $content')
+          ..write('titleEn: $titleEn, ')
+          ..write('contentEn: $contentEn, ')
+          ..write('titleRu: $titleRu, ')
+          ..write('contentRu: $contentRu, ')
+          ..write('titleKk: $titleKk, ')
+          ..write('contentKk: $contentKk')
           ..write(')'))
         .toString();
   }
 
   @override
-  int get hashCode => Object.hash(id, habitId, title, content);
+  int get hashCode => Object.hash(
+      id, habitId, titleEn, contentEn, titleRu, contentRu, titleKk, contentKk);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is Tip &&
           other.id == this.id &&
           other.habitId == this.habitId &&
-          other.title == this.title &&
-          other.content == this.content);
+          other.titleEn == this.titleEn &&
+          other.contentEn == this.contentEn &&
+          other.titleRu == this.titleRu &&
+          other.contentRu == this.contentRu &&
+          other.titleKk == this.titleKk &&
+          other.contentKk == this.contentKk);
 }
 
 class TipsCompanion extends UpdateCompanion<Tip> {
   final Value<int> id;
   final Value<int> habitId;
-  final Value<String> title;
-  final Value<String> content;
+  final Value<String> titleEn;
+  final Value<String> contentEn;
+  final Value<String> titleRu;
+  final Value<String> contentRu;
+  final Value<String> titleKk;
+  final Value<String> contentKk;
   const TipsCompanion({
     this.id = const Value.absent(),
     this.habitId = const Value.absent(),
-    this.title = const Value.absent(),
-    this.content = const Value.absent(),
+    this.titleEn = const Value.absent(),
+    this.contentEn = const Value.absent(),
+    this.titleRu = const Value.absent(),
+    this.contentRu = const Value.absent(),
+    this.titleKk = const Value.absent(),
+    this.contentKk = const Value.absent(),
   });
   TipsCompanion.insert({
     this.id = const Value.absent(),
     required int habitId,
-    required String title,
-    required String content,
+    required String titleEn,
+    required String contentEn,
+    required String titleRu,
+    required String contentRu,
+    required String titleKk,
+    required String contentKk,
   })  : habitId = Value(habitId),
-        title = Value(title),
-        content = Value(content);
+        titleEn = Value(titleEn),
+        contentEn = Value(contentEn),
+        titleRu = Value(titleRu),
+        contentRu = Value(contentRu),
+        titleKk = Value(titleKk),
+        contentKk = Value(contentKk);
   static Insertable<Tip> custom({
     Expression<int>? id,
     Expression<int>? habitId,
-    Expression<String>? title,
-    Expression<String>? content,
+    Expression<String>? titleEn,
+    Expression<String>? contentEn,
+    Expression<String>? titleRu,
+    Expression<String>? contentRu,
+    Expression<String>? titleKk,
+    Expression<String>? contentKk,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
       if (habitId != null) 'habit_id': habitId,
-      if (title != null) 'title': title,
-      if (content != null) 'content': content,
+      if (titleEn != null) 'title_en': titleEn,
+      if (contentEn != null) 'content_en': contentEn,
+      if (titleRu != null) 'title_ru': titleRu,
+      if (contentRu != null) 'content_ru': contentRu,
+      if (titleKk != null) 'title_kk': titleKk,
+      if (contentKk != null) 'content_kk': contentKk,
     });
   }
 
   TipsCompanion copyWith(
       {Value<int>? id,
       Value<int>? habitId,
-      Value<String>? title,
-      Value<String>? content}) {
+      Value<String>? titleEn,
+      Value<String>? contentEn,
+      Value<String>? titleRu,
+      Value<String>? contentRu,
+      Value<String>? titleKk,
+      Value<String>? contentKk}) {
     return TipsCompanion(
       id: id ?? this.id,
       habitId: habitId ?? this.habitId,
-      title: title ?? this.title,
-      content: content ?? this.content,
+      titleEn: titleEn ?? this.titleEn,
+      contentEn: contentEn ?? this.contentEn,
+      titleRu: titleRu ?? this.titleRu,
+      contentRu: contentRu ?? this.contentRu,
+      titleKk: titleKk ?? this.titleKk,
+      contentKk: contentKk ?? this.contentKk,
     );
   }
 
@@ -853,11 +1427,23 @@ class TipsCompanion extends UpdateCompanion<Tip> {
     if (habitId.present) {
       map['habit_id'] = Variable<int>(habitId.value);
     }
-    if (title.present) {
-      map['title'] = Variable<String>(title.value);
+    if (titleEn.present) {
+      map['title_en'] = Variable<String>(titleEn.value);
     }
-    if (content.present) {
-      map['content'] = Variable<String>(content.value);
+    if (contentEn.present) {
+      map['content_en'] = Variable<String>(contentEn.value);
+    }
+    if (titleRu.present) {
+      map['title_ru'] = Variable<String>(titleRu.value);
+    }
+    if (contentRu.present) {
+      map['content_ru'] = Variable<String>(contentRu.value);
+    }
+    if (titleKk.present) {
+      map['title_kk'] = Variable<String>(titleKk.value);
+    }
+    if (contentKk.present) {
+      map['content_kk'] = Variable<String>(contentKk.value);
     }
     return map;
   }
@@ -867,8 +1453,12 @@ class TipsCompanion extends UpdateCompanion<Tip> {
     return (StringBuffer('TipsCompanion(')
           ..write('id: $id, ')
           ..write('habitId: $habitId, ')
-          ..write('title: $title, ')
-          ..write('content: $content')
+          ..write('titleEn: $titleEn, ')
+          ..write('contentEn: $contentEn, ')
+          ..write('titleRu: $titleRu, ')
+          ..write('contentRu: $contentRu, ')
+          ..write('titleKk: $titleKk, ')
+          ..write('contentKk: $contentKk')
           ..write(')'))
         .toString();
   }
@@ -1670,15 +2260,23 @@ abstract class _$AppDatabase extends GeneratedDatabase {
 
 typedef $$CategoriesTableCreateCompanionBuilder = CategoriesCompanion Function({
   Value<int> id,
-  required String title,
-  required String description,
   Value<String?> imagePath,
+  required String titleEn,
+  required String descriptionEn,
+  required String titleRu,
+  required String descriptionRu,
+  required String titleKk,
+  required String descriptionKk,
 });
 typedef $$CategoriesTableUpdateCompanionBuilder = CategoriesCompanion Function({
   Value<int> id,
-  Value<String> title,
-  Value<String> description,
   Value<String?> imagePath,
+  Value<String> titleEn,
+  Value<String> descriptionEn,
+  Value<String> titleRu,
+  Value<String> descriptionRu,
+  Value<String> titleKk,
+  Value<String> descriptionKk,
 });
 
 final class $$CategoriesTableReferences
@@ -1713,14 +2311,26 @@ class $$CategoriesTableFilterComposer
   ColumnFilters<int> get id => $composableBuilder(
       column: $table.id, builder: (column) => ColumnFilters(column));
 
-  ColumnFilters<String> get title => $composableBuilder(
-      column: $table.title, builder: (column) => ColumnFilters(column));
-
-  ColumnFilters<String> get description => $composableBuilder(
-      column: $table.description, builder: (column) => ColumnFilters(column));
-
   ColumnFilters<String> get imagePath => $composableBuilder(
       column: $table.imagePath, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get titleEn => $composableBuilder(
+      column: $table.titleEn, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get descriptionEn => $composableBuilder(
+      column: $table.descriptionEn, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get titleRu => $composableBuilder(
+      column: $table.titleRu, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get descriptionRu => $composableBuilder(
+      column: $table.descriptionRu, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get titleKk => $composableBuilder(
+      column: $table.titleKk, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get descriptionKk => $composableBuilder(
+      column: $table.descriptionKk, builder: (column) => ColumnFilters(column));
 
   Expression<bool> habitsRefs(
       Expression<bool> Function($$HabitsTableFilterComposer f) f) {
@@ -1756,14 +2366,29 @@ class $$CategoriesTableOrderingComposer
   ColumnOrderings<int> get id => $composableBuilder(
       column: $table.id, builder: (column) => ColumnOrderings(column));
 
-  ColumnOrderings<String> get title => $composableBuilder(
-      column: $table.title, builder: (column) => ColumnOrderings(column));
-
-  ColumnOrderings<String> get description => $composableBuilder(
-      column: $table.description, builder: (column) => ColumnOrderings(column));
-
   ColumnOrderings<String> get imagePath => $composableBuilder(
       column: $table.imagePath, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get titleEn => $composableBuilder(
+      column: $table.titleEn, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get descriptionEn => $composableBuilder(
+      column: $table.descriptionEn,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get titleRu => $composableBuilder(
+      column: $table.titleRu, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get descriptionRu => $composableBuilder(
+      column: $table.descriptionRu,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get titleKk => $composableBuilder(
+      column: $table.titleKk, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get descriptionKk => $composableBuilder(
+      column: $table.descriptionKk,
+      builder: (column) => ColumnOrderings(column));
 }
 
 class $$CategoriesTableAnnotationComposer
@@ -1778,14 +2403,26 @@ class $$CategoriesTableAnnotationComposer
   GeneratedColumn<int> get id =>
       $composableBuilder(column: $table.id, builder: (column) => column);
 
-  GeneratedColumn<String> get title =>
-      $composableBuilder(column: $table.title, builder: (column) => column);
-
-  GeneratedColumn<String> get description => $composableBuilder(
-      column: $table.description, builder: (column) => column);
-
   GeneratedColumn<String> get imagePath =>
       $composableBuilder(column: $table.imagePath, builder: (column) => column);
+
+  GeneratedColumn<String> get titleEn =>
+      $composableBuilder(column: $table.titleEn, builder: (column) => column);
+
+  GeneratedColumn<String> get descriptionEn => $composableBuilder(
+      column: $table.descriptionEn, builder: (column) => column);
+
+  GeneratedColumn<String> get titleRu =>
+      $composableBuilder(column: $table.titleRu, builder: (column) => column);
+
+  GeneratedColumn<String> get descriptionRu => $composableBuilder(
+      column: $table.descriptionRu, builder: (column) => column);
+
+  GeneratedColumn<String> get titleKk =>
+      $composableBuilder(column: $table.titleKk, builder: (column) => column);
+
+  GeneratedColumn<String> get descriptionKk => $composableBuilder(
+      column: $table.descriptionKk, builder: (column) => column);
 
   Expression<T> habitsRefs<T extends Object>(
       Expression<T> Function($$HabitsTableAnnotationComposer a) f) {
@@ -1833,27 +2470,43 @@ class $$CategoriesTableTableManager extends RootTableManager<
               $$CategoriesTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback: ({
             Value<int> id = const Value.absent(),
-            Value<String> title = const Value.absent(),
-            Value<String> description = const Value.absent(),
             Value<String?> imagePath = const Value.absent(),
+            Value<String> titleEn = const Value.absent(),
+            Value<String> descriptionEn = const Value.absent(),
+            Value<String> titleRu = const Value.absent(),
+            Value<String> descriptionRu = const Value.absent(),
+            Value<String> titleKk = const Value.absent(),
+            Value<String> descriptionKk = const Value.absent(),
           }) =>
               CategoriesCompanion(
             id: id,
-            title: title,
-            description: description,
             imagePath: imagePath,
+            titleEn: titleEn,
+            descriptionEn: descriptionEn,
+            titleRu: titleRu,
+            descriptionRu: descriptionRu,
+            titleKk: titleKk,
+            descriptionKk: descriptionKk,
           ),
           createCompanionCallback: ({
             Value<int> id = const Value.absent(),
-            required String title,
-            required String description,
             Value<String?> imagePath = const Value.absent(),
+            required String titleEn,
+            required String descriptionEn,
+            required String titleRu,
+            required String descriptionRu,
+            required String titleKk,
+            required String descriptionKk,
           }) =>
               CategoriesCompanion.insert(
             id: id,
-            title: title,
-            description: description,
             imagePath: imagePath,
+            titleEn: titleEn,
+            descriptionEn: descriptionEn,
+            titleRu: titleRu,
+            descriptionRu: descriptionRu,
+            titleKk: titleKk,
+            descriptionKk: descriptionKk,
           ),
           withReferenceMapper: (p0) => p0
               .map((e) => (
@@ -1902,19 +2555,31 @@ typedef $$CategoriesTableProcessedTableManager = ProcessedTableManager<
     PrefetchHooks Function({bool habitsRefs})>;
 typedef $$HabitsTableCreateCompanionBuilder = HabitsCompanion Function({
   Value<int> id,
-  required String title,
-  required String description,
-  Value<String?> why,
   required int takesTime,
   required int categoryId,
+  required String titleEn,
+  required String descriptionEn,
+  Value<String?> whyEn,
+  required String titleKk,
+  required String descriptionKk,
+  Value<String?> whyKk,
+  required String titleRu,
+  required String descriptionRu,
+  Value<String?> whyRu,
 });
 typedef $$HabitsTableUpdateCompanionBuilder = HabitsCompanion Function({
   Value<int> id,
-  Value<String> title,
-  Value<String> description,
-  Value<String?> why,
   Value<int> takesTime,
   Value<int> categoryId,
+  Value<String> titleEn,
+  Value<String> descriptionEn,
+  Value<String?> whyEn,
+  Value<String> titleKk,
+  Value<String> descriptionKk,
+  Value<String?> whyKk,
+  Value<String> titleRu,
+  Value<String> descriptionRu,
+  Value<String?> whyRu,
 });
 
 final class $$HabitsTableReferences
@@ -2012,17 +2677,35 @@ class $$HabitsTableFilterComposer
   ColumnFilters<int> get id => $composableBuilder(
       column: $table.id, builder: (column) => ColumnFilters(column));
 
-  ColumnFilters<String> get title => $composableBuilder(
-      column: $table.title, builder: (column) => ColumnFilters(column));
-
-  ColumnFilters<String> get description => $composableBuilder(
-      column: $table.description, builder: (column) => ColumnFilters(column));
-
-  ColumnFilters<String> get why => $composableBuilder(
-      column: $table.why, builder: (column) => ColumnFilters(column));
-
   ColumnFilters<int> get takesTime => $composableBuilder(
       column: $table.takesTime, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get titleEn => $composableBuilder(
+      column: $table.titleEn, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get descriptionEn => $composableBuilder(
+      column: $table.descriptionEn, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get whyEn => $composableBuilder(
+      column: $table.whyEn, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get titleKk => $composableBuilder(
+      column: $table.titleKk, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get descriptionKk => $composableBuilder(
+      column: $table.descriptionKk, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get whyKk => $composableBuilder(
+      column: $table.whyKk, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get titleRu => $composableBuilder(
+      column: $table.titleRu, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get descriptionRu => $composableBuilder(
+      column: $table.descriptionRu, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get whyRu => $composableBuilder(
+      column: $table.whyRu, builder: (column) => ColumnFilters(column));
 
   $$CategoriesTableFilterComposer get categoryId {
     final $$CategoriesTableFilterComposer composer = $composerBuilder(
@@ -2141,17 +2824,38 @@ class $$HabitsTableOrderingComposer
   ColumnOrderings<int> get id => $composableBuilder(
       column: $table.id, builder: (column) => ColumnOrderings(column));
 
-  ColumnOrderings<String> get title => $composableBuilder(
-      column: $table.title, builder: (column) => ColumnOrderings(column));
-
-  ColumnOrderings<String> get description => $composableBuilder(
-      column: $table.description, builder: (column) => ColumnOrderings(column));
-
-  ColumnOrderings<String> get why => $composableBuilder(
-      column: $table.why, builder: (column) => ColumnOrderings(column));
-
   ColumnOrderings<int> get takesTime => $composableBuilder(
       column: $table.takesTime, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get titleEn => $composableBuilder(
+      column: $table.titleEn, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get descriptionEn => $composableBuilder(
+      column: $table.descriptionEn,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get whyEn => $composableBuilder(
+      column: $table.whyEn, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get titleKk => $composableBuilder(
+      column: $table.titleKk, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get descriptionKk => $composableBuilder(
+      column: $table.descriptionKk,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get whyKk => $composableBuilder(
+      column: $table.whyKk, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get titleRu => $composableBuilder(
+      column: $table.titleRu, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get descriptionRu => $composableBuilder(
+      column: $table.descriptionRu,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get whyRu => $composableBuilder(
+      column: $table.whyRu, builder: (column) => ColumnOrderings(column));
 
   $$CategoriesTableOrderingComposer get categoryId {
     final $$CategoriesTableOrderingComposer composer = $composerBuilder(
@@ -2186,17 +2890,35 @@ class $$HabitsTableAnnotationComposer
   GeneratedColumn<int> get id =>
       $composableBuilder(column: $table.id, builder: (column) => column);
 
-  GeneratedColumn<String> get title =>
-      $composableBuilder(column: $table.title, builder: (column) => column);
-
-  GeneratedColumn<String> get description => $composableBuilder(
-      column: $table.description, builder: (column) => column);
-
-  GeneratedColumn<String> get why =>
-      $composableBuilder(column: $table.why, builder: (column) => column);
-
   GeneratedColumn<int> get takesTime =>
       $composableBuilder(column: $table.takesTime, builder: (column) => column);
+
+  GeneratedColumn<String> get titleEn =>
+      $composableBuilder(column: $table.titleEn, builder: (column) => column);
+
+  GeneratedColumn<String> get descriptionEn => $composableBuilder(
+      column: $table.descriptionEn, builder: (column) => column);
+
+  GeneratedColumn<String> get whyEn =>
+      $composableBuilder(column: $table.whyEn, builder: (column) => column);
+
+  GeneratedColumn<String> get titleKk =>
+      $composableBuilder(column: $table.titleKk, builder: (column) => column);
+
+  GeneratedColumn<String> get descriptionKk => $composableBuilder(
+      column: $table.descriptionKk, builder: (column) => column);
+
+  GeneratedColumn<String> get whyKk =>
+      $composableBuilder(column: $table.whyKk, builder: (column) => column);
+
+  GeneratedColumn<String> get titleRu =>
+      $composableBuilder(column: $table.titleRu, builder: (column) => column);
+
+  GeneratedColumn<String> get descriptionRu => $composableBuilder(
+      column: $table.descriptionRu, builder: (column) => column);
+
+  GeneratedColumn<String> get whyRu =>
+      $composableBuilder(column: $table.whyRu, builder: (column) => column);
 
   $$CategoriesTableAnnotationComposer get categoryId {
     final $$CategoriesTableAnnotationComposer composer = $composerBuilder(
@@ -2333,35 +3055,59 @@ class $$HabitsTableTableManager extends RootTableManager<
               $$HabitsTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback: ({
             Value<int> id = const Value.absent(),
-            Value<String> title = const Value.absent(),
-            Value<String> description = const Value.absent(),
-            Value<String?> why = const Value.absent(),
             Value<int> takesTime = const Value.absent(),
             Value<int> categoryId = const Value.absent(),
+            Value<String> titleEn = const Value.absent(),
+            Value<String> descriptionEn = const Value.absent(),
+            Value<String?> whyEn = const Value.absent(),
+            Value<String> titleKk = const Value.absent(),
+            Value<String> descriptionKk = const Value.absent(),
+            Value<String?> whyKk = const Value.absent(),
+            Value<String> titleRu = const Value.absent(),
+            Value<String> descriptionRu = const Value.absent(),
+            Value<String?> whyRu = const Value.absent(),
           }) =>
               HabitsCompanion(
             id: id,
-            title: title,
-            description: description,
-            why: why,
             takesTime: takesTime,
             categoryId: categoryId,
+            titleEn: titleEn,
+            descriptionEn: descriptionEn,
+            whyEn: whyEn,
+            titleKk: titleKk,
+            descriptionKk: descriptionKk,
+            whyKk: whyKk,
+            titleRu: titleRu,
+            descriptionRu: descriptionRu,
+            whyRu: whyRu,
           ),
           createCompanionCallback: ({
             Value<int> id = const Value.absent(),
-            required String title,
-            required String description,
-            Value<String?> why = const Value.absent(),
             required int takesTime,
             required int categoryId,
+            required String titleEn,
+            required String descriptionEn,
+            Value<String?> whyEn = const Value.absent(),
+            required String titleKk,
+            required String descriptionKk,
+            Value<String?> whyKk = const Value.absent(),
+            required String titleRu,
+            required String descriptionRu,
+            Value<String?> whyRu = const Value.absent(),
           }) =>
               HabitsCompanion.insert(
             id: id,
-            title: title,
-            description: description,
-            why: why,
             takesTime: takesTime,
             categoryId: categoryId,
+            titleEn: titleEn,
+            descriptionEn: descriptionEn,
+            whyEn: whyEn,
+            titleKk: titleKk,
+            descriptionKk: descriptionKk,
+            whyKk: whyKk,
+            titleRu: titleRu,
+            descriptionRu: descriptionRu,
+            whyRu: whyRu,
           ),
           withReferenceMapper: (p0) => p0
               .map((e) =>
@@ -2486,14 +3232,22 @@ typedef $$HabitsTableProcessedTableManager = ProcessedTableManager<
 typedef $$TipsTableCreateCompanionBuilder = TipsCompanion Function({
   Value<int> id,
   required int habitId,
-  required String title,
-  required String content,
+  required String titleEn,
+  required String contentEn,
+  required String titleRu,
+  required String contentRu,
+  required String titleKk,
+  required String contentKk,
 });
 typedef $$TipsTableUpdateCompanionBuilder = TipsCompanion Function({
   Value<int> id,
   Value<int> habitId,
-  Value<String> title,
-  Value<String> content,
+  Value<String> titleEn,
+  Value<String> contentEn,
+  Value<String> titleRu,
+  Value<String> contentRu,
+  Value<String> titleKk,
+  Value<String> contentKk,
 });
 
 final class $$TipsTableReferences
@@ -2526,11 +3280,23 @@ class $$TipsTableFilterComposer extends Composer<_$AppDatabase, $TipsTable> {
   ColumnFilters<int> get id => $composableBuilder(
       column: $table.id, builder: (column) => ColumnFilters(column));
 
-  ColumnFilters<String> get title => $composableBuilder(
-      column: $table.title, builder: (column) => ColumnFilters(column));
+  ColumnFilters<String> get titleEn => $composableBuilder(
+      column: $table.titleEn, builder: (column) => ColumnFilters(column));
 
-  ColumnFilters<String> get content => $composableBuilder(
-      column: $table.content, builder: (column) => ColumnFilters(column));
+  ColumnFilters<String> get contentEn => $composableBuilder(
+      column: $table.contentEn, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get titleRu => $composableBuilder(
+      column: $table.titleRu, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get contentRu => $composableBuilder(
+      column: $table.contentRu, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get titleKk => $composableBuilder(
+      column: $table.titleKk, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get contentKk => $composableBuilder(
+      column: $table.contentKk, builder: (column) => ColumnFilters(column));
 
   $$HabitsTableFilterComposer get habitId {
     final $$HabitsTableFilterComposer composer = $composerBuilder(
@@ -2564,11 +3330,23 @@ class $$TipsTableOrderingComposer extends Composer<_$AppDatabase, $TipsTable> {
   ColumnOrderings<int> get id => $composableBuilder(
       column: $table.id, builder: (column) => ColumnOrderings(column));
 
-  ColumnOrderings<String> get title => $composableBuilder(
-      column: $table.title, builder: (column) => ColumnOrderings(column));
+  ColumnOrderings<String> get titleEn => $composableBuilder(
+      column: $table.titleEn, builder: (column) => ColumnOrderings(column));
 
-  ColumnOrderings<String> get content => $composableBuilder(
-      column: $table.content, builder: (column) => ColumnOrderings(column));
+  ColumnOrderings<String> get contentEn => $composableBuilder(
+      column: $table.contentEn, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get titleRu => $composableBuilder(
+      column: $table.titleRu, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get contentRu => $composableBuilder(
+      column: $table.contentRu, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get titleKk => $composableBuilder(
+      column: $table.titleKk, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get contentKk => $composableBuilder(
+      column: $table.contentKk, builder: (column) => ColumnOrderings(column));
 
   $$HabitsTableOrderingComposer get habitId {
     final $$HabitsTableOrderingComposer composer = $composerBuilder(
@@ -2603,11 +3381,23 @@ class $$TipsTableAnnotationComposer
   GeneratedColumn<int> get id =>
       $composableBuilder(column: $table.id, builder: (column) => column);
 
-  GeneratedColumn<String> get title =>
-      $composableBuilder(column: $table.title, builder: (column) => column);
+  GeneratedColumn<String> get titleEn =>
+      $composableBuilder(column: $table.titleEn, builder: (column) => column);
 
-  GeneratedColumn<String> get content =>
-      $composableBuilder(column: $table.content, builder: (column) => column);
+  GeneratedColumn<String> get contentEn =>
+      $composableBuilder(column: $table.contentEn, builder: (column) => column);
+
+  GeneratedColumn<String> get titleRu =>
+      $composableBuilder(column: $table.titleRu, builder: (column) => column);
+
+  GeneratedColumn<String> get contentRu =>
+      $composableBuilder(column: $table.contentRu, builder: (column) => column);
+
+  GeneratedColumn<String> get titleKk =>
+      $composableBuilder(column: $table.titleKk, builder: (column) => column);
+
+  GeneratedColumn<String> get contentKk =>
+      $composableBuilder(column: $table.contentKk, builder: (column) => column);
 
   $$HabitsTableAnnotationComposer get habitId {
     final $$HabitsTableAnnotationComposer composer = $composerBuilder(
@@ -2655,26 +3445,42 @@ class $$TipsTableTableManager extends RootTableManager<
           updateCompanionCallback: ({
             Value<int> id = const Value.absent(),
             Value<int> habitId = const Value.absent(),
-            Value<String> title = const Value.absent(),
-            Value<String> content = const Value.absent(),
+            Value<String> titleEn = const Value.absent(),
+            Value<String> contentEn = const Value.absent(),
+            Value<String> titleRu = const Value.absent(),
+            Value<String> contentRu = const Value.absent(),
+            Value<String> titleKk = const Value.absent(),
+            Value<String> contentKk = const Value.absent(),
           }) =>
               TipsCompanion(
             id: id,
             habitId: habitId,
-            title: title,
-            content: content,
+            titleEn: titleEn,
+            contentEn: contentEn,
+            titleRu: titleRu,
+            contentRu: contentRu,
+            titleKk: titleKk,
+            contentKk: contentKk,
           ),
           createCompanionCallback: ({
             Value<int> id = const Value.absent(),
             required int habitId,
-            required String title,
-            required String content,
+            required String titleEn,
+            required String contentEn,
+            required String titleRu,
+            required String contentRu,
+            required String titleKk,
+            required String contentKk,
           }) =>
               TipsCompanion.insert(
             id: id,
             habitId: habitId,
-            title: title,
-            content: content,
+            titleEn: titleEn,
+            contentEn: contentEn,
+            titleRu: titleRu,
+            contentRu: contentRu,
+            titleKk: titleKk,
+            contentKk: contentKk,
           ),
           withReferenceMapper: (p0) => p0
               .map((e) =>

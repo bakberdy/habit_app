@@ -2,19 +2,23 @@ import 'package:drift/drift.dart';
 
 class Habits extends Table {
   IntColumn get id => integer().autoIncrement()();
-  TextColumn get title => text().unique().withLength(min: 1)();
-  TextColumn get description => text()();
-  TextColumn get why => text().nullable()();
   IntColumn get takesTime => integer()();
   IntColumn get categoryId => integer().references(Categories, #id)();
 
-  @override
-  Set<Column<Object>>? get primaryKey => {id};
+  TextColumn get titleEn => text().unique().withLength(min: 1)();
+  TextColumn get descriptionEn => text()();
+  TextColumn get whyEn => text().nullable()();
+
+  TextColumn get titleKk => text().unique().withLength(min: 1)();
+  TextColumn get descriptionKk => text()();
+  TextColumn get whyKk => text().nullable()();
+
+  TextColumn get titleRu => text().unique().withLength(min: 1)();
+  TextColumn get descriptionRu => text()();
+  TextColumn get whyRu => text().nullable()();
 
   @override
-  List<Set<Column<Object>>>? get uniqueKeys => [
-        {title, description}
-      ];
+  Set<Column<Object>>? get primaryKey => {id};
 }
 
 class HabitWeekdays extends Table {
@@ -46,8 +50,16 @@ class HabitSubscriptions extends Table {
 class Tips extends Table {
   IntColumn get id => integer().autoIncrement()();
   IntColumn get habitId => integer().references(Habits, #id)();
-  TextColumn get title => text().withLength(min: 1, max: 255)();
-  TextColumn get content => text()();
+
+  TextColumn get titleEn => text().withLength(min: 1, max: 255)();
+  TextColumn get contentEn => text()();
+
+  TextColumn get titleRu => text().withLength(min: 1, max: 255)();
+  TextColumn get contentRu => text()();
+
+  TextColumn get titleKk => text().withLength(min: 1, max: 255)();
+  TextColumn get contentKk => text()();
+
   @override
   Set<Column<Object>>? get primaryKey => {id};
 }
@@ -69,9 +81,16 @@ class HabitCompletions extends Table {
 
 class Categories extends Table {
   IntColumn get id => integer()();
-  TextColumn get title => text()();
-  TextColumn get description => text()();
   TextColumn get imagePath => text().nullable()();
+
+  TextColumn get titleEn => text()();
+  TextColumn get descriptionEn => text()();
+
+  TextColumn get titleRu => text()();
+  TextColumn get descriptionRu => text()();
+
+  TextColumn get titleKk => text()();
+  TextColumn get descriptionKk => text()();
 
   @override
   Set<Column<Object>>? get primaryKey => {id};

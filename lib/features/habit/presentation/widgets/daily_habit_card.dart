@@ -1,10 +1,13 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:habit_app/core/providers/locale_provider.dart';
 import 'package:habit_app/core/theme/app_colors.dart';
 import 'package:habit_app/core/theme/app_text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:habit_app/features/habit/domain/entities/habit_info.dart';
 import 'package:habit_app/features/habit/presentation/bloc/my_plan/my_plan_bloc.dart';
+import 'package:habit_app/generated/l10n.dart';
 import 'package:habit_app/injection/injection.dart';
+import 'package:provider/provider.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
 class HabitSubsriptionCard extends StatelessWidget {
@@ -72,8 +75,12 @@ class HabitSubsriptionCard extends StatelessWidget {
                           weight: 600,
                         ),
                         SizedBox(width: 3),
-                        Text('${habitInfo.habit.takesTime} minutes',
-                            style: AppTextTheme.bodySmall)
+                        Text(
+                          S
+                              .of(context)
+                              .takestimeMinutes(habitInfo.habit.takesTime),
+                          style: AppTextTheme.bodySmall,
+                        )
                       ],
                     )
                   ],
@@ -87,9 +94,12 @@ class HabitSubsriptionCard extends StatelessWidget {
                       value: habitInfo.isDone,
                       onChanged: dayStatus.isToday()
                           ? (value) {
-                              sl<Talker>().info('tapped');
                               context.read<MyPlanBloc>().add(
                                   MyPlanEvent.toggleHabitDoneStatus(
+                                      locale: Provider.of<LocaleProvider>(
+                                              context,
+                                              listen: false)
+                                          .locale,
                                       date: DateTime.now(),
                                       habitId: habitInfo.habit.id,
                                       isDone: !(habitInfo.isDone ?? true)));

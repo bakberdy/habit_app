@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_heatmap_calendar/flutter_heatmap_calendar.dart';
 import 'package:go_router/go_router.dart';
+import 'package:habit_app/core/providers/locale_provider.dart';
 import 'package:habit_app/core/shared/widgets/custom_sliver_app_bar.dart';
-import 'package:habit_app/features/habit/presentation/bloc/catalog/catalog_bloc.dart';
 import 'package:habit_app/features/habit/presentation/bloc/habit_map/habit_map_bloc.dart';
 import 'package:habit_app/features/habit/presentation/widgets/daily_habit_card.dart';
 import 'package:habit_app/core/theme/app_colors.dart';
@@ -11,10 +11,13 @@ import 'package:habit_app/features/habit/presentation/bloc/my_plan/my_plan_bloc.
 import 'package:habit_app/features/habit/presentation/bloc/search/search_bloc.dart';
 import 'package:habit_app/features/habit/presentation/screens/category_screen.dart';
 import 'package:habit_app/core/shared/widgets/app_bar_bottom_with_search_field.dart';
+import 'package:habit_app/features/habit/presentation/widgets/search_result_sliver.dart';
 import 'package:habit_app/features/home/presentation/widgets/quote_card.dart';
 import 'package:habit_app/features/home/presentation/widgets/recomendation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:habit_app/generated/l10n.dart';
 import 'package:habit_app/injection/injection.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -27,7 +30,9 @@ class HomeScreen extends StatelessWidget {
           create: (_) => sl<HabitMapBloc>()..add(HabitMapEvent.load())),
       BlocProvider(
           create: (_) => sl<MyPlanBloc>()
-            ..add(MyPlanEvent.getSubscriptionsOn(date: DateTime.now())))
+            ..add(MyPlanEvent.getSubscriptionsOn(
+                date: DateTime.now(),
+                locale: Provider.of<LocaleProvider>(context).locale)))
     ], child: HomeScreenContent());
   }
 }
@@ -49,14 +54,16 @@ class _HomeScreenState extends State<HomeScreenContent> {
           builder: (context, state) => CustomScrollView(
             slivers: [
               CustomSliverAppBar(
-                title: 'Home',
+                title: S.of(context).home,
                 bottom: AppBarBottomWithSearchField(
-                  title: 'Welcome, Bakberdi',
+                  title: S.of(context).welcome("Bakberdi"),
                   searchController: _searchController,
                   onChange: (value) {
-                    context
-                        .read<SearchBloc>()
-                        .add(SearchEvent.search(query: value));
+                    context.read<SearchBloc>().add(SearchEvent.search(
+                        query: value,
+                        locale:
+                            Provider.of<LocaleProvider>(context, listen: false)
+                                .locale));
                   },
                 ),
               ),
@@ -83,7 +90,8 @@ class _HomeScreenState extends State<HomeScreenContent> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(height: 10),
-                        Text('Your activity calendar', style: AppTextTheme.h4),
+                        Text(S.of(context).yourActivityCalendar,
+                            style: AppTextTheme.h4),
                         SizedBox(height: 10),
                       ],
                     ),
@@ -147,7 +155,7 @@ class _HomeScreenState extends State<HomeScreenContent> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   SizedBox(height: 10),
-                                  Text('Your today\'s plan',
+                                  Text(S.of(context).yourTodaysPlan,
                                       style: AppTextTheme.h4),
                                   SizedBox(height: 10),
                                 ],
@@ -168,7 +176,7 @@ class _HomeScreenState extends State<HomeScreenContent> {
                                               MainAxisAlignment.center,
                                           children: [
                                             Text(
-                                              'More plan',
+                                              S.of(context).morePlan,
                                               style: AppTextTheme.bodySmall
                                                   .copyWith(
                                                       fontWeight:

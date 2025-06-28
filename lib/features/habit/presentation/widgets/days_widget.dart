@@ -26,7 +26,7 @@ class DaysWidget extends StatelessWidget {
                 Colors.blue.shade400,
                 AppColors.primary,
               ])),
-          child: Text(e.value,
+          child: Text(e.label(context),
               style: AppTextTheme.bodySmall.copyWith(color: Colors.white)),
         );
       }).toList(),

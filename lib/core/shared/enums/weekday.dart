@@ -1,14 +1,15 @@
-enum Weekday {
-  monday('Monday'),
-  tuesday('Tuesday'),
-  wednesday('Wednesday'),
-  thursday('Thursday'),
-  friday('Friday'),
-  saturday('Saturday'),
-  sunday('Sunday');
+import 'package:flutter/material.dart';
+import 'package:habit_app/generated/l10n.dart';
 
-  final String value;
-  const Weekday(this.value);
+enum Weekday {
+  monday,
+  tuesday,
+  wednesday,
+  thursday,
+  friday,
+  saturday,
+  sunday;
+
   factory Weekday.fromDate(DateTime date) {
     switch (date.weekday) {
       case DateTime.monday:
@@ -49,10 +50,26 @@ enum Weekday {
         throw ArgumentError('Invalid weekday int: $weekday');
     }
   }
-  factory Weekday.fromJson(String json) {
-    return Weekday.values.firstWhere(
-      (e) => e.value.toLowerCase() == json.toLowerCase(),
-      orElse: () => throw ArgumentError('Invalid weekday json: $json'),
-    );
+}
+
+extension WeekdayLocalization on Weekday {
+  String label(BuildContext context) {
+    final loc = S.of(context);
+    switch (this) {
+      case Weekday.monday:
+        return loc.monday;
+      case Weekday.tuesday:
+        return loc.tuesday;
+      case Weekday.wednesday:
+        return loc.wednesday;
+      case Weekday.thursday:
+        return loc.thursday;
+      case Weekday.friday:
+        return loc.friday;
+      case Weekday.saturday:
+        return loc.saturday;
+      case Weekday.sunday:
+        return loc.sunday;
+    }
   }
 }

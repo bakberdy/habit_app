@@ -1,6 +1,8 @@
+import 'package:go_router/go_router.dart';
 import 'package:habit_app/core/theme/app_text_theme.dart';
 import 'package:habit_app/features/settings/presentation/widgets/buttons_list.dart';
 import 'package:flutter/material.dart';
+import 'package:habit_app/generated/l10n.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -29,7 +31,7 @@ class _SettingsPageContentState extends State<SettingsPageContent> {
     return Scaffold(
         appBar: AppBar(
           title: Text(
-            'Settings',
+            S.of(context).settings,
             style: AppTextTheme.h5.copyWith(fontWeight: FontWeight.w700),
           ),
           centerTitle: true,
@@ -43,27 +45,22 @@ class _SettingsPageContentState extends State<SettingsPageContent> {
                   children: [
                     ButtonDetails(
                         onTap: () {},
-                        title: 'Notifications',
+                        title: S.of(context).notifications,
                         prefixIcon: SizedBox(
                             height: 25,
                             width: 25,
                             child: Image.asset(
                                 'lib/assets/icons/notification.png'))),
                     ButtonDetails(
-                        onTap: () {},
-                        title: 'Language',
+                        onTap: () {
+                          context.goNamed('select_language');
+                        },
+                        title: S.of(context).language,
                         prefixIcon: SizedBox(
                             height: 25,
                             width: 25,
                             child:
                                 Image.asset('lib/assets/icons/language.png'))),
-                    ButtonDetails(
-                        onTap: () {},
-                        title: 'Change theme',
-                        prefixIcon: SizedBox(
-                            height: 25,
-                            width: 25,
-                            child: Image.asset('lib/assets/icons/night.png'))),
                   ],
                 ),
                 SizedBox(height: 20),
@@ -71,14 +68,14 @@ class _SettingsPageContentState extends State<SettingsPageContent> {
                   children: [
                     ButtonDetails(
                         onTap: () {},
-                        title: 'Help & Support',
+                        title: S.of(context).helpSupport,
                         prefixIcon: SizedBox(
                             height: 25,
                             width: 25,
                             child: Image.asset('lib/assets/icons/info.png'))),
                     ButtonDetails(
                         onTap: () {},
-                        title: 'About Shift',
+                        title: S.of(context).aboutApp,
                         prefixIcon: SizedBox(
                             height: 25,
                             width: 25,

@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:habit_app/core/providers/locale_provider.dart';
 import 'package:habit_app/core/shared/widgets/app_bar_bottom_with_search_field.dart';
 import 'package:habit_app/core/shared/widgets/custom_sliver_app_bar.dart';
 import 'package:habit_app/features/habit/presentation/bloc/catalog/catalog_bloc.dart';
@@ -6,7 +7,10 @@ import 'package:habit_app/features/habit/presentation/bloc/search/search_bloc.da
 import 'package:habit_app/features/habit/presentation/screens/category_screen.dart';
 import 'package:habit_app/features/habit/presentation/widgets/habit_category_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:habit_app/features/habit/presentation/widgets/search_result_sliver.dart';
+import 'package:habit_app/generated/l10n.dart';
 import 'package:habit_app/injection/injection.dart';
+import 'package:provider/provider.dart';
 
 class CatalogScreen extends StatelessWidget {
   const CatalogScreen({super.key});
@@ -15,7 +19,9 @@ class CatalogScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(providers: [
       BlocProvider(
-          create: (_) => sl<CatalogBloc>()..add(CatalogEvent.loadCategories())),
+          create: (_) => sl<CatalogBloc>()
+            ..add(CatalogEvent.loadCategories(
+                locale: Provider.of<LocaleProvider>(context).locale))),
       BlocProvider(create: (_) => sl<SearchBloc>()),
     ], child: CatalogScreenContent());
   }
@@ -56,14 +62,16 @@ class _CatalogScreenContentState extends State<CatalogScreenContent>
             return CustomScrollView(
               slivers: [
                 CustomSliverAppBar(
-                    title: 'Catalog',
+                    title: S.of(context).catalog,
                     bottom: AppBarBottomWithSearchField(
-                      title: 'Browse habits',
+                      title: S.of(context).browseHabits,
                       searchController: _searchController,
                       onChange: (value) {
-                        context
-                            .read<SearchBloc>()
-                            .add(SearchEvent.search(query: value.trim()));
+                        context.read<SearchBloc>().add(SearchEvent.search(
+                            query: value.trim(),
+                            locale: Provider.of<LocaleProvider>(context,
+                                    listen: false)
+                                .locale));
                       },
                     )),
                 SliverToBoxAdapter(child: SizedBox(height: 10)),
