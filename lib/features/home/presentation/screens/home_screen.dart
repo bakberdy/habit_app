@@ -9,7 +9,6 @@ import 'package:habit_app/core/theme/app_colors.dart';
 import 'package:habit_app/core/theme/app_text_theme.dart';
 import 'package:habit_app/features/habit/presentation/bloc/my_plan/my_plan_bloc.dart';
 import 'package:habit_app/features/habit/presentation/bloc/search/search_bloc.dart';
-import 'package:habit_app/features/habit/presentation/screens/category_screen.dart';
 import 'package:habit_app/core/shared/widgets/app_bar_bottom_with_search_field.dart';
 import 'package:habit_app/features/habit/presentation/widgets/search_result_sliver.dart';
 import 'package:habit_app/features/home/presentation/widgets/quote_card.dart';

@@ -3,7 +3,6 @@ import 'dart:ui';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:habit_app/core/core.dart';
 import 'package:habit_app/features/habit/domain/entities/category_entity.dart';
 import 'package:habit_app/features/habit/domain/entities/habit_entity.dart';
 import 'package:habit_app/features/habit/domain/usecases/get_categories.dart';

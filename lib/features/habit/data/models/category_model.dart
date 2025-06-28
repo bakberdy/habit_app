@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:habit_app/core/database/app_database.dart';
-import 'package:habit_app/core/database/tables.dart';
 import 'package:habit_app/features/habit/domain/entities/category_entity.dart';
 
 class CategoryModel extends CategoryEntity {

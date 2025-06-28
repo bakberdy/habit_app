@@ -45,8 +45,6 @@ class HabitMapBloc extends Bloc<HabitMapEvent, HabitMapState> {
         newValue = 4;
       }
 
-      print(value);
-
       result[date] = newValue;
     });
 

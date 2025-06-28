@@ -4,7 +4,6 @@ import 'package:habit_app/core/shared/widgets/app_bar_bottom_with_search_field.d
 import 'package:habit_app/core/shared/widgets/custom_sliver_app_bar.dart';
 import 'package:habit_app/features/habit/presentation/bloc/catalog/catalog_bloc.dart';
 import 'package:habit_app/features/habit/presentation/bloc/search/search_bloc.dart';
-import 'package:habit_app/features/habit/presentation/screens/category_screen.dart';
 import 'package:habit_app/features/habit/presentation/widgets/habit_category_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:habit_app/features/habit/presentation/widgets/search_result_sliver.dart';

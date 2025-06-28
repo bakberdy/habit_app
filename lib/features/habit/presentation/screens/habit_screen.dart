@@ -162,25 +162,19 @@ class _HabitScreenState extends State<HabitScreenContent> {
                     ),
                     state.isSubscribed
                         ? SliverToBoxAdapter(
-                            child: Padding(
-                              padding: const EdgeInsets.all(20),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    S
-                                        .of(context)
-                                        .habitIsAlreadyInYourPlanGoodJob,
+                            child: SizedBox(
+                              child: Padding(
+                                padding: const EdgeInsets.all(20),
+                                child: Expanded(
+                                  child: Text(
+                                    textAlign: TextAlign.center,
+                                    "${S.of(context).habitIsAlreadyInYourPlanGoodJob} 😊",
                                     style: AppTextTheme.bodyMedium.copyWith(
                                       color: AppColors.primary,
                                       fontWeight: FontWeight.w600,
                                     ),
                                   ),
-                                  Text(
-                                    '😊',
-                                    style: TextStyle(fontSize: 20),
-                                  ),
-                                ],
+                                ),
                               ),
                             ),
                           )
