@@ -122,6 +122,8 @@ class _HomeScreenState extends State<HomeScreenContent> {
                           children: [
                             SizedBox(width: 20),
                             HeatMap(
+                              locale:
+                                  Provider.of<LocaleProvider>(context).locale,
                               endDate: DateTime(2026, 9),
                               startDate: DateTime(2025, 6),
                               datasets: dataset,
