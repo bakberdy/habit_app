@@ -28,9 +28,8 @@ class HomeScreen extends StatelessWidget {
       BlocProvider(create: (_) => sl<SearchBloc>()),
       BlocProvider(
           create: (_) => sl<HomeBloc>()
-            ..add(HomeEvent.loadDailyQuote(
-                locale: Provider.of<LocaleProvider>(context, listen: false)
-                    .locale))),
+            ..add(HomeEvent.loadData(
+                locale: context.read<LocaleProvider>().locale))),
       BlocProvider(
           create: (_) => sl<HabitMapBloc>()..add(HabitMapEvent.load())),
       BlocProvider(
@@ -51,6 +50,14 @@ class HomeScreenContent extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreenContent> {
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    context
+        .read<HomeBloc>()
+        .add(HomeEvent.loadData(locale: context.read<LocaleProvider>().locale));
+  }
+
   final _searchController = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -59,14 +66,18 @@ class _HomeScreenState extends State<HomeScreenContent> {
         child: BlocBuilder<SearchBloc, SearchState>(
           builder: (context, state) => CustomScrollView(
             slivers: [
-              CustomSliverAppBar(
-                title: S.of(context).home,
-                bottom: AppBarBottomWithSearchField(
-                  title: S.of(context).welcome("Bakberdi"),
-                  searchController: _searchController,
-                  onChange: _onSearchBarChange,
-                ),
-              ),
+              BlocBuilder<HomeBloc, HomeState>(builder: (context, state) {
+                final username =
+                    ((state is HomeLoaded) ? state.username : "") ?? "";
+                return CustomSliverAppBar(
+                  title: S.of(context).home,
+                  bottom: AppBarBottomWithSearchField(
+                    title: S.of(context).welcome(username),
+                    searchController: _searchController,
+                    onChange: _onSearchBarChange,
+                  ),
+                );
+              }),
               if (state is Searching && _searchController.text.isNotEmpty)
                 SearchResultSliver(habits: state.habits),
               SliverVisibility(
@@ -126,7 +137,39 @@ class _HomeScreenState extends State<HomeScreenContent> {
                                   Provider.of<LocaleProvider>(context).locale,
                               endDate: DateTime(2026, 9),
                               startDate: DateTime(2025, 6),
-                              datasets: dataset,
+                              datasets: {
+                                DateTime(2025, 6, 1): 1,
+                                DateTime(2025, 6, 2): 2,
+                                DateTime(2025, 6, 3): 3,
+                                DateTime(2025, 6, 4): 4,
+                                DateTime(2025, 6, 5): 2,
+                                DateTime(2025, 6, 6): 1,
+                                DateTime(2025, 6, 7): 3,
+                                DateTime(2025, 6, 8): 4,
+                                DateTime(2025, 6, 9): 2,
+                                DateTime(2025, 6, 10): 1,
+                                DateTime(2025, 6, 11): 3,
+                                DateTime(2025, 6, 12): 4,
+                                DateTime(2025, 6, 13): 2,
+                                DateTime(2025, 6, 14): 1,
+                                DateTime(2025, 6, 15): 3,
+                                DateTime(2025, 6, 16): 4,
+                                DateTime(2025, 6, 17): 2,
+                                DateTime(2025, 6, 18): 1,
+                                DateTime(2025, 6, 19): 3,
+                                DateTime(2025, 6, 20): 4,
+                                DateTime(2025, 6, 21): 2,
+                                DateTime(2025, 6, 22): 1,
+                                DateTime(2025, 6, 23): 3,
+                                DateTime(2025, 6, 24): 4,
+                                DateTime(2025, 6, 25): 2,
+                                DateTime(2025, 6, 26): 1,
+                                DateTime(2025, 6, 27): 3,
+                                DateTime(2025, 6, 28): 4,
+                                DateTime(2025, 6, 29): 2,
+                                DateTime(2025, 6, 30): 1,
+                                DateTime(2025, 7, 1): 3,
+                              },
                               size: 30,
                               colorsets: {
                                 1: AppColors.primary.withAlpha(50),

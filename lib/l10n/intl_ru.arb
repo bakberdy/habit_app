@@ -68,5 +68,15 @@
   "october": "Октябрь",
   "november": "Ноябрь",
   "december": "Декабрь",
-  "forTheLanguageChangeToTakeEffectCorrectlyPleaseReopen": "Чтобы смена языка применилась корректно, пожалуйста, перезапустите приложение."
+  "forTheLanguageChangeToTakeEffectCorrectlyPleaseReopen": "Чтобы смена языка применилась корректно, пожалуйста, перезапустите приложение.",
+  "chooseALanguage": "Выберите язык",
+  "enterYourName": "Введите ваше имя",
+  "nameCannotBeEmpty": "Имя не может быть пустым",
+  "letsStart": "Начнем",
+  "todaysHabitIsTheReflectionOfYourFutureLife": "Привычка сегодня — отражение твоей будущей жизни.",
+  "createAHabit": "Создать привычку",
+  "chooseAHabitFromReadymadeSamplesnorCreateYourOwnPersonal": "Выберите привычку из готовых примеров\nили создайте свою собственную, подходящую под ваши цели.",
+  "trackYourProgress": "Отслеживайте прогресс",
+  "stayMotivatedWithAHeatmapCalendarnandPlanYourDayWith": "Оставайтесь мотивированными с помощью календаря-таймлайна\nи планируйте свой день с ясностью.",
+  "start": "Начать"
 }

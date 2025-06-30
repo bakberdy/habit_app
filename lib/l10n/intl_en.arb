@@ -68,5 +68,15 @@
   "october": "October",
   "november": "November",
   "december": "December",
-  "forTheLanguageChangeToTakeEffectCorrectlyPleaseReopen": "For the language change to take effect correctly, please reopen the app."
+  "forTheLanguageChangeToTakeEffectCorrectlyPleaseReopen": "For the language change to take effect correctly, please reopen the app.",
+  "chooseALanguage": "Choose a language",
+  "enterYourName": "Enter your name",
+  "nameCannotBeEmpty": "Name cannot be empty",
+  "letsStart": "Let's start",
+  "todaysHabitIsTheReflectionOfYourFutureLife": "Today's habit is the reflection of your future life.",
+  "createAHabit": "Create a habit",
+  "chooseAHabitFromReadymadeSamplesnorCreateYourOwnPersonal": "Choose a habit from ready-made samples,\\nor create your own personal one to match your goals.",
+  "trackYourProgress": "Track your progress",
+  "stayMotivatedWithAHeatmapCalendarnandPlanYourDayWith": "Stay motivated with a heatmap calendar\\nand plan your day with clarity.",
+  "start": "Start"
 }

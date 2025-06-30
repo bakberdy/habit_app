@@ -47,7 +47,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "browseRountines": MessageLookupByLibrary.simpleMessage("Дағдыларды шолу"),
     "catalog": MessageLookupByLibrary.simpleMessage("Каталог"),
     "category": MessageLookupByLibrary.simpleMessage("Санат"),
+    "chooseAHabitFromReadymadeSamplesnorCreateYourOwnPersonal":
+        MessageLookupByLibrary.simpleMessage(
+          "Дайын әдет үлгілерінен таңдаңыз\nнемесе өз мақсатыңызға сай жеке әдет жасаңыз.",
+        ),
+    "chooseALanguage": MessageLookupByLibrary.simpleMessage("Тілді таңдаңыз"),
     "create": MessageLookupByLibrary.simpleMessage("Жасау"),
+    "createAHabit": MessageLookupByLibrary.simpleMessage("Әдетті бастаңыз"),
     "createOwn": MessageLookupByLibrary.simpleMessage("Өзіндік жасау"),
     "createYourOwnHabit": MessageLookupByLibrary.simpleMessage(
       "Өз әдетіңізді жасаңыз",
@@ -62,6 +68,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "december": MessageLookupByLibrary.simpleMessage("Желтоқсан"),
     "description": MessageLookupByLibrary.simpleMessage("Сипаттама"),
     "details": MessageLookupByLibrary.simpleMessage("Мәліметтер"),
+    "enterYourName": MessageLookupByLibrary.simpleMessage("Атыңызды енгізіңіз"),
     "estimatedTimeminute": MessageLookupByLibrary.simpleMessage(
       "Шамамен уақыт (минут)",
     ),
@@ -83,11 +90,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "july": MessageLookupByLibrary.simpleMessage("Шілде"),
     "june": MessageLookupByLibrary.simpleMessage("Маусым"),
     "language": MessageLookupByLibrary.simpleMessage("Тіл"),
+    "letsStart": MessageLookupByLibrary.simpleMessage("Бастайық"),
     "march": MessageLookupByLibrary.simpleMessage("Наурыз"),
     "may": MessageLookupByLibrary.simpleMessage("Мамыр"),
     "monday": MessageLookupByLibrary.simpleMessage("Дүйсенбі"),
     "morePlan": MessageLookupByLibrary.simpleMessage("Көбірек жоспар"),
     "myPlan": MessageLookupByLibrary.simpleMessage("Менің жоспарым"),
+    "nameCannotBeEmpty": MessageLookupByLibrary.simpleMessage(
+      "Аты бос болмауы керек",
+    ),
     "no": MessageLookupByLibrary.simpleMessage("Жоқ"),
     "noHabitsFound": MessageLookupByLibrary.simpleMessage("Әдеттер табылмады."),
     "notFound": MessageLookupByLibrary.simpleMessage("Табылмады"),
@@ -100,6 +111,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "searchResults": MessageLookupByLibrary.simpleMessage("Іздеу нәтижелері"),
     "september": MessageLookupByLibrary.simpleMessage("Қыркүйек"),
     "settings": MessageLookupByLibrary.simpleMessage("Баптаулар"),
+    "start": MessageLookupByLibrary.simpleMessage("Бастау"),
+    "stayMotivatedWithAHeatmapCalendarnandPlanYourDayWith":
+        MessageLookupByLibrary.simpleMessage(
+          "Жылу картасы арқылы мотивацияны сақтаңыз\nжәне күніңізді нақты жоспарлаңыз.",
+        ),
     "sunday": MessageLookupByLibrary.simpleMessage("Жексенбі"),
     "takesMinutes": MessageLookupByLibrary.simpleMessage("Минутты алады:"),
     "takestimeMinutes": m2,
@@ -108,6 +124,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "tipToHabit": MessageLookupByLibrary.simpleMessage("Әдетке кеңес"),
     "tips": MessageLookupByLibrary.simpleMessage("Кеңестер:"),
     "title": MessageLookupByLibrary.simpleMessage("Атауы"),
+    "todaysHabitIsTheReflectionOfYourFutureLife":
+        MessageLookupByLibrary.simpleMessage(
+          "Бүгінгі әдет — ертеңгі өміріңнің бейнесі.",
+        ),
+    "trackYourProgress": MessageLookupByLibrary.simpleMessage(
+      "Прогрессті бақылаңыз",
+    ),
     "tuesday": MessageLookupByLibrary.simpleMessage("Сейсенбі"),
     "wednesday": MessageLookupByLibrary.simpleMessage("Сәрсенбі"),
     "welcome": m3,

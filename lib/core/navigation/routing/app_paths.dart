@@ -2,6 +2,10 @@ part of 'routing.dart';
 
 class AppPaths {
   //main bottom bar
+  static const String splash = '/splash';
+  static const String onboarding = '/onboarding';
+  static const String enterName = '/enter_name';
+  static const String chooseLang = '/choose_lang';
   static const String home = '/home';
   static const String myPlan = '/my_plan';
   static const String settings = '/settings';

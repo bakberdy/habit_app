@@ -47,6 +47,8 @@ import '../features/home/data/data_source/home_local_data_source.dart' as _i200;
 import '../features/home/data/repository/home_repo_impl.dart' as _i488;
 import '../features/home/domain/repository/home_repository.dart' as _i855;
 import '../features/home/domain/usecases/get_daily_quote.dart' as _i457;
+import '../features/home/domain/usecases/get_user_name.dart' as _i887;
+import '../features/home/domain/usecases/save_user_name.dart' as _i1063;
 import '../features/home/presentation/bloc/home_bloc.dart' as _i824;
 import 'injection.dart' as _i464;
 
@@ -72,10 +74,10 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i361.Dio>(() => appModule.dio);
     gh.singleton<_i162.TalkerDioLogger>(() => appModule.talkerDioLogger);
     gh.singleton<_i156.AppRouter>(() => appModule.appRouter);
-    gh.lazySingleton<_i200.HomeLocalDataSource>(
-        () => _i200.HomeLocalDataSourceImpl());
     gh.lazySingleton<_i935.AppDatabase>(
         () => _i935.AppDatabase(gh<_i207.Talker>()));
+    gh.lazySingleton<_i200.HomeLocalDataSource>(
+        () => _i200.HomeLocalDataSourceImpl(gh<_i460.SharedPreferences>()));
     gh.lazySingleton<_i655.HabitLocalDataSource>(
         () => _i655.HabitLocalDataSourceImpl(
               gh<_i935.AppDatabase>(),
@@ -89,6 +91,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i488.HomeRepoImpl(gh<_i200.HomeLocalDataSource>()));
     gh.lazySingleton<_i166.HabitRepo>(
         () => _i687.HabitRepoImpl(gh<_i655.HabitLocalDataSource>()));
+    gh.lazySingleton<_i887.GetUserName>(
+        () => _i887.GetUserName(gh<_i855.HomeRepository>()));
     gh.lazySingleton<_i1055.GetHabitSubscriptionWithDateAndHabitId>(() =>
         _i1055.GetHabitSubscriptionWithDateAndHabitId(gh<_i166.HabitRepo>()));
     gh.lazySingleton<_i545.GetCategoryInfo>(
@@ -113,7 +117,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i825.GetHabitsOfDay(gh<_i166.HabitRepo>()));
     gh.lazySingleton<_i56.SetHabitCompletionStatus>(
         () => _i56.SetHabitCompletionStatus(gh<_i166.HabitRepo>()));
-    gh.factory<_i824.HomeBloc>(() => _i824.HomeBloc(gh<_i457.GetDailyQuote>()));
+    gh.lazySingleton<_i1063.SaveUserName>(
+        () => _i1063.SaveUserName(gh<_i855.HomeRepository>()));
     gh.factory<_i216.CatalogBloc>(() => _i216.CatalogBloc(
           gh<_i1031.GetCategories>(),
           gh<_i545.GetCategoryInfo>(),
@@ -122,6 +127,11 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i373.SearchBloc>(
         () => _i373.SearchBloc(gh<_i680.SearchHabitUsecase>()));
+    gh.factory<_i824.HomeBloc>(() => _i824.HomeBloc(
+          gh<_i457.GetDailyQuote>(),
+          gh<_i1063.SaveUserName>(),
+          gh<_i887.GetUserName>(),
+        ));
     gh.factory<_i836.MyPlanBloc>(() => _i836.MyPlanBloc(
           gh<_i618.AddNewHabitFromDefault>(),
           gh<_i825.GetHabitsOfDay>(),

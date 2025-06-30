@@ -49,7 +49,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "browseRountines": MessageLookupByLibrary.simpleMessage("Просмотр рутин"),
     "catalog": MessageLookupByLibrary.simpleMessage("Каталог"),
     "category": MessageLookupByLibrary.simpleMessage("Категория"),
+    "chooseAHabitFromReadymadeSamplesnorCreateYourOwnPersonal":
+        MessageLookupByLibrary.simpleMessage(
+          "Выберите привычку из готовых примеров\nили создайте свою собственную, подходящую под ваши цели.",
+        ),
+    "chooseALanguage": MessageLookupByLibrary.simpleMessage("Выберите язык"),
     "create": MessageLookupByLibrary.simpleMessage("Создать"),
+    "createAHabit": MessageLookupByLibrary.simpleMessage("Создать привычку"),
     "createOwn": MessageLookupByLibrary.simpleMessage("Создать свою"),
     "createYourOwnHabit": MessageLookupByLibrary.simpleMessage(
       "Создайте свою привычку",
@@ -64,6 +70,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "december": MessageLookupByLibrary.simpleMessage("Декабрь"),
     "description": MessageLookupByLibrary.simpleMessage("Описание"),
     "details": MessageLookupByLibrary.simpleMessage("Детали"),
+    "enterYourName": MessageLookupByLibrary.simpleMessage("Введите ваше имя"),
     "estimatedTimeminute": MessageLookupByLibrary.simpleMessage(
       "Примерное время (минуты)",
     ),
@@ -85,11 +92,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "july": MessageLookupByLibrary.simpleMessage("Июль"),
     "june": MessageLookupByLibrary.simpleMessage("Июнь"),
     "language": MessageLookupByLibrary.simpleMessage("Язык"),
+    "letsStart": MessageLookupByLibrary.simpleMessage("Начнем"),
     "march": MessageLookupByLibrary.simpleMessage("Март"),
     "may": MessageLookupByLibrary.simpleMessage("Май"),
     "monday": MessageLookupByLibrary.simpleMessage("Понедельник"),
     "morePlan": MessageLookupByLibrary.simpleMessage("Больше планов"),
     "myPlan": MessageLookupByLibrary.simpleMessage("Мой план"),
+    "nameCannotBeEmpty": MessageLookupByLibrary.simpleMessage(
+      "Имя не может быть пустым",
+    ),
     "no": MessageLookupByLibrary.simpleMessage("Нет"),
     "noHabitsFound": MessageLookupByLibrary.simpleMessage(
       "Привычки не найдены.",
@@ -104,6 +115,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "searchResults": MessageLookupByLibrary.simpleMessage("Результаты поиска"),
     "september": MessageLookupByLibrary.simpleMessage("Сентябрь"),
     "settings": MessageLookupByLibrary.simpleMessage("Настройки"),
+    "start": MessageLookupByLibrary.simpleMessage("Начать"),
+    "stayMotivatedWithAHeatmapCalendarnandPlanYourDayWith":
+        MessageLookupByLibrary.simpleMessage(
+          "Оставайтесь мотивированными с помощью календаря-таймлайна\nи планируйте свой день с ясностью.",
+        ),
     "sunday": MessageLookupByLibrary.simpleMessage("Воскресенье"),
     "takesMinutes": MessageLookupByLibrary.simpleMessage("Занимает минут:"),
     "takestimeMinutes": m2,
@@ -112,6 +128,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "tipToHabit": MessageLookupByLibrary.simpleMessage("Совет к привычке"),
     "tips": MessageLookupByLibrary.simpleMessage("Советы:"),
     "title": MessageLookupByLibrary.simpleMessage("Название"),
+    "todaysHabitIsTheReflectionOfYourFutureLife":
+        MessageLookupByLibrary.simpleMessage(
+          "Привычка сегодня — отражение твоей будущей жизни.",
+        ),
+    "trackYourProgress": MessageLookupByLibrary.simpleMessage(
+      "Отслеживайте прогресс",
+    ),
     "tuesday": MessageLookupByLibrary.simpleMessage("Вторник"),
     "wednesday": MessageLookupByLibrary.simpleMessage("Среда"),
     "welcome": m3,

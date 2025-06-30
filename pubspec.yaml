@@ -91,5 +91,6 @@ flutter:
     - lib/assets/animations/
     - lib/assets/pictures/
     - lib/assets/data/
+    - lib/assets/screens/
 flutter_intl:
   enabled: true

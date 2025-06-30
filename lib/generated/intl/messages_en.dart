@@ -47,7 +47,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "browseRountines": MessageLookupByLibrary.simpleMessage("Browse rountines"),
     "catalog": MessageLookupByLibrary.simpleMessage("Catalog"),
     "category": MessageLookupByLibrary.simpleMessage("Category"),
+    "chooseAHabitFromReadymadeSamplesnorCreateYourOwnPersonal":
+        MessageLookupByLibrary.simpleMessage(
+          "Choose a habit from ready-made samples,\\nor create your own personal one to match your goals.",
+        ),
+    "chooseALanguage": MessageLookupByLibrary.simpleMessage(
+      "Choose a language",
+    ),
     "create": MessageLookupByLibrary.simpleMessage("Create"),
+    "createAHabit": MessageLookupByLibrary.simpleMessage("Create a habit"),
     "createOwn": MessageLookupByLibrary.simpleMessage("Create Own"),
     "createYourOwnHabit": MessageLookupByLibrary.simpleMessage(
       "Create your own habit",
@@ -60,6 +68,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "december": MessageLookupByLibrary.simpleMessage("December"),
     "description": MessageLookupByLibrary.simpleMessage("Description"),
     "details": MessageLookupByLibrary.simpleMessage("Details"),
+    "enterYourName": MessageLookupByLibrary.simpleMessage("Enter your name"),
     "estimatedTimeminute": MessageLookupByLibrary.simpleMessage(
       "Estimated time(minute)",
     ),
@@ -81,11 +90,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "july": MessageLookupByLibrary.simpleMessage("July"),
     "june": MessageLookupByLibrary.simpleMessage("June"),
     "language": MessageLookupByLibrary.simpleMessage("Language"),
+    "letsStart": MessageLookupByLibrary.simpleMessage("Let\'s start"),
     "march": MessageLookupByLibrary.simpleMessage("March"),
     "may": MessageLookupByLibrary.simpleMessage("May"),
     "monday": MessageLookupByLibrary.simpleMessage("Monday"),
     "morePlan": MessageLookupByLibrary.simpleMessage("More plan"),
     "myPlan": MessageLookupByLibrary.simpleMessage("My plan"),
+    "nameCannotBeEmpty": MessageLookupByLibrary.simpleMessage(
+      "Name cannot be empty",
+    ),
     "no": MessageLookupByLibrary.simpleMessage("No"),
     "noHabitsFound": MessageLookupByLibrary.simpleMessage("No habits found."),
     "notFound": MessageLookupByLibrary.simpleMessage("Not Found"),
@@ -98,6 +111,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "searchResults": MessageLookupByLibrary.simpleMessage("Search Results"),
     "september": MessageLookupByLibrary.simpleMessage("September"),
     "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+    "start": MessageLookupByLibrary.simpleMessage("Start"),
+    "stayMotivatedWithAHeatmapCalendarnandPlanYourDayWith":
+        MessageLookupByLibrary.simpleMessage(
+          "Stay motivated with a heatmap calendar\\nand plan your day with clarity.",
+        ),
     "sunday": MessageLookupByLibrary.simpleMessage("Sunday"),
     "takesMinutes": MessageLookupByLibrary.simpleMessage("Takes minutes:"),
     "takestimeMinutes": m2,
@@ -106,6 +124,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "tipToHabit": MessageLookupByLibrary.simpleMessage("Tip to habit"),
     "tips": MessageLookupByLibrary.simpleMessage("Tips:"),
     "title": MessageLookupByLibrary.simpleMessage("Title"),
+    "todaysHabitIsTheReflectionOfYourFutureLife":
+        MessageLookupByLibrary.simpleMessage(
+          "Today\'s habit is the reflection of your future life.",
+        ),
+    "trackYourProgress": MessageLookupByLibrary.simpleMessage(
+      "Track your progress",
+    ),
     "tuesday": MessageLookupByLibrary.simpleMessage("Tuesday"),
     "wednesday": MessageLookupByLibrary.simpleMessage("Wednesday"),
     "welcome": m3,

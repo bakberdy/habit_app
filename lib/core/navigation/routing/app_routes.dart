@@ -2,6 +2,28 @@ part of 'routing.dart';
 
 class AppRoutes {
   ///branches for bottom navigation bar
+  static GoRoute get splash => GoRoute(
+        path: AppPaths.splash,
+        name: 'splash',
+        builder: (context, state) => SplashRedirectPage(),
+      );
+  static GoRoute get chooseLangRoute => GoRoute(
+          path: AppPaths.chooseLang,
+          name: 'choose_lang',
+          builder: (context, state) => ChooseLanguagePage(),
+          routes: [
+            GoRoute(
+                path: AppPaths.enterName,
+                name: 'enter_name',
+                builder: (context, state) => EnterNameScreen(),
+                routes: [
+                  GoRoute(
+                    path: AppPaths.onboarding,
+                    name: 'onboarding',
+                    builder: (context, state) => OnbordingPage(),
+                  )
+                ])
+          ]);
 
   static StatefulShellBranch settingsBranch(
           {required TalkerRouteObserver observer,

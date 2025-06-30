@@ -74,8 +74,8 @@ class _$HomeEventCopyWithImpl<$Res> implements $HomeEventCopyWith<$Res> {
 
 /// @nodoc
 
-class _LoadDailyQuote implements HomeEvent {
-  const _LoadDailyQuote({required this.locale});
+class _LoadData implements HomeEvent {
+  const _LoadData({required this.locale});
 
   @override
   final Locale locale;
@@ -85,14 +85,14 @@ class _LoadDailyQuote implements HomeEvent {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$LoadDailyQuoteCopyWith<_LoadDailyQuote> get copyWith =>
-      __$LoadDailyQuoteCopyWithImpl<_LoadDailyQuote>(this, _$identity);
+  _$LoadDataCopyWith<_LoadData> get copyWith =>
+      __$LoadDataCopyWithImpl<_LoadData>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _LoadDailyQuote &&
+            other is _LoadData &&
             (identical(other.locale, locale) || other.locale == locale));
   }
 
@@ -101,28 +101,26 @@ class _LoadDailyQuote implements HomeEvent {
 
   @override
   String toString() {
-    return 'HomeEvent.loadDailyQuote(locale: $locale)';
+    return 'HomeEvent.loadData(locale: $locale)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$LoadDailyQuoteCopyWith<$Res>
+abstract mixin class _$LoadDataCopyWith<$Res>
     implements $HomeEventCopyWith<$Res> {
-  factory _$LoadDailyQuoteCopyWith(
-          _LoadDailyQuote value, $Res Function(_LoadDailyQuote) _then) =
-      __$LoadDailyQuoteCopyWithImpl;
+  factory _$LoadDataCopyWith(_LoadData value, $Res Function(_LoadData) _then) =
+      __$LoadDataCopyWithImpl;
   @override
   @useResult
   $Res call({Locale locale});
 }
 
 /// @nodoc
-class __$LoadDailyQuoteCopyWithImpl<$Res>
-    implements _$LoadDailyQuoteCopyWith<$Res> {
-  __$LoadDailyQuoteCopyWithImpl(this._self, this._then);
+class __$LoadDataCopyWithImpl<$Res> implements _$LoadDataCopyWith<$Res> {
+  __$LoadDataCopyWithImpl(this._self, this._then);
 
-  final _LoadDailyQuote _self;
-  final $Res Function(_LoadDailyQuote) _then;
+  final _LoadData _self;
+  final $Res Function(_LoadData) _then;
 
   /// Create a copy of HomeEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -131,7 +129,82 @@ class __$LoadDailyQuoteCopyWithImpl<$Res>
   $Res call({
     Object? locale = null,
   }) {
-    return _then(_LoadDailyQuote(
+    return _then(_LoadData(
+      locale: null == locale
+          ? _self.locale
+          : locale // ignore: cast_nullable_to_non_nullable
+              as Locale,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _SetUsername implements HomeEvent {
+  const _SetUsername({required this.username, required this.locale});
+
+  final String username;
+  @override
+  final Locale locale;
+
+  /// Create a copy of HomeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$SetUsernameCopyWith<_SetUsername> get copyWith =>
+      __$SetUsernameCopyWithImpl<_SetUsername>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _SetUsername &&
+            (identical(other.username, username) ||
+                other.username == username) &&
+            (identical(other.locale, locale) || other.locale == locale));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, username, locale);
+
+  @override
+  String toString() {
+    return 'HomeEvent.setUsername(username: $username, locale: $locale)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$SetUsernameCopyWith<$Res>
+    implements $HomeEventCopyWith<$Res> {
+  factory _$SetUsernameCopyWith(
+          _SetUsername value, $Res Function(_SetUsername) _then) =
+      __$SetUsernameCopyWithImpl;
+  @override
+  @useResult
+  $Res call({String username, Locale locale});
+}
+
+/// @nodoc
+class __$SetUsernameCopyWithImpl<$Res> implements _$SetUsernameCopyWith<$Res> {
+  __$SetUsernameCopyWithImpl(this._self, this._then);
+
+  final _SetUsername _self;
+  final $Res Function(_SetUsername) _then;
+
+  /// Create a copy of HomeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? username = null,
+    Object? locale = null,
+  }) {
+    return _then(_SetUsername(
+      username: null == username
+          ? _self.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String,
       locale: null == locale
           ? _self.locale
           : locale // ignore: cast_nullable_to_non_nullable
@@ -184,10 +257,75 @@ class HomeInitial implements HomeState {
 
 /// @nodoc
 
+class HomeIError implements HomeState {
+  const HomeIError({required this.errorMessage});
+
+  final String errorMessage;
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $HomeIErrorCopyWith<HomeIError> get copyWith =>
+      _$HomeIErrorCopyWithImpl<HomeIError>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is HomeIError &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, errorMessage);
+
+  @override
+  String toString() {
+    return 'HomeState.error(errorMessage: $errorMessage)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $HomeIErrorCopyWith<$Res>
+    implements $HomeStateCopyWith<$Res> {
+  factory $HomeIErrorCopyWith(
+          HomeIError value, $Res Function(HomeIError) _then) =
+      _$HomeIErrorCopyWithImpl;
+  @useResult
+  $Res call({String errorMessage});
+}
+
+/// @nodoc
+class _$HomeIErrorCopyWithImpl<$Res> implements $HomeIErrorCopyWith<$Res> {
+  _$HomeIErrorCopyWithImpl(this._self, this._then);
+
+  final HomeIError _self;
+  final $Res Function(HomeIError) _then;
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? errorMessage = null,
+  }) {
+    return _then(HomeIError(
+      errorMessage: null == errorMessage
+          ? _self.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
 class HomeLoaded implements HomeState {
-  const HomeLoaded({required this.quote});
+  const HomeLoaded({required this.quote, this.username});
 
   final QuoteEntity quote;
+  final String? username;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
@@ -201,15 +339,17 @@ class HomeLoaded implements HomeState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is HomeLoaded &&
-            (identical(other.quote, quote) || other.quote == quote));
+            (identical(other.quote, quote) || other.quote == quote) &&
+            (identical(other.username, username) ||
+                other.username == username));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, quote);
+  int get hashCode => Object.hash(runtimeType, quote, username);
 
   @override
   String toString() {
-    return 'HomeState.loaded(quote: $quote)';
+    return 'HomeState.loaded(quote: $quote, username: $username)';
   }
 }
 
@@ -220,7 +360,7 @@ abstract mixin class $HomeLoadedCopyWith<$Res>
           HomeLoaded value, $Res Function(HomeLoaded) _then) =
       _$HomeLoadedCopyWithImpl;
   @useResult
-  $Res call({QuoteEntity quote});
+  $Res call({QuoteEntity quote, String? username});
 }
 
 /// @nodoc
@@ -235,12 +375,17 @@ class _$HomeLoadedCopyWithImpl<$Res> implements $HomeLoadedCopyWith<$Res> {
   @pragma('vm:prefer-inline')
   $Res call({
     Object? quote = null,
+    Object? username = freezed,
   }) {
     return _then(HomeLoaded(
       quote: null == quote
           ? _self.quote
           : quote // ignore: cast_nullable_to_non_nullable
               as QuoteEntity,
+      username: freezed == username
+          ? _self.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }

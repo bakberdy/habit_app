@@ -68,5 +68,15 @@
   "october": "Қазан",
   "november": "Қараша",
   "december": "Желтоқсан",
-  "forTheLanguageChangeToTakeEffectCorrectlyPleaseReopen": "Тілді өзгерту дұрыс күшіне енуі үшін, қосымшаны қайта іске қосыңыз."
+  "forTheLanguageChangeToTakeEffectCorrectlyPleaseReopen": "Тілді өзгерту дұрыс күшіне енуі үшін, қосымшаны қайта іске қосыңыз.",
+  "chooseALanguage": "Тілді таңдаңыз",
+  "enterYourName": "Атыңызды енгізіңіз",
+  "nameCannotBeEmpty": "Аты бос болмауы керек",
+  "letsStart": "Бастайық",
+  "todaysHabitIsTheReflectionOfYourFutureLife": "Бүгінгі әдет — ертеңгі өміріңнің бейнесі.",
+  "createAHabit": "Әдетті бастаңыз",
+  "chooseAHabitFromReadymadeSamplesnorCreateYourOwnPersonal": "Дайын әдет үлгілерінен таңдаңыз\nнемесе өз мақсатыңызға сай жеке әдет жасаңыз.",
+  "trackYourProgress": "Прогрессті бақылаңыз",
+  "stayMotivatedWithAHeatmapCalendarnandPlanYourDayWith": "Жылу картасы арқылы мотивацияны сақтаңыз\nжәне күніңізді нақты жоспарлаңыз.",
+  "start": "Бастау"
 }

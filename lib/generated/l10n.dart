@@ -544,6 +544,96 @@ class S {
       args: [],
     );
   }
+
+  /// `Choose a language`
+  String get chooseALanguage {
+    return Intl.message(
+      'Choose a language',
+      name: 'chooseALanguage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your name`
+  String get enterYourName {
+    return Intl.message(
+      'Enter your name',
+      name: 'enterYourName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name cannot be empty`
+  String get nameCannotBeEmpty {
+    return Intl.message(
+      'Name cannot be empty',
+      name: 'nameCannotBeEmpty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Let's start`
+  String get letsStart {
+    return Intl.message('Let\'s start', name: 'letsStart', desc: '', args: []);
+  }
+
+  /// `Today's habit is the reflection of your future life.`
+  String get todaysHabitIsTheReflectionOfYourFutureLife {
+    return Intl.message(
+      'Today\'s habit is the reflection of your future life.',
+      name: 'todaysHabitIsTheReflectionOfYourFutureLife',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create a habit`
+  String get createAHabit {
+    return Intl.message(
+      'Create a habit',
+      name: 'createAHabit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose a habit from ready-made samples,\nor create your own personal one to match your goals.`
+  String get chooseAHabitFromReadymadeSamplesnorCreateYourOwnPersonal {
+    return Intl.message(
+      'Choose a habit from ready-made samples,\\nor create your own personal one to match your goals.',
+      name: 'chooseAHabitFromReadymadeSamplesnorCreateYourOwnPersonal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Track your progress`
+  String get trackYourProgress {
+    return Intl.message(
+      'Track your progress',
+      name: 'trackYourProgress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Stay motivated with a heatmap calendar\nand plan your day with clarity.`
+  String get stayMotivatedWithAHeatmapCalendarnandPlanYourDayWith {
+    return Intl.message(
+      'Stay motivated with a heatmap calendar\\nand plan your day with clarity.',
+      name: 'stayMotivatedWithAHeatmapCalendarnandPlanYourDayWith',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Start`
+  String get start {
+    return Intl.message('Start', name: 'start', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

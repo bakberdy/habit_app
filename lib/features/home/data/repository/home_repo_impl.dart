@@ -16,4 +16,15 @@ class HomeRepoImpl extends HomeRepository {
   ResultFuture<QuoteEntity> getDailyQuote(Locale locale) async {
     return Right(await _localDataSource.getDailyQuote(locale));
   }
+
+  @override
+  ResultFuture<String?> getUsername() async {
+    return Right(await _localDataSource.getUsername());
+  }
+
+  @override
+  ResultVoid saveUsername(String username) async {
+    await _localDataSource.saveUsername(username: username);
+    return Right(null);
+  }
 }
