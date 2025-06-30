@@ -45,14 +45,9 @@ import '../features/habit/presentation/bloc/my_plan/my_plan_bloc.dart' as _i836;
 import '../features/habit/presentation/bloc/search/search_bloc.dart' as _i373;
 import '../features/home/data/data_source/home_local_data_source.dart' as _i200;
 import '../features/home/data/repository/home_repo_impl.dart' as _i488;
-import '../features/home/domain/repository/home_reposory.dart' as _i719;
+import '../features/home/domain/repository/home_repository.dart' as _i855;
 import '../features/home/domain/usecases/get_daily_quote.dart' as _i457;
 import '../features/home/presentation/bloc/home_bloc.dart' as _i824;
-import '../features/settings/domain/repository/settings_repository.dart'
-    as _i816;
-import '../features/settings/domain/usecases/set_locale.dart' as _i1030;
-import '../features/settings/presentation/blocs/settings/settings_bloc.dart'
-    as _i848;
 import 'injection.dart' as _i464;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -79,26 +74,21 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i156.AppRouter>(() => appModule.appRouter);
     gh.lazySingleton<_i200.HomeLocalDataSource>(
         () => _i200.HomeLocalDataSourceImpl());
-    gh.lazySingleton<_i719.HomeReposory>(
-        () => _i488.HomeRepoImpl(gh<_i200.HomeLocalDataSource>()));
     gh.lazySingleton<_i935.AppDatabase>(
         () => _i935.AppDatabase(gh<_i207.Talker>()));
-    gh.lazySingleton<_i1030.SetLocale>(
-        () => _i1030.SetLocale(gh<_i816.SettingsRepository>()));
     gh.lazySingleton<_i655.HabitLocalDataSource>(
         () => _i655.HabitLocalDataSourceImpl(
               gh<_i935.AppDatabase>(),
               gh<_i207.Talker>(),
             ));
-    gh.lazySingleton<_i457.GetDailyQuote>(
-        () => _i457.GetDailyQuote(gh<_i719.HomeReposory>()));
     gh.singleton<_i393.DioClient>(() => _i393.DioClient(
           gh<_i361.Dio>(),
           gh<_i162.TalkerDioLogger>(),
         ));
+    gh.lazySingleton<_i855.HomeRepository>(
+        () => _i488.HomeRepoImpl(gh<_i200.HomeLocalDataSource>()));
     gh.lazySingleton<_i166.HabitRepo>(
         () => _i687.HabitRepoImpl(gh<_i655.HabitLocalDataSource>()));
-    gh.factory<_i824.HomeBloc>(() => _i824.HomeBloc(gh<_i457.GetDailyQuote>()));
     gh.lazySingleton<_i1055.GetHabitSubscriptionWithDateAndHabitId>(() =>
         _i1055.GetHabitSubscriptionWithDateAndHabitId(gh<_i166.HabitRepo>()));
     gh.lazySingleton<_i545.GetCategoryInfo>(
@@ -113,8 +103,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i680.SearchHabitUsecase(gh<_i166.HabitRepo>()));
     gh.lazySingleton<_i854.GetHabitsDonePercentage>(
         () => _i854.GetHabitsDonePercentage(gh<_i166.HabitRepo>()));
-    gh.factory<_i848.SettingsBloc>(
-        () => _i848.SettingsBloc(gh<_i1030.SetLocale>()));
+    gh.lazySingleton<_i457.GetDailyQuote>(
+        () => _i457.GetDailyQuote(gh<_i855.HomeRepository>()));
     gh.factory<_i257.HabitMapBloc>(
         () => _i257.HabitMapBloc(gh<_i854.GetHabitsDonePercentage>()));
     gh.lazySingleton<_i65.AddNewHabit>(
@@ -123,6 +113,7 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i825.GetHabitsOfDay(gh<_i166.HabitRepo>()));
     gh.lazySingleton<_i56.SetHabitCompletionStatus>(
         () => _i56.SetHabitCompletionStatus(gh<_i166.HabitRepo>()));
+    gh.factory<_i824.HomeBloc>(() => _i824.HomeBloc(gh<_i457.GetDailyQuote>()));
     gh.factory<_i216.CatalogBloc>(() => _i216.CatalogBloc(
           gh<_i1031.GetCategories>(),
           gh<_i545.GetCategoryInfo>(),

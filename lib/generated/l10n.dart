@@ -232,7 +232,7 @@ class S {
   /// `You don't have any plans on this day.\nTap + to add a new habit!`
   String get youDontHaveAnyPlansOnThisDayntapToAdd {
     return Intl.message(
-      'You don\'t have any plans on this day.\\nTap + to add a new habit!',
+      'You don\'t have any plans on this day.\nTap + to add a new habit!',
       name: 'youDontHaveAnyPlansOnThisDayntapToAdd',
       desc: '',
       args: [],
@@ -533,6 +533,16 @@ class S {
   /// `December`
   String get december {
     return Intl.message('December', name: 'december', desc: '', args: []);
+  }
+
+  /// `For the language change to take effect correctly, please reopen the app.`
+  String get forTheLanguageChangeToTakeEffectCorrectlyPleaseReopen {
+    return Intl.message(
+      'For the language change to take effect correctly, please reopen the app.',
+      name: 'forTheLanguageChangeToTakeEffectCorrectlyPleaseReopen',
+      desc: '',
+      args: [],
+    );
   }
 }
 

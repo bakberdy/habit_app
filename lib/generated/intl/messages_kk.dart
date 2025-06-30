@@ -20,75 +20,114 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'kk';
 
+  static String m0(author) => "Авторы: ${author}";
+
   static String m1(doneHabits, max, dayText) =>
-      "Great job! You completed {state.numberOfDoneHabits} out of {state.habitInfo.length} habits {state.textOfDay.toLowerCase()}. 😊";
+      "Керемет! Сіз ${dayText} күні ${max} әдеттің ${doneHabits} орындадыңыз. 😊";
 
-  static String m2(takesTime) => "\$${takesTime} minutes";
+  static String m2(takesTime) => "${takesTime} минут алады";
 
-  static String m4(day, month) => "Your plan of ${day} ${month}";
+  static String m3(name) => "Қош келдіңіз, ${name}";
+
+  static String m4(day, month) => "${day} ${month} күнінің жоспарыңыз";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-    "aboutApp": MessageLookupByLibrary.simpleMessage("About app"),
-    "addANewRoutine": MessageLookupByLibrary.simpleMessage("Add a new routine"),
+    "aboutApp": MessageLookupByLibrary.simpleMessage("Қосымша туралы"),
+    "addANewRoutine": MessageLookupByLibrary.simpleMessage("Жаңа дағды қосу"),
     "addMoreDetailsToClarifyYourHabit": MessageLookupByLibrary.simpleMessage(
-      "Add more details to clarify your habit",
+      "Әдетті нақтылау үшін қосымша мәлімет енгізіңіз",
     ),
-    "addToPlan": MessageLookupByLibrary.simpleMessage("Add To Plan"),
-    "browse": MessageLookupByLibrary.simpleMessage("Browse"),
-    "browseHabits": MessageLookupByLibrary.simpleMessage("Browse habits"),
-    "browseRountines": MessageLookupByLibrary.simpleMessage("Browse rountines"),
-    "category": MessageLookupByLibrary.simpleMessage("Category"),
-    "create": MessageLookupByLibrary.simpleMessage("Create"),
-    "createOwn": MessageLookupByLibrary.simpleMessage("Create Own"),
+    "addToPlan": MessageLookupByLibrary.simpleMessage("Жоспарға қосу"),
+    "april": MessageLookupByLibrary.simpleMessage("Сәуір"),
+    "august": MessageLookupByLibrary.simpleMessage("Тамыз"),
+    "author": m0,
+    "browse": MessageLookupByLibrary.simpleMessage("Шолу"),
+    "browseHabits": MessageLookupByLibrary.simpleMessage("Әдеттерді шолу"),
+    "browseRountines": MessageLookupByLibrary.simpleMessage("Дағдыларды шолу"),
+    "catalog": MessageLookupByLibrary.simpleMessage("Каталог"),
+    "category": MessageLookupByLibrary.simpleMessage("Санат"),
+    "create": MessageLookupByLibrary.simpleMessage("Жасау"),
+    "createOwn": MessageLookupByLibrary.simpleMessage("Өзіндік жасау"),
     "createYourOwnHabit": MessageLookupByLibrary.simpleMessage(
-      "Create your own habit",
+      "Өз әдетіңізді жасаңыз",
     ),
-    "days": MessageLookupByLibrary.simpleMessage("Days:"),
+    "dailyMotivation": MessageLookupByLibrary.simpleMessage(
+      "Күнделікті мотивация",
+    ),
+    "days": MessageLookupByLibrary.simpleMessage("Күндер:"),
     "daysThatYouWantToDo": MessageLookupByLibrary.simpleMessage(
-      "Days that you want to do",
+      "Істегіңіз келетін күндер",
     ),
-    "description": MessageLookupByLibrary.simpleMessage("Description"),
-    "details": MessageLookupByLibrary.simpleMessage("Details"),
+    "december": MessageLookupByLibrary.simpleMessage("Желтоқсан"),
+    "description": MessageLookupByLibrary.simpleMessage("Сипаттама"),
+    "details": MessageLookupByLibrary.simpleMessage("Мәліметтер"),
     "estimatedTimeminute": MessageLookupByLibrary.simpleMessage(
-      "Estimated time(minute)",
+      "Шамамен уақыт (минут)",
     ),
+    "february": MessageLookupByLibrary.simpleMessage("Ақпан"),
+    "forTheLanguageChangeToTakeEffectCorrectlyPleaseReopen":
+        MessageLookupByLibrary.simpleMessage(
+          "Тілді өзгерту дұрыс күшіне енуі үшін, қосымшаны қайта іске қосыңыз.",
+        ),
+    "friday": MessageLookupByLibrary.simpleMessage("Жұма"),
     "greatJobYouCompletedStatenumberofdonehabitsOutOfStatehabitinfolengthHabitsStatetextofdaytolowercase":
         m1,
     "habitIsAlreadyInYourPlanGoodJob": MessageLookupByLibrary.simpleMessage(
-      "Habit is already in your plan. Good job! ",
+      "Бұл әдет сіздің жоспарыңызда бар. Жарайсыз! ",
     ),
-    "habits": MessageLookupByLibrary.simpleMessage("Habits"),
-    "helpSupport": MessageLookupByLibrary.simpleMessage("Help & Support"),
-    "language": MessageLookupByLibrary.simpleMessage("Language"),
-    "monday": MessageLookupByLibrary.simpleMessage("Monday"),
-    "no": MessageLookupByLibrary.simpleMessage("No"),
-    "noHabitsFound": MessageLookupByLibrary.simpleMessage("No habits found."),
-    "notFound": MessageLookupByLibrary.simpleMessage("Not Found"),
-    "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
-    "search": MessageLookupByLibrary.simpleMessage("Search"),
-    "searchResults": MessageLookupByLibrary.simpleMessage("Search Results"),
-    "takesMinutes": MessageLookupByLibrary.simpleMessage("Takes minutes:"),
+    "habits": MessageLookupByLibrary.simpleMessage("Әдеттер"),
+    "helpSupport": MessageLookupByLibrary.simpleMessage("Көмек және қолдау"),
+    "home": MessageLookupByLibrary.simpleMessage("Басты бет"),
+    "january": MessageLookupByLibrary.simpleMessage("Қаңтар"),
+    "july": MessageLookupByLibrary.simpleMessage("Шілде"),
+    "june": MessageLookupByLibrary.simpleMessage("Маусым"),
+    "language": MessageLookupByLibrary.simpleMessage("Тіл"),
+    "march": MessageLookupByLibrary.simpleMessage("Наурыз"),
+    "may": MessageLookupByLibrary.simpleMessage("Мамыр"),
+    "monday": MessageLookupByLibrary.simpleMessage("Дүйсенбі"),
+    "morePlan": MessageLookupByLibrary.simpleMessage("Көбірек жоспар"),
+    "myPlan": MessageLookupByLibrary.simpleMessage("Менің жоспарым"),
+    "no": MessageLookupByLibrary.simpleMessage("Жоқ"),
+    "noHabitsFound": MessageLookupByLibrary.simpleMessage("Әдеттер табылмады."),
+    "notFound": MessageLookupByLibrary.simpleMessage("Табылмады"),
+    "notifications": MessageLookupByLibrary.simpleMessage("Хабарландырулар"),
+    "november": MessageLookupByLibrary.simpleMessage("Қараша"),
+    "october": MessageLookupByLibrary.simpleMessage("Қазан"),
+    "recomendations": MessageLookupByLibrary.simpleMessage("Ұсыныстар"),
+    "saturday": MessageLookupByLibrary.simpleMessage("Сенбі"),
+    "search": MessageLookupByLibrary.simpleMessage("Іздеу"),
+    "searchResults": MessageLookupByLibrary.simpleMessage("Іздеу нәтижелері"),
+    "september": MessageLookupByLibrary.simpleMessage("Қыркүйек"),
+    "settings": MessageLookupByLibrary.simpleMessage("Баптаулар"),
+    "sunday": MessageLookupByLibrary.simpleMessage("Жексенбі"),
+    "takesMinutes": MessageLookupByLibrary.simpleMessage("Минутты алады:"),
     "takestimeMinutes": m2,
-    "tipDescription": MessageLookupByLibrary.simpleMessage("Tip description"),
-    "tipToHabit": MessageLookupByLibrary.simpleMessage("Tip to habit"),
-    "tips": MessageLookupByLibrary.simpleMessage("Tips:"),
-    "title": MessageLookupByLibrary.simpleMessage("Title"),
-    "why": MessageLookupByLibrary.simpleMessage("Why:"),
-    "yes": MessageLookupByLibrary.simpleMessage("Yes"),
-    "youDontHaveAnyPlansOnThisDayntapToAdd":
-        MessageLookupByLibrary.simpleMessage(
-          "You don\'t have any plans on this day.\\nTap + to add a new habit!",
-        ),
+    "thursday": MessageLookupByLibrary.simpleMessage("Бейсенбі"),
+    "tipDescription": MessageLookupByLibrary.simpleMessage("Кеңес сипаттамасы"),
+    "tipToHabit": MessageLookupByLibrary.simpleMessage("Әдетке кеңес"),
+    "tips": MessageLookupByLibrary.simpleMessage("Кеңестер:"),
+    "title": MessageLookupByLibrary.simpleMessage("Атауы"),
+    "tuesday": MessageLookupByLibrary.simpleMessage("Сейсенбі"),
+    "wednesday": MessageLookupByLibrary.simpleMessage("Сәрсенбі"),
+    "welcome": m3,
+    "why": MessageLookupByLibrary.simpleMessage("Неліктен:"),
+    "yes": MessageLookupByLibrary.simpleMessage("Иә"),
+    "youDontHaveAnyPlansOnThisDayntapToAdd": MessageLookupByLibrary.simpleMessage(
+      "Бұл күні ешқандай жоспарыңыз жоқ.\nЖаңа әдет қосу үшін + батырмасын басыңыз!",
+    ),
+    "yourActivityCalendar": MessageLookupByLibrary.simpleMessage(
+      "Сіздің белсенділік күнтізбеңіз",
+    ),
     "yourPlanOfDayMonth": m4,
     "yourTodaysPlan": MessageLookupByLibrary.simpleMessage(
-      "Your today\'s plan",
+      "Бүгінгі жоспарыңыз",
     ),
     "yourTomorrowPlan": MessageLookupByLibrary.simpleMessage(
-      "Your tomorrow plan",
+      "Ертеңгі жоспарыңыз",
     ),
     "yourYesterdayPlan": MessageLookupByLibrary.simpleMessage(
-      "Your yesterday plan",
+      "Кешегі жоспарыңыз",
     ),
   };
 }

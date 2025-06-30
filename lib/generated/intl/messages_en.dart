@@ -64,6 +64,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "Estimated time(minute)",
     ),
     "february": MessageLookupByLibrary.simpleMessage("February"),
+    "forTheLanguageChangeToTakeEffectCorrectlyPleaseReopen":
+        MessageLookupByLibrary.simpleMessage(
+          "For the language change to take effect correctly, please reopen the app.",
+        ),
     "friday": MessageLookupByLibrary.simpleMessage("Friday"),
     "greatJobYouCompletedStatenumberofdonehabitsOutOfStatehabitinfolengthHabitsStatetextofdaytolowercase":
         m1,
@@ -109,7 +113,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "yes": MessageLookupByLibrary.simpleMessage("Yes"),
     "youDontHaveAnyPlansOnThisDayntapToAdd":
         MessageLookupByLibrary.simpleMessage(
-          "You don\'t have any plans on this day.\\nTap + to add a new habit!",
+          "You don\'t have any plans on this day.\nTap + to add a new habit!",
         ),
     "yourActivityCalendar": MessageLookupByLibrary.simpleMessage(
       "Your activity calendar",

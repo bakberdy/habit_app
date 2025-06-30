@@ -58,6 +58,15 @@ class _SelectLanguagePageState extends State<SelectLanguagePage> {
                     .setLocale(AppLocalizations.russian);
               },
             ),
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: Text(
+                S
+                    .of(context)
+                    .forTheLanguageChangeToTakeEffectCorrectlyPleaseReopen,
+                style: AppTextTheme.bodySmall.copyWith(color: AppColors.grey),
+              ),
+            )
           ],
         ),
       ),

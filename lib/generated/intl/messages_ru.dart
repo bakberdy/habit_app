@@ -23,7 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m0(author) => "Автор: ${author}";
 
   static String m1(doneHabits, max, dayText) =>
-      "Отличная работа! Вы выполнили ${doneHabits} из ${max} привычек ${dayText}. 😊";
+      "Отлично! Вы выполнили ${doneHabits} из ${max} привычек ${dayText}. 😊";
 
   static String m2(takesTime) => "${takesTime} минут";
 
@@ -38,7 +38,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Добавить новую рутину",
     ),
     "addMoreDetailsToClarifyYourHabit": MessageLookupByLibrary.simpleMessage(
-      "Добавьте детали, чтобы уточнить привычку",
+      "Добавьте больше деталей для ясности привычки",
     ),
     "addToPlan": MessageLookupByLibrary.simpleMessage("Добавить в план"),
     "april": MessageLookupByLibrary.simpleMessage("Апрель"),
@@ -54,23 +54,29 @@ class MessageLookup extends MessageLookupByLibrary {
     "createYourOwnHabit": MessageLookupByLibrary.simpleMessage(
       "Создайте свою привычку",
     ),
-    "dailyMotivation": MessageLookupByLibrary.simpleMessage("Мотивация дня"),
+    "dailyMotivation": MessageLookupByLibrary.simpleMessage(
+      "Ежедневная мотивация",
+    ),
     "days": MessageLookupByLibrary.simpleMessage("Дни:"),
     "daysThatYouWantToDo": MessageLookupByLibrary.simpleMessage(
       "Дни, в которые вы хотите выполнять",
     ),
     "december": MessageLookupByLibrary.simpleMessage("Декабрь"),
     "description": MessageLookupByLibrary.simpleMessage("Описание"),
-    "details": MessageLookupByLibrary.simpleMessage("Подробности"),
+    "details": MessageLookupByLibrary.simpleMessage("Детали"),
     "estimatedTimeminute": MessageLookupByLibrary.simpleMessage(
-      "Примерное время (в минутах)",
+      "Примерное время (минуты)",
     ),
     "february": MessageLookupByLibrary.simpleMessage("Февраль"),
+    "forTheLanguageChangeToTakeEffectCorrectlyPleaseReopen":
+        MessageLookupByLibrary.simpleMessage(
+          "Чтобы смена языка применилась корректно, пожалуйста, перезапустите приложение.",
+        ),
     "friday": MessageLookupByLibrary.simpleMessage("Пятница"),
     "greatJobYouCompletedStatenumberofdonehabitsOutOfStatehabitinfolengthHabitsStatetextofdaytolowercase":
         m1,
     "habitIsAlreadyInYourPlanGoodJob": MessageLookupByLibrary.simpleMessage(
-      "Привычка уже добавлена в ваш план. Отлично!",
+      "Привычка уже есть в вашем плане. Отличная работа!",
     ),
     "habits": MessageLookupByLibrary.simpleMessage("Привычки"),
     "helpSupport": MessageLookupByLibrary.simpleMessage("Помощь и поддержка"),
@@ -82,11 +88,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "march": MessageLookupByLibrary.simpleMessage("Март"),
     "may": MessageLookupByLibrary.simpleMessage("Май"),
     "monday": MessageLookupByLibrary.simpleMessage("Понедельник"),
-    "morePlan": MessageLookupByLibrary.simpleMessage("Дополнительные планы"),
+    "morePlan": MessageLookupByLibrary.simpleMessage("Больше планов"),
     "myPlan": MessageLookupByLibrary.simpleMessage("Мой план"),
     "no": MessageLookupByLibrary.simpleMessage("Нет"),
     "noHabitsFound": MessageLookupByLibrary.simpleMessage(
-      "Привычек не найдено.",
+      "Привычки не найдены.",
     ),
     "notFound": MessageLookupByLibrary.simpleMessage("Не найдено"),
     "notifications": MessageLookupByLibrary.simpleMessage("Уведомления"),
@@ -109,13 +115,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "tuesday": MessageLookupByLibrary.simpleMessage("Вторник"),
     "wednesday": MessageLookupByLibrary.simpleMessage("Среда"),
     "welcome": m3,
-    "why": MessageLookupByLibrary.simpleMessage("Зачем:"),
+    "why": MessageLookupByLibrary.simpleMessage("Почему:"),
     "yes": MessageLookupByLibrary.simpleMessage("Да"),
     "youDontHaveAnyPlansOnThisDayntapToAdd": MessageLookupByLibrary.simpleMessage(
       "У вас нет планов на этот день.\nНажмите +, чтобы добавить новую привычку!",
     ),
     "yourActivityCalendar": MessageLookupByLibrary.simpleMessage(
-      "Календарь вашей активности",
+      "Ваш календарь активности",
     ),
     "yourPlanOfDayMonth": m4,
     "yourTodaysPlan": MessageLookupByLibrary.simpleMessage(

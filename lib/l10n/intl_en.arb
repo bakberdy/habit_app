@@ -23,7 +23,7 @@
   "tips": "Tips:",
   "habitIsAlreadyInYourPlanGoodJob": "Habit is already in your plan. Good job! ",
   "addToPlan": "Add To Plan",
-  "youDontHaveAnyPlansOnThisDayntapToAdd": "You don't have any plans on this day.\\nTap + to add a new habit!",
+  "youDontHaveAnyPlansOnThisDayntapToAdd": "You don't have any plans on this day.\nTap + to add a new habit!",
   "greatJobYouCompletedStatenumberofdonehabitsOutOfStatehabitinfolengthHabitsStatetextofdaytolowercase": "Great job! You completed {doneHabits} out of {max} habits {dayText}. 😊",
   "createYourOwnHabit": "Create your own habit",
   "title": "Title",
@@ -67,5 +67,6 @@
   "september": "September",
   "october": "October",
   "november": "November",
-  "december": "December"
+  "december": "December",
+  "forTheLanguageChangeToTakeEffectCorrectlyPleaseReopen": "For the language change to take effect correctly, please reopen the app."
 }
