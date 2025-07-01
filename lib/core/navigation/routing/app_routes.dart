@@ -41,6 +41,16 @@ class AppRoutes {
                   path: AppPaths.selectLanguage,
                   name: 'select_language',
                   builder: (context, state) => SelectLanguagePage(),
+                ),
+                GoRoute(
+                  path: AppPaths.aboutApp,
+                  name: 'about_app',
+                  builder: (context, state) => AboutAppPage(),
+                ),
+                GoRoute(
+                  path: AppPaths.support,
+                  name: 'support',
+                  builder: (context, state) => SupportPage(),
                 )
               ])
         ],

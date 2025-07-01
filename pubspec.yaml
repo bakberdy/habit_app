@@ -67,6 +67,9 @@ dependencies:
     path: packages/flutter_heatmap_calendar
   shared_preferences: ^2.5.3
   intl: ^0.20.2
+  url_launcher: ^6.3.1
+  flutter_launcher_icons: ^0.14.4
+  flutter_native_splash: ^2.4.6
 
 dev_dependencies:
   flutter_test:
@@ -92,5 +95,6 @@ flutter:
     - lib/assets/pictures/
     - lib/assets/data/
     - lib/assets/screens/
+    - lib/assets/app/
 flutter_intl:
   enabled: true

@@ -67,14 +67,18 @@ class _SettingsPageContentState extends State<SettingsPageContent> {
                 ButtonsList(
                   children: [
                     ButtonDetails(
-                        onTap: () {},
+                        onTap: () {
+                          context.goNamed('support');
+                        },
                         title: S.of(context).helpSupport,
                         prefixIcon: SizedBox(
                             height: 25,
                             width: 25,
                             child: Image.asset('lib/assets/icons/info.png'))),
                     ButtonDetails(
-                        onTap: () {},
+                        onTap: () {
+                          context.goNamed('about_app');
+                        },
                         title: S.of(context).aboutApp,
                         prefixIcon: SizedBox(
                             height: 25,

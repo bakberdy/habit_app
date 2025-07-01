@@ -42,9 +42,20 @@ class MessageLookup extends MessageLookupByLibrary {
     "april": MessageLookupByLibrary.simpleMessage("April"),
     "august": MessageLookupByLibrary.simpleMessage("August"),
     "author": m0,
+    "availableInKazakhRussianAndEnglishBecauseGrowthHasNo":
+        MessageLookupByLibrary.simpleMessage(
+          "Available in Kazakh, Russian, and English — because growth has no language barrier.",
+        ),
     "browse": MessageLookupByLibrary.simpleMessage("Browse"),
     "browseHabits": MessageLookupByLibrary.simpleMessage("Browse habits"),
     "browseRountines": MessageLookupByLibrary.simpleMessage("Browse rountines"),
+    "builtForDreamersDoersAndDisciplinedMindsnstartYourDetJourney":
+        MessageLookupByLibrary.simpleMessage(
+          "Built for dreamers, doers, and disciplined minds.\\nStart your Ádet journey today.",
+        ),
+    "canITrackMultipleHabits": MessageLookupByLibrary.simpleMessage(
+      "Can I track multiple habits?",
+    ),
     "catalog": MessageLookupByLibrary.simpleMessage("Catalog"),
     "category": MessageLookupByLibrary.simpleMessage("Category"),
     "chooseAHabitFromReadymadeSamplesnorCreateYourOwnPersonal":
@@ -53,6 +64,14 @@ class MessageLookup extends MessageLookupByLibrary {
         ),
     "chooseALanguage": MessageLookupByLibrary.simpleMessage(
       "Choose a language",
+    ),
+    "chooseFromCarefullyCraftedHabitTemplatesOrCreateYourOwn":
+        MessageLookupByLibrary.simpleMessage(
+          "Choose from carefully crafted habit templates or create your own personalized routines.",
+        ),
+    "contactUs": MessageLookupByLibrary.simpleMessage("📧 Contact us:"),
+    "couldNotLaunchEmailClient": MessageLookupByLibrary.simpleMessage(
+      "Could not launch email client.",
     ),
     "create": MessageLookupByLibrary.simpleMessage("Create"),
     "createAHabit": MessageLookupByLibrary.simpleMessage("Create a habit"),
@@ -67,7 +86,14 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "december": MessageLookupByLibrary.simpleMessage("December"),
     "description": MessageLookupByLibrary.simpleMessage("Description"),
+    "detIsASmartAndElegantHabitTrackerThatHelps":
+        MessageLookupByLibrary.simpleMessage(
+          "Ádet is a smart and elegant habit tracker that helps you take small steps toward big life transformations. Whether you want to build a daily meditation routine, drink more water, or master new skills — Ádet will be your supportive companion along the way.",
+        ),
     "details": MessageLookupByLibrary.simpleMessage("Details"),
+    "doesDetSendReminders": MessageLookupByLibrary.simpleMessage(
+      "Does Ádet send reminders?",
+    ),
     "enterYourName": MessageLookupByLibrary.simpleMessage("Enter your name"),
     "estimatedTimeminute": MessageLookupByLibrary.simpleMessage(
       "Estimated time(minute)",
@@ -77,27 +103,49 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "For the language change to take effect correctly, please reopen the app.",
         ),
+    "frequentlyAskedQuestions": MessageLookupByLibrary.simpleMessage(
+      "❓ Frequently Asked Questions",
+    ),
     "friday": MessageLookupByLibrary.simpleMessage("Friday"),
+    "goToTheMyPlansPageAndTapToAdd": MessageLookupByLibrary.simpleMessage(
+      "Go to the my plans page and tap \"+\" to add a habit.",
+    ),
     "greatJobYouCompletedStatenumberofdonehabitsOutOfStatehabitinfolengthHabitsStatetextofdaytolowercase":
         m1,
     "habitIsAlreadyInYourPlanGoodJob": MessageLookupByLibrary.simpleMessage(
       "Habit is already in your plan. Good job! ",
     ),
     "habits": MessageLookupByLibrary.simpleMessage("Habits"),
+    "heatmapProgressTracker": MessageLookupByLibrary.simpleMessage(
+      "Heatmap Progress Tracker",
+    ),
+    "helloDetTeamnniNeedHelpWith": MessageLookupByLibrary.simpleMessage(
+      "Hello Ádet team,\\n\\nI need help with...",
+    ),
     "helpSupport": MessageLookupByLibrary.simpleMessage("Help & Support"),
     "home": MessageLookupByLibrary.simpleMessage("Home"),
+    "howDoICreateAHabit": MessageLookupByLibrary.simpleMessage(
+      "How do I create a habit?",
+    ),
     "january": MessageLookupByLibrary.simpleMessage("January"),
     "july": MessageLookupByLibrary.simpleMessage("July"),
     "june": MessageLookupByLibrary.simpleMessage("June"),
+    "keyFeatures": MessageLookupByLibrary.simpleMessage("Key Features"),
     "language": MessageLookupByLibrary.simpleMessage("Language"),
     "letsStart": MessageLookupByLibrary.simpleMessage("Let\'s start"),
     "march": MessageLookupByLibrary.simpleMessage("March"),
     "may": MessageLookupByLibrary.simpleMessage("May"),
     "monday": MessageLookupByLibrary.simpleMessage("Monday"),
     "morePlan": MessageLookupByLibrary.simpleMessage("More plan"),
+    "multilingualSupport": MessageLookupByLibrary.simpleMessage(
+      "Multilingual Support",
+    ),
     "myPlan": MessageLookupByLibrary.simpleMessage("My plan"),
     "nameCannotBeEmpty": MessageLookupByLibrary.simpleMessage(
       "Name cannot be empty",
+    ),
+    "needHelpOrHaveFeedback": MessageLookupByLibrary.simpleMessage(
+      "Need help or have feedback?",
     ),
     "no": MessageLookupByLibrary.simpleMessage("No"),
     "noHabitsFound": MessageLookupByLibrary.simpleMessage("No habits found."),
@@ -105,18 +153,33 @@ class MessageLookup extends MessageLookupByLibrary {
     "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
     "november": MessageLookupByLibrary.simpleMessage("November"),
     "october": MessageLookupByLibrary.simpleMessage("October"),
+    "readymadeAndCustomHabits": MessageLookupByLibrary.simpleMessage(
+      "Ready-made and Custom Habits",
+    ),
     "recomendations": MessageLookupByLibrary.simpleMessage("Recomendations"),
     "saturday": MessageLookupByLibrary.simpleMessage("Saturday"),
     "search": MessageLookupByLibrary.simpleMessage("Search"),
     "searchResults": MessageLookupByLibrary.simpleMessage("Search Results"),
+    "sendFeedback": MessageLookupByLibrary.simpleMessage("Send Feedback"),
     "september": MessageLookupByLibrary.simpleMessage("September"),
     "settings": MessageLookupByLibrary.simpleMessage("Settings"),
     "start": MessageLookupByLibrary.simpleMessage("Start"),
+    "stayEngagedAndInspiredByTrackingYourStreaksAndSetting":
+        MessageLookupByLibrary.simpleMessage(
+          "Stay engaged and inspired by tracking your streaks and setting gentle reminders.",
+        ),
     "stayMotivatedWithAHeatmapCalendarnandPlanYourDayWith":
         MessageLookupByLibrary.simpleMessage(
           "Stay motivated with a heatmap calendar\\nand plan your day with clarity.",
         ),
+    "streakMotivationSystem": MessageLookupByLibrary.simpleMessage(
+      "Streak & Motivation System",
+    ),
     "sunday": MessageLookupByLibrary.simpleMessage("Sunday"),
+    "support": MessageLookupByLibrary.simpleMessage("Support"),
+    "supportRequestFromDet": MessageLookupByLibrary.simpleMessage(
+      "Support request from Ádet",
+    ),
     "takesMinutes": MessageLookupByLibrary.simpleMessage("Takes minutes:"),
     "takestimeMinutes": m2,
     "thursday": MessageLookupByLibrary.simpleMessage("Thursday"),
@@ -132,10 +195,26 @@ class MessageLookup extends MessageLookupByLibrary {
       "Track your progress",
     ),
     "tuesday": MessageLookupByLibrary.simpleMessage("Tuesday"),
+    "visualizeYourDailyConsistencyWithAnInteractiveHeatmapCalendar":
+        MessageLookupByLibrary.simpleMessage(
+          "Visualize your daily consistency with an interactive heatmap calendar.",
+        ),
     "wednesday": MessageLookupByLibrary.simpleMessage("Wednesday"),
     "welcome": m3,
+    "wereHereToHelpYouStayOnTrackWithYour":
+        MessageLookupByLibrary.simpleMessage(
+          "We’re here to help you stay on track with your habits.",
+        ),
+    "whatIsDet": MessageLookupByLibrary.simpleMessage("What is Ádet?"),
     "why": MessageLookupByLibrary.simpleMessage("Why:"),
     "yes": MessageLookupByLibrary.simpleMessage("Yes"),
+    "yesYouCanAddAsManyHabitsAsYouWant": MessageLookupByLibrary.simpleMessage(
+      "Yes! You can add as many habits as you want.",
+    ),
+    "yesYouCanEnableNotificationsInSettings":
+        MessageLookupByLibrary.simpleMessage(
+          "Yes, you can enable notifications in settings.",
+        ),
     "youDontHaveAnyPlansOnThisDayntapToAdd":
         MessageLookupByLibrary.simpleMessage(
           "You don\'t have any plans on this day.\nTap + to add a new habit!",

@@ -634,6 +634,266 @@ class S {
   String get start {
     return Intl.message('Start', name: 'start', desc: '', args: []);
   }
+
+  /// `What is Ádet?`
+  String get whatIsDet {
+    return Intl.message('What is Ádet?', name: 'whatIsDet', desc: '', args: []);
+  }
+
+  /// `Ádet is a smart and elegant habit tracker that helps you take small steps toward big life transformations. Whether you want to build a daily meditation routine, drink more water, or master new skills — Ádet will be your supportive companion along the way.`
+  String get detIsASmartAndElegantHabitTrackerThatHelps {
+    return Intl.message(
+      'Ádet is a smart and elegant habit tracker that helps you take small steps toward big life transformations. Whether you want to build a daily meditation routine, drink more water, or master new skills — Ádet will be your supportive companion along the way.',
+      name: 'detIsASmartAndElegantHabitTrackerThatHelps',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Key Features`
+  String get keyFeatures {
+    return Intl.message(
+      'Key Features',
+      name: 'keyFeatures',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ready-made and Custom Habits`
+  String get readymadeAndCustomHabits {
+    return Intl.message(
+      'Ready-made and Custom Habits',
+      name: 'readymadeAndCustomHabits',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose from carefully crafted habit templates or create your own personalized routines.`
+  String get chooseFromCarefullyCraftedHabitTemplatesOrCreateYourOwn {
+    return Intl.message(
+      'Choose from carefully crafted habit templates or create your own personalized routines.',
+      name: 'chooseFromCarefullyCraftedHabitTemplatesOrCreateYourOwn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Heatmap Progress Tracker`
+  String get heatmapProgressTracker {
+    return Intl.message(
+      'Heatmap Progress Tracker',
+      name: 'heatmapProgressTracker',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Visualize your daily consistency with an interactive heatmap calendar.`
+  String get visualizeYourDailyConsistencyWithAnInteractiveHeatmapCalendar {
+    return Intl.message(
+      'Visualize your daily consistency with an interactive heatmap calendar.',
+      name: 'visualizeYourDailyConsistencyWithAnInteractiveHeatmapCalendar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Streak & Motivation System`
+  String get streakMotivationSystem {
+    return Intl.message(
+      'Streak & Motivation System',
+      name: 'streakMotivationSystem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Stay engaged and inspired by tracking your streaks and setting gentle reminders.`
+  String get stayEngagedAndInspiredByTrackingYourStreaksAndSetting {
+    return Intl.message(
+      'Stay engaged and inspired by tracking your streaks and setting gentle reminders.',
+      name: 'stayEngagedAndInspiredByTrackingYourStreaksAndSetting',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Multilingual Support`
+  String get multilingualSupport {
+    return Intl.message(
+      'Multilingual Support',
+      name: 'multilingualSupport',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Available in Kazakh, Russian, and English — because growth has no language barrier.`
+  String get availableInKazakhRussianAndEnglishBecauseGrowthHasNo {
+    return Intl.message(
+      'Available in Kazakh, Russian, and English — because growth has no language barrier.',
+      name: 'availableInKazakhRussianAndEnglishBecauseGrowthHasNo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Built for dreamers, doers, and disciplined minds.\nStart your Ádet journey today.`
+  String get builtForDreamersDoersAndDisciplinedMindsnstartYourDetJourney {
+    return Intl.message(
+      'Built for dreamers, doers, and disciplined minds.\\nStart your Ádet journey today.',
+      name: 'builtForDreamersDoersAndDisciplinedMindsnstartYourDetJourney',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Support request from Ádet`
+  String get supportRequestFromDet {
+    return Intl.message(
+      'Support request from Ádet',
+      name: 'supportRequestFromDet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hello Ádet team,\n\nI need help with...`
+  String get helloDetTeamnniNeedHelpWith {
+    return Intl.message(
+      'Hello Ádet team,\\n\\nI need help with...',
+      name: 'helloDetTeamnniNeedHelpWith',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Could not launch email client.`
+  String get couldNotLaunchEmailClient {
+    return Intl.message(
+      'Could not launch email client.',
+      name: 'couldNotLaunchEmailClient',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Support`
+  String get support {
+    return Intl.message('Support', name: 'support', desc: '', args: []);
+  }
+
+  /// `Need help or have feedback?`
+  String get needHelpOrHaveFeedback {
+    return Intl.message(
+      'Need help or have feedback?',
+      name: 'needHelpOrHaveFeedback',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We’re here to help you stay on track with your habits.`
+  String get wereHereToHelpYouStayOnTrackWithYour {
+    return Intl.message(
+      'We’re here to help you stay on track with your habits.',
+      name: 'wereHereToHelpYouStayOnTrackWithYour',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `📧 Contact us:`
+  String get contactUs {
+    return Intl.message(
+      '📧 Contact us:',
+      name: 'contactUs',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `❓ Frequently Asked Questions`
+  String get frequentlyAskedQuestions {
+    return Intl.message(
+      '❓ Frequently Asked Questions',
+      name: 'frequentlyAskedQuestions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `How do I create a habit?`
+  String get howDoICreateAHabit {
+    return Intl.message(
+      'How do I create a habit?',
+      name: 'howDoICreateAHabit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Go to the my plans page and tap "+" to add a habit.`
+  String get goToTheMyPlansPageAndTapToAdd {
+    return Intl.message(
+      'Go to the my plans page and tap "+" to add a habit.',
+      name: 'goToTheMyPlansPageAndTapToAdd',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Yes! You can add as many habits as you want.`
+  String get yesYouCanAddAsManyHabitsAsYouWant {
+    return Intl.message(
+      'Yes! You can add as many habits as you want.',
+      name: 'yesYouCanAddAsManyHabitsAsYouWant',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Yes, you can enable notifications in settings.`
+  String get yesYouCanEnableNotificationsInSettings {
+    return Intl.message(
+      'Yes, you can enable notifications in settings.',
+      name: 'yesYouCanEnableNotificationsInSettings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send Feedback`
+  String get sendFeedback {
+    return Intl.message(
+      'Send Feedback',
+      name: 'sendFeedback',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Can I track multiple habits?`
+  String get canITrackMultipleHabits {
+    return Intl.message(
+      'Can I track multiple habits?',
+      name: 'canITrackMultipleHabits',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Does Ádet send reminders?`
+  String get doesDetSendReminders {
+    return Intl.message(
+      'Does Ádet send reminders?',
+      name: 'doesDetSendReminders',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

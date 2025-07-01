@@ -125,10 +125,6 @@ class _HomeScreenState extends State<HomeScreenContent> {
                       scrollDirection: Axis.horizontal,
                       child: BlocBuilder<HabitMapBloc, HabitMapState>(
                           builder: (context, state) {
-                        Map<DateTime, int> dataset = {};
-                        if (state is HabitMapLoaded) {
-                          dataset = state.dateset;
-                        }
                         return Row(
                           children: [
                             SizedBox(width: 20),

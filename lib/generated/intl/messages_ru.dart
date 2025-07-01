@@ -44,9 +44,20 @@ class MessageLookup extends MessageLookupByLibrary {
     "april": MessageLookupByLibrary.simpleMessage("Апрель"),
     "august": MessageLookupByLibrary.simpleMessage("Август"),
     "author": m0,
+    "availableInKazakhRussianAndEnglishBecauseGrowthHasNo":
+        MessageLookupByLibrary.simpleMessage(
+          "Доступно на казахском, русском и английском языках — потому что рост не знает языковых границ.",
+        ),
     "browse": MessageLookupByLibrary.simpleMessage("Просмотр"),
     "browseHabits": MessageLookupByLibrary.simpleMessage("Просмотр привычек"),
     "browseRountines": MessageLookupByLibrary.simpleMessage("Просмотр рутин"),
+    "builtForDreamersDoersAndDisciplinedMindsnstartYourDetJourney":
+        MessageLookupByLibrary.simpleMessage(
+          "Создано для мечтателей, деятелей и дисциплинированных умов.\nНачните своё путешествие с Ádet уже сегодня.",
+        ),
+    "canITrackMultipleHabits": MessageLookupByLibrary.simpleMessage(
+      "Могу ли я отслеживать несколько привычек?",
+    ),
     "catalog": MessageLookupByLibrary.simpleMessage("Каталог"),
     "category": MessageLookupByLibrary.simpleMessage("Категория"),
     "chooseAHabitFromReadymadeSamplesnorCreateYourOwnPersonal":
@@ -54,6 +65,14 @@ class MessageLookup extends MessageLookupByLibrary {
           "Выберите привычку из готовых примеров\nили создайте свою собственную, подходящую под ваши цели.",
         ),
     "chooseALanguage": MessageLookupByLibrary.simpleMessage("Выберите язык"),
+    "chooseFromCarefullyCraftedHabitTemplatesOrCreateYourOwn":
+        MessageLookupByLibrary.simpleMessage(
+          "Выбирайте из тщательно проработанных шаблонов привычек или создавайте собственные индивидуальные распорядки.",
+        ),
+    "contactUs": MessageLookupByLibrary.simpleMessage("📧 Связаться с нами:"),
+    "couldNotLaunchEmailClient": MessageLookupByLibrary.simpleMessage(
+      "Не удалось запустить почтовый клиент.",
+    ),
     "create": MessageLookupByLibrary.simpleMessage("Создать"),
     "createAHabit": MessageLookupByLibrary.simpleMessage("Создать привычку"),
     "createOwn": MessageLookupByLibrary.simpleMessage("Создать свою"),
@@ -69,7 +88,14 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "december": MessageLookupByLibrary.simpleMessage("Декабрь"),
     "description": MessageLookupByLibrary.simpleMessage("Описание"),
+    "detIsASmartAndElegantHabitTrackerThatHelps":
+        MessageLookupByLibrary.simpleMessage(
+          "Ádet — это умный и элегантный трекер привычек, который помогает делать маленькие шаги к большим жизненным переменам. Хотите ли вы выработать ежедневную медитацию, пить больше воды или освоить новые навыки — Ádet станет вашим поддерживающим спутником на этом пути.",
+        ),
     "details": MessageLookupByLibrary.simpleMessage("Детали"),
+    "doesDetSendReminders": MessageLookupByLibrary.simpleMessage(
+      "Отправляет ли Ádet напоминания?",
+    ),
     "enterYourName": MessageLookupByLibrary.simpleMessage("Введите ваше имя"),
     "estimatedTimeminute": MessageLookupByLibrary.simpleMessage(
       "Примерное время (минуты)",
@@ -79,27 +105,49 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "Чтобы смена языка применилась корректно, пожалуйста, перезапустите приложение.",
         ),
+    "frequentlyAskedQuestions": MessageLookupByLibrary.simpleMessage(
+      "❓ Часто задаваемые вопросы",
+    ),
     "friday": MessageLookupByLibrary.simpleMessage("Пятница"),
+    "goToTheMyPlansPageAndTapToAdd": MessageLookupByLibrary.simpleMessage(
+      "Перейдите на страницу \"Мои планы\" и нажмите \"+\" для добавления привычки.",
+    ),
     "greatJobYouCompletedStatenumberofdonehabitsOutOfStatehabitinfolengthHabitsStatetextofdaytolowercase":
         m1,
     "habitIsAlreadyInYourPlanGoodJob": MessageLookupByLibrary.simpleMessage(
       "Привычка уже есть в вашем плане. Отличная работа!",
     ),
     "habits": MessageLookupByLibrary.simpleMessage("Привычки"),
+    "heatmapProgressTracker": MessageLookupByLibrary.simpleMessage(
+      "Тепловая карта прогресса",
+    ),
+    "helloDetTeamnniNeedHelpWith": MessageLookupByLibrary.simpleMessage(
+      "Здравствуйте, команда Ádet!\n\nМне нужна помощь с...",
+    ),
     "helpSupport": MessageLookupByLibrary.simpleMessage("Помощь и поддержка"),
     "home": MessageLookupByLibrary.simpleMessage("Главная"),
+    "howDoICreateAHabit": MessageLookupByLibrary.simpleMessage(
+      "Как создать привычку?",
+    ),
     "january": MessageLookupByLibrary.simpleMessage("Январь"),
     "july": MessageLookupByLibrary.simpleMessage("Июль"),
     "june": MessageLookupByLibrary.simpleMessage("Июнь"),
+    "keyFeatures": MessageLookupByLibrary.simpleMessage("Ключевые функции"),
     "language": MessageLookupByLibrary.simpleMessage("Язык"),
     "letsStart": MessageLookupByLibrary.simpleMessage("Начнем"),
     "march": MessageLookupByLibrary.simpleMessage("Март"),
     "may": MessageLookupByLibrary.simpleMessage("Май"),
     "monday": MessageLookupByLibrary.simpleMessage("Понедельник"),
     "morePlan": MessageLookupByLibrary.simpleMessage("Больше планов"),
+    "multilingualSupport": MessageLookupByLibrary.simpleMessage(
+      "Мультиязычная поддержка",
+    ),
     "myPlan": MessageLookupByLibrary.simpleMessage("Мой план"),
     "nameCannotBeEmpty": MessageLookupByLibrary.simpleMessage(
       "Имя не может быть пустым",
+    ),
+    "needHelpOrHaveFeedback": MessageLookupByLibrary.simpleMessage(
+      "Нужна помощь или есть отзыв?",
     ),
     "no": MessageLookupByLibrary.simpleMessage("Нет"),
     "noHabitsFound": MessageLookupByLibrary.simpleMessage(
@@ -109,18 +157,33 @@ class MessageLookup extends MessageLookupByLibrary {
     "notifications": MessageLookupByLibrary.simpleMessage("Уведомления"),
     "november": MessageLookupByLibrary.simpleMessage("Ноябрь"),
     "october": MessageLookupByLibrary.simpleMessage("Октябрь"),
+    "readymadeAndCustomHabits": MessageLookupByLibrary.simpleMessage(
+      "Готовые и индивидуальные привычки",
+    ),
     "recomendations": MessageLookupByLibrary.simpleMessage("Рекомендации"),
     "saturday": MessageLookupByLibrary.simpleMessage("Суббота"),
     "search": MessageLookupByLibrary.simpleMessage("Поиск"),
     "searchResults": MessageLookupByLibrary.simpleMessage("Результаты поиска"),
+    "sendFeedback": MessageLookupByLibrary.simpleMessage("Отправить отзыв"),
     "september": MessageLookupByLibrary.simpleMessage("Сентябрь"),
     "settings": MessageLookupByLibrary.simpleMessage("Настройки"),
     "start": MessageLookupByLibrary.simpleMessage("Начать"),
+    "stayEngagedAndInspiredByTrackingYourStreaksAndSetting":
+        MessageLookupByLibrary.simpleMessage(
+          "Оставайтесь вовлечёнными и вдохновлёнными, отслеживая свои серии и устанавливая напоминания.",
+        ),
     "stayMotivatedWithAHeatmapCalendarnandPlanYourDayWith":
         MessageLookupByLibrary.simpleMessage(
           "Оставайтесь мотивированными с помощью календаря-таймлайна\nи планируйте свой день с ясностью.",
         ),
+    "streakMotivationSystem": MessageLookupByLibrary.simpleMessage(
+      "Система серии и мотивации",
+    ),
     "sunday": MessageLookupByLibrary.simpleMessage("Воскресенье"),
+    "support": MessageLookupByLibrary.simpleMessage("Поддержка"),
+    "supportRequestFromDet": MessageLookupByLibrary.simpleMessage(
+      "Запрос в поддержку от Ádet",
+    ),
     "takesMinutes": MessageLookupByLibrary.simpleMessage("Занимает минут:"),
     "takestimeMinutes": m2,
     "thursday": MessageLookupByLibrary.simpleMessage("Четверг"),
@@ -136,10 +199,26 @@ class MessageLookup extends MessageLookupByLibrary {
       "Отслеживайте прогресс",
     ),
     "tuesday": MessageLookupByLibrary.simpleMessage("Вторник"),
+    "visualizeYourDailyConsistencyWithAnInteractiveHeatmapCalendar":
+        MessageLookupByLibrary.simpleMessage(
+          "Визуализируйте ежедневную последовательность с помощью интерактивного календаря в виде тепловой карты.",
+        ),
     "wednesday": MessageLookupByLibrary.simpleMessage("Среда"),
     "welcome": m3,
+    "wereHereToHelpYouStayOnTrackWithYour":
+        MessageLookupByLibrary.simpleMessage(
+          "Мы здесь, чтобы помочь вам не сбиться с пути в ваших привычках.",
+        ),
+    "whatIsDet": MessageLookupByLibrary.simpleMessage("Что такое Ádet?"),
     "why": MessageLookupByLibrary.simpleMessage("Почему:"),
     "yes": MessageLookupByLibrary.simpleMessage("Да"),
+    "yesYouCanAddAsManyHabitsAsYouWant": MessageLookupByLibrary.simpleMessage(
+      "Да! Вы можете добавить столько привычек, сколько хотите.",
+    ),
+    "yesYouCanEnableNotificationsInSettings":
+        MessageLookupByLibrary.simpleMessage(
+          "Да, вы можете включить уведомления в настройках.",
+        ),
     "youDontHaveAnyPlansOnThisDayntapToAdd": MessageLookupByLibrary.simpleMessage(
       "У вас нет планов на этот день.\nНажмите +, чтобы добавить новую привычку!",
     ),
