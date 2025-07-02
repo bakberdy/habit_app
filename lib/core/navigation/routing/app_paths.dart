@@ -10,6 +10,7 @@ class AppPaths {
   static const String myPlan = '/my_plan';
   static const String settings = '/settings';
   static const String aboutApp = '/about_app';
+  static const String notifications = '/notifications';
   static const String support = '/support';
   static const String selectLanguage = '/select_language';
   static const String catalog = '/catalog';

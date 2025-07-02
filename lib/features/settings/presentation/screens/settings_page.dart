@@ -44,7 +44,9 @@ class _SettingsPageContentState extends State<SettingsPageContent> {
                 ButtonsList(
                   children: [
                     ButtonDetails(
-                        onTap: () {},
+                        onTap: () {
+                          context.goNamed('notifications');
+                        },
                         title: S.of(context).notifications,
                         prefixIcon: SizedBox(
                             height: 25,
