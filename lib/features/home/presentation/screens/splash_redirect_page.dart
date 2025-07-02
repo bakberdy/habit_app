@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:habit_app/core/theme/app_colors.dart';
 import 'package:habit_app/injection/injection.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -20,7 +21,7 @@ class SplashRedirectPage extends StatelessWidget {
     });
 
     return const Scaffold(
-      body: Center(child: CircularProgressIndicator()),
+      backgroundColor: AppColors.primary,
     );
   }
 }

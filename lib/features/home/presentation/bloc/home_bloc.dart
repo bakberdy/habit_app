@@ -8,6 +8,7 @@ import 'package:habit_app/features/home/domain/entites/quote_entity.dart';
 import 'package:habit_app/features/home/domain/usecases/get_daily_quote.dart';
 import 'package:habit_app/features/home/domain/usecases/get_user_name.dart';
 import 'package:habit_app/features/home/domain/usecases/save_user_name.dart';
+import 'package:habit_app/main.dart';
 import 'package:injectable/injectable.dart';
 
 part 'home_event.dart';
@@ -30,7 +31,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   Future<void> _onLoadData(_LoadData event, Emitter<HomeState> emit) async {
     final userNameResult = await _getUserName(NoParams());
-    final quoteResult = await _getDailyQuote(event.locale);
+    final quoteResult =
+        await _getDailyQuote(event.locale ?? AppLocalizations.english);
 
     userNameResult.fold(
       (failure) => emit(HomeState.error(errorMessage: failure.message)),

@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:habit_app/core/providers/locale_provider.dart';
+import 'package:habit_app/core/providers/locale_cubit.dart';
 import 'package:habit_app/core/shared/enums/weekday.dart';
 import 'package:habit_app/core/shared/widgets/custom_filled_button.dart';
 import 'package:habit_app/core/shared/widgets/labeled_text_form_field.dart';
@@ -11,7 +11,6 @@ import 'package:flutter/material.dart';
 import 'package:habit_app/features/habit/domain/entities/tip_entity.dart';
 import 'package:habit_app/features/habit/presentation/bloc/my_plan/my_plan_bloc.dart';
 import 'package:habit_app/generated/l10n.dart';
-import 'package:provider/provider.dart';
 
 class CreateOwnHabitBottomSheet extends StatefulWidget {
   const CreateOwnHabitBottomSheet({super.key, required myPlanBloc})
@@ -61,7 +60,7 @@ class _CreateOwnHabitBottomSheetState extends State<CreateOwnHabitBottomSheet>
     setState(() {});
   }
 
-  void _onCreateTapped(BuildContext context) {
+  void _onCreateTapped(BuildContext context, Locale? locale) {
     final title = _titleController.text;
     final description = _descriptionController.text;
     final takesTime = _estimatedTimeController.text;
@@ -79,7 +78,7 @@ class _CreateOwnHabitBottomSheetState extends State<CreateOwnHabitBottomSheet>
     widget._myPlanBloc.add(
       MyPlanEvent.addNewHabit(
           why: why,
-          locale: Provider.of<LocaleProvider>(context, listen: false).locale,
+          locale: locale,
           tips: tips.isNotEmpty ? tips : null,
           title: title,
           description: description,
@@ -251,15 +250,19 @@ class _CreateOwnHabitBottomSheetState extends State<CreateOwnHabitBottomSheet>
                 ),
                 Divider(height: 1, color: AppColors.grey.withAlpha(50)),
                 SizedBox(height: 10),
-                SizedBox(
-                    height: 40,
-                    child: CustomFilledButton(
-                      title: S.of(context).create,
-                      titleColor: AppColors.primary,
-                      onPressed: () => _onCreateTapped(context),
-                      backgroundColor: AppColors.primary.withAlpha(10),
-                      borderColor: AppColors.primary,
-                    )),
+                BlocBuilder<LocaleCubit, LocaleState>(
+                    builder: (context, localeState) {
+                  return SizedBox(
+                      height: 40,
+                      child: CustomFilledButton(
+                        title: S.of(context).create,
+                        titleColor: AppColors.primary,
+                        onPressed: () =>
+                            _onCreateTapped(context, localeState.locale),
+                        backgroundColor: AppColors.primary.withAlpha(10),
+                        borderColor: AppColors.primary,
+                      ));
+                }),
                 SizedBox(height: 10)
               ],
             ),

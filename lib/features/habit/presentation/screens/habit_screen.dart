@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:habit_app/core/providers/locale_provider.dart';
+import 'package:habit_app/core/providers/locale_cubit.dart';
 import 'package:habit_app/core/shared/widgets/custom_filled_button.dart';
 import 'package:habit_app/core/theme/app_colors.dart';
 import 'package:habit_app/core/theme/app_text_theme.dart';
@@ -10,8 +10,8 @@ import 'package:habit_app/features/habit/presentation/widgets/days_widget.dart';
 import 'package:habit_app/features/habit/presentation/widgets/tips_widget.dart';
 import 'package:habit_app/generated/l10n.dart';
 import 'package:habit_app/injection/injection.dart';
+import 'package:habit_app/main.dart';
 import 'package:lottie/lottie.dart';
-import 'package:provider/provider.dart';
 
 class HabitScreen extends StatelessWidget {
   const HabitScreen({super.key, required this.habitId});
@@ -19,17 +19,20 @@ class HabitScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(providers: [
-      BlocProvider<CatalogBloc>(
-        create: (_) => sl<CatalogBloc>()
-          ..add(CatalogEvent.loadHabit(
-              habitId: habitId,
-              locale: Provider.of<LocaleProvider>(context).locale)),
-      ),
-      BlocProvider<MyPlanBloc>(
-        create: (_) => sl<MyPlanBloc>(),
-      ),
-    ], child: HabitScreenContent(habitId: habitId));
+    return BlocBuilder<LocaleCubit, LocaleState>(
+        builder: (context, localeState) {
+      return MultiBlocProvider(providers: [
+        BlocProvider<CatalogBloc>(
+          create: (_) => sl<CatalogBloc>()
+            ..add(CatalogEvent.loadHabit(
+                habitId: habitId,
+                locale: localeState.locale ?? AppLocalizations.english)),
+        ),
+        BlocProvider<MyPlanBloc>(
+          create: (_) => sl<MyPlanBloc>(),
+        ),
+      ], child: HabitScreenContent(habitId: habitId));
+    });
   }
 }
 
@@ -178,36 +181,32 @@ class _HabitScreenState extends State<HabitScreenContent> {
                               ),
                             ),
                           )
-                        : SliverToBoxAdapter(
-                            child: Padding(
-                              padding: const EdgeInsets.all(20),
-                              child: SizedBox(
-                                height: 40,
-                                child: CustomFilledButton(
-                                    titleColor: Colors.white,
-                                    title: S.of(context).addToPlan,
-                                    onPressed: () {
-                                      context.read<MyPlanBloc>().add(
-                                          MyPlanEvent.addHabitFromDb(
-                                              locale:
-                                                  Provider.of<LocaleProvider>(
-                                                          context,
-                                                          listen: false)
-                                                      .locale,
-                                              habitId: state.habit.id));
-                                      context.read<CatalogBloc>().add(
-                                          CatalogEvent.loadHabit(
-                                              locale:
-                                                  Provider.of<LocaleProvider>(
-                                                          listen: false,
-                                                          context)
-                                                      .locale,
-                                              habitId: state.habit.id));
-                                    },
-                                    backgroundColor: AppColors.primary),
+                        : BlocBuilder<LocaleCubit, LocaleState>(
+                            builder: (context, localeState) {
+                            return SliverToBoxAdapter(
+                              child: Padding(
+                                padding: const EdgeInsets.all(20),
+                                child: SizedBox(
+                                  height: 40,
+                                  child: CustomFilledButton(
+                                      titleColor: Colors.white,
+                                      title: S.of(context).addToPlan,
+                                      onPressed: () {
+                                        context.read<MyPlanBloc>().add(
+                                            MyPlanEvent.addHabitFromDb(
+                                                locale: localeState.locale,
+                                                habitId: state.habit.id));
+                                        context.read<CatalogBloc>().add(
+                                            CatalogEvent.loadHabit(
+                                                locale: localeState.locale ??
+                                                    AppLocalizations.english,
+                                                habitId: state.habit.id));
+                                      },
+                                      backgroundColor: AppColors.primary),
+                                ),
                               ),
-                            ),
-                          )
+                            );
+                          })
                   ],
                 );
               } else {

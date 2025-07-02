@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$HomeEvent {
-  Locale get locale;
+  Locale? get locale;
 
   /// Create a copy of HomeEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -65,7 +65,7 @@ class _$HomeEventCopyWithImpl<$Res> implements $HomeEventCopyWith<$Res> {
   }) {
     return _then(_self.copyWith(
       locale: null == locale
-          ? _self.locale
+          ? _self.locale!
           : locale // ignore: cast_nullable_to_non_nullable
               as Locale,
     ));
@@ -78,7 +78,7 @@ class _LoadData implements HomeEvent {
   const _LoadData({required this.locale});
 
   @override
-  final Locale locale;
+  final Locale? locale;
 
   /// Create a copy of HomeEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -112,7 +112,7 @@ abstract mixin class _$LoadDataCopyWith<$Res>
       __$LoadDataCopyWithImpl;
   @override
   @useResult
-  $Res call({Locale locale});
+  $Res call({Locale? locale});
 }
 
 /// @nodoc
@@ -127,13 +127,13 @@ class __$LoadDataCopyWithImpl<$Res> implements _$LoadDataCopyWith<$Res> {
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? locale = null,
+    Object? locale = freezed,
   }) {
     return _then(_LoadData(
-      locale: null == locale
+      locale: freezed == locale
           ? _self.locale
           : locale // ignore: cast_nullable_to_non_nullable
-              as Locale,
+              as Locale?,
     ));
   }
 }

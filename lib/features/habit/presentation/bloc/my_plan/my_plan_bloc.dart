@@ -12,6 +12,7 @@ import 'package:habit_app/features/habit/domain/usecases/add_new_habit_from_defa
 import 'package:habit_app/features/habit/domain/usecases/get_habits_of_day.dart';
 import 'package:habit_app/features/habit/domain/usecases/set_habit_completions_status.dart';
 import 'package:habit_app/generated/l10n.dart';
+import 'package:habit_app/main.dart';
 import 'package:injectable/injectable.dart';
 
 part 'my_plan_event.dart';
@@ -38,8 +39,8 @@ class MyPlanBloc extends Bloc<MyPlanEvent, MyPlanState> {
 
   FutureOr<void> _onGetSubscriptions(
       _GetSubscriptions event, Emitter<MyPlanState> emit) async {
-    final res = await _getHabitsOfDay(
-        GetHabitsOfDayParams(date: event.date, locale: event.locale));
+    final res = await _getHabitsOfDay(GetHabitsOfDayParams(
+        date: event.date, locale: event.locale ?? AppLocalizations.english));
 
     res.fold((failure) {
       emit(MyPlanState.errorState(message: failure.message));

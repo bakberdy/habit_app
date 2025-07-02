@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:habit_app/core/providers/locale_provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:habit_app/core/providers/locale_cubit.dart';
 import 'package:habit_app/core/theme/app_colors.dart';
 import 'package:habit_app/core/theme/app_text_theme.dart';
 import 'package:habit_app/features/settings/presentation/widgets/select_button.dart';
 import 'package:habit_app/generated/l10n.dart';
 import 'package:habit_app/main.dart';
-import 'package:provider/provider.dart';
 
 class SelectLanguagePage extends StatefulWidget {
   const SelectLanguagePage({super.key});
@@ -25,37 +25,30 @@ class _SelectLanguagePageState extends State<SelectLanguagePage> {
         ),
         centerTitle: true,
       ),
-      body: Consumer<LocaleProvider>(
-        builder: (BuildContext context, LocaleProvider value, Widget? child) =>
-            ListView(
+      body: BlocBuilder<LocaleCubit, LocaleState>(
+        builder: (BuildContext context, state) => ListView(
           children: [
             SelectButton(
               title: 'English (en)',
-              isSelected: AppLocalizations.english == value.locale,
+              isSelected: AppLocalizations.english == state.locale,
               onTap: () {
-                context
-                    .read<LocaleProvider>()
-                    .setLocale(AppLocalizations.english);
+                context.read<LocaleCubit>().setLocale(AppLocalizations.english);
               },
             ),
             Divider(height: 1, color: AppColors.grey.withAlpha(30)),
             SelectButton(
               title: 'Қазақша (kk)',
-              isSelected: AppLocalizations.kazakh == value.locale,
+              isSelected: AppLocalizations.kazakh == state.locale,
               onTap: () {
-                context
-                    .read<LocaleProvider>()
-                    .setLocale(AppLocalizations.kazakh);
+                context.read<LocaleCubit>().setLocale(AppLocalizations.kazakh);
               },
             ),
             Divider(height: 1, color: AppColors.grey.withAlpha(30)),
             SelectButton(
               title: 'Русский (ru)',
-              isSelected: AppLocalizations.russian == value.locale,
+              isSelected: AppLocalizations.russian == state.locale,
               onTap: () {
-                context
-                    .read<LocaleProvider>()
-                    .setLocale(AppLocalizations.russian);
+                context.read<LocaleCubit>().setLocale(AppLocalizations.russian);
               },
             ),
             Padding(

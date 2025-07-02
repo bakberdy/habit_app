@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$MyPlanEvent {
-  Locale get locale;
+  Locale? get locale;
 
   /// Create a copy of MyPlanEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -47,7 +47,7 @@ abstract mixin class $MyPlanEventCopyWith<$Res> {
           MyPlanEvent value, $Res Function(MyPlanEvent) _then) =
       _$MyPlanEventCopyWithImpl;
   @useResult
-  $Res call({Locale locale});
+  $Res call({Locale? locale});
 }
 
 /// @nodoc
@@ -62,13 +62,13 @@ class _$MyPlanEventCopyWithImpl<$Res> implements $MyPlanEventCopyWith<$Res> {
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? locale = null,
+    Object? locale = freezed,
   }) {
     return _then(_self.copyWith(
-      locale: null == locale
+      locale: freezed == locale
           ? _self.locale
           : locale // ignore: cast_nullable_to_non_nullable
-              as Locale,
+              as Locale?,
     ));
   }
 }
@@ -80,7 +80,7 @@ class _GetSubscriptions implements MyPlanEvent {
 
   final DateTime date;
   @override
-  final Locale locale;
+  final Locale? locale;
 
   /// Create a copy of MyPlanEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -116,7 +116,7 @@ abstract mixin class _$GetSubscriptionsCopyWith<$Res>
       __$GetSubscriptionsCopyWithImpl;
   @override
   @useResult
-  $Res call({DateTime date, Locale locale});
+  $Res call({DateTime date, Locale? locale});
 }
 
 /// @nodoc
@@ -133,17 +133,17 @@ class __$GetSubscriptionsCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   $Res call({
     Object? date = null,
-    Object? locale = null,
+    Object? locale = freezed,
   }) {
     return _then(_GetSubscriptions(
       date: null == date
           ? _self.date
           : date // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      locale: null == locale
+      locale: freezed == locale
           ? _self.locale
           : locale // ignore: cast_nullable_to_non_nullable
-              as Locale,
+              as Locale?,
     ));
   }
 }
@@ -155,7 +155,7 @@ class _AddHabitFromDb implements MyPlanEvent {
 
   final int habitId;
   @override
-  final Locale locale;
+  final Locale? locale;
 
   /// Create a copy of MyPlanEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -191,7 +191,7 @@ abstract mixin class _$AddHabitFromDbCopyWith<$Res>
       __$AddHabitFromDbCopyWithImpl;
   @override
   @useResult
-  $Res call({int habitId, Locale locale});
+  $Res call({int habitId, Locale? locale});
 }
 
 /// @nodoc
@@ -208,17 +208,17 @@ class __$AddHabitFromDbCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   $Res call({
     Object? habitId = null,
-    Object? locale = null,
+    Object? locale = freezed,
   }) {
     return _then(_AddHabitFromDb(
       habitId: null == habitId
           ? _self.habitId
           : habitId // ignore: cast_nullable_to_non_nullable
               as int,
-      locale: null == locale
+      locale: freezed == locale
           ? _self.locale
           : locale // ignore: cast_nullable_to_non_nullable
-              as Locale,
+              as Locale?,
     ));
   }
 }
@@ -248,7 +248,7 @@ class _AddNewHabit implements MyPlanEvent {
   }
 
   @override
-  final Locale locale;
+  final Locale? locale;
   final String? why;
   final List<TipEntity>? _tips;
   List<TipEntity>? get tips {
@@ -313,7 +313,7 @@ abstract mixin class _$AddNewHabitCopyWith<$Res>
       String description,
       int? takeMinutes,
       List<Weekday> days,
-      Locale locale,
+      Locale? locale,
       String? why,
       List<TipEntity>? tips});
 }
@@ -334,7 +334,7 @@ class __$AddNewHabitCopyWithImpl<$Res> implements _$AddNewHabitCopyWith<$Res> {
     Object? description = null,
     Object? takeMinutes = freezed,
     Object? days = null,
-    Object? locale = null,
+    Object? locale = freezed,
     Object? why = freezed,
     Object? tips = freezed,
   }) {
@@ -355,10 +355,10 @@ class __$AddNewHabitCopyWithImpl<$Res> implements _$AddNewHabitCopyWith<$Res> {
           ? _self._days
           : days // ignore: cast_nullable_to_non_nullable
               as List<Weekday>,
-      locale: null == locale
+      locale: freezed == locale
           ? _self.locale
           : locale // ignore: cast_nullable_to_non_nullable
-              as Locale,
+              as Locale?,
       why: freezed == why
           ? _self.why
           : why // ignore: cast_nullable_to_non_nullable
@@ -382,7 +382,7 @@ class _ToggleHabitDoneStatus implements MyPlanEvent {
 
   final DateTime date;
   @override
-  final Locale locale;
+  final Locale? locale;
   final int habitId;
   final bool isDone;
 
@@ -423,7 +423,7 @@ abstract mixin class _$ToggleHabitDoneStatusCopyWith<$Res>
       __$ToggleHabitDoneStatusCopyWithImpl;
   @override
   @useResult
-  $Res call({DateTime date, Locale locale, int habitId, bool isDone});
+  $Res call({DateTime date, Locale? locale, int habitId, bool isDone});
 }
 
 /// @nodoc
@@ -440,7 +440,7 @@ class __$ToggleHabitDoneStatusCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   $Res call({
     Object? date = null,
-    Object? locale = null,
+    Object? locale = freezed,
     Object? habitId = null,
     Object? isDone = null,
   }) {
@@ -449,10 +449,10 @@ class __$ToggleHabitDoneStatusCopyWithImpl<$Res>
           ? _self.date
           : date // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      locale: null == locale
+      locale: freezed == locale
           ? _self.locale
           : locale // ignore: cast_nullable_to_non_nullable
-              as Locale,
+              as Locale?,
       habitId: null == habitId
           ? _self.habitId
           : habitId // ignore: cast_nullable_to_non_nullable
