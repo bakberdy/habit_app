@@ -1,6 +1,6 @@
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:habit_app/core/core.dart';
-import 'package:habit_app/core/providers/locale_cubit.dart';
+import 'package:habit_app/core/bloc/locale_cubit.dart';
 import 'package:habit_app/generated/l10n.dart';
 import 'package:habit_app/injection/injection.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> main() async {
+//  final widgetsBinding =
   WidgetsFlutterBinding.ensureInitialized();
   await configureDependencies();
   Bloc.observer = sl<BlocObserver>();

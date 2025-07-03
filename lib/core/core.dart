@@ -6,4 +6,3 @@ export 'shared/shared.dart';
 export 'theme/theme.dart';
 export 'usecase/usecase.dart';
 export 'utils/utils.dart';
-export 'network/network.dart';

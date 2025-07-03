@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_heatmap_calendar/flutter_heatmap_calendar.dart';
 import 'package:go_router/go_router.dart';
-import 'package:habit_app/core/providers/locale_cubit.dart';
+import 'package:habit_app/core/bloc/locale_cubit.dart';
 import 'package:habit_app/core/shared/widgets/custom_sliver_app_bar.dart';
 import 'package:habit_app/features/habit/presentation/bloc/habit_map/habit_map_bloc.dart';
 import 'package:habit_app/features/habit/presentation/widgets/daily_habit_card.dart';
@@ -122,56 +122,60 @@ class _HomeScreenState extends State<HomeScreenContent> {
                           scrollDirection: Axis.horizontal,
                           child: BlocBuilder<HabitMapBloc, HabitMapState>(
                               builder: (context, state) {
-                            return Row(
-                              children: [
-                                SizedBox(width: 20),
-                                HeatMap(
-                                  locale: localState.locale,
-                                  endDate: DateTime(2026, 9),
-                                  startDate: DateTime(2025, 6),
-                                  datasets: {
-                                    DateTime(2025, 6, 1): 1,
-                                    DateTime(2025, 6, 2): 2,
-                                    DateTime(2025, 6, 3): 3,
-                                    DateTime(2025, 6, 4): 4,
-                                    DateTime(2025, 6, 5): 2,
-                                    DateTime(2025, 6, 6): 1,
-                                    DateTime(2025, 6, 7): 3,
-                                    DateTime(2025, 6, 8): 4,
-                                    DateTime(2025, 6, 9): 2,
-                                    DateTime(2025, 6, 10): 1,
-                                    DateTime(2025, 6, 11): 3,
-                                    DateTime(2025, 6, 12): 4,
-                                    DateTime(2025, 6, 13): 2,
-                                    DateTime(2025, 6, 14): 1,
-                                    DateTime(2025, 6, 15): 3,
-                                    DateTime(2025, 6, 16): 4,
-                                    DateTime(2025, 6, 17): 2,
-                                    DateTime(2025, 6, 18): 1,
-                                    DateTime(2025, 6, 19): 3,
-                                    DateTime(2025, 6, 20): 4,
-                                    DateTime(2025, 6, 21): 2,
-                                    DateTime(2025, 6, 22): 1,
-                                    DateTime(2025, 6, 23): 3,
-                                    DateTime(2025, 6, 24): 4,
-                                    DateTime(2025, 6, 25): 2,
-                                    DateTime(2025, 6, 26): 1,
-                                    DateTime(2025, 6, 27): 3,
-                                    DateTime(2025, 6, 28): 4,
-                                    DateTime(2025, 6, 29): 2,
-                                    DateTime(2025, 6, 30): 1,
-                                    DateTime(2025, 7, 1): 3,
-                                  },
-                                  size: 30,
-                                  colorsets: {
-                                    1: AppColors.primary.withAlpha(50),
-                                    2: AppColors.primary.withAlpha(120),
-                                    3: AppColors.primary.withAlpha(200),
-                                    4: AppColors.primary,
-                                  },
-                                ),
-                              ],
-                            );
+                            if (state is HabitMapLoaded) {
+                              return Row(
+                                children: [
+                                  SizedBox(width: 20),
+                                  HeatMap(
+                                    locale: localState.locale,
+                                    endDate: DateTime(2026, 9),
+                                    startDate: DateTime(2025, 6),
+                                    // datasets: {
+                                    //   DateTime(2025, 6, 1): 1,
+                                    //   DateTime(2025, 6, 2): 2,
+                                    //   DateTime(2025, 6, 3): 3,
+                                    //   DateTime(2025, 6, 4): 4,
+                                    //   DateTime(2025, 6, 5): 2,
+                                    //   DateTime(2025, 6, 6): 1,
+                                    //   DateTime(2025, 6, 7): 3,
+                                    //   DateTime(2025, 6, 8): 4,
+                                    //   DateTime(2025, 6, 9): 2,
+                                    //   DateTime(2025, 6, 10): 1,
+                                    //   DateTime(2025, 6, 11): 3,
+                                    //   DateTime(2025, 6, 12): 4,
+                                    //   DateTime(2025, 6, 13): 2,
+                                    //   DateTime(2025, 6, 14): 1,
+                                    //   DateTime(2025, 6, 15): 3,
+                                    //   DateTime(2025, 6, 16): 4,
+                                    //   DateTime(2025, 6, 17): 2,
+                                    //   DateTime(2025, 6, 18): 1,
+                                    //   DateTime(2025, 6, 19): 3,
+                                    //   DateTime(2025, 6, 20): 4,
+                                    //   DateTime(2025, 6, 21): 2,
+                                    //   DateTime(2025, 6, 22): 1,
+                                    //   DateTime(2025, 6, 23): 3,
+                                    //   DateTime(2025, 6, 24): 4,
+                                    //   DateTime(2025, 6, 25): 2,
+                                    //   DateTime(2025, 6, 26): 1,
+                                    //   DateTime(2025, 6, 27): 3,
+                                    //   DateTime(2025, 6, 28): 4,
+                                    //   DateTime(2025, 6, 29): 2,
+                                    //   DateTime(2025, 6, 30): 1,
+                                    //   DateTime(2025, 7, 1): 3,
+                                    // },
+                                    datasets: state.dateset,
+                                    size: 30,
+                                    colorsets: {
+                                      1: AppColors.primary.withAlpha(50),
+                                      2: AppColors.primary.withAlpha(120),
+                                      3: AppColors.primary.withAlpha(200),
+                                      4: AppColors.primary,
+                                    },
+                                  ),
+                                ],
+                              );
+                            }
+                            return SizedBox();
                           }),
                         ),
                       )),

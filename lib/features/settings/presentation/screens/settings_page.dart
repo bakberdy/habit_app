@@ -51,8 +51,7 @@ class _SettingsPageContentState extends State<SettingsPageContent> {
                         prefixIcon: SizedBox(
                             height: 25,
                             width: 25,
-                            child: Image.asset(
-                                'lib/assets/icons/notification.png'))),
+                            child: Image.asset('lib/assets/icons/noti.png'))),
                     ButtonDetails(
                         onTap: () {
                           context.goNamed('select_language');
@@ -61,8 +60,7 @@ class _SettingsPageContentState extends State<SettingsPageContent> {
                         prefixIcon: SizedBox(
                             height: 25,
                             width: 25,
-                            child:
-                                Image.asset('lib/assets/icons/language.png'))),
+                            child: Image.asset('lib/assets/icons/lang.png'))),
                   ],
                 ),
                 SizedBox(height: 20),
@@ -76,7 +74,7 @@ class _SettingsPageContentState extends State<SettingsPageContent> {
                         prefixIcon: SizedBox(
                             height: 25,
                             width: 25,
-                            child: Image.asset('lib/assets/icons/info.png'))),
+                            child: Image.asset('lib/assets/icons/help.png'))),
                     ButtonDetails(
                         onTap: () {
                           context.goNamed('about_app');
@@ -85,8 +83,7 @@ class _SettingsPageContentState extends State<SettingsPageContent> {
                         prefixIcon: SizedBox(
                             height: 25,
                             width: 25,
-                            child:
-                                Image.asset('lib/assets/icons/about_us.png'))),
+                            child: Image.asset('lib/assets/icons/about.png'))),
                   ],
                 )
               ],

@@ -104,8 +104,6 @@ class HabitLocalDataSourceImpl implements HabitLocalDataSource {
       final rows = await (_db.select(_db.habitCompletions)
             ..where((c) => c.date.equals(dateOnly)))
           .get();
-      _logger.info(
-          'Fetched ${rows.length} habit completions for $dateOnly \n$rows}');
 
       return rows
           .map((e) => HabitCompletionModel(

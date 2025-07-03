@@ -85,7 +85,7 @@ class _OnbordingPageState extends State<OnbordingPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-              height: 10,
+              height: 10
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -154,13 +154,13 @@ class _OnbordingPageState extends State<OnbordingPage> {
               children: [
                 SizedBox(height: 60),
                 Text(
-                  'Dailo',
+                  'Ádet',
                   style:
-                      GoogleFonts.lalezar(fontSize: 100, color: Colors.white),
+                      GoogleFonts.inter(fontSize: 100, color: Colors.white),
                 ),
                 Text(
                   S.of(context).todaysHabitIsTheReflectionOfYourFutureLife,
-                  style: GoogleFonts.lalezar(fontSize: 30, color: Colors.white),
+                  style: GoogleFonts.inter(fontSize: 30, color: Colors.white),
                 )
               ],
             ),
@@ -175,7 +175,7 @@ class _OnbordingPageState extends State<OnbordingPage> {
                 SizedBox(height: 40),
                 Text(
                   S.of(context).createAHabit,
-                  style: GoogleFonts.lalezar(fontSize: 30, color: Colors.white),
+                  style: GoogleFonts.inter(fontSize: 30, color: Colors.white),
                 ),
                 SizedBox(height: 20),
                 Center(
@@ -191,13 +191,13 @@ class _OnbordingPageState extends State<OnbordingPage> {
                   S
                       .of(context)
                       .chooseAHabitFromReadymadeSamplesnorCreateYourOwnPersonal,
-                  style: GoogleFonts.lalezar(fontSize: 20, color: Colors.white),
+                  style: GoogleFonts.inter(fontSize: 20, color: Colors.white),
                 ),
                 SizedBox(height: 16),
                 Text(
                   S.of(context).todaysHabitIsTheReflectionOfYourFutureLife,
                   style:
-                      GoogleFonts.lalezar(fontSize: 18, color: Colors.white70),
+                      GoogleFonts.inter(fontSize: 18, color: Colors.white70),
                 ),
               ],
             ),
@@ -212,7 +212,7 @@ class _OnbordingPageState extends State<OnbordingPage> {
                 SizedBox(height: 40),
                 Text(
                   S.of(context).trackYourProgress,
-                  style: GoogleFonts.lalezar(fontSize: 30, color: Colors.white),
+                  style: GoogleFonts.inter(fontSize: 30, color: Colors.white),
                 ),
                 SizedBox(height: 20),
                 Center(
@@ -229,13 +229,13 @@ class _OnbordingPageState extends State<OnbordingPage> {
                   S
                       .of(context)
                       .stayMotivatedWithAHeatmapCalendarnandPlanYourDayWith,
-                  style: GoogleFonts.lalezar(fontSize: 20, color: Colors.white),
+                  style: GoogleFonts.inter(fontSize: 20, color: Colors.white),
                 ),
                 SizedBox(height: 16),
                 Text(
                   S.of(context).todaysHabitIsTheReflectionOfYourFutureLife,
                   style:
-                      GoogleFonts.lalezar(fontSize: 18, color: Colors.white70),
+                      GoogleFonts.inter(fontSize: 18, color: Colors.white70),
                 ),
                 SizedBox(height: 16),
                 CustomFilledButton(

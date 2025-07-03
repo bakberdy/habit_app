@@ -2,19 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:habit_app/core/providers/locale_cubit.dart';
+import 'package:habit_app/core/bloc/locale_cubit.dart';
 import 'package:habit_app/core/shared/widgets/custom_filled_button.dart';
 import 'package:habit_app/core/theme/app_colors.dart';
 import 'package:habit_app/core/theme/app_text_theme.dart';
+import 'package:habit_app/features/home/presentation/bloc/home_bloc.dart';
 import 'package:habit_app/generated/l10n.dart';
 import 'package:habit_app/main.dart';
+
+import '../../../../injection/injection.dart';
 
 class ChooseLanguagePage extends StatelessWidget {
   const ChooseLanguagePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ChooseLanguagePageContent();
+    return BlocProvider<HomeBloc>(create: (context)=>sl<HomeBloc>(),child: ChooseLanguagePageContent());
   }
 }
 
@@ -32,7 +35,7 @@ class _ChooseLanguagePageContentState extends State<ChooseLanguagePageContent> {
     return Scaffold(
       backgroundColor: AppColors.primary,
       body: SafeArea(
-        child: BlocBuilder(builder: (context, state) {
+        child: BlocBuilder<HomeBloc, HomeState>(builder: (context, state) {
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(

@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:habit_app/core/providers/locale_cubit.dart';
+import 'package:habit_app/core/bloc/locale_cubit.dart';
 import 'package:habit_app/core/shared/enums/weekday.dart';
 import 'package:habit_app/core/shared/widgets/custom_filled_button.dart';
 import 'package:habit_app/core/shared/widgets/labeled_text_form_field.dart';

@@ -19,7 +19,6 @@ import 'package:talker_flutter/talker_flutter.dart' as _i207;
 
 import '../core/core.dart' as _i156;
 import '../core/database/app_database.dart' as _i935;
-import '../core/network/dio_client.dart' as _i393;
 import '../features/habit/data/datasource/habit_local_data_source.dart'
     as _i655;
 import '../features/habit/data/repository/habit_repo_impl.dart' as _i687;
@@ -83,10 +82,6 @@ extension GetItInjectableX on _i174.GetIt {
               gh<_i935.AppDatabase>(),
               gh<_i207.Talker>(),
             ));
-    gh.singleton<_i393.DioClient>(() => _i393.DioClient(
-          gh<_i361.Dio>(),
-          gh<_i162.TalkerDioLogger>(),
-        ));
     gh.lazySingleton<_i855.HomeRepository>(
         () => _i488.HomeRepoImpl(gh<_i200.HomeLocalDataSource>()));
     gh.lazySingleton<_i166.HabitRepo>(
