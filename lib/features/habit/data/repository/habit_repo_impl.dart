@@ -70,6 +70,7 @@ class HabitRepoImpl implements HabitRepo {
           title: title,
           description: description,
           takeMinutes: takeMinutes,
+          why: why,
           tips: tips
               ?.map((e) => TipModel(id: 0, title: e.title, content: e.content))
               .toList(),
