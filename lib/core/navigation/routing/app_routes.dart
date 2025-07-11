@@ -55,7 +55,7 @@ class AppRoutes {
                 GoRoute(
                   path: AppPaths.notifications,
                   name: 'notifications',
-                  builder: (context, state) => PushSettingsPage(),
+                  builder: (context, state) => NotificationPage(),
                 ),
               ])
         ],
