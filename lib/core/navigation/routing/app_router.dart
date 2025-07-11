@@ -8,39 +8,42 @@ class AppRouter {
 
   final Talker talker;
 
-  AppRouter({
-    required this.talker,
-  });
+  late final GoRouter router;
 
-  GoRouter get router => GoRouter(
-        observers: [TalkerRouteObserver(talker)],
-        initialLocation: AppPaths.home,
-        routes: [
-          AppRoutes.habitRoute,
-          _bottomNavShellRoute(
-            branches: [
-              AppRoutes.homeBranch(
-                  observer: TalkerRouteObserver(talker),
-                  key: _shellNavigatorHome),
-              AppRoutes.catalogBranch(
-                  observer: TalkerRouteObserver(talker),
-                  key: _shellNavigatorCatalog),
-              AppRoutes.myPlanBranch(
-                  observer: TalkerRouteObserver(talker),
-                  key: _shellNavigatorGoals),
-              AppRoutes.settingsBranch(
-                  observer: TalkerRouteObserver(talker),
-                  key: _shellNavigatorSettings),
-            ],
-          ),
-        ],
-        errorBuilder: (context, state) {
-          return const PageNotFound();
-        },
-      );
+  AppRouter({required this.talker}) {
+    router = GoRouter(
+      observers: [TalkerRouteObserver(talker)],
+      initialLocation: AppPaths.splash,
+      routes: [
+        AppRoutes.habitRoute,
+        AppRoutes.chooseLangRoute,
+        AppRoutes.splash,
+        _bottomNavShellRoute(
+          branches: [
+            AppRoutes.homeBranch(
+                observer: TalkerRouteObserver(talker),
+                key: _shellNavigatorHome),
+            AppRoutes.catalogBranch(
+                observer: TalkerRouteObserver(talker),
+                key: _shellNavigatorCatalog),
+            AppRoutes.myPlanBranch(
+                observer: TalkerRouteObserver(talker),
+                key: _shellNavigatorGoals),
+            AppRoutes.settingsBranch(
+                observer: TalkerRouteObserver(talker),
+                key: _shellNavigatorSettings),
+          ],
+        ),
+      ],
+      errorBuilder: (context, state) {
+        return const PageNotFound();
+      },
+    );
+  }
 
-  StatefulShellRoute _bottomNavShellRoute(
-          {required List<StatefulShellBranch> branches}) =>
+  StatefulShellRoute _bottomNavShellRoute({
+    required List<StatefulShellBranch> branches,
+  }) =>
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) =>
             BottomNavigationBarPage(navigationShell: navigationShell),

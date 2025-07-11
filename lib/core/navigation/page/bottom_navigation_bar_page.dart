@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:habit_app/core/theme/app_colors.dart';
+import 'package:habit_app/core/theme/app_text_theme.dart';
+import 'package:habit_app/generated/l10n.dart';
 
 class BottomNavigationBarPage extends StatefulWidget {
   const BottomNavigationBarPage({super.key, required this.navigationShell});
@@ -11,8 +14,6 @@ class BottomNavigationBarPage extends StatefulWidget {
 }
 
 class _BottomNavigationBarPageState extends State<BottomNavigationBarPage> {
-  int _currentPage = 0;
-
   @override
   void initState() {
     super.initState();
@@ -44,29 +45,28 @@ class _BottomNavigationBarPageState extends State<BottomNavigationBarPage> {
             child: BottomNavigationBar(
                 elevation: 0,
                 onTap: (value) {
-                  _currentPage = value;
                   _goBranch(value);
                   // setState(() {});
                 },
                 type: BottomNavigationBarType.fixed,
                 showSelectedLabels: true,
                 showUnselectedLabels: true,
-                currentIndex: _currentPage,
-                selectedItemColor: themeData.primaryColor,
-                unselectedItemColor: themeData.canvasColor,
+                currentIndex: widget.navigationShell.currentIndex,
+                selectedItemColor: AppColors.primary,
+                unselectedItemColor: AppColors.grey,
                 backgroundColor: Colors.white,
-                selectedLabelStyle: themeData.textTheme.bodySmall
-                    ?.copyWith(color: themeData.primaryColor, fontSize: 12),
+                selectedLabelStyle: AppTextTheme.bodySmall
+                    .copyWith(color: themeData.primaryColor, fontSize: 12),
                 unselectedLabelStyle:
-                    themeData.textTheme.bodySmall?.copyWith(fontSize: 12),
+                    AppTextTheme.bodySmall.copyWith(fontSize: 12),
                 items: [
-                  _navigationBarItem(_currentPage, themeData, 'Home',
+                  _navigationBarItem(themeData, S.of(context).home,
                       'lib/assets/icons/home.png', 0),
-                  _navigationBarItem(_currentPage, themeData, 'Catalog',
+                  _navigationBarItem(themeData, S.of(context).catalog,
                       'lib/assets/icons/search.png', 1),
-                  _navigationBarItem(_currentPage, themeData, 'My plan',
+                  _navigationBarItem(themeData, S.of(context).myPlan,
                       'lib/assets/icons/goals.png', 2),
-                  _navigationBarItem(_currentPage, themeData, 'Settings',
+                  _navigationBarItem(themeData, S.of(context).settings,
                       'lib/assets/icons/settings.png', 3),
                 ]),
           ),
@@ -75,8 +75,9 @@ class _BottomNavigationBarPageState extends State<BottomNavigationBarPage> {
     );
   }
 
-  BottomNavigationBarItem _navigationBarItem(int currentIndex,
+  BottomNavigationBarItem _navigationBarItem(
       ThemeData themeData, String label, String svgIconPath, int index) {
+    final isSelected = widget.navigationShell.currentIndex == index;
     return BottomNavigationBarItem(
         backgroundColor: Colors.white,
         icon: SizedBox(
@@ -84,9 +85,7 @@ class _BottomNavigationBarPageState extends State<BottomNavigationBarPage> {
           width: 20,
           child: Image.asset(
             svgIconPath,
-            color: currentIndex == index
-                ? themeData.primaryColor
-                : themeData.canvasColor,
+            color: isSelected ? themeData.primaryColor : themeData.canvasColor,
           ),
         ),
         label: label);

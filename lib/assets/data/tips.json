@@ -1,0 +1,542 @@
+[
+    {
+        "habitId": 1,
+        "title_en": "Set a consistent bedtime",
+        "content_en": "Go to sleep at the same time each night to help wake up earlier.",
+        "title_ru": "Установи постоянное время отхода ко сну",
+        "content_ru": "Ложись спать в одно и то же время каждую ночь, чтобы легче просыпаться раньше.",
+        "title_kk": "Тұрақты ұйқы уақыты қояқ",
+        "content_kk": "Ерте тұруға көмектесу үшін әр түні бір уақытта ұйықта."
+    },
+    {
+        "habitId": 1,
+        "title_en": "Avoid screens before bed",
+        "content_en": "Reduce blue light exposure to fall asleep faster.",
+        "title_ru": "Избегай экранов перед сном",
+        "content_ru": "Снизь воздействие синего света, чтобы быстрее заснуть.",
+        "title_kk": "Ұйықтар алдында экрандардан алшақ бол",
+        "content_kk": "Жылдам ұйықтау үшін көк жарықтың әсерін азайт."
+    },
+    {
+        "habitId": 1,
+        "title_en": "Place your alarm across the room",
+        "content_en": "Forces you to physically get out of bed.",
+        "title_ru": "Поставь будильник вдали от кровати",
+        "content_ru": "Это заставит тебя физически встать с кровати.",
+        "title_kk": "Сағатты төсектен шалғай қой",
+        "content_kk": "Бұл төсектен тұруға мәжбүрлейді."
+    },
+    {
+        "habitId": 2,
+        "title_en": "Start with one corner",
+        "content_en": "Make the bed step by step starting from one side.",
+        "title_ru": "Начни с одного угла",
+        "content_ru": "Застилай кровать шаг за шагом, начиная с одного края.",
+        "title_kk": "Бір бұрыштан бастаңдар",
+        "content_kk": "Кереуетті бір шетінен бастап біртіндеп келістір."
+    },
+    {
+        "habitId": 2,
+        "title_en": "Keep bedding simple",
+        "content_en": "Fewer pillows or layers make it easier to tidy up.",
+        "title_ru": "Делай постель простой",
+        "content_ru": "Меньше подушек и слоёв — легче навести порядок.",
+        "title_kk": "Жастықтар мен жаяуларды аз ұста",
+        "content_kk": "Кем жастық пен қабат — тез жинауға жеңіл."
+    },
+    {
+        "habitId": 2,
+        "title_en": "Pair it with brushing teeth",
+        "content_en": "Do it right after brushing to form a routine.",
+        "title_ru": "Свяжи с чисткой зубов",
+        "content_ru": "Делай сразу после чистки зубов, чтобы закрепить привычку.",
+        "title_kk": "Тіс жуумен байластырың",
+        "content_kk": "Әдетке айналдыру үшін тіс жуғаннан кейін бірден жаса."
+    },
+    {
+        "habitId": 3,
+        "title_en": "Prepare a short routine",
+        "content_en": "Stretch or do jumping jacks for just 5–10 minutes.",
+        "title_ru": "Приготовь короткую разминку",
+        "content_ru": "Потянись или сделай прыжки всего на 5–10 минут.",
+        "title_kk": "Қысқа жаттығу дайында",
+        "content_kk": "Бәрі 5–10 минуттық созылу немесе шүйіркелесу."
+    },
+    {
+        "habitId": 3,
+        "title_en": "Lay out workout clothes",
+        "content_en": "Make it easier to start by prepping in advance.",
+        "title_ru": "Разложи спортивную одежду",
+        "content_ru": "Уменьши барьер — подготовь одежду заранее.",
+        "title_kk": "Жаттығу киімін алдын ала жай",
+        "content_kk": "Алдын ала дайындалу арқылы бастау жеңіл."
+    },
+    {
+        "habitId": 3,
+        "title_en": "Use music or timer",
+        "content_en": "Keep momentum with a playlist or countdown timer.",
+        "title_ru": "Включи музыку или таймер",
+        "content_ru": "Сохраняй мотивацию — плейлист или таймер помогут.",
+        "title_kk": "Музыка немесе таймер қолдан",
+        "content_kk": "Музыка плейлисті немесе таймер арқылы үдеу сақталады."
+    },
+    {
+        "habitId": 4,
+        "title_en": "Keep water by your bed",
+        "content_en": "Have a glass ready to drink as soon as you wake.",
+        "title_ru": "Держи воду у кровати",
+        "content_ru": "Имей стакан воды сразу после пробуждения.",
+        "title_kk": "Төсектің жанында су ұста",
+        "content_kk": "Тұрған бойда ішу үшін бір стакан су дайын болсын."
+    },
+    {
+        "habitId": 4,
+        "title_en": "Add lemon",
+        "content_en": "Lemon adds taste and aids digestion.",
+        "title_ru": "Добавь лимон",
+        "content_ru": "Лимон даст вкус и поможет пищеварению.",
+        "title_kk": "Лимон қос",
+        "content_kk": "Лимон дәм қосып, ас қорытуды жақсартады."
+    },
+    {
+        "habitId": 4,
+        "title_en": "Use a favorite cup",
+        "content_en": "Make the habit pleasant by using something you like.",
+        "title_ru": "Используй любимую чашку",
+        "content_ru": "Сделай привычку приятной — пей из любимой кружки.",
+        "title_kk": "Жақсы көретін шыны қолдан",
+        "content_kk": "Әдетті жағымды ету үшін сүйікті кружкаңды қолдан."
+    },
+    {
+        "habitId": 5,
+        "title_en": "Use a guided meditation app",
+        "content_en": "Helps keep you focused, especially if you're new.",
+        "title_ru": "Используй приложение для медитации",
+        "content_ru": "Поможет сосредоточиться, особенно если ты новичок.",
+        "title_kk": "Медитация қосымшасын қолдан",
+        "content_kk": "Жаңа бастаған болсаң, зейінді болуға көмектеседі."
+    },
+    {
+        "habitId": 5,
+        "title_en": "Sit comfortably",
+        "content_en": "Find a quiet place with good posture.",
+        "title_ru": "Сядь удобно",
+        "content_ru": "Найди тихое место и устрой осанку.",
+        "title_kk": "Ыңғайлы отыр",
+        "content_kk": "Жақсы позамен тыныш орын таб."
+    },
+    {
+        "habitId": 5,
+        "title_en": "Start small",
+        "content_en": "Begin with just 2–5 minutes to build the habit.",
+        "title_ru": "Начинай с малого",
+        "content_ru": "Сначала займись всего 2–5 минут, чтобы закрепить привычку.",
+        "title_kk": "Аздан баста",
+        "content_kk": "Әдет қалыптастыруға 2–5 минуттан бастап көр."
+    },
+    {
+        "habitId": 6,
+        "title_en": "Choose books you enjoy",
+        "content_en": "Start with topics that truly interest you.",
+        "title_ru": "Выбирай книги по душе",
+        "content_ru": "Начинай с тем, которые действительно интересны.",
+        "title_kk": "Өзің ұнататын кітап таңда",
+        "content_kk": "Нағыз қызығатын тақырыптан баста."
+    },
+    {
+        "habitId": 6,
+        "title_en": "Read before bed",
+        "content_en": "A quiet moment before sleep helps with focus.",
+        "title_ru": "Читай перед сном",
+        "content_ru": "Тихий момент перед сном помогает сосредоточиться.",
+        "title_kk": "Ұйықтар алдында оқы",
+        "content_kk": "Ұйықтар алдындағы тыныш сәт зейінді арттырады."
+    },
+    {
+        "habitId": 6,
+        "title_en": "Use a reading tracker",
+        "content_en": "Keep momentum by tracking your progress.",
+        "title_ru": "Используй трекер чтения",
+        "content_ru": "Сохраняй темп, отслеживая прогресс.",
+        "title_kk": "Оқу трекерін қолда",
+        "content_kk": "Прогрест бақылап, үдей бер."
+    },
+    {
+        "habitId": 7,
+        "title_en": "Use a daily planner",
+        "content_en": "Write tasks down to free mental space.",
+        "title_ru": "Используй ежедневник",
+        "content_ru": "Записывай задачи, чтобы разгрузить голову.",
+        "title_kk": "Күнделік жоспарлаушыны қолдан",
+        "content_kk": "Ақыл-ойды босату үшін тапсырмаларды жазып қой."
+    },
+    {
+        "habitId": 7,
+        "title_en": "Prioritize top 3 tasks",
+        "content_en": "Stay focused by choosing what's most important.",
+        "title_ru": "Выделяй 3 главные задачи",
+        "content_ru": "Сосредоточься на самом важном.",
+        "title_kk": "Үздік 3 тапсырманы белгілеп ал",
+        "content_kk": "Маңыздысына көңіл бөл."
+    },
+    {
+        "habitId": 7,
+        "title_en": "Do it after breakfast",
+        "content_en": "Link it with a habit that already exists.",
+        "title_ru": "Делай это после завтрака",
+        "content_ru": "Привяжи к уже существующей привычке.",
+        "title_kk": "Таңғы астан кейін жаса",
+        "content_kk": "Бар әдетпен байланыстыр."
+    },
+    {
+        "habitId": 8,
+        "title_en": "Go right after meals",
+        "content_en": "Take a walk after eating to aid digestion.",
+        "title_ru": "Иди гулять после еды",
+        "content_ru": "Прогулка помогает пищеварению.",
+        "title_kk": "Тамақтан соң серуенде",
+        "content_kk": "Ас қорытуды жақсарту үшін серуенде."
+    },
+    {
+        "habitId": 8,
+        "title_en": "Take calls while walking",
+        "content_en": "Turn walking into a multitasking opportunity.",
+        "title_ru": "Звони во время прогулки",
+        "content_ru": "Объединяй прогулки с делами.",
+        "title_kk": "Серуендеу кезінде қоңырау шал",
+        "content_kk": "Жүруді басқа әрекеттермен біріктір."
+    },
+    {
+        "habitId": 8,
+        "title_en": "Explore new routes",
+        "content_en": "Keep it interesting by changing scenery.",
+        "title_ru": "Исследуй новые маршруты",
+        "content_ru": "Меняй обстановку для интереса.",
+        "title_kk": "Жаңа жолдарды аш",
+        "content_kk": "Көріністі өзгертіп, қызықты ет."
+    },
+    {
+        "habitId": 9,
+        "title_en": "Write without judgment",
+        "content_en": "Let your thoughts flow without editing.",
+        "title_ru": "Пиши без осуждения",
+        "content_ru": "Пусть мысли идут свободно, без редактирования.",
+        "title_kk": "Өз ойыңды еркін жаз",
+        "content_kk": "Ойды сүзгіден өткізбей-ақ жаз."
+    },
+    {
+        "habitId": 9,
+        "title_en": "Use prompts",
+        "content_en": "Start with questions like 'What made me smile today?'",
+        "title_ru": "Используй подсказки",
+        "content_ru": "Начинай с вопросов вроде «Что меня сегодня порадовало?»",
+        "title_kk": "Нұсқауларды пайдалан",
+        "content_kk": "«Бүгін мені не қуантты?» секілді сұрақтармен баста."
+    },
+    {
+        "habitId": 9,
+        "title_en": "Set a 10-minute timer",
+        "content_en": "Write for a fixed time to stay consistent.",
+        "title_ru": "Установи таймер на 10 минут",
+        "content_ru": "Пиши определённое время для регулярности.",
+        "title_kk": "10 минутқа таймер қой",
+        "content_kk": "Тұрақты болу үшін белгілі уақыт жаз."
+    },
+    {
+        "habitId": 10,
+        "title_en": "Charge phone outside bedroom",
+        "content_en": "Keep devices away to reduce temptation.",
+        "title_ru": "Заряди телефон вне спальни",
+        "content_ru": "Убери устройства, чтобы меньше отвлекаться.",
+        "title_kk": "Телефонды жатын бөлмеден тыс зарядта",
+        "content_kk": "Құрылғылардан аулақ бол."
+    },
+    {
+        "habitId": 10,
+        "title_en": "Use a physical book",
+        "content_en": "Replace screen time with reading.",
+        "title_ru": "Читайте бумажную книгу",
+        "content_ru": "Замените экран на бумагу.",
+        "title_kk": "Қағаз кітап оқы",
+        "content_kk": "Экран уақытын кітаппен алмастыр."
+    },
+    {
+        "habitId": 10,
+        "title_en": "Create a wind-down ritual",
+        "content_en": "Do relaxing activities like stretching or tea.",
+        "title_ru": "Создай расслабляющий ритуал",
+        "content_ru": "Сделай что-то успокаивающее: потянись или выпей чаю.",
+        "title_kk": "Демалатын рәсім ойлап тап",
+        "content_kk": "Созылу немесе шай ішу сияқты босаңсытатын істер істе."
+    },
+    {
+        "habitId": 11,
+        "title_en": "Use flashcards",
+        "content_en": "Review new words regularly using a spaced method.",
+        "title_ru": "Используй карточки",
+        "content_ru": "Повторяй новые слова по интервальному методу.",
+        "title_kk": "Флешкарттарды қолдан",
+        "content_kk": "Жаңа сөздерді аралық әдіспен қайтала."
+    },
+    {
+        "habitId": 11,
+        "title_en": "Apply words in sentences",
+        "content_en": "Use new words in writing or speech.",
+        "title_ru": "Используй слова в предложениях",
+        "content_ru": "Применяй новые слова в письме и разговоре.",
+        "title_kk": "Сөздерді сөйлемдерде қолдан",
+        "content_kk": "Жаңа сөздерді жазуда не сөйлеуде пайдалан."
+    },
+    {
+        "habitId": 11,
+        "title_en": "Review before bed",
+        "content_en": "Learning before sleep helps with memory.",
+        "title_ru": "Повторяй перед сном",
+        "content_ru": "Повторение на ночь улучшает запоминание.",
+        "title_kk": "Ұйықтар алдында қайтала",
+        "content_kk": "Ұйықтар алдында оқыған жақсы есте қалады."
+    },
+    {
+        "habitId": 12,
+        "title_en": "Summarize key points",
+        "content_en": "Write 3–5 bullet points after review.",
+        "title_ru": "Выдели ключевые мысли",
+        "content_ru": "Напиши 3–5 главных пунктов после изучения.",
+        "title_kk": "Негізгі ойларды қорыт",
+        "content_kk": "Қайталаған соң 3–5 негізгі тармақ жаз."
+    },
+    {
+        "habitId": 12,
+        "title_en": "Use different colors",
+        "content_en": "Highlighting helps visual memory.",
+        "title_ru": "Используй разные цвета",
+        "content_ru": "Выделение цветом помогает запоминанию.",
+        "title_kk": "Әртүрлі түстер қолдан",
+        "content_kk": "Түстер есте сақтауға көмектеседі."
+    },
+    {
+        "habitId": 12,
+        "title_en": "Teach someone else",
+        "content_en": "Explaining reinforces your own understanding.",
+        "title_ru": "Объясни другому",
+        "content_ru": "Объяснение помогает самому лучше понять.",
+        "title_kk": "Басқаға үйрет",
+        "content_kk": "Түсіндіру арқылы өзің де терең түсінесің."
+    },
+    {
+        "habitId": 13,
+        "title_en": "Schedule course time",
+        "content_en": "Block 30 min on your calendar daily.",
+        "title_ru": "Запланируй время на курс",
+        "content_ru": "Выдели по 30 минут каждый день.",
+        "title_kk": "Курсқа уақыт белгіле",
+        "content_kk": "Күн сайын 30 минут белгіле."
+    },
+    {
+        "habitId": 13,
+        "title_en": "Take notes",
+        "content_en": "Jot down highlights to remember better.",
+        "title_ru": "Делай заметки",
+        "content_ru": "Записывай важное для лучшего запоминания.",
+        "title_kk": "Жазба жаз",
+        "content_kk": "Маңыздысын жазып, жақсы есте сақта."
+    },
+    {
+        "habitId": 13,
+        "title_en": "Pause and reflect",
+        "content_en": "Stop the video occasionally and summarize out loud.",
+        "title_ru": "Останавливай и размышляй",
+        "content_ru": "Иногда ставь видео на паузу и проговаривай вслух.",
+        "title_kk": "Тоқтап, ойлан",
+        "content_kk": "Бейнені тоқтатып, дауыстап қайтала."
+    },
+    {
+        "habitId": 14,
+        "title_en": "Use a timer",
+        "content_en": "Limit yourself to just 3 focused problems.",
+        "title_ru": "Используй таймер",
+        "content_ru": "Ограничься 3 сфокусированными задачами.",
+        "title_kk": "Таймер қолдан",
+        "content_kk": "3 нақты есеппен шектел."
+    },
+    {
+        "habitId": 14,
+        "title_en": "Solve on paper",
+        "content_en": "Avoid mental shortcuts — write it out.",
+        "title_ru": "Решай на бумаге",
+        "content_ru": "Не сокращай в уме — пиши решения.",
+        "title_kk": "Қағазда шығар",
+        "content_kk": "Ойша емес, жазып шығар."
+    },
+    {
+        "habitId": 14,
+        "title_en": "Review errors",
+        "content_en": "Spend time understanding mistakes.",
+        "title_ru": "Анализируй ошибки",
+        "content_ru": "Пойми, где ошибся, и почему.",
+        "title_kk": "Қателерді талда",
+        "content_kk": "Қайда және неге қателескеніңді түсін."
+    },
+    {
+        "habitId": 15,
+        "title_en": "Use a Pomodoro app",
+        "content_en": "Set structured work and break intervals.",
+        "title_ru": "Используй приложение Pomodoro",
+        "content_ru": "Установи циклы работы и отдыха.",
+        "title_kk": "Помодоро қолданбасын пайдалан",
+        "content_kk": "Жұмыс пен үзіліс уақытын белгіле."
+    },
+    {
+        "habitId": 15,
+        "title_en": "Prepare tasks in advance",
+        "content_en": "Know exactly what you'll work on.",
+        "title_ru": "Подготовь задачи заранее",
+        "content_ru": "Заранее реши, чем займёшься.",
+        "title_kk": "Тапсырмаларды алдын ала дайында",
+        "content_kk": "Не істейтініңді нақты біл."
+    },
+    {
+        "habitId": 15,
+        "title_en": "Take real breaks",
+        "content_en": "Avoid screens — walk, stretch, or breathe.",
+        "title_ru": "Делай настоящие перерывы",
+        "content_ru": "Без экранов — прогуляйся, потянись или подыши.",
+        "title_kk": "Нағыз үзіліс жаса",
+        "content_kk": "Экрансыз бол — серуенде, созыл немесе терең тыныс ал."
+    },
+    {
+        "habitId": 16,
+        "title_en": "Use short sentences",
+        "content_en": "Keep notes clear and focused.",
+        "title_ru": "Пиши коротко",
+        "content_ru": "Заметки должны быть ясными и точными.",
+        "title_kk": "Қысқа сөйлемдер жаз",
+        "content_kk": "Жазбалар нақты және анық болсын."
+    },
+    {
+        "habitId": 16,
+        "title_en": "Organize by topic",
+        "content_en": "Group ideas under headings or themes.",
+        "title_ru": "Организуй по темам",
+        "content_ru": "Группируй идеи по заголовкам.",
+        "title_kk": "Тақырыппен ретте",
+        "content_kk": "Идеяларды тақырыппен біріктір."
+    },
+    {
+        "habitId": 16,
+        "title_en": "Review notes weekly",
+        "content_en": "Go over your notes to refresh memory.",
+        "title_ru": "Повторяй заметки каждую неделю",
+        "content_ru": "Регулярно перечитывай для памяти.",
+        "title_kk": "Жазбаларды апта сайын қайтала",
+        "content_kk": "Жадыны жаңарту үшін қайта оқы."
+    },
+    {
+        "habitId": 17,
+        "title_en": "Use keywords",
+        "content_en": "Include essential words only in the map.",
+        "title_ru": "Используй ключевые слова",
+        "content_ru": "Добавляй только самые важные слова.",
+        "title_kk": "Кілт сөздерді қолдан",
+        "content_kk": "Тек маңызды сөздерді енгіз."
+    },
+    {
+        "habitId": 17,
+        "title_en": "Start from the center",
+        "content_en": "Place main idea in the middle and expand outward.",
+        "title_ru": "Начинай с центра",
+        "content_ru": "Главную идею в центр, детали — вокруг.",
+        "title_kk": "Ортасынан баста",
+        "content_kk": "Негізгі ойды ортаға қой, әрі қарай тара."
+    },
+    {
+        "habitId": 17,
+        "title_en": "Use images and colors",
+        "content_en": "Visual cues help memory and engagement.",
+        "title_ru": "Добавь картинки и цвета",
+        "content_ru": "Визуальные элементы улучшают запоминание.",
+        "title_kk": "Сурет пен түстер қолдан",
+        "content_kk": "Көрнекілік есте сақтау мен қызығушылықты арттырады."
+    },
+    {
+        "habitId": 18,
+        "title_en": "Take turns explaining",
+        "content_en": "Each person teaches one topic.",
+        "title_ru": "Объясняйте по очереди",
+        "content_ru": "Каждый рассказывает по теме.",
+        "title_kk": "Кезектесіп түсіндір",
+        "content_kk": "Әркім бір тақырыпты түсіндіреді."
+    },
+    {
+        "habitId": 18,
+        "title_en": "Ask each other questions",
+        "content_en": "Quizzing improves engagement.",
+        "title_ru": "Задавайте вопросы друг другу",
+        "content_ru": "Вопросы повышают вовлечённость.",
+        "title_kk": "Бір-біріңе сұрақ қой",
+        "content_kk": "Сұрақ қою қызығушылықты арттырады."
+    },
+    {
+        "habitId": 18,
+        "title_en": "Keep it short and regular",
+        "content_en": "Even 15-minute sessions help a lot.",
+        "title_ru": "Делай коротко и регулярно",
+        "content_ru": "Даже 15 минут — уже польза.",
+        "title_kk": "Қысқа әрі тұрақты қыл",
+        "content_kk": "15 минуттық жаттығулар да көмектеседі."
+    },
+    {
+        "habitId": 19,
+        "title_en": "Write questions during study",
+        "content_en": "Create practice questions as you learn.",
+        "title_ru": "Пиши вопросы во время обучения",
+        "content_ru": "Создавай тренировочные вопросы прямо по ходу.",
+        "title_kk": "Оқу кезінде сұрақ жаз",
+        "content_kk": "Үйрену барысында жаттығу сұрақтарын жаз."
+    },
+    {
+        "habitId": 19,
+        "title_en": "Use spaced repetition",
+        "content_en": "Re-test yourself after 1 day, 3 days, etc.",
+        "title_ru": "Повторяй с интервалами",
+        "content_ru": "Перепроверяй себя через 1, 3 дня и т.д.",
+        "title_kk": "Аралық қайталау қолда",
+        "content_kk": "1, 3 күннен кейін өзіңді сына."
+    },
+    {
+        "habitId": 19,
+        "title_en": "Answer aloud",
+        "content_en": "Saying answers aloud helps retention.",
+        "title_ru": "Отвечай вслух",
+        "content_ru": "Произнесение помогает запоминать.",
+        "title_kk": "Дауыстап жауап бер",
+        "content_kk": "Дауыстап айту есте сақтауға көмектеседі."
+    },
+    {
+        "habitId": 20,
+        "title_en": "Take notes while watching",
+        "content_en": "Write down key ideas and quotes.",
+        "title_ru": "Делай заметки во время просмотра",
+        "content_ru": "Записывай ключевые мысли и цитаты.",
+        "title_kk": "Қарау кезінде жазба жаз",
+        "content_kk": "Негізгі ойлар мен дәйек сөздерді жаз."
+    },
+    {
+        "habitId": 20,
+        "title_en": "Reflect after watching",
+        "content_en": "Summarize what you learned in your own words.",
+        "title_ru": "Обдумай после просмотра",
+        "content_ru": "Кратко перескажи, что узнал.",
+        "title_kk": "Қараған соң ойлан",
+        "content_kk": "Не үйренгеніңді өз сөзіңмен қорыт."
+    },
+    {
+        "habitId": 20,
+        "title_en": "Share insights",
+        "content_en": "Discuss with friends to reinforce understanding.",
+        "title_ru": "Делись мыслями",
+        "content_ru": "Обсуди с друзьями, чтобы лучше понять.",
+        "title_kk": "Ойлармен бөліс",
+        "content_kk": "Түсінікті тереңдету үшін достарыңмен талқыла."
+    }
+]

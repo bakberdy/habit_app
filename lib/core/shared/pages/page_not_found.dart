@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:habit_app/generated/l10n.dart';
 
 class PageNotFound extends StatelessWidget {
   const PageNotFound({super.key});
@@ -7,7 +8,7 @@ class PageNotFound extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Not Found'),
+        title: Text(S.of(context).notFound),
       ),
     );
   }

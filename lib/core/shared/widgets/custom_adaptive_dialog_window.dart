@@ -4,6 +4,7 @@ import 'package:habit_app/core/core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:habit_app/generated/l10n.dart';
 
 class CustomAdaptiveDialogWindow extends StatelessWidget {
   const CustomAdaptiveDialogWindow({
@@ -28,13 +29,13 @@ class CustomAdaptiveDialogWindow extends StatelessWidget {
             actions: [
               TextButton(
                 onPressed: () => onDisAgree ?? context.pop(false),
-                child: Text('No',
+                child: Text(S.of(context).no,
                     style: theme.textTheme.bodyMedium
                         ?.copyWith(color: theme.primaryColor)),
               ),
               TextButton(
                 onPressed: onAgree,
-                child: Text('Yes',
+                child: Text(S.of(context).yes,
                     style: theme.textTheme.bodyMedium
                         ?.copyWith(color: Colors.red)),
               ),
@@ -42,18 +43,18 @@ class CustomAdaptiveDialogWindow extends StatelessWidget {
           )
         : AlertDialog(
             backgroundColor: Colors.white,
-            title: Text('Log out', style: theme.textTheme.headlineMedium),
-            content: Text('Do you want to log out?'),
+            title: Text(title, style: theme.textTheme.headlineMedium),
+            content: Text(content),
             actions: [
               TextButton(
                 onPressed: () => onDisAgree ?? context.pop(false),
-                child: Text('No',
+                child: Text(S.of(context).no,
                     style: theme.textTheme.bodyMedium
                         ?.copyWith(color: theme.primaryColor)),
               ),
               TextButton(
                 onPressed: onAgree,
-                child: Text('Yes',
+                child: Text(S.of(context).yes,
                     style: theme.textTheme.bodyMedium
                         ?.copyWith(color: Colors.red)),
               ),

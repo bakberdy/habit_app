@@ -1,15 +1,22 @@
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:habit_app/core/core.dart';
+import 'package:habit_app/core/bloc/locale_cubit.dart';
+import 'package:habit_app/generated/l10n.dart';
 import 'package:habit_app/injection/injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> main() async {
+//  final widgetsBinding =
   WidgetsFlutterBinding.ensureInitialized();
-  // await dotenv.load(fileName: '.env');
-  configureDependencies();
+  await configureDependencies();
   Bloc.observer = sl<BlocObserver>();
-  runApp(const MyApp());
+  // FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  runApp(BlocProvider(
+    create: (_) => LocaleCubit(sl<SharedPreferences>()),
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -17,11 +24,33 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'Talky',
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme.lightTheme,
-      routerConfig: sl<AppRouter>().router,
-    );
+    return BlocBuilder<LocaleCubit, LocaleState>(builder: (context, state) {
+      return MaterialApp.router(
+        localizationsDelegates: [
+          S.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: AppLocalizations.supportedLocales,
+        locale: state.locale,
+        title: 'Tal≥ky',
+        debugShowCheckedModeBanner: false,
+        theme: AppTheme.lightTheme,
+        routerConfig: sl<AppRouter>().router,
+      );
+    });
   }
+}
+
+class AppLocalizations {
+  static List<Locale> supportedLocales = [
+    Locale('kk', 'KZ'),
+    Locale('en', 'US'),
+    Locale('ru', 'RU'),
+  ];
+
+  static Locale get kazakh => const Locale('kk', 'KZ');
+  static Locale get english => const Locale('en', 'US');
+  static Locale get russian => const Locale('ru', 'RU');
 }
