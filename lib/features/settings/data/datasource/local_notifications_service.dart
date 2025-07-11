@@ -17,6 +17,7 @@ class LocalNotificationsService {
 
     const settings = InitializationSettings(android: android, iOS: ios);
     await _notifications.initialize(settings);
+    await _requestExactAlarmPermissionIfNeeded();
     await scheduleDailyReminder(localeCode);
   }
 
@@ -52,6 +53,18 @@ class LocalNotificationsService {
       androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
       matchDateTimeComponents: DateTimeComponents.time,
     );
+  }
+
+  Future<void> _requestExactAlarmPermissionIfNeeded() async {
+    final androidPlugin = _notifications.resolvePlatformSpecificImplementation<
+        AndroidFlutterLocalNotificationsPlugin>();
+
+    final isAllowed =
+        await androidPlugin?.requestExactAlarmsPermission() ?? true;
+
+    if (!isAllowed) {
+      await androidPlugin?.requestExactAlarmsPermission();
+    }
   }
 
   Future<void> cancelAll() async {
