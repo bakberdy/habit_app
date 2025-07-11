@@ -1,3 +1,3 @@
 -keep class com.yalantis.ucrop.** { *; }
 -dontwarn com.yalantis.ucrop.**
--keep class com.bakberdi.habit_app.MainActivity { *; }
+-keep class com.bakberdi.adet.MainActivity { *; }
