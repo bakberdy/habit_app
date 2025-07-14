@@ -112,22 +112,16 @@ class _NotificationPageState extends State<NotificationPage> {
                               },
                               activeTrackColor: AppColors.primary,
                             )
-                          : Shimmer.fromColors(
-                              enabled: state.isLoading,
-                              baseColor: Colors.grey.shade300,
-                              highlightColor: Colors.grey.shade500,
-                              child: Switch(
-                                value: state.dailyEnabled,
-                                onChanged: (value) {
-                                  context.read<NotificationBloc>().add(
-                                      NotificationEvent.setDailyEnabled(value));
-                                },
-                                inactiveTrackColor:
-                                    AppColors.hint.withAlpha(40),
-                                inactiveThumbColor: (AppColors.grey),
-                                activeTrackColor: AppColors.primary,
-                              ),
-                            )
+                          : Switch(
+                              value: state.dailyEnabled,
+                              onChanged: (value) {
+                                context.read<NotificationBloc>().add(
+                                    NotificationEvent.setDailyEnabled(value));
+                              },
+                              inactiveTrackColor: AppColors.hint.withAlpha(40),
+                              inactiveThumbColor: (AppColors.grey),
+                              activeTrackColor: AppColors.primary,
+                            ),
                 ],
               )
             ],
