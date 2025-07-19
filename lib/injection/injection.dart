@@ -1,3 +1,5 @@
+import "package:firebase_messaging/firebase_messaging.dart";
+import "package:flutter_local_notifications/flutter_local_notifications.dart";
 import "package:habit_app/core/core.dart";
 import "package:dio/dio.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
@@ -47,6 +49,13 @@ abstract class AppModule {
 
   @singleton
   AppRouter get appRouter => AppRouter(talker: talker);
+
+  @lazySingleton
+  FlutterLocalNotificationsPlugin get flutterLocalNotificationsPlugin =>
+      FlutterLocalNotificationsPlugin();
+
+  @lazySingleton
+  FirebaseMessaging get firebaseMessaging => FirebaseMessaging.instance;
 
   @preResolve
   Future<SharedPreferences> get sharedPreferences =>

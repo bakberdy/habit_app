@@ -51,7 +51,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "browseRountines": MessageLookupByLibrary.simpleMessage("Browse rountines"),
     "builtForDreamersDoersAndDisciplinedMindsnstartYourDetJourney":
         MessageLookupByLibrary.simpleMessage(
-          "Built for dreamers, doers, and disciplined minds.\\nStart your Ádet journey today.",
+          "Built for dreamers, doers, and disciplined minds.\nStart your Ádet journey today.",
         ),
     "canITrackMultipleHabits": MessageLookupByLibrary.simpleMessage(
       "Can I track multiple habits?",

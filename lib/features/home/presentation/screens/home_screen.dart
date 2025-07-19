@@ -58,215 +58,212 @@ class _HomeScreenState extends State<HomeScreenContent> {
       child:
           BlocBuilder<LocaleCubit, LocaleState>(builder: (context, localState) {
         return Scaffold(
-          body: SafeArea(
-            child: BlocBuilder<SearchBloc, SearchState>(
-              builder: (context, state) => CustomScrollView(
-                slivers: [
-                  BlocBuilder<HomeBloc, HomeState>(builder: (context, state) {
-                    final username =
-                        ((state is HomeLoaded) ? state.username : "") ?? "";
-                    return CustomSliverAppBar(
-                      title: S.of(context).home,
-                      bottom: AppBarBottomWithSearchField(
-                        title: S.of(context).welcome(username),
-                        searchController: _searchController,
-                        onChange: (value) =>
-                            _onSearchBarChange(value, localState.locale),
-                      ),
-                    );
-                  }),
-                  if (state is Searching && _searchController.text.isNotEmpty)
-                    SearchResultSliver(habits: state.habits),
-                  SliverVisibility(
-                    visible: _searchController.text.isEmpty,
-                    sliver: SliverToBoxAdapter(
-                      child: BlocBuilder<HomeBloc, HomeState>(
-                          builder: (context, state) {
-                        if (state is HomeLoaded) {
-                          return QuoteCard(
-                            quote: state.quote,
-                          );
-                        } else {
-                          return SizedBox();
-                        }
-                      }),
+          body: BlocBuilder<SearchBloc, SearchState>(
+            builder: (context, state) => CustomScrollView(
+              slivers: [
+                BlocBuilder<HomeBloc, HomeState>(builder: (context, state) {
+                  final username =
+                      ((state is HomeLoaded) ? state.username : "") ?? "";
+                  return CustomSliverAppBar(
+                    title: S.of(context).home,
+                    bottom: AppBarBottomWithSearchField(
+                      title: S.of(context).welcome(username),
+                      searchController: _searchController,
+                      onChange: (value) =>
+                          _onSearchBarChange(value, localState.locale),
                     ),
+                  );
+                }),
+                if (state is Searching && _searchController.text.isNotEmpty)
+                  SearchResultSliver(habits: state.habits),
+                SliverVisibility(
+                  visible: _searchController.text.isEmpty,
+                  sliver: SliverToBoxAdapter(
+                    child: BlocBuilder<HomeBloc, HomeState>(
+                        builder: (context, state) {
+                      if (state is HomeLoaded) {
+                        return QuoteCard(
+                          quote: state.quote,
+                        );
+                      } else {
+                        return SizedBox();
+                      }
+                    }),
                   ),
-                  SliverVisibility(
-                      visible: _searchController.text.isEmpty,
-                      sliver: SliverToBoxAdapter(child: RecomendationBar())),
-                  SliverVisibility(
-                      visible: _searchController.text.isEmpty,
-                      sliver: SliverToBoxAdapter(child: SizedBox(height: 10))),
-                  SliverVisibility(
+                ),
+                SliverVisibility(
                     visible: _searchController.text.isEmpty,
-                    sliver: SliverToBoxAdapter(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            SizedBox(height: 10),
-                            Text(S.of(context).yourActivityCalendar,
-                                style: AppTextTheme.h4),
-                            SizedBox(height: 10),
-                          ],
-                        ),
+                    sliver: SliverToBoxAdapter(child: RecomendationBar())),
+                SliverVisibility(
+                    visible: _searchController.text.isEmpty,
+                    sliver: SliverToBoxAdapter(child: SizedBox(height: 10))),
+                SliverVisibility(
+                  visible: _searchController.text.isEmpty,
+                  sliver: SliverToBoxAdapter(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(height: 10),
+                          Text(S.of(context).yourActivityCalendar,
+                              style: AppTextTheme.h4),
+                          SizedBox(height: 10),
+                        ],
                       ),
                     ),
                   ),
-                  SliverVisibility(
-                      visible: _searchController.text.isEmpty,
-                      sliver: SliverToBoxAdapter(
-                        child: SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: BlocBuilder<HabitMapBloc, HabitMapState>(
-                              builder: (context, state) {
-                            if (state is HabitMapLoaded) {
-                              return Row(
-                                children: [
-                                  SizedBox(width: 20),
-                                  HeatMap(
-                                    // locale: localState.locale,
-                                    endDate: DateTime(2026, 9),
-                                    startDate: DateTime(2025, 6),
-                                    // datasets: {
-                                    //   DateTime(2025, 6, 1): 1,
-                                    //   DateTime(2025, 6, 2): 2,
-                                    //   DateTime(2025, 6, 3): 3,
-                                    //   DateTime(2025, 6, 4): 4,
-                                    //   DateTime(2025, 6, 5): 2,
-                                    //   DateTime(2025, 6, 6): 1,
-                                    //   DateTime(2025, 6, 7): 3,
-                                    //   DateTime(2025, 6, 8): 4,
-                                    //   DateTime(2025, 6, 9): 2,
-                                    //   DateTime(2025, 6, 10): 1,
-                                    //   DateTime(2025, 6, 11): 3,
-                                    //   DateTime(2025, 6, 12): 4,
-                                    //   DateTime(2025, 6, 13): 2,
-                                    //   DateTime(2025, 6, 14): 1,
-                                    //   DateTime(2025, 6, 15): 3,
-                                    //   DateTime(2025, 6, 16): 4,
-                                    //   DateTime(2025, 6, 17): 2,
-                                    //   DateTime(2025, 6, 18): 1,
-                                    //   DateTime(2025, 6, 19): 3,
-                                    //   DateTime(2025, 6, 20): 4,
-                                    //   DateTime(2025, 6, 21): 2,
-                                    //   DateTime(2025, 6, 22): 1,
-                                    //   DateTime(2025, 6, 23): 3,
-                                    //   DateTime(2025, 6, 24): 4,
-                                    //   DateTime(2025, 6, 25): 2,
-                                    //   DateTime(2025, 6, 26): 1,
-                                    //   DateTime(2025, 6, 27): 3,
-                                    //   DateTime(2025, 6, 28): 4,
-                                    //   DateTime(2025, 6, 29): 2,
-                                    //   DateTime(2025, 6, 30): 1,
-                                    //   DateTime(2025, 7, 1): 3,
-                                    // },
-                                    datasets: state.dateset,
-                                    size: 30,
-                                    colorsets: {
-                                      1: AppColors.primary.withAlpha(50),
-                                      2: AppColors.primary.withAlpha(120),
-                                      3: AppColors.primary.withAlpha(200),
-                                      4: AppColors.primary,
-                                    },
-                                  ),
-                                ],
-                              );
-                            }
-                            return SizedBox();
-                          }),
-                        ),
-                      )),
-                  SliverVisibility(
+                ),
+                SliverVisibility(
                     visible: _searchController.text.isEmpty,
-                    sliver: BlocBuilder<MyPlanBloc, MyPlanState>(
-                      builder: (context, state) {
-                        if (state is MyPlanStateLoaded &&
-                            state.habitInfo.isNotEmpty) {
-                          return SliverPadding(
-                            padding: EdgeInsets.symmetric(horizontal: 20),
-                            sliver: SliverList.separated(
-                              separatorBuilder: (context, index) => Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 20),
-                                child: Divider(
-                                  height: 1,
-                                  color: AppColors.white,
+                    sliver: SliverToBoxAdapter(
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: BlocBuilder<HabitMapBloc, HabitMapState>(
+                            builder: (context, state) {
+                          if (state is HabitMapLoaded) {
+                            return Row(
+                              children: [
+                                SizedBox(width: 20),
+                                HeatMap(
+                                  // locale: localState.locale,
+                                  endDate: DateTime(2026, 9),
+                                  startDate: DateTime(2025, 6),
+                                  // datasets: {
+                                  //   DateTime(2025, 6, 1): 1,
+                                  //   DateTime(2025, 6, 2): 2,
+                                  //   DateTime(2025, 6, 3): 3,
+                                  //   DateTime(2025, 6, 4): 4,
+                                  //   DateTime(2025, 6, 5): 2,
+                                  //   DateTime(2025, 6, 6): 1,
+                                  //   DateTime(2025, 6, 7): 3,
+                                  //   DateTime(2025, 6, 8): 4,
+                                  //   DateTime(2025, 6, 9): 2,
+                                  //   DateTime(2025, 6, 10): 1,
+                                  //   DateTime(2025, 6, 11): 3,
+                                  //   DateTime(2025, 6, 12): 4,
+                                  //   DateTime(2025, 6, 13): 2,
+                                  //   DateTime(2025, 6, 14): 1,
+                                  //   DateTime(2025, 6, 15): 3,
+                                  //   DateTime(2025, 6, 16): 4,
+                                  //   DateTime(2025, 6, 17): 2,
+                                  //   DateTime(2025, 6, 18): 1,
+                                  //   DateTime(2025, 6, 19): 3,
+                                  //   DateTime(2025, 6, 20): 4,
+                                  //   DateTime(2025, 6, 21): 2,
+                                  //   DateTime(2025, 6, 22): 1,
+                                  //   DateTime(2025, 6, 23): 3,
+                                  //   DateTime(2025, 6, 24): 4,
+                                  //   DateTime(2025, 6, 25): 2,
+                                  //   DateTime(2025, 6, 26): 1,
+                                  //   DateTime(2025, 6, 27): 3,
+                                  //   DateTime(2025, 6, 28): 4,
+                                  //   DateTime(2025, 6, 29): 2,
+                                  //   DateTime(2025, 6, 30): 1,
+                                  //   DateTime(2025, 7, 1): 3,
+                                  // },
+                                  datasets: state.dateset,
+                                  size: 30,
+                                  colorsets: {
+                                    1: AppColors.primary.withAlpha(50),
+                                    2: AppColors.primary.withAlpha(120),
+                                    3: AppColors.primary.withAlpha(200),
+                                    4: AppColors.primary,
+                                  },
                                 ),
+                              ],
+                            );
+                          }
+                          return SizedBox();
+                        }),
+                      ),
+                    )),
+                SliverVisibility(
+                  visible: _searchController.text.isEmpty,
+                  sliver: BlocBuilder<MyPlanBloc, MyPlanState>(
+                    builder: (context, state) {
+                      if (state is MyPlanStateLoaded &&
+                          state.habitInfo.isNotEmpty) {
+                        return SliverPadding(
+                          padding: EdgeInsets.symmetric(horizontal: 20),
+                          sliver: SliverList.separated(
+                            separatorBuilder: (context, index) => Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 20),
+                              child: Divider(
+                                height: 1,
+                                color: AppColors.white,
                               ),
-                              itemCount: (state.habitInfo.length >= 3
-                                      ? 4
-                                      : state.habitInfo.length) +
-                                  1,
-                              itemBuilder: (context, index) {
-                                if (index == 0) {
-                                  return Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      SizedBox(height: 10),
-                                      Text(S.of(context).yourTodaysPlan,
-                                          style: AppTextTheme.h4),
-                                      SizedBox(height: 10),
-                                    ],
-                                  );
-                                }
-                                if (index == 4) {
-                                  return InkWell(
-                                      onTap: () {
-                                        context.goNamed('my_plan');
-                                      },
-                                      child: Align(
-                                        alignment: Alignment.centerRight,
-                                        child: SizedBox(
-                                          height: 40,
-                                          child: Center(
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                Text(
-                                                  S.of(context).morePlan,
-                                                  style: AppTextTheme.bodySmall
-                                                      .copyWith(
-                                                          fontWeight:
-                                                              FontWeight.w600),
-                                                ),
-                                                SizedBox(width: 5),
-                                                Icon(
-                                                  Icons.arrow_forward_ios,
-                                                  size: 15,
-                                                )
-                                              ],
-                                            ),
+                            ),
+                            itemCount: (state.habitInfo.length >= 3
+                                    ? 4
+                                    : state.habitInfo.length) +
+                                1,
+                            itemBuilder: (context, index) {
+                              if (index == 0) {
+                                return Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    SizedBox(height: 10),
+                                    Text(S.of(context).yourTodaysPlan,
+                                        style: AppTextTheme.h4),
+                                    SizedBox(height: 10),
+                                  ],
+                                );
+                              }
+                              if (index == 4) {
+                                return InkWell(
+                                    onTap: () {
+                                      context.goNamed('my_plan');
+                                    },
+                                    child: Align(
+                                      alignment: Alignment.centerRight,
+                                      child: SizedBox(
+                                        height: 40,
+                                        child: Center(
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                S.of(context).morePlan,
+                                                style: AppTextTheme.bodySmall
+                                                    .copyWith(
+                                                        fontWeight:
+                                                            FontWeight.w600),
+                                              ),
+                                              SizedBox(width: 5),
+                                              Icon(
+                                                Icons.arrow_forward_ios,
+                                                size: 15,
+                                              )
+                                            ],
                                           ),
                                         ),
-                                      ));
-                                }
-                                return HabitSubsriptionCard(
-                                  isLast: state.habitInfo.length >= 3
-                                      ? index == 3
-                                      : state.habitInfo.length == index,
-                                  isFirst: index == 1,
-                                  habitInfo: state.habitInfo[index - 1],
-                                  dayStatus: state.dayStatus,
-                                );
-                              },
-                            ),
-                          );
-                        } else {
-                          return SliverToBoxAdapter();
-                        }
-                      },
-                    ),
+                                      ),
+                                    ));
+                              }
+                              return HabitSubsriptionCard(
+                                isLast: state.habitInfo.length >= 3
+                                    ? index == 3
+                                    : state.habitInfo.length == index,
+                                isFirst: index == 1,
+                                habitInfo: state.habitInfo[index - 1],
+                                dayStatus: state.dayStatus,
+                              );
+                            },
+                          ),
+                        );
+                      } else {
+                        return SliverToBoxAdapter();
+                      }
+                    },
                   ),
-                  SliverToBoxAdapter(
-                    child: SizedBox(height: 10),
-                  ),
-                ],
-              ),
+                ),
+                SliverToBoxAdapter(
+                  child: SizedBox(height: 10),
+                ),
+              ],
             ),
           ),
         );

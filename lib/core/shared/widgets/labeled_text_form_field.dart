@@ -82,6 +82,8 @@ class _LabeledTextFormFieldState extends State<LabeledTextFormField> {
         ),
         Expanded(
           child: TextFormField(
+            onFieldSubmitted: (value) => _focusNode.unfocus(),
+            textInputAction: TextInputAction.done,
             maxLines: null,
             enabled: widget.enabled,
             autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -100,11 +102,25 @@ class _LabeledTextFormFieldState extends State<LabeledTextFormField> {
               border: OutlineInputBorder(borderSide: BorderSide.none),
               hintText: widget.hintText,
               suffixIcon: _showClearButton
-                  ? IconButton(
-                      icon: Icon(Icons.clear, size: 20),
-                      onPressed: () {
-                        widget.controller.clear();
-                      },
+                  ? Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IconButton(
+                          icon: Icon(Icons.done, size: 20),
+                          onPressed: () {
+                            _focusNode.unfocus();
+                            widget.controller.text =
+                                widget.controller.text.trim();
+                            _updateClearButton();
+                          },
+                        ),
+                        IconButton(
+                          icon: Icon(Icons.clear, size: 20),
+                          onPressed: () {
+                            widget.controller.clear();
+                          },
+                        )
+                      ],
                     )
                   : null,
               hintStyle: themeData.textTheme.bodySmall?.copyWith(

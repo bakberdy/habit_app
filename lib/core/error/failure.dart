@@ -10,3 +10,11 @@ class UnknownFailure extends Failure {
   @override
   String get message => _message;
 }
+
+class ValueFailure extends Failure {
+  final String _message;
+
+  ValueFailure(this._message);
+  @override
+  String get message => _message;
+}

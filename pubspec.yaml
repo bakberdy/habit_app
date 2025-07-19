@@ -1,7 +1,7 @@
 name: habit_app
 description: "Habit tracker app"
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
-version: 1.0.0+1
+version: 1.0.1
 
 environment:
   sdk: ^3.6.1
@@ -70,6 +70,10 @@ dependencies:
   url_launcher: ^6.3.1
   flutter_launcher_icons: ^0.14.4
   flutter_native_splash: ^2.4.6
+  firebase_core: ^3.15.1
+  flutter_local_notifications: ^19.3.0
+  firebase_messaging: ^15.2.9
+  timezone: ^0.10.1
 
 dev_dependencies:
   flutter_test:
