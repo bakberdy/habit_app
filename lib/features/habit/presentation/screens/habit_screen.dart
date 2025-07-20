@@ -168,14 +168,12 @@ class _HabitScreenState extends State<HabitScreenContent> {
                             child: SizedBox(
                               child: Padding(
                                 padding: const EdgeInsets.all(20),
-                                child: Expanded(
-                                  child: Text(
-                                    textAlign: TextAlign.center,
-                                    "${S.of(context).habitIsAlreadyInYourPlanGoodJob} 😊",
-                                    style: AppTextTheme.bodyMedium.copyWith(
-                                      color: AppColors.primary,
-                                      fontWeight: FontWeight.w600,
-                                    ),
+                                child: Text(
+                                  textAlign: TextAlign.center,
+                                  "${S.of(context).habitIsAlreadyInYourPlanGoodJob} 😊",
+                                  style: AppTextTheme.bodyMedium.copyWith(
+                                    color: AppColors.primary,
+                                    fontWeight: FontWeight.w600,
                                   ),
                                 ),
                               ),

@@ -743,7 +743,7 @@ class S {
   /// `Built for dreamers, doers, and disciplined minds.\nStart your Ádet journey today.`
   String get builtForDreamersDoersAndDisciplinedMindsnstartYourDetJourney {
     return Intl.message(
-      'Built for dreamers, doers, and disciplined minds.\\nStart your Ádet journey today.',
+      'Built for dreamers, doers, and disciplined minds.\nStart your Ádet journey today.',
       name: 'builtForDreamersDoersAndDisciplinedMindsnstartYourDetJourney',
       desc: '',
       args: [],

@@ -10,7 +10,10 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:dio/dio.dart' as _i361;
+import 'package:firebase_messaging/firebase_messaging.dart' as _i892;
 import 'package:flutter_bloc/flutter_bloc.dart' as _i331;
+import 'package:flutter_local_notifications/flutter_local_notifications.dart'
+    as _i163;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
@@ -49,6 +52,20 @@ import '../features/home/domain/usecases/get_daily_quote.dart' as _i457;
 import '../features/home/domain/usecases/get_user_name.dart' as _i887;
 import '../features/home/domain/usecases/save_user_name.dart' as _i1063;
 import '../features/home/presentation/bloc/home_bloc.dart' as _i824;
+import '../features/settings/data/datasource/local_notifications_service.dart'
+    as _i832;
+import '../features/settings/data/datasource/push_notifications_service.dart'
+    as _i1012;
+import '../features/settings/data/repository/settings_repository_impl.dart'
+    as _i933;
+import '../features/settings/domain/repository/settings_repository.dart'
+    as _i816;
+import '../features/settings/domain/usecases/get_daily_enabled.dart' as _i972;
+import '../features/settings/domain/usecases/get_push_enabled.dart' as _i432;
+import '../features/settings/domain/usecases/set_daily_enabled.dart' as _i36;
+import '../features/settings/domain/usecases/set_push_enabled.dart' as _i174;
+import '../features/settings/presentation/blocs/notification/notification_bloc.dart'
+    as _i311;
 import 'injection.dart' as _i464;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -73,10 +90,23 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i361.Dio>(() => appModule.dio);
     gh.singleton<_i162.TalkerDioLogger>(() => appModule.talkerDioLogger);
     gh.singleton<_i156.AppRouter>(() => appModule.appRouter);
+    gh.lazySingleton<_i163.FlutterLocalNotificationsPlugin>(
+        () => appModule.flutterLocalNotificationsPlugin);
+    gh.lazySingleton<_i892.FirebaseMessaging>(
+        () => appModule.firebaseMessaging);
     gh.lazySingleton<_i935.AppDatabase>(
         () => _i935.AppDatabase(gh<_i207.Talker>()));
+    gh.lazySingleton<_i1012.PushNotificationsService>(
+        () => _i1012.PushNotificationsService(
+              gh<_i207.Talker>(),
+              gh<_i163.FlutterLocalNotificationsPlugin>(),
+              gh<_i892.FirebaseMessaging>(),
+            ));
     gh.lazySingleton<_i200.HomeLocalDataSource>(
         () => _i200.HomeLocalDataSourceImpl(gh<_i460.SharedPreferences>()));
+    gh.lazySingleton<_i832.LocalNotificationsService>(() =>
+        _i832.LocalNotificationsService(
+            gh<_i163.FlutterLocalNotificationsPlugin>()));
     gh.lazySingleton<_i655.HabitLocalDataSource>(
         () => _i655.HabitLocalDataSourceImpl(
               gh<_i935.AppDatabase>(),
@@ -86,6 +116,12 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i488.HomeRepoImpl(gh<_i200.HomeLocalDataSource>()));
     gh.lazySingleton<_i166.HabitRepo>(
         () => _i687.HabitRepoImpl(gh<_i655.HabitLocalDataSource>()));
+    gh.lazySingleton<_i816.SettingsRepository>(
+        () => _i933.SettingsRepositoryImpl(
+              prefs: gh<_i460.SharedPreferences>(),
+              localNotificationsService: gh<_i832.LocalNotificationsService>(),
+              pushNotificationsService: gh<_i1012.PushNotificationsService>(),
+            ));
     gh.lazySingleton<_i887.GetUserName>(
         () => _i887.GetUserName(gh<_i855.HomeRepository>()));
     gh.lazySingleton<_i1055.GetHabitSubscriptionWithDateAndHabitId>(() =>
@@ -102,6 +138,14 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i680.SearchHabitUsecase(gh<_i166.HabitRepo>()));
     gh.lazySingleton<_i854.GetHabitsDonePercentage>(
         () => _i854.GetHabitsDonePercentage(gh<_i166.HabitRepo>()));
+    gh.lazySingleton<_i174.SetPushEnabled>(
+        () => _i174.SetPushEnabled(gh<_i816.SettingsRepository>()));
+    gh.lazySingleton<_i432.GetPushEnabled>(
+        () => _i432.GetPushEnabled(gh<_i816.SettingsRepository>()));
+    gh.lazySingleton<_i972.GetDailyEnabled>(
+        () => _i972.GetDailyEnabled(gh<_i816.SettingsRepository>()));
+    gh.lazySingleton<_i36.SetDailyEnabled>(
+        () => _i36.SetDailyEnabled(gh<_i816.SettingsRepository>()));
     gh.lazySingleton<_i457.GetDailyQuote>(
         () => _i457.GetDailyQuote(gh<_i855.HomeRepository>()));
     gh.factory<_i257.HabitMapBloc>(
@@ -114,6 +158,12 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i56.SetHabitCompletionStatus(gh<_i166.HabitRepo>()));
     gh.lazySingleton<_i1063.SaveUserName>(
         () => _i1063.SaveUserName(gh<_i855.HomeRepository>()));
+    gh.factory<_i311.NotificationBloc>(() => _i311.NotificationBloc(
+          gh<_i36.SetDailyEnabled>(),
+          gh<_i174.SetPushEnabled>(),
+          gh<_i432.GetPushEnabled>(),
+          gh<_i972.GetDailyEnabled>(),
+        ));
     gh.factory<_i216.CatalogBloc>(() => _i216.CatalogBloc(
           gh<_i1031.GetCategories>(),
           gh<_i545.GetCategoryInfo>(),

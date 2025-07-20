@@ -1,4 +1,4 @@
-package com.bakberdi.habit_app
+package com.bakberdi.adet
 
 import io.flutter.embedding.android.FlutterActivity
 
